@@ -1,0 +1,26 @@
+﻿{
+  "Format": "2.9.0",
+  "Changes": [
+    {
+      "Action": "EditData",
+      "Target": "Data/Locations",
+      "Entries": {
+        "{{ModId}}_CindersapPark": {
+          "CreateOnLoad": {
+            "MapPath": "Maps/{{ModId}}_CindersapPark"
+          }
+        }
+      }
+    },
+    {
+      "Action": "Load",
+      "Target": "Maps/{{ModId}}_CindersapPark",
+      "FromFile": "assets/maps/CindersapPark.tmx"
+    },
+    {
+      "Action": "Load",
+      "Target": "Maps/spring_cindersap",
+      "FromFile": "assets/maps/spring_cindersap.png"
+    }
+  ]
+}

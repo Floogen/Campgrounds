@@ -19,8 +19,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Update="Content Packs\[CP] Campgrounds\manifest.json">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</None>
 		<None Update="manifest.json">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
+	</ItemGroup>
+	<ItemGroup>
+		<ContentPacks Include="Content Packs\[CP] Campgrounds" Version="$(Version)" IgnoreModFilePaths="assets\maps\island_tilesheet_1.png, assets\maps\paths.png, assets\maps\spring_outdoorsTileSheet.png, assets\maps\spring_town.png" IgnoreModFilePatterns="\.aseprite$" />
+	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="Framework\" />
 	</ItemGroup>
 </Project>

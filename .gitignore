@@ -396,3 +396,8 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+*.aseprite
+Campgrounds/Content Packs/\[CP\] Campgrounds/assets/maps/island_tilesheet_1.png
+Campgrounds/Content Packs/\[CP\] Campgrounds/assets/maps/paths.png
+Campgrounds/Content Packs/\[CP\] Campgrounds/assets/maps/spring_outdoorsTileSheet.png
+Campgrounds/Content Packs/\[CP\] Campgrounds/assets/maps/spring_town.png

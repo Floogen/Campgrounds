@@ -1,0 +1,18 @@
+﻿{
+  "Name": "[CP] Campgrounds",
+  "Author": "PeacefulEnd",
+  "Version": "%ProjectVersion%",
+  "Description": "...",
+  "UniqueID": "PeacefulEnd.Campgrounds.ContentPatcher",
+  "MinimumApiVersion": "4.1.10",
+  "UpdateKeys": [ "Nexus:????" ],
+  "Dependencies": [
+    {
+      "UniqueID": "PeacefulEnd.Campgrounds.Core",
+      "IsRequired": true
+    }
+  ],
+  "ContentPackFor": {
+    "UniqueID": "Pathoschild.ContentPatcher"
+  }
+}
