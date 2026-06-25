@@ -3,7 +3,7 @@ using StardewModdingAPI;
 using StardewValley;
 using System;
 
-namespace StardewSandbox
+namespace Campgrounds
 {
     public class ModEntry : Mod
     {
