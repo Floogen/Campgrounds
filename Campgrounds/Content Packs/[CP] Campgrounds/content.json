@@ -9,6 +9,11 @@
           "CreateOnLoad": {
             "MapPath": "Maps/{{ModId}}_CindersapPark"
           }
+        },
+        "{{ModId}}_CindersapParkShop": {
+          "CreateOnLoad": {
+            "MapPath": "Maps/{{ModId}}_CindersapParkShop"
+          }
         }
       }
     },
@@ -19,8 +24,18 @@
     },
     {
       "Action": "Load",
+      "Target": "Maps/{{ModId}}_CindersapParkShop",
+      "FromFile": "assets/maps/CindersapParkShop.tmx"
+    },
+    {
+      "Action": "Load",
       "Target": "Maps/spring_cindersap",
       "FromFile": "assets/maps/spring_cindersap.png"
+    },
+    {
+      "Action": "Load",
+      "Target": "Maps/cindersap_interior",
+      "FromFile": "assets/maps/cindersap_interior.png"
     }
   ]
 }

@@ -27,7 +27,7 @@
 		</None>
 	</ItemGroup>
 	<ItemGroup>
-		<ContentPacks Include="Content Packs\[CP] Campgrounds" Version="$(Version)" IgnoreModFilePaths="assets\maps\island_tilesheet_1.png, assets\maps\paths.png, assets\maps\spring_outdoorsTileSheet.png, assets\maps\spring_town.png" IgnoreModFilePatterns="\.aseprite$" />
+		<ContentPacks Include="Content Packs\[CP] Campgrounds" Version="$(Version)" IgnoreModFilePaths="assets\maps\island_tilesheet_1.png, assets\maps\paths.png, assets\maps\spring_outdoorsTileSheet.png, assets\maps\spring_town.png, assets\maps\townInterior.png, assets\maps\townInterior_2.png" IgnoreModFilePatterns="\.aseprite$" />
 	</ItemGroup>
 	<ItemGroup>
 		<Folder Include="Framework\" />
