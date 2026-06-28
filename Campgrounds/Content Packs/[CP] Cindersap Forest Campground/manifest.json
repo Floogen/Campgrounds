@@ -1,0 +1,19 @@
+﻿{
+  "Name": "[CP] Cindersap Forest Campground",
+  "Author": "PeacefulEnd",
+  "Version": "%ProjectVersion%",
+  "Description": "...",
+  "UniqueID": "PeacefulEnd.Campgrounds.CindersapForestCampground",
+  "MinimumApiVersion": "4.1.10",
+  "UpdateKeys": [ "Nexus:????" ],
+  "Dependencies": [
+    {
+      "UniqueID": "PeacefulEnd.Campgrounds.Core",
+      "IsRequired": true,
+      "MinimumVersion": "%ProjectVersion%"
+    }
+  ],
+  "ContentPackFor": {
+    "UniqueID": "Pathoschild.ContentPatcher"
+  }
+}
