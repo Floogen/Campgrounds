@@ -1,11 +1,12 @@
-﻿using HarmonyLib;
+﻿using Campgrounds.Framework.Patches.Locations;
+using HarmonyLib;
 using StardewModdingAPI;
 using StardewValley;
 using System;
 
 namespace Campgrounds
 {
-    public class ModEntry : Mod
+    public class Campgrounds : Mod
     {
         // Shared static helpers
         internal static IMonitor monitor;
@@ -23,7 +24,8 @@ namespace Campgrounds
             {
                 var harmony = new Harmony(this.ModManifest.UniqueID);
 
-                // Apply patches
+                // Location patches
+                new GameLocationPatch(monitor, helper).Apply(harmony);
             }
             catch (Exception e)
             {

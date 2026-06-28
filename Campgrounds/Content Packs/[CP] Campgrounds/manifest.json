@@ -9,7 +9,8 @@
   "Dependencies": [
     {
       "UniqueID": "PeacefulEnd.Campgrounds.Core",
-      "IsRequired": true
+      "IsRequired": true,
+      "MinimumVersion": "%ProjectVersion%"
     }
   ],
   "ContentPackFor": {
