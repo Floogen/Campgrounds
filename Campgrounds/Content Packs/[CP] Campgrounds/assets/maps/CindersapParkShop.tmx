@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="16" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="14" nextobjectid="22">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="16" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="14" nextobjectid="29">
  <properties>
   <property name="DayTiles" value="Front 4 1 256 Front 4 2 288 Front 15 1 256 Front 15 2 288 Front 28 5 256 Front 28 6 288 Front 17 14 256 Front 17 15 288 Front 3 14 225 Front 3 15 257 Front 7 14 225 Front 7 15 257"/>
   <property name="DefaultWarpLocation" value="9 11"/>
@@ -67,7 +67,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,119,107,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,2583,2584,2585,2586,2587,2588,0,0,0,0,0,0,0,0,
+0,0,0,0,2585,0,2587,2588,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
@@ -80,8 +80,8 @@
 0,66,2126,67,67,67,67,67,67,67,67,2126,68,0,1,1,
 0,98,2158,99,99,99,2380,2381,1669,99,99,2158,100,0,1,1,
 0,130,2157,0,0,0,2403,2404,1701,2147484510,0,2486,2487,0,35,1,
-1,2148,0,0,918,0,0,0,0,2147484566,0,2509,2510,0,0,1,
-1,2462,0,0,950,2418,2419,952,2147484600,2147484598,0,0,0,0,119,1,
+1,2148,0,0,918,0,0,0,0,2147484566,0,2509,2510,87,0,1,
+1,2462,0,0,950,2418,2419,952,2147484600,2147484598,0,0,0,119,119,1,
 1,2485,0,0,0,0,0,0,0,0,0,0,0,0,0,1,
 1,2508,0,0,0,0,0,0,0,0,0,0,0,1,1,1,
 1,2531,0,0,0,0,0,0,0,0,0,0,897,1,1,1,
@@ -164,7 +164,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,2791,0,0,0,0,0,0,0,0,0,0,
+0,0,0,2791,0,0,0,2791,0,0,2791,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -175,7 +175,18 @@
 </data>
  </layer>
  <objectgroup id="5" name="Back"/>
- <objectgroup id="6" name="Buildings"/>
+ <objectgroup id="6" name="Buildings">
+  <object id="24" name="TileData" x="224" y="128" width="16" height="16">
+   <properties>
+    <property name="Action" value="Warp 2 7 PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkGarage"/>
+   </properties>
+  </object>
+  <object id="28" name="TileData" x="240" y="128" width="16" height="16">
+   <properties>
+    <property name="Action" value="Warp 2 7 PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkGarage"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="7" name="Front"/>
  <objectgroup id="8" name="Paths"/>
 </map>
