@@ -1881,17 +1881,17 @@
   </object>
   <object id="7" name="TileData" x="576" y="272" width="16" height="16">
    <properties>
-    <property name="TouchAction" value="CampingExit"/>
+    <property name="TouchAction" value="PeacefulEnd.Campgrounds_CampingExit"/>
    </properties>
   </object>
   <object id="9" name="TileData" x="576" y="288" width="16" height="16">
    <properties>
-    <property name="TouchAction" value="CampingExit"/>
+    <property name="TouchAction" value="PeacefulEnd.Campgrounds_CampingExit"/>
    </properties>
   </object>
   <object id="10" name="TileData" x="576" y="304" width="16" height="16">
    <properties>
-    <property name="TouchAction" value="CampingExit"/>
+    <property name="TouchAction" value="PeacefulEnd.Campgrounds_CampingExit"/>
    </properties>
   </object>
  </objectgroup>

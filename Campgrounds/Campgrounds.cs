@@ -34,6 +34,7 @@ namespace Campgrounds
             }
 
             // Hook into the required events
+            GameLocation.RegisterTouchAction("PeacefulEnd.Campgrounds_CampingExit", MapActionHelper.HandleCampingExit);
         }
     }
 }
