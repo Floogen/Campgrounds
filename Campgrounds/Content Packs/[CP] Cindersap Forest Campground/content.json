@@ -1,13 +1,15 @@
 ﻿{
   "Format": "2.9.0",
   "Changes": [
+    // Add the campground location and map
     {
       "Action": "EditData",
       "Target": "Data/Locations",
       "Entries": {
-        "{{ModId}}_CindersapCampground": {
+        "PeacefulEnd.Campgrounds.CindersapForestCampground": {
+          "DisplayName": "Cindersap Forest Campground",
           "CreateOnLoad": {
-            "MapPath": "Maps/{{ModId}}_CindersapCampground"
+            "MapPath": "Maps/PeacefulEnd.Campgrounds.CindersapForestCampground"
           },
           "ExcludeFromNpcPathfinding": true,
           "Fish": [
@@ -411,8 +413,22 @@
     },
     {
       "Action": "Load",
-      "Target": "Maps/{{ModId}}_CindersapCampground",
+      "Target": "Maps/PeacefulEnd.Campgrounds.CindersapForestCampground",
       "FromFile": "assets/maps/CindersapCampground.tmx"
+    },
+
+    // Add the campground to the list
+    {
+      "Action": "EditData",
+      "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds",
+      "Entries": {
+        "PeacefulEnd.Campgrounds.CindersapForestCampground": {
+          "Name": "PeacefulEnd.Campgrounds.CindersapForestCampground",
+          "Description": "A peaceful camping spot in Cindersap Forest.",
+          "RequireVehicle": false,
+          "TravelTimeInHours": 0
+        }
+      }
     }
   ]
 }
