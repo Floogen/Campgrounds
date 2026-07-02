@@ -21,7 +21,7 @@ namespace Campgrounds.Framework.Managers
         public bool IsTraveling { get; private set; }
         private TravelMessage _travelMessage;
 
-        public CampingManager(IModHelper helper) : base(helper)
+        public CampingManager(IMonitor monitor, IModHelper helper) : base(monitor, helper)
         {
             helper.Events.GameLoop.GameLaunched += OnGameLaunched;
             helper.Events.GameLoop.UpdateTicked += OnUpdateTicked;

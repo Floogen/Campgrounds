@@ -9,10 +9,12 @@ namespace Campgrounds.Framework.Managers
 {
     public class BaseManager
     {
+        internal IMonitor monitor;
         internal IModHelper helper;
 
-        public BaseManager(IModHelper helper)
+        public BaseManager(IMonitor monitor, IModHelper helper)
         {
+            this.monitor = monitor;
             this.helper = helper;
         }
     }
