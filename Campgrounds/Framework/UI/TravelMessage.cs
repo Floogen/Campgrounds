@@ -12,8 +12,8 @@ namespace Campgrounds.Framework.UI
         private CampgroundData _campgroundData;
 
         private string _travelMessageText = "";
-        private double _travelMessageTimer = 3000;
-        private double MESSAGE_FADE_START = 1500;
+        private double _travelMessageTimer = 4000;
+        private double MESSAGE_FADE_START = 2000;
 
         private float _travelMessageAlpha = 1f;
 
@@ -21,11 +21,15 @@ namespace Campgrounds.Framework.UI
         {
             _campgroundData = campgroundData;
 
-            FadeScreenHelper.StartFadeIn(StartMessageDisplay, Draw);
+            FadeScreenHelper.StartFadeIn(WarpAndDisplayMessage, Draw);
         }
 
-        private void StartMessageDisplay()
+        private void WarpAndDisplayMessage()
         {
+            // Warp and skip the vanilla' fade to black logic
+            Game1.warpFarmer(_campgroundData.Name, (int)_campgroundData.PlayerSpawnTile.Value.X, (int)_campgroundData.PlayerSpawnTile.Value.Y, 2);
+            Game1.fadeToBlackAlpha = 1.2f;
+
             _travelMessageText = _campgroundData.TravelScreenText;
             if (string.IsNullOrEmpty(_travelMessageText) is true)
             {

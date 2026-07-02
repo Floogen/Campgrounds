@@ -424,6 +424,14 @@
       "Entries": {
         "PeacefulEnd.Campgrounds.CindersapForestCampground": {
           "Name": "PeacefulEnd.Campgrounds.CindersapForestCampground",
+          "PlayerSpawnTile": {
+            "X": 25,
+            "Y": 18
+          },
+          "NPCSpawnTile": {
+            "X": 17,
+            "Y": 23
+          },
           "Description": "A peaceful camping spot in Cindersap Forest.",
           "RequireVehicle": false,
           "TravelTimeInHours": 0

@@ -10,6 +10,8 @@ namespace Campgrounds.Framework.Models
     public class CampgroundData
     {
         public string Name { get; set; }
+        public Vector2? PlayerSpawnTile { get; set; }
+        public Vector2? NPCSpawnTile { get; set; }
         public string Description { get; set; }
         public string TravelScreenText { get; set; }
 
@@ -23,6 +25,14 @@ namespace Campgrounds.Framework.Models
                 return (false, "Missing the \"Name\" property!");
             }
 
+            if (PlayerSpawnTile is null)
+            {
+                return (false, "Missing the \"PlayerSpawnTile\" property!");
+            }
+
+            if (NPCSpawnTile is null)
+            {
+                return (false, "Missing the \"NPCSpawnTile\" property!");
             }
 
             if (TravelTimeInHours < 0)
