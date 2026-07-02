@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Campgrounds.Framework.UI;
+using Microsoft.Xna.Framework;
 using StardewValley;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,14 @@ namespace Campgrounds.Framework.Utilities
 {
     public static class MapActionHelper
     {
+        // Tile actions
+        public static bool HandleCampingSiteList(GameLocation location, string[] args, Farmer player, Point point)
+        {
+            Game1.activeClickableMenu = new CampListMenu();
+
+            return true;
+        }
+
         // Touch actions
         public static void HandleCampingExit(GameLocation location, string[] args, Farmer player, Vector2 tile)
         {

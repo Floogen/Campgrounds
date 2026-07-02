@@ -1863,7 +1863,7 @@
     <property name="IsForGuest" value="F"/>
    </properties>
   </object>
-  <object id="5" name="TileData" x="288" y="368" width="16" height="16">
+  <object id="5" name="TileData" x="288" y="352" width="16" height="16">
    <properties>
     <property name="CampingDirection" value="W"/>
     <property name="CampingType" value="Tent"/>
