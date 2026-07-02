@@ -11,6 +11,7 @@ namespace Campgrounds.Framework.Models
     {
         public string Name { get; set; }
         public string Description { get; set; }
+        public string TravelScreenText { get; set; }
 
         public bool RequireVehicle { get; set; }
         public int TravelTimeInHours { get; set; }
