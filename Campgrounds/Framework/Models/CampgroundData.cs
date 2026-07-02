@@ -10,6 +10,8 @@ namespace Campgrounds.Framework.Models
     public class CampgroundData
     {
         public string Name { get; set; }
+        public string PreviewTexturePath { get; set; }
+        public float PreviewTextureScale { get; set; } = 4f;
         public Vector2? PlayerSpawnTile { get; set; }
         public Vector2? NPCSpawnTile { get; set; }
         public string Description { get; set; }

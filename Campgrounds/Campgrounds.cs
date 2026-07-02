@@ -24,6 +24,8 @@ namespace Campgrounds
 
         public const string CAMPGROUND_DATA_PATH = "Data/PeacefulEnd_Campgrounds/Campgrounds";
 
+        public const string CAMPGROUND_DEFAULT_PREVIEW_TEXTURE_PATH = "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/Default_Preview";
+
         public override void Entry(IModHelper helper)
         {
             // Set up the monitor, helper and multiplayer
@@ -82,6 +84,10 @@ namespace Campgrounds
             else if (e.NameWithoutLocale.IsEquivalentTo(CAMPGROUND_DATA_PATH))
             {
                 e.LoadFrom(() => campManager.CampgroundData, AssetLoadPriority.Medium);
+            }
+            else if (e.NameWithoutLocale.IsEquivalentTo(CAMPGROUND_DEFAULT_PREVIEW_TEXTURE_PATH))
+            {
+                e.LoadFrom(() => Helper.ModContent.Load<Texture2D>("Framework/Assets/defaultCampgroundPreview.png"), AssetLoadPriority.Medium);
             }
         }
 

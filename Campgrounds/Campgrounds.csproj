@@ -22,6 +22,9 @@
 		<None Update="Content Packs\[CP] Campgrounds\manifest.json">
 		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</None>
+		<None Update="Framework\Assets\defaultCampgroundPreview.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
 		<None Update="manifest.json">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>

@@ -127,8 +127,8 @@ namespace Campgrounds.Framework.UI
             _campsiteSummaryDisplayBox = new Rectangle(left_pane_rectangle.X, left_pane_rectangle.Y, left_pane_rectangle.Width, left_pane_rectangle.Height);
             left_pane_rectangle.Y += 32;
             left_pane_rectangle.Height -= 32;
-            int mapDisplayWidth = 300;
-            _mapDisplayBox = new Rectangle(_campsiteSummaryDisplayBox.X + (400 - mapDisplayWidth) / 2, left_pane_rectangle.Y, mapDisplayWidth, 150);
+            int mapDisplayWidth = 320;
+            _mapDisplayBox = new Rectangle(_campsiteSummaryDisplayBox.X + (400 - mapDisplayWidth) / 2, left_pane_rectangle.Y, mapDisplayWidth, 160);
             left_pane_rectangle.Y += 192;
             left_pane_rectangle.Height -= 192;
             _campsiteNamePosition = new Vector2(left_pane_rectangle.Center.X, left_pane_rectangle.Top);
@@ -295,6 +295,22 @@ namespace Campgrounds.Framework.UI
 
             if (_selectedCampsite is not null)
             {
+                Texture2D previewCampsiteTexture = Campgrounds.modHelper.GameContent.Load<Texture2D>(Campgrounds.CAMPGROUND_DEFAULT_PREVIEW_TEXTURE_PATH);
+                float previewCampsiteScale = _selectedCampsite.PreviewTextureScale > 0f ? _selectedCampsite.PreviewTextureScale : 4f;
+                if (string.IsNullOrEmpty(_selectedCampsite.PreviewTexturePath) is false)
+                {
+                    try
+                    {
+                        previewCampsiteTexture = Campgrounds.modHelper.GameContent.Load<Texture2D>(_selectedCampsite.PreviewTexturePath);
+                    }
+                    catch (Exception ex)
+                    {
+                        Campgrounds.monitor.LogOnce($"Failed to load preview image for campground {_selectedCampsite.Name}: {ex}", StardewModdingAPI.LogLevel.Warn);
+                    }
+                }
+
+                b.Draw(previewCampsiteTexture, new Vector2(_mapDisplayBox.X, _mapDisplayBox.Y), previewCampsiteTexture.Bounds, Color.White, 0f, Vector2.Zero, previewCampsiteScale, SpriteEffects.None, 1f);
+
                 _travelButton.draw(b, 0, 0);
             }
 
