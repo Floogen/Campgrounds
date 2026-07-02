@@ -48,6 +48,8 @@ namespace Campgrounds
 
             // Hook into the required events
             helper.Events.GameLoop.GameLaunched += OnGameLaunched;
+            helper.Events.GameLoop.UpdateTicked += OnUpdateTicked;
+            helper.Events.Display.Rendered += OnRendered;
             helper.Events.Content.AssetRequested += OnAssetRequested;
             helper.Events.Content.AssetsInvalidated += OnAssetInvalidated;
             GameLocation.RegisterTouchAction("PeacefulEnd.Campgrounds_CampingExit", MapActionHelper.HandleCampingExit);
@@ -56,6 +58,16 @@ namespace Campgrounds
         private void OnGameLaunched(object sender, GameLaunchedEventArgs e)
         {
 
+        }
+
+        private void OnUpdateTicked(object sender, UpdateTickedEventArgs e)
+        {
+            FadeScreenHelper.Update();
+        }
+
+        private void OnRendered(object sender, RenderedEventArgs e)
+        {
+            FadeScreenHelper.Draw(e.SpriteBatch);
         }
 
         private void OnAssetRequested(object sender, AssetRequestedEventArgs e)
