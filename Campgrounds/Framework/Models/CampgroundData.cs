@@ -16,19 +16,25 @@ namespace Campgrounds.Framework.Models
         public bool RequireVehicle { get; set; }
         public int TravelTimeInHours { get; set; }
 
-        public bool IsValid()
+        public (bool Result, string Error) IsValid()
         {
             if (string.IsNullOrEmpty(Name))
             {
-                return false;
+                return (false, "Missing the \"Name\" property!");
+            }
+
             }
 
             if (TravelTimeInHours < 0)
             {
-                return false;
+                return (false, "The \"TravelTimeInHours\" can't be negative!");
+            }
+            else if (TravelTimeInHours >= 16)
+            {
+                return (false, "The \"TravelTimeInHours\" can't be greater than 16!");
             }
 
-            return true;
+            return (true, string.Empty);
         }
     }
 }

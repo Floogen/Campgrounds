@@ -32,7 +32,7 @@ namespace Campgrounds
             multiplayer = helper.Reflection.GetField<Multiplayer>(typeof(Game1), "multiplayer").GetValue();
 
             // Create managers
-            campManager = new CampingManager(helper);
+            campManager = new CampingManager(monitor, helper);
 
             try
             {

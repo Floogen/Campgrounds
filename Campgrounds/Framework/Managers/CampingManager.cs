@@ -16,7 +16,8 @@ namespace Campgrounds.Framework.Managers
 {
     public class CampingManager : BaseManager
     {
-        public List<CampgroundData> CampgroundData { get; set; } = new List<CampgroundData>();
+        public List<CampgroundData> CampgroundData { get { return _campgroundData; } set { FilterCampgroundData(value); } }
+        private List<CampgroundData> _campgroundData = new List<CampgroundData>();
 
         public bool IsTraveling { get; private set; }
         private TravelMessage _travelMessage;
@@ -38,6 +39,20 @@ namespace Campgrounds.Framework.Managers
             {
                 _travelMessage.Update();
             }
+        }
+
+        private void FilterCampgroundData(List<CampgroundData> campgroundData)
+        {
+            foreach (var campground in campgroundData)
+            {
+                var isValidData = campground.IsValid();
+                if (isValidData.Result is false)
+                {
+                    monitor.LogOnce($"Skipping invalid CampgroundData with name \"{campground.Name}\": {isValidData.Error}", LogLevel.Warn);
+                }
+            }
+
+            _campgroundData = campgroundData.Where(c => c.IsValid().Result is true).ToList();
         }
 
         public void StartTraveling(CampgroundData campgroundData)
