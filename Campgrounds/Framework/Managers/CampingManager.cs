@@ -64,6 +64,9 @@ namespace Campgrounds.Framework.Managers
             IsTraveling = true;
 
             _travelMessage = new TravelMessage(campgroundData);
+
+            // Adjust the time by the CampgroundData.TravelTimeInHours
+            Game1.timeOfDay += campgroundData.TravelTimeInHours * 100;
         }
 
         public void StopTraveling()
