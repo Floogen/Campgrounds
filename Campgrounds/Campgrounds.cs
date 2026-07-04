@@ -23,7 +23,7 @@ namespace Campgrounds
         internal static CampingManager campManager;
 
         public const string CAMPGROUND_DATA_PATH = "Data/PeacefulEnd_Campgrounds/Campgrounds";
-
+        public const string CAMPING_TENTS_DATA_PATH = "Data/PeacefulEnd_Campgrounds/CampingTents";
         public const string CAMPGROUND_DEFAULT_PREVIEW_TEXTURE_PATH = "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/Default_Preview";
 
         public override void Entry(IModHelper helper)
@@ -85,6 +85,10 @@ namespace Campgrounds
             {
                 e.LoadFrom(() => campManager.CampgroundData, AssetLoadPriority.Medium);
             }
+            else if (e.NameWithoutLocale.IsEquivalentTo(CAMPING_TENTS_DATA_PATH))
+            {
+                e.LoadFrom(() => campManager.CampingTentData, AssetLoadPriority.Medium);
+            }
             else if (e.NameWithoutLocale.IsEquivalentTo(CAMPGROUND_DEFAULT_PREVIEW_TEXTURE_PATH))
             {
                 e.LoadFrom(() => Helper.ModContent.Load<Texture2D>("Framework/Assets/defaultCampgroundPreview.png"), AssetLoadPriority.Medium);
@@ -103,6 +107,12 @@ namespace Campgrounds
             if (campData is not null)
             {
                 campManager.CampgroundData = Helper.GameContent.Load<List<CampgroundData>>(CAMPGROUND_DATA_PATH);
+            }
+
+            var campingTentsData = e.NamesWithoutLocale.FirstOrDefault(a => a.IsEquivalentTo(CAMPING_TENTS_DATA_PATH));
+            if (campingTentsData is not null)
+            {
+                campManager.CampingTentData = Helper.GameContent.Load<List<CampingTentData>>(CAMPING_TENTS_DATA_PATH);
             }
         }
     }

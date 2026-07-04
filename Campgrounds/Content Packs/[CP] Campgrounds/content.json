@@ -47,6 +47,12 @@
       "Action": "Load",
       "Target": "Maps/cindersap_interior",
       "FromFile": "assets/maps/cindersap_interior.png"
+    },
+
+    // Add camping tent data
+    {
+      "Action": "Include",
+      "FromFile": "assets/campgrounds/campingTents.json"
     }
   ]
 }

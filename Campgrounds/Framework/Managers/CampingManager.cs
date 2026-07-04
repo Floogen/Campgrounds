@@ -19,6 +19,9 @@ namespace Campgrounds.Framework.Managers
         public List<CampgroundData> CampgroundData { get { return _campgroundData; } set { FilterCampgroundData(value); } }
         private List<CampgroundData> _campgroundData = new List<CampgroundData>();
 
+        public List<CampingTentData> CampingTentData { get { return _campingTentData; } set { FilterCampingTentsData(value); } }
+        private List<CampingTentData> _campingTentData = new List<CampingTentData>();
+
         public bool IsTraveling { get; private set; }
         private TravelMessage _travelMessage;
 
@@ -31,6 +34,7 @@ namespace Campgrounds.Framework.Managers
         private void OnGameLaunched(object sender, GameLaunchedEventArgs e)
         {
             CampgroundData = helper.GameContent.Load<List<CampgroundData>>(Campgrounds.CAMPGROUND_DATA_PATH);
+            CampingTentData = helper.GameContent.Load<List<CampingTentData>>(Campgrounds.CAMPING_TENTS_DATA_PATH);
         }
 
         private void OnUpdateTicked(object sender, UpdateTickedEventArgs e)
@@ -53,6 +57,20 @@ namespace Campgrounds.Framework.Managers
             }
 
             _campgroundData = campgroundData.Where(c => c.IsValid().Result is true).ToList();
+        }
+
+        private void FilterCampingTentsData(List<CampingTentData> campingTentData)
+        {
+            foreach (var campingTent in campingTentData)
+            {
+                var isValidData = campingTent.IsValid();
+                if (isValidData.Result is false)
+                {
+                    monitor.LogOnce($"Skipping invalid CampingTentData with name \"{campingTent.Name}\": {isValidData.Error}", LogLevel.Warn);
+                }
+            }
+
+            _campingTentData = campingTentData.Where(c => c.IsValid().Result is true).ToList();
         }
 
         public void StartTraveling(CampgroundData campgroundData)
