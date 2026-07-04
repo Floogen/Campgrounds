@@ -51,6 +51,7 @@ namespace Campgrounds
             // Hook into the required events
             helper.Events.GameLoop.GameLaunched += OnGameLaunched;
             helper.Events.GameLoop.UpdateTicked += OnUpdateTicked;
+            helper.Events.GameLoop.DayStarted += OnDayStarted;
             helper.Events.Display.Rendered += OnRendered;
             helper.Events.Content.AssetRequested += OnAssetRequested;
             helper.Events.Content.AssetsInvalidated += OnAssetInvalidated;
@@ -68,6 +69,11 @@ namespace Campgrounds
         private void OnUpdateTicked(object sender, UpdateTickedEventArgs e)
         {
             FadeScreenHelper.Update();
+        }
+
+        private void OnDayStarted(object sender, DayStartedEventArgs e)
+        {
+            campManager.HandleForageSpawning();
         }
 
         private void OnRendered(object sender, RenderedEventArgs e)

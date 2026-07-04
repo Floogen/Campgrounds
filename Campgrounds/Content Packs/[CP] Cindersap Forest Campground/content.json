@@ -405,8 +405,8 @@
               "PerItemCondition": null
             }
           ],
-          "MinDailyForageSpawn": 1,
-          "MaxDailyForageSpawn": 4,
+          "MinDailyForageSpawn": 4,
+          "MaxDailyForageSpawn": 6,
           "MaxSpawnedForageAtOnce": 6
         }
       }
@@ -424,6 +424,7 @@
       "Entries": {
         "PeacefulEnd.Campgrounds.CindersapForestCampground": {
           "Name": "PeacefulEnd.Campgrounds.CindersapForestCampground",
+          "ForceForageRefreshOnVisit": true,
           "PreviewTexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/CindersapForestCampgroundPreview",
           "PreviewTextureScale": 4.0,
           "PlayerSpawnTile": {

@@ -10,15 +10,17 @@ namespace Campgrounds.Framework.Models.Data
     public class CampgroundData : BaseData
     {
         public string Name { get; set; }
+        public string Description { get; set; }
         public string PreviewTexturePath { get; set; }
         public float PreviewTextureScale { get; set; } = 4f;
         public Vector2? PlayerSpawnTile { get; set; }
         public Vector2? NPCSpawnTile { get; set; }
-        public string Description { get; set; }
         public string TravelScreenText { get; set; }
 
         public bool RequireVehicle { get; set; }
         public int TravelTimeInHours { get; set; }
+
+        public bool ForceForageRefreshOnVisit { get; set; }
 
         public override (bool Result, string Error) IsValid()
         {

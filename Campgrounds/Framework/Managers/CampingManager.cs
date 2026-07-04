@@ -92,5 +92,30 @@ namespace Campgrounds.Framework.Managers
             IsTraveling = false;
             _travelMessage = null;
         }
+
+        public void HandleForageSpawning()
+        {
+            foreach (var campground in CampgroundData.Where(c => c.ForceForageRefreshOnVisit))
+            {
+                var location = Game1.getLocationFromName(campground.Name);
+                if (location is null)
+                {
+                    continue;
+                }
+
+                // Remove any previous forage items
+                foreach (var tile in location.objects.Keys)
+                {
+                    if (location.objects[tile] is not null && location.objects[tile].isForage())
+                    {
+                        location.objects.Remove(tile);
+                    }
+                }
+                location.numberOfSpawnedObjectsOnMap = 0;
+
+                // Spawn in new forage items
+                location.spawnObjects();
+            }
+        }
     }
 }
