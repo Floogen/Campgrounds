@@ -68,6 +68,10 @@ namespace Campgrounds.Framework.UI
                 _travelMessageText = null;
                 FadeScreenHelper.StartFadeOut();
             }
+            else
+            {
+                Game1.player.CanMove = false;
+            }
         }
 
         public void Draw(SpriteBatch b)

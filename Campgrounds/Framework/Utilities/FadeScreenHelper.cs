@@ -81,6 +81,9 @@ namespace Campgrounds.Framework.Utilities
 
             _blackScreenAlpha = 1f;
             _afterFullyFadedInAction = null;
+
+            Game1.displayHUD = false;
+            Game1.player.CanMove = false;
         }
         
         private static void FinishedFadeOut()

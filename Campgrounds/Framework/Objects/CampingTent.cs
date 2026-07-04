@@ -68,16 +68,16 @@ namespace Campgrounds.Framework.Objects
             switch (Direction)
             {
                 case Direction.North:
-                    tileLocation = new Vector2(tileLocation.X, tileLocation.Y + _campingTentData.NorthSprite.BoundaryRectangle.Height / 16);
+                    tileLocation = new Vector2(tileLocation.X, tileLocation.Y + _campingTentData.NorthSprite.BoundaryRectangle.Y / 16);
                     break;
                 case Direction.East:
-                    tileLocation = new Vector2(tileLocation.X, tileLocation.Y + _campingTentData.EastSprite.BoundaryRectangle.Height / 16);
+                    tileLocation = new Vector2(tileLocation.X, tileLocation.Y + _campingTentData.EastSprite.BoundaryRectangle.Y / 16);
                     break;
                 case Direction.South:
-                    tileLocation = new Vector2(tileLocation.X, tileLocation.Y + _campingTentData.SouthSprite.BoundaryRectangle.Height / 16);
+                    tileLocation = new Vector2(tileLocation.X, tileLocation.Y + _campingTentData.SouthSprite.BoundaryRectangle.Y / 16);
                     break;
                 case Direction.West:
-                    tileLocation = new Vector2(tileLocation.X, tileLocation.Y + _campingTentData.WestSprite.BoundaryRectangle.Height / 16);
+                    tileLocation = new Vector2(tileLocation.X, tileLocation.Y + _campingTentData.WestSprite.BoundaryRectangle.Y / 16);
                     break;
             }
             return new Rectangle((int)(tileLocation.X) * 64, (int)(tileLocation.Y) * 64, boundaryRectangle.Width * 4, boundaryRectangle.Height * 4);

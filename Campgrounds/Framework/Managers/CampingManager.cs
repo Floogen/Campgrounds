@@ -160,7 +160,14 @@ namespace Campgrounds.Framework.Managers
             }
 
             // Place the tents
-            location.largeTerrainFeatures.Add(new CampingTent(playerTentTile.Value, playerTentDirection, CampingTentData.First()));
+            if (!location.isTerrainFeatureAt((int)playerTentTile.Value.X, (int)playerTentTile.Value.Y))
+            {
+                location.largeTerrainFeatures.Add(new CampingTent(playerTentTile.Value, playerTentDirection, CampingTentData.First()));
+            }
+            if (!location.isTerrainFeatureAt((int)guestTentTile.Value.X, (int)guestTentTile.Value.Y))
+            {
+                location.largeTerrainFeatures.Add(new CampingTent(guestTentTile.Value, guestTentDirection, CampingTentData.First()));
+            }
 
             return true;
         }
