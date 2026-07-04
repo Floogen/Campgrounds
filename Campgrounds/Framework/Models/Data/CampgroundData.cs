@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Campgrounds.Framework.Models.Data
 {
-    public class CampgroundData
+    public class CampgroundData : BaseData
     {
         public string Name { get; set; }
         public string PreviewTexturePath { get; set; }
@@ -20,7 +20,7 @@ namespace Campgrounds.Framework.Models.Data
         public bool RequireVehicle { get; set; }
         public int TravelTimeInHours { get; set; }
 
-        public (bool Result, string Error) IsValid()
+        public override (bool Result, string Error) IsValid()
         {
             if (string.IsNullOrEmpty(Name))
             {
