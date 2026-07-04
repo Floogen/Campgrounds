@@ -1,4 +1,6 @@
 ﻿using Campgrounds.Framework.Models.Data;
+using Campgrounds.Framework.Models.Enums;
+using Campgrounds.Framework.Objects;
 using Campgrounds.Framework.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -81,6 +83,13 @@ namespace Campgrounds.Framework.Managers
             }
             IsTraveling = true;
 
+            // Add tents and NPC (if needed) to campsite
+            if (HandleTentSpawning(campgroundData) is false)
+            {
+                IsTraveling = false;
+                return;
+            }
+
             _travelMessage = new TravelMessage(campgroundData);
 
             // Adjust the time by the CampgroundData.TravelTimeInHours
@@ -91,6 +100,69 @@ namespace Campgrounds.Framework.Managers
         {
             IsTraveling = false;
             _travelMessage = null;
+        }
+
+        public bool HandleTentSpawning(CampgroundData campgroundData)
+        {
+            var location = Game1.getLocationFromName(campgroundData.Name);
+            if (location is null)
+            {
+                monitor.LogOnce($"The campgrounds map with name {campgroundData.Name} does not exist!", LogLevel.Warn);
+                return false;
+            }
+
+            // Get tent tiles
+            var layer = location.Map.GetLayer("Back");
+
+            Vector2? playerTentTile = null;
+            Vector2? guestTentTile = null;
+
+            Direction playerTentDirection = Direction.South;
+            Direction guestTentDirection = Direction.South;
+
+            for (int x = 0; x < layer.LayerWidth; x++)
+            {
+                for (int y = 0; y < layer.LayerHeight; y++)
+                {
+                    if (location.doesTileHaveProperty(x, y, "IsCampingSpot", "Back") != null)
+                    {
+                        if (location.doesTileHaveProperty(x, y, "IsForGuest", "Back") == "T")
+                        {
+                            if (Enum.TryParse<Direction>(location.doesTileHaveProperty(x, y, "CampingDirection", "Back"), out var direction))
+                            {
+                                guestTentDirection = direction;
+                            }
+
+                            guestTentTile = new Vector2(x, y);
+                        }
+                        else
+                        {
+                            if (Enum.TryParse<Direction>(location.doesTileHaveProperty(x, y, "CampingDirection", "Back"), out var direction))
+                            {
+                                playerTentDirection = direction;
+                            }
+
+                            playerTentTile = new Vector2(x, y);
+                        }
+                    }
+                }
+            }
+
+            if (playerTentTile is null)
+            {
+                monitor.LogOnce($"The campgrounds map with name {campgroundData.Name} is missing the player's tent spot (IsCampingSpot tile property on Back layer)", LogLevel.Warn);
+                return false;
+            }
+            if (guestTentTile is null)
+            {
+                monitor.LogOnce($"The campgrounds map with name {campgroundData.Name} is missing the guest's tent spot (IsCampingSpot and IsForGuest tile property on Back layer)", LogLevel.Warn);
+                return false;
+            }
+
+            // Place the tents
+            location.largeTerrainFeatures.Add(new CampingTent(playerTentTile.Value, playerTentDirection, CampingTentData.First()));
+
+            return true;
         }
 
         public void HandleForageSpawning()

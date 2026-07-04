@@ -1,5 +1,6 @@
 ﻿using Campgrounds.Framework.Managers;
 using Campgrounds.Framework.Models.Data;
+using Campgrounds.Framework.Patches.Locations;
 using Campgrounds.Framework.Utilities;
 using HarmonyLib;
 using Microsoft.Xna.Framework.Graphics;
@@ -40,7 +41,8 @@ namespace Campgrounds
             {
                 var harmony = new Harmony(this.ModManifest.UniqueID);
 
-                // Add patches here
+                // Apply Location patches
+                new GameLocationPatch(monitor, modHelper).Apply(harmony);
             }
             catch (Exception e)
             {

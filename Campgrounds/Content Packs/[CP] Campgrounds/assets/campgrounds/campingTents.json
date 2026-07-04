@@ -31,11 +31,11 @@
               "X": 0,
               "Y": 80,
               "Width": 64,
-              "Height": 38
+              "Height": 48
             },
-            "ShadowOFfset": {
-              "X": -32,
-              "Y": 0
+            "ShadowOffset": {
+              "X": 16,
+              "Y": 32
             }
           },
           "EastSprite": {
@@ -60,11 +60,11 @@
               "X": 0,
               "Y": 80,
               "Width": 64,
-              "Height": 38
+              "Height": 48
             },
-            "ShadowOFfset": {
-              "X": -32,
-              "Y": 0
+            "ShadowOffset": {
+              "X": 16,
+              "Y": 32
             }
           },
           "WestSprite": {
@@ -89,11 +89,11 @@
               "X": 0,
               "Y": 80,
               "Width": 64,
-              "Height": 38
+              "Height": 48
             },
-            "ShadowOFfset": {
-              "X": -32,
-              "Y": 0
+            "ShadowOffset": {
+              "X": 16,
+              "Y": 32
             }
           },
           "NorthSprite": {
@@ -118,11 +118,11 @@
               "X": 0,
               "Y": 80,
               "Width": 64,
-              "Height": 38
+              "Height": 48
             },
-            "ShadowOFfset": {
-              "X": -32,
-              "Y": 0
+            "ShadowOffset": {
+              "X": 16,
+              "Y": 32
             }
           }
         }

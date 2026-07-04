@@ -1857,7 +1857,7 @@
  <objectgroup id="6" name="Back">
   <object id="4" name="TileData" x="224" y="320" width="16" height="16">
    <properties>
-    <property name="CampingDirection" value="S"/>
+    <property name="CampingDirection" value="South"/>
     <property name="CampingType" value="Tent"/>
     <property name="IsCampingSpot" value="T"/>
     <property name="IsForGuest" value="F"/>
@@ -1865,7 +1865,7 @@
   </object>
   <object id="5" name="TileData" x="288" y="352" width="16" height="16">
    <properties>
-    <property name="CampingDirection" value="W"/>
+    <property name="CampingDirection" value="West"/>
     <property name="CampingType" value="Tent"/>
     <property name="IsCampingSpot" value="T"/>
     <property name="IsForGuest" value="T"/>
