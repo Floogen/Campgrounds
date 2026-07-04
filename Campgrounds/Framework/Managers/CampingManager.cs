@@ -84,8 +84,8 @@ namespace Campgrounds.Framework.Managers
             }
             IsTraveling = true;
 
-            // Add tents and NPC (if needed) to campsite
-            if (HandleTentSpawning(campgroundData) is false)
+            // Add tents and other camping equipment
+            if (HandleCampsiteSetup(campgroundData) is false)
             {
                 IsTraveling = false;
                 return;
@@ -103,7 +103,7 @@ namespace Campgrounds.Framework.Managers
             _travelMessage = null;
         }
 
-        public bool HandleTentSpawning(CampgroundData campgroundData)
+        public bool HandleCampsiteSetup(CampgroundData campgroundData)
         {
             var location = Game1.getLocationFromName(campgroundData.Name);
             if (location is null)
