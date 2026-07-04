@@ -8,7 +8,7 @@
         "PeacefulEnd.Campgrounds.Tents.StarterTent": {
           "Name": "PeacefulEnd.Campgrounds.Tents.StarterTent",
           "DisplayName": "Starter Tent",
-          "TentTexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/StarterTent",
+          "TexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/StarterTent",
           "SouthSprite": {
             "EntranceTile": {
               "X": 16,

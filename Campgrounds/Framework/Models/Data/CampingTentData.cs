@@ -12,7 +12,7 @@ namespace Campgrounds.Framework.Models.Data
         public string Name { get; set; }
         public string DisplayName { get; set; }
 
-        public string TentTexturePath { get; set; }
+        public string TexturePath { get; set; }
         public DirectionalSprite NorthSprite { get; set; }
         public DirectionalSprite EastSprite { get; set; }
         public DirectionalSprite SouthSprite { get; set; }

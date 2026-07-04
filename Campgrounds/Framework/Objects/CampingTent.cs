@@ -132,7 +132,7 @@ namespace Campgrounds.Framework.Objects
         public override void draw(SpriteBatch spriteBatch)
         {
             Vector2 tileLocation = GetOffsetTile();
-            var spriteTexture = Campgrounds.modHelper.GameContent.Load<Texture2D>(_campingTentData.TentTexturePath);
+            var spriteTexture = Campgrounds.modHelper.GameContent.Load<Texture2D>(_campingTentData.TexturePath);
 
             Rectangle? spriteDisplayRectangle = null;
             Rectangle? shadowDisplayRectangle = null;
