@@ -1,5 +1,5 @@
 ﻿using Campgrounds.Framework.Managers;
-using Campgrounds.Framework.Models;
+using Campgrounds.Framework.Models.Data;
 using Campgrounds.Framework.Utilities;
 using HarmonyLib;
 using Microsoft.Xna.Framework.Graphics;

@@ -1,4 +1,4 @@
-﻿using Campgrounds.Framework.Models;
+﻿using Campgrounds.Framework.Models.Data;
 using Campgrounds.Framework.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
