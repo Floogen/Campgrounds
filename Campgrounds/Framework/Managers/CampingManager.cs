@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Campgrounds.Framework.Managers
 {
@@ -120,6 +121,8 @@ namespace Campgrounds.Framework.Managers
             Direction playerTentDirection = Direction.South;
             Direction guestTentDirection = Direction.South;
 
+            Vector2? cookingSpotTile = null;
+
             for (int x = 0; x < layer.LayerWidth; x++)
             {
                 for (int y = 0; y < layer.LayerHeight; y++)
@@ -145,6 +148,11 @@ namespace Campgrounds.Framework.Managers
                             playerTentTile = new Vector2(x, y);
                         }
                     }
+
+                    if (location.doesTileHaveProperty(x, y, "IsCookingSpot", "Back") != null)
+                    {
+                        cookingSpotTile = new Vector2(x, y);
+                    }
                 }
             }
 
@@ -158,6 +166,11 @@ namespace Campgrounds.Framework.Managers
                 monitor.LogOnce($"The campgrounds map with name {campgroundData.Name} is missing the guest's tent spot (IsCampingSpot and IsForGuest tile property on Back layer)", LogLevel.Warn);
                 return false;
             }
+            if (cookingSpotTile is null)
+            {
+                monitor.LogOnce($"The campgrounds map with name {campgroundData.Name} is missing a cooking spot (IsCookingSpot tile property on Back layer)", LogLevel.Warn);
+                return false;
+            }
 
             // Place the tents
             if (!location.isTerrainFeatureAt((int)playerTentTile.Value.X, (int)playerTentTile.Value.Y))
@@ -167,6 +180,18 @@ namespace Campgrounds.Framework.Managers
             if (!location.isTerrainFeatureAt((int)guestTentTile.Value.X, (int)guestTentTile.Value.Y))
             {
                 location.largeTerrainFeatures.Add(new CampingTent(guestTentTile.Value, guestTentDirection, CampingTentData.First()));
+            }
+
+            // Place the cooking spot
+            if (!location.objects.ContainsKey(cookingSpotTile.Value))
+            {
+                var cookingSpotObject = new Torch("278", bigCraftable: true)
+                {
+                    IsOn = true,
+                    Fragility = 2
+                };
+                location.objects.Add(cookingSpotTile.Value, cookingSpotObject);
+                cookingSpotObject.initializeLightSource(cookingSpotTile.Value);
             }
 
             return true;

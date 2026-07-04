@@ -1886,6 +1886,11 @@
     <property name="TouchAction" value="PeacefulEnd.Campgrounds_CampingExit"/>
    </properties>
   </object>
+  <object id="22" name="TileData" x="240" y="368" width="16" height="16">
+   <properties>
+    <property name="IsCookingSpot" value="T"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="7" name="Buildings"/>
  <objectgroup id="8" name="Front"/>
