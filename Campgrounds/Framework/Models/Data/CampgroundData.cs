@@ -9,7 +9,7 @@ namespace Campgrounds.Framework.Models.Data
 {
     public class CampgroundData : BaseData
     {
-        public string Name { get; set; }
+        public string Id { get; set; }
         public string Description { get; set; }
         public string PreviewTexturePath { get; set; }
         public float PreviewTextureScale { get; set; } = 4f;
@@ -24,9 +24,9 @@ namespace Campgrounds.Framework.Models.Data
 
         public override (bool Result, string Error) IsValid()
         {
-            if (string.IsNullOrEmpty(Name))
+            if (string.IsNullOrEmpty(Id))
             {
-                return (false, "Missing the \"Name\" property!");
+                return (false, "Missing the \"Id\" property!");
             }
 
             if (PlayerSpawnTile is null)

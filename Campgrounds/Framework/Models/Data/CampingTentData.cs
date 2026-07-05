@@ -9,7 +9,7 @@ namespace Campgrounds.Framework.Models.Data
 {
     public class CampingTentData : BaseData
     {
-        public string Name { get; set; }
+        public string Id { get; set; }
         public string DisplayName { get; set; }
 
         public string TexturePath { get; set; }

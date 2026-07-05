@@ -423,7 +423,7 @@
       "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds",
       "Entries": {
         "PeacefulEnd.Campgrounds.CindersapForestCampground": {
-          "Name": "PeacefulEnd.Campgrounds.CindersapForestCampground",
+          "Id": "PeacefulEnd.Campgrounds.CindersapForestCampground",
           "ForceForageRefreshOnVisit": true,
           "PreviewTexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/CindersapForestCampgroundPreview",
           "PreviewTextureScale": 4.0,

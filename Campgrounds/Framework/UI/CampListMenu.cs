@@ -189,7 +189,7 @@ namespace Campgrounds.Framework.UI
             _pages = new List<List<CampgroundData>>();
 
             int count = campsites.Count - 1;
-            foreach (var contentPack in campsites.OrderBy(p => p.Name))
+            foreach (var contentPack in campsites.OrderBy(p => p.Id))
             {
                 int which = campsites.Count - 1 - count;
                 int page = which / SITES_PER_PAGE;
@@ -223,9 +223,9 @@ namespace Campgrounds.Framework.UI
             var secondaryCampsiteName = "";
             var travelTimeInfo = $"";
             var vehicleRequiredInfo = $"";
-            if (_selectedCampsite is not null && Game1.locationData.ContainsKey(_selectedCampsite.Name))
+            if (_selectedCampsite is not null && Game1.locationData.ContainsKey(_selectedCampsite.Id))
             {
-                campsiteName = Game1.locationData[_selectedCampsite.Name].DisplayName;
+                campsiteName = Game1.locationData[_selectedCampsite.Id].DisplayName;
                 if (campsiteName.Length > 16)
                 {
                     secondaryCampsiteName = campsiteName.Substring(16, campsiteName.Length - 16);
@@ -267,12 +267,12 @@ namespace Campgrounds.Framework.UI
                 if (_pages.Count() > 0 && _pages[_currentPage].Count() > j)
                 {
                     var campsite = _pages[_currentPage][j];
-                    if (Game1.locationData.ContainsKey(campsite.Name) is false)
+                    if (Game1.locationData.ContainsKey(campsite.Id) is false)
                     {
                         continue;
                     }
 
-                    var locationName = Game1.locationData[campsite.Name].DisplayName;
+                    var locationName = Game1.locationData[campsite.Id].DisplayName;
                     if (locationName.Length > 32)
                     {
                         locationName = $"{locationName.Substring(0, 32).TrimEnd()}...";
@@ -305,7 +305,7 @@ namespace Campgrounds.Framework.UI
                     }
                     catch (Exception ex)
                     {
-                        Campgrounds.monitor.LogOnce($"Failed to load preview image for campground {_selectedCampsite.Name}: {ex}", StardewModdingAPI.LogLevel.Warn);
+                        Campgrounds.monitor.LogOnce($"Failed to load preview image for campground {_selectedCampsite.Id}: {ex}", StardewModdingAPI.LogLevel.Warn);
                     }
                 }
 

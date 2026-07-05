@@ -55,7 +55,7 @@ namespace Campgrounds.Framework.Managers
                 var isValidData = campground.IsValid();
                 if (isValidData.Result is false)
                 {
-                    monitor.LogOnce($"Skipping invalid CampgroundData with name \"{campground.Name}\": {isValidData.Error}", LogLevel.Warn);
+                    monitor.LogOnce($"Skipping invalid CampgroundData with name \"{campground.Id}\": {isValidData.Error}", LogLevel.Warn);
                 }
             }
 
@@ -69,7 +69,7 @@ namespace Campgrounds.Framework.Managers
                 var isValidData = campingTent.IsValid();
                 if (isValidData.Result is false)
                 {
-                    monitor.LogOnce($"Skipping invalid CampingTentData with name \"{campingTent.Name}\": {isValidData.Error}", LogLevel.Warn);
+                    monitor.LogOnce($"Skipping invalid CampingTentData with name \"{campingTent.Id}\": {isValidData.Error}", LogLevel.Warn);
                 }
             }
 
@@ -105,10 +105,10 @@ namespace Campgrounds.Framework.Managers
 
         public bool HandleCampsiteSetup(CampgroundData campgroundData)
         {
-            var location = Game1.getLocationFromName(campgroundData.Name);
+            var location = Game1.getLocationFromName(campgroundData.Id);
             if (location is null)
             {
-                monitor.LogOnce($"The campgrounds map with name {campgroundData.Name} does not exist!", LogLevel.Warn);
+                monitor.LogOnce($"The campgrounds map with name {campgroundData.Id} does not exist!", LogLevel.Warn);
                 return false;
             }
 
@@ -158,17 +158,17 @@ namespace Campgrounds.Framework.Managers
 
             if (playerTentTile is null)
             {
-                monitor.LogOnce($"The campgrounds map with name {campgroundData.Name} is missing the player's tent spot (IsCampingSpot tile property on Back layer)", LogLevel.Warn);
+                monitor.LogOnce($"The campgrounds map with name {campgroundData.Id} is missing the player's tent spot (IsCampingSpot tile property on Back layer)", LogLevel.Warn);
                 return false;
             }
             if (guestTentTile is null)
             {
-                monitor.LogOnce($"The campgrounds map with name {campgroundData.Name} is missing the guest's tent spot (IsCampingSpot and IsForGuest tile property on Back layer)", LogLevel.Warn);
+                monitor.LogOnce($"The campgrounds map with name {campgroundData.Id} is missing the guest's tent spot (IsCampingSpot and IsForGuest tile property on Back layer)", LogLevel.Warn);
                 return false;
             }
             if (cookingSpotTile is null)
             {
-                monitor.LogOnce($"The campgrounds map with name {campgroundData.Name} is missing a cooking spot (IsCookingSpot tile property on Back layer)", LogLevel.Warn);
+                monitor.LogOnce($"The campgrounds map with name {campgroundData.Id} is missing a cooking spot (IsCookingSpot tile property on Back layer)", LogLevel.Warn);
                 return false;
             }
 
@@ -201,7 +201,7 @@ namespace Campgrounds.Framework.Managers
         {
             foreach (var campground in CampgroundData.Where(c => c.ForceForageRefreshOnVisit))
             {
-                var location = Game1.getLocationFromName(campground.Name);
+                var location = Game1.getLocationFromName(campground.Id);
                 if (location is null)
                 {
                     continue;

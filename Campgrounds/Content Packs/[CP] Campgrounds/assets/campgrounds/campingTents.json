@@ -6,7 +6,7 @@
       "Target": "Data/PeacefulEnd_Campgrounds/CampingTents",
       "Entries": {
         "PeacefulEnd.Campgrounds.Tents.StarterTent": {
-          "Name": "PeacefulEnd.Campgrounds.Tents.StarterTent",
+          "Id": "PeacefulEnd.Campgrounds.Tents.StarterTent",
           "DisplayName": "Starter Tent",
           "TexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/StarterTent",
           "SouthSprite": {

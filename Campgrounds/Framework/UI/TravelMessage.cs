@@ -27,7 +27,7 @@ namespace Campgrounds.Framework.UI
         private void WarpAndDisplayMessage()
         {
             // Warp and skip the vanilla' fade to black logic
-            Game1.warpFarmer(_campgroundData.Name, (int)_campgroundData.PlayerSpawnTile.Value.X, (int)_campgroundData.PlayerSpawnTile.Value.Y, 2);
+            Game1.warpFarmer(_campgroundData.Id, (int)_campgroundData.PlayerSpawnTile.Value.X, (int)_campgroundData.PlayerSpawnTile.Value.Y, 2);
             Game1.fadeToBlackAlpha = 1.2f;
 
             _travelMessageText = _campgroundData.TravelScreenText;

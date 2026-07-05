@@ -26,7 +26,7 @@ namespace Campgrounds.Framework.Patches.Locations
 
         private static void IsActionableTilePostfix(GameLocation __instance, ref bool __result, int xTile, int yTile, Farmer who)
         {
-            if (Campgrounds.campManager.CampgroundData.Any(c => c.Name == __instance.Name))
+            if (Campgrounds.campManager.CampgroundData.Any(c => c.Id == __instance.Name))
             {
                 foreach (CampingTent campingTent in __instance.largeTerrainFeatures.Where(t => t is CampingTent))
                 {
