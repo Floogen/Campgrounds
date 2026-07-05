@@ -1,5 +1,6 @@
 ﻿using Campgrounds.Framework.Managers;
 using Campgrounds.Framework.Models.Data;
+using Campgrounds.Framework.Patches.Characters;
 using Campgrounds.Framework.Patches.Locations;
 using Campgrounds.Framework.Utilities;
 using HarmonyLib;
@@ -7,7 +8,6 @@ using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
-using StardewValley.GameData.Crops;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +40,9 @@ namespace Campgrounds
             try
             {
                 var harmony = new Harmony(this.ModManifest.UniqueID);
+
+                // Apply Character patches
+                new FarmerPatch(monitor, modHelper).Apply(harmony);
 
                 // Apply Location patches
                 new GameLocationPatch(monitor, modHelper).Apply(harmony);

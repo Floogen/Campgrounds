@@ -53,6 +53,10 @@
     {
       "Action": "Include",
       "FromFile": "assets/campgrounds/campingTents.json"
+    // Add various buffs
+    {
+      "Action": "Include",
+      "FromFile": "assets/buffs/buffs.json"
     }
   ]
 }

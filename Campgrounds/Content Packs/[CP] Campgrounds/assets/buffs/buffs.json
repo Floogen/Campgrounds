@@ -1,0 +1,89 @@
+﻿{
+  "Changes": [
+    // Add the buffs used by camping tents + campfire food
+    {
+      "Action": "EditData",
+      "Target": "Data/Buffs",
+      "Entries": {
+        // Stamina buffs
+        "PeacefulEnd.Campgrounds.Buffs.LowStaminaBuff": {
+          "DisplayName": "Stamina Boost (+25)",
+          "Description": "Your stamina is increased from camping!",
+          "Duration": 7000,
+          "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+          "IconSpriteIndex": 0,
+          "Effects": {
+            "MaxStamina": 25
+          }
+        },
+        "PeacefulEnd.Campgrounds.Buffs.MedStaminaBuff": {
+          "DisplayName": "Stamina Boost (+50)",
+          "Description": "Your stamina is increased from camping!",
+          "Duration": 7000,
+          "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+          "IconSpriteIndex": 0,
+          "Effects": {
+            "MaxStamina": 50
+          }
+        },
+        "PeacefulEnd.Campgrounds.Buffs.HighStaminaBuff": {
+          "DisplayName": "Stamina Boost (+75)",
+          "Description": "Your stamina is increased from camping!",
+          "Duration": 7000,
+          "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+          "IconSpriteIndex": 0,
+          "Effects": {
+            "MaxStamina": 75
+          }
+        },
+        "PeacefulEnd.Campgrounds.Buffs.MaxStaminaBuff": {
+          "DisplayName": "Stamina Boost (+100)",
+          "Description": "Your stamina is increased from camping!",
+          "Duration": 7000,
+          "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+          "IconSpriteIndex": 0,
+          "Effects": {
+            "MaxStamina": 100
+          }
+        },
+
+        // Health buffs
+
+        // XP buffs
+        "PeacefulEnd.Campgrounds.Buffs.LowXPBuff": {
+          "DisplayName": "XP Boost (x1.25)",
+          "Description": "Your XP gain is increased from camping!",
+          "Duration": 7000,
+          "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+          "IconSpriteIndex": 2
+        },
+        "PeacefulEnd.Campgrounds.Buffs.MedXPBuff": {
+          "DisplayName": "XP Boost (x1.5)",
+          "Description": "Your XP gain is increased from camping!",
+          "Duration": 7000,
+          "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+          "IconSpriteIndex": 2
+        },
+        "PeacefulEnd.Campgrounds.Buffs.HighXPBuff": {
+          "DisplayName": "XP Boost (x1.75)",
+          "Description": "Your XP gain is increased from camping!",
+          "Duration": 7000,
+          "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+          "IconSpriteIndex": 2
+        },
+        "PeacefulEnd.Campgrounds.Buffs.MaxXPBuff": {
+          "DisplayName": "XP Boost (x2)",
+          "Description": "Your XP gain is increased from camping!",
+          "Duration": 7000,
+          "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+          "IconSpriteIndex": 2
+        }
+      }
+    },
+    {
+      "Action": "Load",
+      "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+      "FromFile": "assets/buffs/buffIcons.png"
+    }
+  ]
+}
