@@ -1,7 +1,7 @@
 ﻿using Campgrounds.Framework.Models.Data;
 using Campgrounds.Framework.Models.Enums;
 using Campgrounds.Framework.Objects;
-using Campgrounds.Framework.UI;
+using Campgrounds.Framework.UI.Messages;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI;
@@ -26,26 +26,16 @@ namespace Campgrounds.Framework.Managers
         private List<CampingTentData> _campingTentData = new List<CampingTentData>();
 
         public bool IsTraveling { get; private set; }
-        private TravelMessage _travelMessage;
 
         public CampingManager(IMonitor monitor, IModHelper helper) : base(monitor, helper)
         {
             helper.Events.GameLoop.GameLaunched += OnGameLaunched;
-            helper.Events.GameLoop.UpdateTicked += OnUpdateTicked;
         }
 
         private void OnGameLaunched(object sender, GameLaunchedEventArgs e)
         {
             CampgroundData = helper.GameContent.Load<List<CampgroundData>>(Campgrounds.CAMPGROUND_DATA_PATH);
             CampingTentData = helper.GameContent.Load<List<CampingTentData>>(Campgrounds.CAMPING_TENTS_DATA_PATH);
-        }
-
-        private void OnUpdateTicked(object sender, UpdateTickedEventArgs e)
-        {
-            if (_travelMessage is not null)
-            {
-                _travelMessage.Update();
-            }
         }
 
         private void FilterCampgroundData(List<CampgroundData> campgroundData)
@@ -82,6 +72,7 @@ namespace Campgrounds.Framework.Managers
             {
                 return;
             }
+
             IsTraveling = true;
 
             // Add tents and other camping equipment
@@ -91,7 +82,7 @@ namespace Campgrounds.Framework.Managers
                 return;
             }
 
-            _travelMessage = new TravelMessage(campgroundData);
+            Campgrounds.messageManager.Messages.Add(new TravelMessage(campgroundData));
 
             // Adjust the time by the CampgroundData.TravelTimeInHours
             Game1.timeOfDay += campgroundData.TravelTimeInHours * 100;
@@ -100,7 +91,6 @@ namespace Campgrounds.Framework.Managers
         public void StopTraveling()
         {
             IsTraveling = false;
-            _travelMessage = null;
         }
 
         public bool HandleCampsiteSetup(CampgroundData campgroundData)

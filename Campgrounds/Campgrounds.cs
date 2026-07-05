@@ -22,6 +22,7 @@ namespace Campgrounds
         internal static Multiplayer multiplayer;
 
         internal static CampingManager campManager;
+        internal static MessageManager messageManager;
 
         public const string CAMPGROUND_DATA_PATH = "Data/PeacefulEnd_Campgrounds/Campgrounds";
         public const string CAMPING_TENTS_DATA_PATH = "Data/PeacefulEnd_Campgrounds/CampingTents";
@@ -36,6 +37,7 @@ namespace Campgrounds
 
             // Create managers
             campManager = new CampingManager(monitor, helper);
+            messageManager = new MessageManager(monitor, helper);
 
             try
             {

@@ -5,9 +5,9 @@ using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using System;
 
-namespace Campgrounds.Framework.UI
+namespace Campgrounds.Framework.UI.Messages
 {
-    public class TravelMessage
+    public class TravelMessage : Message
     {
         private CampgroundData _campgroundData;
 
@@ -54,7 +54,7 @@ namespace Campgrounds.Framework.UI
             }
         }
 
-        public void Update()
+        public override bool Update()
         {
             if (string.IsNullOrEmpty(_travelMessageText) is false)
             {
@@ -67,19 +67,24 @@ namespace Campgrounds.Framework.UI
                 Campgrounds.campManager.StopTraveling();
                 _travelMessageText = null;
                 FadeScreenHelper.StartFadeOut();
+
+                return false;
             }
             else
             {
                 Game1.player.CanMove = false;
             }
+
+            return true;
         }
 
-        public void Draw(SpriteBatch b)
+        public override void Draw(SpriteBatch b)
         {
             if (string.IsNullOrEmpty(_travelMessageText) is false)
             {
-                var xOffset = (Game1.viewport.Width / 2) - StardewValley.BellsAndWhistles.SpriteText.getWidthOfString(_travelMessageText, 800) / 2;
-                b.DrawString(Game1.dialogueFont, _travelMessageText, new Vector2(xOffset, Game1.viewport.Height / 2), Color.White * _travelMessageAlpha, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
+                Vector2 textSize = Game1.dialogueFont.MeasureString(_travelMessageText);
+                Vector2 position = new Vector2((Game1.uiViewport.Width - textSize.X) / 2, (Game1.uiViewport.Height - textSize.Y) / 2);
+                b.DrawString(Game1.dialogueFont, _travelMessageText, position, Color.White * _travelMessageAlpha, 0f, Vector2.Zero, 1f, SpriteEffects.None, 1f);
             }
         }
     }
