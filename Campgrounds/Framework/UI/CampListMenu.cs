@@ -179,6 +179,16 @@ namespace Campgrounds.Framework.UI
                 Game1.activeClickableMenu = new DialogueBox("There is not enough time to reach that campsite before midnight...");
                 return;
             }
+            if (_selectedCampsite.RequireVehicle is true && CampingHelper.IsCarRepaired() is false)
+            {
+                var dialogue = new List<string>()
+                {
+                    "This campsite requires a vehicle to reach. You see a note attached to the map...",
+                    "\"You can use my grandmother's old car in the garage! It will need some work to get running again though.\" - Vesi"
+                };
+                Game1.activeClickableMenu = new DialogueBox(dialogue);
+                return;
+            }
 
             // Display travel screen with any TravelScreenText (or use default if none given) and warp to campsite
             Campgrounds.campManager.StartTraveling(Game1.player, _selectedCampsite);
@@ -256,7 +266,13 @@ namespace Campgrounds.Framework.UI
             }            
             if (string.IsNullOrEmpty(vehicleRequiredInfo) is false)
             {
-                b.DrawString(Game1.dialogueFont, vehicleRequiredInfo, new Vector2((0f - Game1.dialogueFont.MeasureString(vehicleRequiredInfo).X) / 2f + _infoDisplayPosition.X, _infoDisplayPosition.Y + 128), Game1.textColor);
+                var vehicleRequiredColor = Game1.textColor;
+                if (_selectedCampsite.RequireVehicle && CampingHelper.IsCarRepaired() is false)
+                {
+                    vehicleRequiredColor = Color.Red;
+                }
+
+                b.DrawString(Game1.dialogueFont, vehicleRequiredInfo, new Vector2((0f - Game1.dialogueFont.MeasureString(vehicleRequiredInfo).X) / 2f + _infoDisplayPosition.X, _infoDisplayPosition.Y + 128), vehicleRequiredColor);
             }
 
             // Draw the campsite buttons

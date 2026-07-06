@@ -69,6 +69,7 @@ namespace Campgrounds
 
             // Register actions
             GameLocation.RegisterTileAction("PeacefulEnd.Campgrounds_CampingSiteList", MapActionHelper.HandleCampingSiteList);
+            GameLocation.RegisterTileAction("PeacefulEnd.Campgrounds_CarRepair", MapActionHelper.HandleCarRepair);
             GameLocation.RegisterTouchAction("PeacefulEnd.Campgrounds_CampingExit", (GameLocation location, string[] args, Farmer who, Vector2 tile) => MapActionHelper.HandleCampingExit(location, args, who, tile, false));
         }
 
@@ -85,6 +86,13 @@ namespace Campgrounds
         private void OnSaveLoaded(object sender, SaveLoadedEventArgs e)
         {
             campManager.FindActiveCampsites();
+
+            // Repair garage car (if needed)
+            var garageLocation = Game1.getLocationFromName("PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkGarage");
+            if (garageLocation is not null)
+            {
+                CampingHelper.AttemptRepairCarMapTiles(garageLocation);
+            }
         }
 
         private void OnSaving(object sender, SavingEventArgs e)

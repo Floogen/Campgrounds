@@ -14,6 +14,20 @@ namespace Campgrounds.Framework.Utilities
             return true;
         }
 
+        public static bool HandleCarRepair(GameLocation location, string[] args, Farmer player, Point point)
+        {
+            if (player.Items.ContainsId("(O)787", 5) && player.Items.ContainsId("(O)335", 10) && player.Items.ContainsId("(O)388", 100))
+            {
+                location.createQuestionDialogue("Repair the car?", location.createYesNoResponses(), CampingHelper.OnRepairCarResponse);
+            }
+            else
+            {
+                Game1.drawObjectDialogue("The car is in bad shape. You could get it working again with 5 battery packs, 10 iron bars and 100 wood.");
+            }
+
+            return true;
+        }
+
         // Touch actions
         public static void HandleCampingExit(GameLocation location, string[] args, Farmer player, Vector2 tile, bool skipLeaveEarlyCheck = false)
         {
