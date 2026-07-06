@@ -18,6 +18,9 @@ namespace Campgrounds.Framework.Utilities
         public static bool IsFullyFadedIn { get { return IsFadingIn && _blackScreenAlpha >= 1f; } }
 
         private static float _blackScreenAlpha = 0f;
+
+        private static bool _cachedHUDDisplaySetting = false;
+
         private static Action _afterFadeInAction;
         private static Action<SpriteBatch> _afterFullyFadedInAction;
 
@@ -70,6 +73,7 @@ namespace Campgrounds.Framework.Utilities
             _afterFadeInAction = afterFadeInAction;
             _afterFullyFadedInAction = afterFullyFadedInAction;
 
+            _cachedHUDDisplaySetting = Game1.displayHUD;
             Game1.displayHUD = false;
             Game1.player.CanMove = false;
         }
@@ -90,7 +94,7 @@ namespace Campgrounds.Framework.Utilities
         {
             IsFadingOut = false;
 
-            Game1.displayHUD = true;
+            Game1.displayHUD = _cachedHUDDisplaySetting;
             Game1.player.CanMove = true;
         }
 
@@ -102,7 +106,7 @@ namespace Campgrounds.Framework.Utilities
             _blackScreenAlpha = 0f;
             _afterFullyFadedInAction = null;
 
-            Game1.displayHUD = true;
+            Game1.displayHUD = _cachedHUDDisplaySetting;
             Game1.player.CanMove = true;
         }
     }

@@ -431,7 +431,7 @@
             "X": 25,
             "Y": 18
           },
-          "NPCSpawnTile": {
+          "GuestSpawnTile": {
             "X": 17,
             "Y": 23
           },

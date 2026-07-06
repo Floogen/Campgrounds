@@ -14,7 +14,7 @@ namespace Campgrounds.Framework.Models.Data
         public string PreviewTexturePath { get; set; }
         public float PreviewTextureScale { get; set; } = 4f;
         public Vector2? PlayerSpawnTile { get; set; }
-        public Vector2? NPCSpawnTile { get; set; }
+        public Vector2? GuestSpawnTile { get; set; }
         public string TravelScreenText { get; set; }
 
         public bool RequireVehicle { get; set; }
@@ -34,9 +34,9 @@ namespace Campgrounds.Framework.Models.Data
                 return (false, "Missing the \"PlayerSpawnTile\" property!");
             }
 
-            if (NPCSpawnTile is null)
+            if (GuestSpawnTile is null)
             {
-                return (false, "Missing the \"NPCSpawnTile\" property!");
+                return (false, "Missing the \"GuestSpawnTile\" property!");
             }
 
             if (TravelTimeInHours < 0)

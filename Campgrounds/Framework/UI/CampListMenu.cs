@@ -181,7 +181,7 @@ namespace Campgrounds.Framework.UI
             }
 
             // Display travel screen with any TravelScreenText (or use default if none given) and warp to campsite
-            Campgrounds.campManager.StartTraveling(_selectedCampsite);
+            Campgrounds.campManager.StartTraveling(Game1.player, _selectedCampsite);
         }
 
         public void PaginatePacks(List<CampgroundData> campsites)

@@ -8,6 +8,11 @@
         "PeacefulEnd.Campgrounds.Tents.StarterTent": {
           "Id": "PeacefulEnd.Campgrounds.Tents.StarterTent",
           "DisplayName": "Starter Tent",
+          "NumberOfAllowedCampfireMeals": 1,
+          "RestingBuffIds": [
+            "PeacefulEnd.Campgrounds.Buffs.LowStaminaBuff",
+            "PeacefulEnd.Campgrounds.Buffs.LowXPBuff"
+          ],
           "TexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/StarterTent",
           "SouthSprite": {
             "EntranceTile": {

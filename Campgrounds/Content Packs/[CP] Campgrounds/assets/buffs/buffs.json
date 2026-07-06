@@ -9,7 +9,7 @@
         "PeacefulEnd.Campgrounds.Buffs.LowStaminaBuff": {
           "DisplayName": "Stamina Boost (+25)",
           "Description": "Your stamina is increased from camping!",
-          "Duration": 7000,
+          "Duration": 420000,
           "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 0,
           "Effects": {
@@ -19,7 +19,7 @@
         "PeacefulEnd.Campgrounds.Buffs.MedStaminaBuff": {
           "DisplayName": "Stamina Boost (+50)",
           "Description": "Your stamina is increased from camping!",
-          "Duration": 7000,
+          "Duration": 420000,
           "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 0,
           "Effects": {
@@ -29,7 +29,7 @@
         "PeacefulEnd.Campgrounds.Buffs.HighStaminaBuff": {
           "DisplayName": "Stamina Boost (+75)",
           "Description": "Your stamina is increased from camping!",
-          "Duration": 7000,
+          "Duration": 420000,
           "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 0,
           "Effects": {
@@ -39,7 +39,7 @@
         "PeacefulEnd.Campgrounds.Buffs.MaxStaminaBuff": {
           "DisplayName": "Stamina Boost (+100)",
           "Description": "Your stamina is increased from camping!",
-          "Duration": 7000,
+          "Duration": 420000,
           "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 0,
           "Effects": {
@@ -53,30 +53,114 @@
         "PeacefulEnd.Campgrounds.Buffs.LowXPBuff": {
           "DisplayName": "XP Boost (x1.25)",
           "Description": "Your XP gain is increased from camping!",
-          "Duration": 7000,
+          "Duration": 420000,
           "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 2
         },
         "PeacefulEnd.Campgrounds.Buffs.MedXPBuff": {
           "DisplayName": "XP Boost (x1.5)",
           "Description": "Your XP gain is increased from camping!",
-          "Duration": 7000,
+          "Duration": 420000,
           "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 2
         },
         "PeacefulEnd.Campgrounds.Buffs.HighXPBuff": {
           "DisplayName": "XP Boost (x1.75)",
           "Description": "Your XP gain is increased from camping!",
-          "Duration": 7000,
+          "Duration": 420000,
           "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 2
         },
         "PeacefulEnd.Campgrounds.Buffs.MaxXPBuff": {
           "DisplayName": "XP Boost (x2)",
           "Description": "Your XP gain is increased from camping!",
-          "Duration": 7000,
+          "Duration": 420000,
           "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 2
+        },
+
+        // Luck buffs
+        "PeacefulEnd.Campgrounds.Buffs.LowLuckBuff": {
+          "DisplayName": "Luck Boost (+1)",
+          "Description": "Your luck is increased from camping!",
+          "Duration": 420000,
+          "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+          "IconSpriteIndex": 3,
+          "Effects": {
+            "LuckLevel": 1
+          }
+        },
+        "PeacefulEnd.Campgrounds.Buffs.MedLuckBuff": {
+          "DisplayName": "Luck Boost (+2)",
+          "Description": "Your luck is increased from camping!",
+          "Duration": 420000,
+          "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+          "IconSpriteIndex": 3,
+          "Effects": {
+            "LuckLevel": 2
+          }
+        },
+        "PeacefulEnd.Campgrounds.Buffs.HighLuckBuff": {
+          "DisplayName": "Luck Boost (+3)",
+          "Description": "Your luck is increased from camping!",
+          "Duration": 420000,
+          "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+          "IconSpriteIndex": 3,
+          "Effects": {
+            "LuckLevel": 3
+          }
+        },
+        "PeacefulEnd.Campgrounds.Buffs.MaxLuckBuff": {
+          "DisplayName": "Luck Boost (+4)",
+          "Description": "Your luck is increased from camping!",
+          "Duration": 420000,
+          "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+          "IconSpriteIndex": 3,
+          "Effects": {
+            "LuckLevel": 4
+          }
+        },
+
+        // Speed buffs
+        "PeacefulEnd.Campgrounds.Buffs.LowSpeedBuff": {
+          "DisplayName": "Speed Boost (+1)",
+          "Description": "Your speed is increased from camping!",
+          "Duration": 420000,
+          "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+          "IconSpriteIndex": 4,
+          "Effects": {
+            "Speed": 1
+          }
+        },
+        "PeacefulEnd.Campgrounds.Buffs.MedSpeedBuff": {
+          "DisplayName": "Speed Boost (+2)",
+          "Description": "Your speed is increased from camping!",
+          "Duration": 420000,
+          "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+          "IconSpriteIndex": 4,
+          "Effects": {
+            "Speed": 2
+          }
+        },
+        "PeacefulEnd.Campgrounds.Buffs.HighSpeedBuff": {
+          "DisplayName": "Speed Boost (+3)",
+          "Description": "Your speed is increased from camping!",
+          "Duration": 420000,
+          "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+          "IconSpriteIndex": 4,
+          "Effects": {
+            "Speed": 3
+          }
+        },
+        "PeacefulEnd.Campgrounds.Buffs.MaxSpeedBuff": {
+          "DisplayName": "Speed Boost (+4)",
+          "Description": "Your speed is increased from camping!",
+          "Duration": 420000,
+          "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+          "IconSpriteIndex": 4,
+          "Effects": {
+            "Speed": 4
+          }
         }
       }
     },

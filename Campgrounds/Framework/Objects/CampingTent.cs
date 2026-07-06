@@ -1,8 +1,10 @@
 ﻿using Campgrounds.Framework.Models.Data;
 using Campgrounds.Framework.Models.Enums;
+using Campgrounds.Framework.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
+using StardewValley.Menus;
 using StardewValley.TerrainFeatures;
 using System;
 using System.Collections.Generic;
@@ -16,13 +18,17 @@ namespace Campgrounds.Framework.Objects
     public class CampingTent : LargeTerrainFeature
     {
         public Direction Direction { get; set; }
+
+        private Campsite _campsite;
         private CampingTentData _campingTentData;
 
-        public CampingTent(Vector2 tile, Direction direction, CampingTentData campingTentData) : base(true)
+        public CampingTent(Vector2 tile, Direction direction, Campsite campsite, CampingTentData campingTentData) : base(true)
         {
             Tile = tile;
 
             Direction = direction;
+
+            _campsite = campsite;
             _campingTentData = campingTentData;
 
             isDestroyedByNPCTrample = false;
@@ -118,7 +124,15 @@ namespace Campgrounds.Framework.Objects
 
             if ((playerGrab == tilePosition || (playerGrab.X == tilePosition.X && playerGrab.Y >= tilePosition.Y)) && !Game1.newDay && Game1.shouldTimePass() && Game1.player.hasMoved && !Game1.player.passedOut)
             {
-                Location.createQuestionDialogue(Game1.content.LoadString("Strings\\Locations:FarmHouse_Bed_GoToSleep"), Location.createYesNoResponses(), "SleepTent", null);
+                if (Campgrounds.campManager.GetLastCampsiteSleptIn(Game1.player) == _campsite.Data.Id)
+                {
+                    Game1.activeClickableMenu = new DialogueBox("Time to head back.");
+                }
+                else
+                {
+                    Location.createQuestionDialogue(Game1.content.LoadString("Strings\\Locations:FarmHouse_Bed_GoToSleep"), Location.createYesNoResponses(), CampingHelper.OnTentSleepResponse, null);
+                }
+
             }
 
             return base.performUseAction(tileLocation);

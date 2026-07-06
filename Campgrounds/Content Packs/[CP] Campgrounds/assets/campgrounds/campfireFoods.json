@@ -1,0 +1,50 @@
+﻿{
+  "Changes": [
+    // Add default campfire foods
+    {
+      "Action": "EditData",
+      "Target": "Data/PeacefulEnd_Campgrounds/CampfireFoods",
+      "Entries": {
+        "PeacefulEnd.Campgrounds.Foods.MarshmallowOnAStick": {
+          "Id": "PeacefulEnd.Campgrounds.Foods.MarshmallowOnAStick",
+          "DisplayName": "Marshmallow on a Stick",
+          "Description": "A true campfire classic.",
+          "TexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/DefaultCampfireFoods",
+
+          "SourceRectangle": {
+            "X": 0,
+            "Y": 0,
+            "Width": 16,
+            "Height": 16
+          },
+          "BuffIds": [
+            "PeacefulEnd.Campgrounds.Buffs.LowLuckBuff"
+          ],
+          "UnlockCondition": ""
+        },
+        "PeacefulEnd.Campgrounds.Foods.CoffeeInATin": {
+          "Id": "PeacefulEnd.Campgrounds.Foods.CoffeeInATin",
+          "DisplayName": "Coffee in a Tin",
+          "Description": "Some campfire brewed coffee.",
+          "TexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/DefaultCampfireFoods",
+
+          "SourceRectangle": {
+            "X": 16,
+            "Y": 0,
+            "Width": 16,
+            "Height": 16
+          },
+          "BuffIds": [
+            "PeacefulEnd.Campgrounds.Buffs.LowSpeedBuff"
+          ],
+          "UnlockCondition": ""
+        }
+      }
+    },
+    {
+      "Action": "Load",
+      "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/DefaultCampfireFoods",
+      "FromFile": "assets/campgrounds/defaultCampireFoods.png"
+    }
+  ]
+}

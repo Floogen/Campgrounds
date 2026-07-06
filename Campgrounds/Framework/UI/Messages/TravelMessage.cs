@@ -64,7 +64,6 @@ namespace Campgrounds.Framework.UI.Messages
 
             if (_travelMessageTimer <= 0)
             {
-                Campgrounds.campManager.StopTraveling();
                 _travelMessageText = null;
                 FadeScreenHelper.StartFadeOut();
 

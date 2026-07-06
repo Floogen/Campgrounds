@@ -1,11 +1,6 @@
 ﻿using Campgrounds.Framework.UI;
 using Microsoft.Xna.Framework;
 using StardewValley;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Campgrounds.Framework.Utilities
 {
@@ -20,8 +15,15 @@ namespace Campgrounds.Framework.Utilities
         }
 
         // Touch actions
-        public static void HandleCampingExit(GameLocation location, string[] args, Farmer player, Vector2 tile)
+        public static void HandleCampingExit(GameLocation location, string[] args, Farmer player, Vector2 tile, bool skipLeaveEarlyCheck = false)
         {
+            var campsite = Campgrounds.campManager.GetActiveCampsiteFromLocation(location);
+            if (skipLeaveEarlyCheck is false && campsite != null && campsite.CookingSpot.HasCookedToday)
+            {
+                Game1.player.currentLocation.createQuestionDialogue("Leave without camping? You will not receive any buffs.", location.createYesNoResponses(), CampingHelper.OnLeaveEarlyResponse, null);
+                return;
+            }
+
             Response[] answers =
             [
                 new Response("HeadToPark", "Head back to the park"),

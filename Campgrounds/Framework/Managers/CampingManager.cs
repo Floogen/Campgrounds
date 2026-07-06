@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
@@ -19,13 +20,19 @@ namespace Campgrounds.Framework.Managers
 {
     public class CampingManager : BaseManager
     {
+        public const string CACHED_BUFF_IDS_MOD_DATA_ID = "Campgrounds.Buffs.Cache.Id";
+        public const string LAST_CAMPSITE_SLEPT_MOD_DATA_ID = "Campgrounds.Campsite.LastCampsite.Slept.Id";
+
         public List<CampgroundData> CampgroundData { get { return _campgroundData; } set { FilterCampgroundData(value); } }
         private List<CampgroundData> _campgroundData = new List<CampgroundData>();
 
         public List<CampingTentData> CampingTentData { get { return _campingTentData; } set { FilterCampingTentsData(value); } }
-        private List<CampingTentData> _campingTentData = new List<CampingTentData>();
+        private List<CampingTentData> _campingTentData = new List<CampingTentData>();        
 
-        public bool IsTraveling { get; private set; }
+        public List<CampfireFoodData> CampfireFoodData { get { return _campfireFoodData; } set { FilterCampfireFoodsData(value); } }
+        private List<CampfireFoodData> _campfireFoodData = new List<CampfireFoodData>();
+
+        public List<Campsite> ActiveCampsites { get; private set; } = new List<Campsite>();
 
         public CampingManager(IMonitor monitor, IModHelper helper) : base(monitor, helper)
         {
@@ -36,6 +43,7 @@ namespace Campgrounds.Framework.Managers
         {
             CampgroundData = helper.GameContent.Load<List<CampgroundData>>(Campgrounds.CAMPGROUND_DATA_PATH);
             CampingTentData = helper.GameContent.Load<List<CampingTentData>>(Campgrounds.CAMPING_TENTS_DATA_PATH);
+            CampfireFoodData = helper.GameContent.Load<List<CampfireFoodData>>(Campgrounds.CAMPFIRE_FOODS_DATA_PATH);
         }
 
         private void FilterCampgroundData(List<CampgroundData> campgroundData)
@@ -66,20 +74,53 @@ namespace Campgrounds.Framework.Managers
             _campingTentData = campingTentData.Where(c => c.IsValid().Result is true).ToList();
         }
 
-        public void StartTraveling(CampgroundData campgroundData)
+        private void FilterCampfireFoodsData(List<CampfireFoodData> campfireFoodData)
         {
-            if (IsTraveling is true)
+            foreach (var campfireFood in campfireFoodData)
             {
-                return;
+                var isValidData = campfireFood.IsValid();
+                if (isValidData.Result is false)
+                {
+                    monitor.LogOnce($"Skipping invalid CampfireFoodData with name \"{campfireFood.Id}\": {isValidData.Error}", LogLevel.Warn);
+                }
             }
 
-            IsTraveling = true;
+            _campfireFoodData = campfireFoodData.Where(c => c.IsValid().Result is true).ToList();
+        }
 
-            // Add tents and other camping equipment
-            if (HandleCampsiteSetup(campgroundData) is false)
+        public void FindActiveCampsites()
+        {
+            foreach (var campground in CampgroundData)
             {
-                IsTraveling = false;
-                return;
+                var location = Game1.getLocationFromName(campground.Id);
+                if (location is null || location.farmers.Count == 0)
+                {
+                    continue;
+                }
+
+                Farmer guestFarmer = null;
+                if (location.farmers.Count > 1)
+                {
+                    guestFarmer = location.farmers.Skip(1).First();
+                }
+
+                ActiveCampsites.Add(new Campsite(location.farmers.First(), campground, guestFarmer));
+            }
+        }
+
+        public void StartTraveling(Farmer who, CampgroundData campgroundData, Character guest = null)
+        {
+            var campsite = new Campsite(who, campgroundData, guest);
+            if (ActiveCampsites.Any(c => c.Data == campgroundData) is false)
+            {
+                // Add tents and other camping equipment
+                if (campsite.HandleCampsiteSetup() is false)
+                {
+                    return;
+                }
+                ActiveCampsites.Add(campsite);
+
+                who.modDataForSerialization[CampingManager.LAST_CAMPSITE_SLEPT_MOD_DATA_ID] = string.Empty;
             }
 
             Campgrounds.messageManager.Messages.Add(new TravelMessage(campgroundData));
@@ -88,103 +129,41 @@ namespace Campgrounds.Framework.Managers
             Game1.timeOfDay += campgroundData.TravelTimeInHours * 100;
         }
 
-        public void StopTraveling()
+        public void StartSleep(GameLocation location)
         {
-            IsTraveling = false;
+            var campsite = ActiveCampsites.FirstOrDefault(c => c.GetLocation() == location);
+            if (campsite is null)
+            {
+                return;
+            }
+            campsite.Sleep();
         }
 
-        public bool HandleCampsiteSetup(CampgroundData campgroundData)
+        public void EndCampingTrip(GameLocation location)
         {
-            var location = Game1.getLocationFromName(campgroundData.Id);
-            if (location is null)
+            var campsite = ActiveCampsites.FirstOrDefault(c => c.GetLocation() == location);
+            if (campsite is null)
             {
-                monitor.LogOnce($"The campgrounds map with name {campgroundData.Id} does not exist!", LogLevel.Warn);
-                return false;
+                return;
+            }
+            campsite.HandleExit();
+
+            ActiveCampsites.Remove(campsite);
+        }
+
+        public Campsite GetActiveCampsiteFromLocation(GameLocation location)
+        {
+            return ActiveCampsites.FirstOrDefault(c => c.GetLocation() == location);
+        }
+
+        public string GetLastCampsiteSleptIn(Farmer who)
+        {
+            if (who.modDataForSerialization.ContainsKey(LAST_CAMPSITE_SLEPT_MOD_DATA_ID))
+            {
+                return who.modDataForSerialization[LAST_CAMPSITE_SLEPT_MOD_DATA_ID];
             }
 
-            // Get tent tiles
-            var layer = location.Map.GetLayer("Back");
-
-            Vector2? playerTentTile = null;
-            Vector2? guestTentTile = null;
-
-            Direction playerTentDirection = Direction.South;
-            Direction guestTentDirection = Direction.South;
-
-            Vector2? cookingSpotTile = null;
-
-            for (int x = 0; x < layer.LayerWidth; x++)
-            {
-                for (int y = 0; y < layer.LayerHeight; y++)
-                {
-                    if (location.doesTileHaveProperty(x, y, "IsCampingSpot", "Back") != null)
-                    {
-                        if (location.doesTileHaveProperty(x, y, "IsForGuest", "Back") == "T")
-                        {
-                            if (Enum.TryParse<Direction>(location.doesTileHaveProperty(x, y, "CampingDirection", "Back"), out var direction))
-                            {
-                                guestTentDirection = direction;
-                            }
-
-                            guestTentTile = new Vector2(x, y);
-                        }
-                        else
-                        {
-                            if (Enum.TryParse<Direction>(location.doesTileHaveProperty(x, y, "CampingDirection", "Back"), out var direction))
-                            {
-                                playerTentDirection = direction;
-                            }
-
-                            playerTentTile = new Vector2(x, y);
-                        }
-                    }
-
-                    if (location.doesTileHaveProperty(x, y, "IsCookingSpot", "Back") != null)
-                    {
-                        cookingSpotTile = new Vector2(x, y);
-                    }
-                }
-            }
-
-            if (playerTentTile is null)
-            {
-                monitor.LogOnce($"The campgrounds map with name {campgroundData.Id} is missing the player's tent spot (IsCampingSpot tile property on Back layer)", LogLevel.Warn);
-                return false;
-            }
-            if (guestTentTile is null)
-            {
-                monitor.LogOnce($"The campgrounds map with name {campgroundData.Id} is missing the guest's tent spot (IsCampingSpot and IsForGuest tile property on Back layer)", LogLevel.Warn);
-                return false;
-            }
-            if (cookingSpotTile is null)
-            {
-                monitor.LogOnce($"The campgrounds map with name {campgroundData.Id} is missing a cooking spot (IsCookingSpot tile property on Back layer)", LogLevel.Warn);
-                return false;
-            }
-
-            // Place the tents
-            if (!location.isTerrainFeatureAt((int)playerTentTile.Value.X, (int)playerTentTile.Value.Y))
-            {
-                location.largeTerrainFeatures.Add(new CampingTent(playerTentTile.Value, playerTentDirection, CampingTentData.First()));
-            }
-            if (!location.isTerrainFeatureAt((int)guestTentTile.Value.X, (int)guestTentTile.Value.Y))
-            {
-                location.largeTerrainFeatures.Add(new CampingTent(guestTentTile.Value, guestTentDirection, CampingTentData.First()));
-            }
-
-            // Place the cooking spot
-            if (!location.objects.ContainsKey(cookingSpotTile.Value))
-            {
-                var cookingSpotObject = new Torch("278", bigCraftable: true)
-                {
-                    IsOn = true,
-                    Fragility = 2
-                };
-                location.objects.Add(cookingSpotTile.Value, cookingSpotObject);
-                cookingSpotObject.initializeLightSource(cookingSpotTile.Value);
-            }
-
-            return true;
+            return string.Empty;
         }
 
         public void HandleForageSpawning()
@@ -209,6 +188,14 @@ namespace Campgrounds.Framework.Managers
 
                 // Spawn in new forage items
                 location.spawnObjects();
+            }
+        }
+
+        public void HandleActiveCampsites()
+        {
+            foreach (var campsite in ActiveCampsites)
+            {
+                campsite.HandleNewDay();
             }
         }
     }

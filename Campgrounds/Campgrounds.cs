@@ -4,6 +4,7 @@ using Campgrounds.Framework.Patches.Characters;
 using Campgrounds.Framework.Patches.Locations;
 using Campgrounds.Framework.Utilities;
 using HarmonyLib;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
@@ -26,6 +27,7 @@ namespace Campgrounds
 
         public const string CAMPGROUND_DATA_PATH = "Data/PeacefulEnd_Campgrounds/Campgrounds";
         public const string CAMPING_TENTS_DATA_PATH = "Data/PeacefulEnd_Campgrounds/CampingTents";
+        public const string CAMPFIRE_FOODS_DATA_PATH = "Data/PeacefulEnd_Campgrounds/CampfireFoods";
         public const string CAMPGROUND_DEFAULT_PREVIEW_TEXTURE_PATH = "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/Default_Preview";
 
         public override void Entry(IModHelper helper)
@@ -58,6 +60,8 @@ namespace Campgrounds
             // Hook into the required events
             helper.Events.GameLoop.GameLaunched += OnGameLaunched;
             helper.Events.GameLoop.UpdateTicked += OnUpdateTicked;
+            helper.Events.GameLoop.SaveLoaded += OnSaveLoaded;
+            helper.Events.GameLoop.Saving += OnSaving;
             helper.Events.GameLoop.DayStarted += OnDayStarted;
             helper.Events.Display.Rendered += OnRendered;
             helper.Events.Content.AssetRequested += OnAssetRequested;
@@ -65,7 +69,7 @@ namespace Campgrounds
 
             // Register actions
             GameLocation.RegisterTileAction("PeacefulEnd.Campgrounds_CampingSiteList", MapActionHelper.HandleCampingSiteList);
-            GameLocation.RegisterTouchAction("PeacefulEnd.Campgrounds_CampingExit", MapActionHelper.HandleCampingExit);
+            GameLocation.RegisterTouchAction("PeacefulEnd.Campgrounds_CampingExit", (GameLocation location, string[] args, Farmer who, Vector2 tile) => MapActionHelper.HandleCampingExit(location, args, who, tile, false));
         }
 
         private void OnGameLaunched(object sender, GameLaunchedEventArgs e)
@@ -78,8 +82,23 @@ namespace Campgrounds
             FadeScreenHelper.Update();
         }
 
+        private void OnSaveLoaded(object sender, SaveLoadedEventArgs e)
+        {
+            campManager.FindActiveCampsites();
+        }
+
+        private void OnSaving(object sender, SavingEventArgs e)
+        {
+            // Sanitize any campsites before saving to prevent serialization issues
+            foreach (var campsite in campManager.ActiveCampsites)
+            {
+                campsite.Sanitize();
+            }
+        }
+
         private void OnDayStarted(object sender, DayStartedEventArgs e)
         {
+            campManager.HandleActiveCampsites();
             campManager.HandleForageSpawning();
         }
 
@@ -101,6 +120,10 @@ namespace Campgrounds
             else if (e.NameWithoutLocale.IsEquivalentTo(CAMPING_TENTS_DATA_PATH))
             {
                 e.LoadFrom(() => campManager.CampingTentData, AssetLoadPriority.Medium);
+            }
+            else if (e.NameWithoutLocale.IsEquivalentTo(CAMPFIRE_FOODS_DATA_PATH))
+            {
+                e.LoadFrom(() => campManager.CampfireFoodData, AssetLoadPriority.Medium);
             }
             else if (e.NameWithoutLocale.IsEquivalentTo(CAMPGROUND_DEFAULT_PREVIEW_TEXTURE_PATH))
             {
@@ -126,6 +149,12 @@ namespace Campgrounds
             if (campingTentsData is not null)
             {
                 campManager.CampingTentData = Helper.GameContent.Load<List<CampingTentData>>(CAMPING_TENTS_DATA_PATH);
+            }
+
+            var campfireFoodsData = e.NamesWithoutLocale.FirstOrDefault(a => a.IsEquivalentTo(CAMPFIRE_FOODS_DATA_PATH));
+            if (campfireFoodsData is not null)
+            {
+                campManager.CampfireFoodData = Helper.GameContent.Load<List<CampfireFoodData>>(CAMPFIRE_FOODS_DATA_PATH);
             }
         }
     }
