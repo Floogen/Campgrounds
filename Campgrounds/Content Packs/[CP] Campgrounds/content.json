@@ -65,6 +65,12 @@
     {
       "Action": "Include",
       "FromFile": "assets/buffs/buffs.json"
+    },
+
+    // Add currency data
+    {
+      "Action": "Include",
+      "FromFile": "assets/currencies/currencies.json"
     }
   ]
 }

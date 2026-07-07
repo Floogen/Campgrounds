@@ -9,8 +9,10 @@
           "Id": "PeacefulEnd.Campgrounds.Foods.MarshmallowOnAStick",
           "DisplayName": "Marshmallow on a Stick",
           "Description": "A true campfire classic.",
-          "TexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/DefaultCampfireFoods",
 
+          "RationCost": 1,
+
+          "TexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/DefaultCampfireFoods",
           "SourceRectangle": {
             "X": 0,
             "Y": 0,
@@ -26,8 +28,10 @@
           "Id": "PeacefulEnd.Campgrounds.Foods.CoffeeInATin",
           "DisplayName": "Coffee in a Tin",
           "Description": "Some campfire brewed coffee.",
-          "TexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/DefaultCampfireFoods",
 
+          "RationCost": 1,
+
+          "TexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/DefaultCampfireFoods",
           "SourceRectangle": {
             "X": 16,
             "Y": 0,

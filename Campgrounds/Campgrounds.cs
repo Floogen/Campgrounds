@@ -23,6 +23,7 @@ namespace Campgrounds
         internal static Multiplayer multiplayer;
 
         internal static CampingManager campManager;
+        internal static CurrencyManager currencyManager;
         internal static MessageManager messageManager;
 
         public const string CAMPGROUND_DATA_PATH = "Data/PeacefulEnd_Campgrounds/Campgrounds";
@@ -39,6 +40,7 @@ namespace Campgrounds
 
             // Create managers
             campManager = new CampingManager(monitor, helper);
+            currencyManager = new CurrencyManager(monitor, helper);
             messageManager = new MessageManager(monitor, helper);
 
             try
@@ -71,6 +73,9 @@ namespace Campgrounds
             GameLocation.RegisterTileAction("PeacefulEnd.Campgrounds_CampingSiteList", MapActionHelper.HandleCampingSiteList);
             GameLocation.RegisterTileAction("PeacefulEnd.Campgrounds_CarRepair", MapActionHelper.HandleCarRepair);
             GameLocation.RegisterTouchAction("PeacefulEnd.Campgrounds_CampingExit", (GameLocation location, string[] args, Farmer who, Vector2 tile) => MapActionHelper.HandleCampingExit(location, args, who, tile, false));
+
+            // Register commands
+            helper.ConsoleCommands.Add("campgrounds_addrations", "Adds camping ration currency to the farmer.", (cmd, args) => { if (int.TryParse(args[0], out int amount)) { currencyManager.ChangeCurrencyBalance(Framework.Models.Enums.Currency.CampingRations, amount); } });
         }
 
         private void OnGameLaunched(object sender, GameLaunchedEventArgs e)

@@ -14,6 +14,7 @@ namespace Campgrounds.Framework.Models.Data
         public string Id { get; set; }
         public string DisplayName { get; set; }
         public string Description { get; set; }
+        public int RationCost { get; set; }
 
         public string TexturePath { get; set; }
         public Rectangle? SourceRectangle { get; set; }
@@ -48,6 +49,11 @@ namespace Campgrounds.Framework.Models.Data
             if (string.IsNullOrEmpty(DisplayName))
             {
                 return (false, "DisplayName needs to be set!");
+            }
+
+            if (RationCost < 0)
+            {
+                return (false, "RationCost must be greater or equal to 0!");
             }
 
             if (SourceRectangle is null)

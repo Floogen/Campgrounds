@@ -43,6 +43,8 @@ namespace Campgrounds.Framework.UI
         private OptionsButton _prepMealsButton;
 
         private Campsite _campsite;
+        private int _startingRationCount;
+        private bool _cookedFood;
 
         public CookingSpotMenu(int x, int y, int width, int height) : base(x, y, width, height, showUpperRightCloseButton: true)
         {
@@ -63,6 +65,10 @@ namespace Campgrounds.Framework.UI
             {
                 snapToDefaultClickableComponent();
             }
+
+            // Open the special currency UI
+            _startingRationCount = Campgrounds.currencyManager.GetCurrencyBalance(Models.Enums.Currency.CampingRations);
+            Campgrounds.currencyManager.ShowCurrency(Models.Enums.Currency.CampingRations, () => Game1.activeClickableMenu == this, 0f);
         }
 
         private Dictionary<ClickableTextureComponent, CampfireFoodData> createNewPage()
@@ -128,6 +134,8 @@ namespace Campgrounds.Framework.UI
                 }
             }
             _campsite.CacheBuffs(buffs);
+
+            _cookedFood = true;
 
             this.exitThisMenu(playSound: false);
         }
@@ -284,11 +292,22 @@ namespace Campgrounds.Framework.UI
             CampfireFoodData campfireFoodData = pagesOfCraftingRecipes[currentCraftingPage][c];
             if (selectedCampfireFoods.Contains(campfireFoodData))
             {
+                Campgrounds.currencyManager.ChangeCurrencyBalance(Models.Enums.Currency.CampingRations, campfireFoodData.RationCost);
                 selectedCampfireFoods.Remove(campfireFoodData);
             }
             else if (selectedCampfireFoods.Count < _campsite.CurrentCampTent.NumberOfAllowedCampfireMeals)
             {
-                selectedCampfireFoods.Add(campfireFoodData);
+                int totalRationCost = selectedCampfireFoods.Sum(c => c.RationCost);
+                if (campfireFoodData.RationCost + totalRationCost <= _startingRationCount)
+                {
+                    Campgrounds.currencyManager.ChangeCurrencyBalance(Models.Enums.Currency.CampingRations, -campfireFoodData.RationCost);
+                    selectedCampfireFoods.Add(campfireFoodData);
+                }
+                else
+                {
+                    Campgrounds.currencyManager.ShakeCurrencyIcon(500);
+                    Game1.playSound("smallSelect");
+                }
             }
             else
             {
@@ -353,6 +372,34 @@ namespace Campgrounds.Framework.UI
                 else
                 {
                     downButton.scale = Math.Max(downButton.scale - 0.02f, downButton.baseScale);
+                }
+            }
+        }
+
+        public override bool readyToClose()
+        {
+            return base.readyToClose();
+        }
+
+        protected override void cleanupBeforeExit()
+        {
+            RestoreRationsOnClose();
+            base.cleanupBeforeExit();
+        }
+
+        public override void emergencyShutDown()
+        {
+            RestoreRationsOnClose();
+            base.emergencyShutDown();
+        }
+
+        private void RestoreRationsOnClose()
+        {
+            if (_cookedFood is false)
+            {
+                foreach (var campfireFoodData in selectedCampfireFoods)
+                {
+                    Campgrounds.currencyManager.ChangeCurrencyBalance(Models.Enums.Currency.CampingRations, campfireFoodData.RationCost);
                 }
             }
         }
@@ -440,7 +487,7 @@ namespace Campgrounds.Framework.UI
                     }
                 }
 
-                drawHoverText(b, hoverText, Game1.smallFont, 0, 0, -1, hoverTitle, -1, buffIcons, null, 0, null, -1, -1, -1, 1f, null, null);
+                drawHoverText(b, hoverText, Game1.smallFont, 0, 0, hoverRecipe.RationCost, hoverTitle, -1, buffIcons, null, 0, null, -1, -1, -1, 1f, null, null);
             }
         }
     }

@@ -1,0 +1,9 @@
+﻿{
+  "Changes": [
+    {
+      "Action": "Load",
+      "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/CurrencyIcons",
+      "FromFile": "assets/currencies/currencyIcons.png"
+    }
+  ]
+}
