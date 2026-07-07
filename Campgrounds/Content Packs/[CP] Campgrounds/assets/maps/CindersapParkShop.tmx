@@ -186,12 +186,12 @@
     <property name="Action" value="Warp 2 7 PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkGarage"/>
    </properties>
   </object>
-  <object id="29" name="TileData" x="80" y="96" width="16" height="16">
+  <object id="29" name="TileData" x="80" y="112" width="16" height="16">
    <properties>
     <property name="Action" value="PeacefulEnd.Campgrounds_CampShop"/>
    </properties>
   </object>
-  <object id="30" name="TileData" x="96" y="96" width="16" height="16">
+  <object id="30" name="TileData" x="96" y="112" width="16" height="16">
    <properties>
     <property name="Action" value="PeacefulEnd.Campgrounds_CampShop"/>
    </properties>

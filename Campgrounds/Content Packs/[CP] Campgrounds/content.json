@@ -76,7 +76,7 @@
     // Add shop data
     {
       "Action": "Include",
-      "FromFile": "assets/currencies/shops.json"
+      "FromFile": "assets/shops/shops.json"
     }
   ]
 }

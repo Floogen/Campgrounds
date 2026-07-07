@@ -20,6 +20,11 @@
 
           "Items": [
             {
+              "Id": "PeacefulEnd.Campgrounds.Currency.CampRations.Id",
+              "ItemId": "PeacefulEnd.Campgrounds.Currency.CampRations.Id",
+              "Price": 200
+            },
+            {
               "Id": "PeacefulEnd.Campgrounds.Shops.CampShop.Wood.Discounted",
               "Condition": "YEAR 1 1",
               "ItemId": "(O)388",

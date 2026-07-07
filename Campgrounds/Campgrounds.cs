@@ -1,5 +1,6 @@
 ﻿using Campgrounds.Framework.Managers;
 using Campgrounds.Framework.Models.Data;
+using Campgrounds.Framework.Objects;
 using Campgrounds.Framework.Patches.Characters;
 using Campgrounds.Framework.Patches.Locations;
 using Campgrounds.Framework.Utilities;
@@ -9,6 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
+using StardewValley.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,6 +62,7 @@ namespace Campgrounds
             }
 
             // Hook into the required events
+            helper.Events.GameLoop.GameLaunched += OnGameLaunched;
             helper.Events.GameLoop.UpdateTicked += OnUpdateTicked;
             helper.Events.GameLoop.SaveLoaded += OnSaveLoaded;
             helper.Events.GameLoop.Saving += OnSaving;
@@ -76,6 +79,16 @@ namespace Campgrounds
 
             // Register commands
             helper.ConsoleCommands.Add("campgrounds_addrations", "Adds camping ration currency to the farmer.", (cmd, args) => { if (int.TryParse(args[0], out int amount)) { currencyManager.ChangeCurrencyBalance(Framework.Models.Enums.Currency.CampRations, amount); } });
+        }
+
+        private void OnGameLaunched(object sender, GameLaunchedEventArgs e)
+        {
+            ItemQueryResolver.Register(CurrencyManager.CAMP_RATION_CURRENCY_ID, (string key, string arguments, ItemQueryContext context, bool avoidRepeat, HashSet<string> avoidItemIds, Action<string, string> logError) => {
+                return new[]
+                {
+                    new ItemQueryResult(new CampRations())
+                };
+            });
         }
 
         private void OnUpdateTicked(object sender, UpdateTickedEventArgs e)
