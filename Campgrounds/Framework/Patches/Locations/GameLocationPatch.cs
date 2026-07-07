@@ -31,7 +31,7 @@ namespace Campgrounds.Framework.Patches.Locations
 
         private static void DrawPostfix(GameLocation __instance, SpriteBatch b)
         {
-            if (CampingHelper.IsCarRepaired() is false)
+            if (__instance.Name == "PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkGarage" && CampingHelper.IsCarRepaired() is false)
             {
                 float yOffset = 4f * (float)Math.Round(Math.Sin(Game1.currentGameTime.TotalGameTime.TotalMilliseconds / 250.0), 2);
                 b.Draw(Game1.mouseCursors, Game1.GlobalToLocal(Game1.viewport, new Vector2(3f * 64f, 2f * 64f + yOffset)), new Rectangle(141, 465, 20, 24), Color.White * 0.75f, 0f, Vector2.Zero, 4f, SpriteEffects.None, 0.095401f);
