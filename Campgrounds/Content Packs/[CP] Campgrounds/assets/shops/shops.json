@@ -25,6 +25,13 @@
               "Price": 200
             },
             {
+              "Id": "PeacefulEnd.Campgrounds.Items.CampingPass",
+              "ItemId": "(O)PeacefulEnd.Campgrounds.Items.CampingPass",
+              "Price": 500,
+              "AvailableStock": 1,
+              "AvailableStockLimit": "Player"
+            },
+            {
               "Id": "PeacefulEnd.Campgrounds.Shops.CampShop.Wood.Discounted",
               "Condition": "YEAR 1 1",
               "ItemId": "(O)388",

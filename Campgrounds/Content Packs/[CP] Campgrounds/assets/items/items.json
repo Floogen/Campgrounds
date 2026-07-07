@@ -1,0 +1,34 @@
+﻿{
+  "Changes": [
+    {
+      "Action": "EditData",
+      "Target": "Data/Objects",
+      "Entries": {
+        "PeacefulEnd.Campgrounds.Items.CampingPass": {
+          "Name": "PeacefulEnd.Campgrounds.Items.CampingPass",
+          "DisplayName": "Camping Pass",
+          "Description": "A camping pass. Giving this to a friend invites them to go camping with you.",
+          "Type": "Basic",
+          "Category": 0,
+          "Price": 500,
+
+          "Texture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/Items",
+          "SpriteIndex": 0,
+
+          "Edibility": -300,
+
+          "CanBeGivenAsGift": true,
+          "CanBeTrashed": true,
+          "ExcludeFromRandomSale": true,
+          "ExcludeFromShippingCollection": true
+        }
+      }
+    },
+
+    {
+      "Action": "Load",
+      "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/Items",
+      "FromFile": "assets/items/items.png"
+    }
+  ]
+}

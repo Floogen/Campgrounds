@@ -77,6 +77,12 @@
     {
       "Action": "Include",
       "FromFile": "assets/shops/shops.json"
+    },
+
+    // Add item data
+    {
+      "Action": "Include",
+      "FromFile": "assets/items/items.json"
     }
   ]
 }
