@@ -1,4 +1,5 @@
-﻿using StardewValley;
+﻿using Campgrounds.Framework.UI;
+using StardewValley;
 using StardewValley.Network;
 using System;
 using System.Collections.Generic;
@@ -54,6 +55,19 @@ namespace Campgrounds.Framework.Utilities
                     Game1.player.Items.ReduceId("(O)388", 100);
                     break;
                 case "No":
+                    break;
+            }
+        }
+        
+        public static void OnLeaveWithoutRationsResponse(Farmer who, string answer, CampListMenu campListMenu)
+        {
+            switch (answer)
+            {
+                case "Yes":
+                    campListMenu.StartTravelingToCampsite(skipRationCheck: true);
+                    break;
+                case "No":
+                    Game1.activeClickableMenu = campListMenu;
                     break;
             }
         }

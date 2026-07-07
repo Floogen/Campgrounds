@@ -44,6 +44,8 @@ namespace Campgrounds.Framework.UI
             base.upperRightCloseButton = new ClickableTextureComponent(new Rectangle(xPositionOnScreen + width - 36, yPositionOnScreen - 8, 48, 48), Game1.mouseCursors, new Rectangle(337, 494, 12, 12), 4f);
 
             SetupLayout();
+
+            Campgrounds.currencyManager.ShowCurrency(Models.Enums.Currency.CampingRations, () => Game1.activeClickableMenu == this, 0f);
         }
 
         public override void receiveScrollWheelAction(int direction)
@@ -162,36 +164,43 @@ namespace Campgrounds.Framework.UI
                 myID = 101
             };
 
-            _travelButton = new OptionsButton("Travel", StartTravelingToCampsite);
+            _travelButton = new OptionsButton("Travel", () => StartTravelingToCampsite(skipRationCheck: false));
             _travelButton.bounds.X = _campsiteSummaryDisplayBox.X + _travelButton.bounds.Width / 2 + 8;
             _travelButton.bounds.Y = _campsiteSummaryDisplayBox.Y + _campsiteSummaryDisplayBox.Height - 96;
 
             PaginatePacks(Campgrounds.campManager.CampgroundData);
         }
 
-        public void StartTravelingToCampsite()
+        public void StartTravelingToCampsite(bool skipRationCheck = false)
         {
-            this.exitThisMenu(playSound: false);
-
-            // Handle traveling to campsite (verify enough time to travel, don't allow if will reach campsite at or after midnight)
-            if (Game1.timeOfDay + (_selectedCampsite.TravelTimeInHours * 100) >= 2400)
+            if (skipRationCheck is false && Campgrounds.currencyManager.GetCurrencyBalance(Models.Enums.Currency.CampingRations) <= 0)
             {
-                Game1.activeClickableMenu = new DialogueBox("There is not enough time to reach that campsite before midnight...");
-                return;
+                Game1.currentLocation.createQuestionDialogue("Are you sure you want to travel without rations? You will not be able to make food at the campfire.", Game1.currentLocation.createYesNoResponses(), (Farmer who, string answer) => CampingHelper.OnLeaveWithoutRationsResponse(who, answer, this));
             }
-            if (_selectedCampsite.RequireVehicle is true && CampingHelper.IsCarRepaired() is false)
+            else
             {
-                var dialogue = new List<string>()
+                this.exitThisMenu(playSound: false);
+
+                // Handle traveling to campsite (verify enough time to travel, don't allow if will reach campsite at or after midnight)
+                if (Game1.timeOfDay + (_selectedCampsite.TravelTimeInHours * 100) >= 2400)
+                {
+                    Game1.activeClickableMenu = new DialogueBox("There is not enough time to reach that campsite before midnight...");
+                    return;
+                }
+                if (_selectedCampsite.RequireVehicle is true && CampingHelper.IsCarRepaired() is false)
+                {
+                    var dialogue = new List<string>()
                 {
                     "This campsite requires a vehicle to reach. You see a note attached to the map...",
                     "\"You can use my grandmother's old car in the garage! It will need some work to get running again though.\" - Vesi"
                 };
-                Game1.activeClickableMenu = new DialogueBox(dialogue);
-                return;
-            }
+                    Game1.activeClickableMenu = new DialogueBox(dialogue);
+                    return;
+                }
 
-            // Display travel screen with any TravelScreenText (or use default if none given) and warp to campsite
-            Campgrounds.campManager.StartTraveling(Game1.player, _selectedCampsite);
+                // Display travel screen with any TravelScreenText (or use default if none given) and warp to campsite
+                Campgrounds.campManager.StartTraveling(Game1.player, _selectedCampsite);
+            }
         }
 
         public void PaginatePacks(List<CampgroundData> campsites)
