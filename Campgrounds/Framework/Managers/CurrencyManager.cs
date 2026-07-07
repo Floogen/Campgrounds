@@ -17,10 +17,10 @@ namespace Campgrounds.Framework.Managers
 {
     public class CurrencyManager : BaseManager
     {
-        public const string CAMPING_RATION_CURRENCY_ID = "PeacefulEnd.Campgrounds.Currency.CampingRations.Id";
-        public const string CAMPING_RATION_BALANCE_ID = "PeacefulEnd.Campgrounds.Currency.CampingRations.Balance";
+        public const string CAMP_RATION_CURRENCY_ID = "PeacefulEnd.Campgrounds.Currency.CampRations.Id";
+        public const string CAMP_RATION_BALANCE_ID = "PeacefulEnd.Campgrounds.Currency.CampRations.Balance";
 
-        private readonly NetIntDelta _campingRations = new NetIntDelta() { Minimum = 0 };
+        private readonly NetIntDelta _campRations = new NetIntDelta() { Minimum = 0 };
         private double _shakeTimer;
 
         public CurrencyManager(IMonitor monitor, IModHelper helper) : base(monitor, helper)
@@ -32,15 +32,15 @@ namespace Campgrounds.Framework.Managers
 
         private void OnSaving(object sender, SavingEventArgs e)
         {
-            SaveCurrencyBalance(Currency.CampingRations);
+            SaveCurrencyBalance(Currency.CampRations);
         }
 
         private void OnSaveLoaded(object sender, SaveLoadedEventArgs e)
         {
-            _campingRations.Value = RestoreCurrencyBalance(Currency.CampingRations);
+            _campRations.Value = RestoreCurrencyBalance(Currency.CampRations);
 
             // Register the currency display
-            Game1.specialCurrencyDisplay.Register(CAMPING_RATION_CURRENCY_ID, _campingRations, drawIcon: DrawIcon);
+            Game1.specialCurrencyDisplay.Register(CAMP_RATION_CURRENCY_ID, _campRations, drawIcon: DrawIcon);
         }
 
         private void OnUpdateTicked(object sender, UpdateTickedEventArgs e)
@@ -55,8 +55,8 @@ namespace Campgrounds.Framework.Managers
         {
             switch (currency)
             {
-                case Currency.CampingRations:
-                    Game1.specialCurrencyDisplay.ShowCurrency(CAMPING_RATION_CURRENCY_ID, keepOpen, timeToLive);
+                case Currency.CampRations:
+                    Game1.specialCurrencyDisplay.ShowCurrency(CAMP_RATION_CURRENCY_ID, keepOpen, timeToLive);
                     break;
             }
         }
@@ -65,8 +65,8 @@ namespace Campgrounds.Framework.Managers
         {
             switch (currency)
             {
-                case Currency.CampingRations:
-                    return _campingRations.Value;
+                case Currency.CampRations:
+                    return _campRations.Value;
             }
             return 0;
         }
@@ -75,13 +75,13 @@ namespace Campgrounds.Framework.Managers
         {
             switch (currency)
             {
-                case Currency.CampingRations:
-                    if (amount < 0 && _campingRations.Value + amount < 0)
+                case Currency.CampRations:
+                    if (amount < 0 && _campRations.Value + amount < 0)
                     {
                         return false;
                     }
 
-                    _campingRations.Value += amount;
+                    _campRations.Value += amount;
                     return true;
             }
 
@@ -92,8 +92,8 @@ namespace Campgrounds.Framework.Managers
         {
             switch (currency)
             {
-                case Currency.CampingRations:
-                    return Game1.player.modData.TryGetValue(CAMPING_RATION_BALANCE_ID, out string rawBalance) && int.TryParse(rawBalance, out int value) ? value : 0;
+                case Currency.CampRations:
+                    return Game1.player.modData.TryGetValue(CAMP_RATION_BALANCE_ID, out string rawBalance) && int.TryParse(rawBalance, out int value) ? value : 0;
             }
 
             return 0;
@@ -103,8 +103,8 @@ namespace Campgrounds.Framework.Managers
         {
             switch (currency)
             {
-                case Currency.CampingRations:
-                    Game1.player.modData[CAMPING_RATION_BALANCE_ID] = _campingRations.ToString();
+                case Currency.CampRations:
+                    Game1.player.modData[CAMP_RATION_BALANCE_ID] = _campRations.ToString();
                     break;
             }
         }
@@ -121,7 +121,7 @@ namespace Campgrounds.Framework.Managers
                 position += 1f * new Vector2(Game1.random.Next(-1, 2), Game1.random.Next(-1, 2));
             }
 
-            b.Draw(GetTexture(), position, GetSourceRectangle(Currency.CampingRations), Color.White, 0f, Vector2.Zero, 4f, SpriteEffects.None, 0f);
+            b.Draw(GetTexture(), position, GetSourceRectangle(Currency.CampRations), Color.White, 0f, Vector2.Zero, 4f, SpriteEffects.None, 0f);
         }
 
         public Texture2D GetTexture()
@@ -134,7 +134,7 @@ namespace Campgrounds.Framework.Managers
             var sourceRectangle = new Rectangle(0, 0, 16, 16);
             switch (currency)
             {
-                case Currency.CampingRations:
+                case Currency.CampRations:
                     sourceRectangle.X = 0;
                     sourceRectangle.Y = 0;
                     break;

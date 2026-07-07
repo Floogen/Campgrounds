@@ -67,8 +67,8 @@ namespace Campgrounds.Framework.UI
             }
 
             // Open the special currency UI
-            _startingRationCount = Campgrounds.currencyManager.GetCurrencyBalance(Models.Enums.Currency.CampingRations);
-            Campgrounds.currencyManager.ShowCurrency(Models.Enums.Currency.CampingRations, () => Game1.activeClickableMenu == this, 0f);
+            _startingRationCount = Campgrounds.currencyManager.GetCurrencyBalance(Models.Enums.Currency.CampRations);
+            Campgrounds.currencyManager.ShowCurrency(Models.Enums.Currency.CampRations, () => Game1.activeClickableMenu == this, 0f);
         }
 
         private Dictionary<ClickableTextureComponent, CampfireFoodData> createNewPage()
@@ -292,7 +292,7 @@ namespace Campgrounds.Framework.UI
             CampfireFoodData campfireFoodData = pagesOfCraftingRecipes[currentCraftingPage][c];
             if (selectedCampfireFoods.Contains(campfireFoodData))
             {
-                Campgrounds.currencyManager.ChangeCurrencyBalance(Models.Enums.Currency.CampingRations, campfireFoodData.RationCost);
+                Campgrounds.currencyManager.ChangeCurrencyBalance(Models.Enums.Currency.CampRations, campfireFoodData.RationCost);
                 selectedCampfireFoods.Remove(campfireFoodData);
             }
             else if (selectedCampfireFoods.Count < _campsite.CurrentCampTent.NumberOfAllowedCampfireMeals)
@@ -300,7 +300,7 @@ namespace Campgrounds.Framework.UI
                 int totalRationCost = selectedCampfireFoods.Sum(c => c.RationCost);
                 if (campfireFoodData.RationCost + totalRationCost <= _startingRationCount)
                 {
-                    Campgrounds.currencyManager.ChangeCurrencyBalance(Models.Enums.Currency.CampingRations, -campfireFoodData.RationCost);
+                    Campgrounds.currencyManager.ChangeCurrencyBalance(Models.Enums.Currency.CampRations, -campfireFoodData.RationCost);
                     selectedCampfireFoods.Add(campfireFoodData);
                 }
                 else
@@ -399,7 +399,7 @@ namespace Campgrounds.Framework.UI
             {
                 foreach (var campfireFoodData in selectedCampfireFoods)
                 {
-                    Campgrounds.currencyManager.ChangeCurrencyBalance(Models.Enums.Currency.CampingRations, campfireFoodData.RationCost);
+                    Campgrounds.currencyManager.ChangeCurrencyBalance(Models.Enums.Currency.CampRations, campfireFoodData.RationCost);
                 }
             }
         }

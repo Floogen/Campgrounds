@@ -8,6 +8,6 @@ namespace Campgrounds.Framework.Models.Enums
 {
     public enum Currency
     {
-        CampingRations
+        CampRations
     }
 }

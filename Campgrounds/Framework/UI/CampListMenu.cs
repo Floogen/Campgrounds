@@ -45,7 +45,7 @@ namespace Campgrounds.Framework.UI
 
             SetupLayout();
 
-            Campgrounds.currencyManager.ShowCurrency(Models.Enums.Currency.CampingRations, () => Game1.activeClickableMenu == this, 0f);
+            Campgrounds.currencyManager.ShowCurrency(Models.Enums.Currency.CampRations, () => Game1.activeClickableMenu == this, 0f);
         }
 
         public override void receiveScrollWheelAction(int direction)
@@ -173,7 +173,7 @@ namespace Campgrounds.Framework.UI
 
         public void StartTravelingToCampsite(bool skipRationCheck = false)
         {
-            if (skipRationCheck is false && Campgrounds.currencyManager.GetCurrencyBalance(Models.Enums.Currency.CampingRations) <= 0)
+            if (skipRationCheck is false && Campgrounds.currencyManager.GetCurrencyBalance(Models.Enums.Currency.CampRations) <= 0)
             {
                 Game1.currentLocation.createQuestionDialogue("Are you sure you want to travel without rations? You will not be able to make food at the campfire.", Game1.currentLocation.createYesNoResponses(), (Farmer who, string answer) => CampingHelper.OnLeaveWithoutRationsResponse(who, answer, this));
             }
