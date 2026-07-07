@@ -60,7 +60,6 @@ namespace Campgrounds
             }
 
             // Hook into the required events
-            helper.Events.GameLoop.GameLaunched += OnGameLaunched;
             helper.Events.GameLoop.UpdateTicked += OnUpdateTicked;
             helper.Events.GameLoop.SaveLoaded += OnSaveLoaded;
             helper.Events.GameLoop.Saving += OnSaving;
@@ -70,17 +69,13 @@ namespace Campgrounds
             helper.Events.Content.AssetsInvalidated += OnAssetInvalidated;
 
             // Register actions
+            GameLocation.RegisterTileAction("PeacefulEnd.Campgrounds_CampShop", MapActionHelper.HandleCampShop);
             GameLocation.RegisterTileAction("PeacefulEnd.Campgrounds_CampingSiteList", MapActionHelper.HandleCampingSiteList);
             GameLocation.RegisterTileAction("PeacefulEnd.Campgrounds_CarRepair", MapActionHelper.HandleCarRepair);
             GameLocation.RegisterTouchAction("PeacefulEnd.Campgrounds_CampingExit", (GameLocation location, string[] args, Farmer who, Vector2 tile) => MapActionHelper.HandleCampingExit(location, args, who, tile, false));
 
             // Register commands
             helper.ConsoleCommands.Add("campgrounds_addrations", "Adds camping ration currency to the farmer.", (cmd, args) => { if (int.TryParse(args[0], out int amount)) { currencyManager.ChangeCurrencyBalance(Framework.Models.Enums.Currency.CampingRations, amount); } });
-        }
-
-        private void OnGameLaunched(object sender, GameLaunchedEventArgs e)
-        {
-
         }
 
         private void OnUpdateTicked(object sender, UpdateTickedEventArgs e)

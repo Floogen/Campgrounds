@@ -1,0 +1,51 @@
+﻿{
+  "Changes": [
+    {
+      "Action": "EditData",
+      "Target": "Data/Shops",
+      "Entries": {
+        "PeacefulEnd.Campgrounds.Shops.CampShop": {
+          "Owners": [
+            {
+              "Name": "AnyOrNone",
+              "Dialogues": [
+                // dialogue any other time
+                {
+                  "Id": "PeacefulEnd.Campgrounds.Shops.Dialogue.Default",
+                  "Dialogue": "..."
+                }
+              ]
+            }
+          ],
+
+          "Items": [
+            {
+              "Id": "PeacefulEnd.Campgrounds.Shops.CampShop.Wood.Discounted",
+              "Condition": "YEAR 1 1",
+              "ItemId": "(O)388",
+              "Price": 10
+            },
+            {
+              "Id": "PeacefulEnd.Campgrounds.Shops.CampShop.Stone.Discounted",
+              "Condition": "YEAR 1 1",
+              "ItemId": "(O)390",
+              "Price": 20
+            },
+            {
+              "Id": "PeacefulEnd.Campgrounds.Shops.CampShop.Wood",
+              "Condition": "YEAR 2",
+              "ItemId": "(O)388",
+              "Price": 50
+            },
+            {
+              "Id": "PeacefulEnd.Campgrounds.Shops.CampShop.Stone",
+              "Condition": "YEAR 2",
+              "ItemId": "(O)390",
+              "Price": 100
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
