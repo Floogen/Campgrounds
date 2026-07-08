@@ -1,0 +1,50 @@
+﻿{
+  "Changes": [
+    // Add generic dialogue (used by marriage candidates if not manually overwritten)
+    {
+      "Action": "EditData",
+      "Target": "Data/PeacefulEnd_Campgrounds/Villagers",
+      "Entries": {
+        "PeacefulEnd.Campgrounds.Villagers.Generic": {
+          "Id": "PeacefulEnd.Campgrounds.Villagers.Generic",
+          "TentId": "PeacefulEnd.Campgrounds.Tents.StarterTent",
+
+          "LikedCampgrounds": [],
+          "DislikedCampgrounds": [],
+
+          "InviteDialogueAccepted": [
+            "Camping? That sounds like a great time, count me in!$h"
+          ],
+          "InviteDialogueRejected": [
+            "I am not interested, sorry.$s"
+          ],
+
+          "LikedDialogueDayOf": [
+            "This is a wonderful camping spot!$h",
+            "Thank you for inviting me!"
+          ],
+          "NeutralDialogueDayOf": [
+            "This is a nice spot you found.$neutral",
+            "Thank you for inviting me here."
+          ],
+          "DislikedDialogueDayOf": [
+            "I'm not much of a fan of the camping spot you picked...$a",
+            "Well at least I will try to make the most of being here."
+          ],
+
+          "LikedDialogueDayAfter": [
+            "I can't wait to come back here again. I had a great time!$h",
+            "Thank you again for bringing me along!"
+          ],
+          "NeutralDialogueDayAfter": [
+            "It was nice to share a meal over the campfire.$neutral",
+            "Thinking about last night's food has me feeling hungry again!"
+          ],
+          "DislikedDialogueDayAfter": [
+            "I can't wait to get home.$neutral"
+          ]
+        }
+      }
+    }
+  ]
+}

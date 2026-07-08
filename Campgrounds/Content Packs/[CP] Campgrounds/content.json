@@ -83,6 +83,12 @@
     {
       "Action": "Include",
       "FromFile": "assets/items/items.json"
+    },
+
+    // Add villager data
+    {
+      "Action": "Include",
+      "FromFile": "assets/campgrounds/campingVillagers.json"
     }
   ]
 }

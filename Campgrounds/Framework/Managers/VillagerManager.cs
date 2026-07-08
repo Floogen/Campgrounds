@@ -1,9 +1,12 @@
 ﻿using Campgrounds.Framework.Models.Data;
+using Campgrounds.Framework.Models.Enums;
 using Campgrounds.Framework.UI;
 using Campgrounds.Framework.UI.Messages;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
+using StardewValley.Extensions;
+using StardewValley.Locations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +17,7 @@ namespace Campgrounds.Framework.Managers
 {
     public class VillagerManager : BaseManager
     {
+        public const string GENERIC_VILLAGER_ID = "PeacefulEnd.Campgrounds.Villagers.Generic";
         public const string INVITED_CAMPSITE_INVITE_MOD_DATA_ID = "Campgrounds.Campsite.Invite.Id";
 
         public List<VillagerData> VillagerData { get { return _villagerData; } set { FilterVillageData(value); } }
@@ -43,9 +47,94 @@ namespace Campgrounds.Framework.Managers
             _villagerData = villagerData.Where(c => c.IsValid().Result is true).ToList();
         }
 
-        public Character GetInvitedCharacter()
+        public VillagerData GetGenericData()
         {
-            if (Game1.player.modData.ContainsKey(INVITED_CAMPSITE_INVITE_MOD_DATA_ID))
+            return VillagerData.FirstOrDefault(v => v.Id.EqualsIgnoreCase(GENERIC_VILLAGER_ID));
+        }
+
+        public VillagerData GetVillagerData(NPC npc)
+        {
+            if (npc is null)
+            {
+                return null;
+            }
+
+            return VillagerData.FirstOrDefault(v => v.Id.EqualsIgnoreCase(npc.Name));
+        }
+
+        public List<string> GetGenericDialogue(CampDialogue campDialogue)
+        {
+            var genericVillagerData = GetGenericData();
+            switch (campDialogue)
+            {
+                case CampDialogue.InviteAccepted:
+                    return genericVillagerData.InviteDialogueAccepted;
+                case CampDialogue.InviteRejected:
+                    return genericVillagerData.InviteDialogueRejected;
+                case CampDialogue.LikedDayOf:
+                    return genericVillagerData.LikedDialogueDayOf;
+                case CampDialogue.NeutralDayOf:
+                    return genericVillagerData.NeutralDialogueDayOf;
+                case CampDialogue.DislikedDayOf:
+                    return genericVillagerData.DislikedDialogueDayOf;
+                case CampDialogue.LikedDayAfter:
+                    return genericVillagerData.LikedDialogueDayAfter;
+                case CampDialogue.NeutralDayAfter:
+                    return genericVillagerData.NeutralDialogueDayAfter;
+                case CampDialogue.DislikedDayAfter:
+                    return genericVillagerData.DislikedDialogueDayAfter;
+            }
+
+            return new List<string>();
+        }
+
+        public List<string> GetDialogue(CampDialogue campDialogue, NPC npc)
+        {
+            var dialogue = new List<string>();
+
+            var villagerData = GetVillagerData(npc);
+            switch (campDialogue)
+            {
+                case CampDialogue.InviteAccepted:
+                    return villagerData.InviteDialogueAccepted;
+                case CampDialogue.InviteRejected:
+                    return villagerData.InviteDialogueRejected;
+                case CampDialogue.LikedDayOf:
+                    return villagerData.LikedDialogueDayOf;
+                case CampDialogue.NeutralDayOf:
+                    return villagerData.NeutralDialogueDayOf;
+                case CampDialogue.DislikedDayOf:
+                    return villagerData.DislikedDialogueDayOf;
+                case CampDialogue.LikedDayAfter:
+                    return villagerData.LikedDialogueDayAfter;
+                case CampDialogue.NeutralDayAfter:
+                    return villagerData.NeutralDialogueDayAfter;
+                case CampDialogue.DislikedDayAfter:
+                    return villagerData.DislikedDialogueDayAfter;
+            }
+
+            // Supplement dialogue with generic values if given one is empty
+            if (dialogue.Count == 0)
+            {
+                dialogue = GetGenericDialogue(campDialogue);
+            }
+
+            return dialogue;
+        }
+
+        public string GetGameReadyDialogue(CampDialogue dialogue, NPC npc)
+        {
+            return GetGameReadyDialogue(GetDialogue(dialogue, npc));
+        }
+
+        public string GetGameReadyDialogue(List<string> dialogue)
+        {
+            return string.Join("#$b#", dialogue);
+        }
+
+        public Character GetInvitedCharacter(Farmer who)
+        {
+            if (who.modData.ContainsKey(INVITED_CAMPSITE_INVITE_MOD_DATA_ID))
             {
                 return Game1.getCharacterFromName(who.modData[INVITED_CAMPSITE_INVITE_MOD_DATA_ID]);
             }

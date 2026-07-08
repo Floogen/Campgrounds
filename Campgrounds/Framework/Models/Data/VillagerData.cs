@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using StardewValley;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +17,28 @@ namespace Campgrounds.Framework.Models.Data
         public List<string> LikedCampgrounds { get; set; } = new List<string>();
         public List<string> DislikedCampgrounds { get; set; } = new List<string>();
 
-        public List<string> LikedDialogue { get; set; } = new List<string>();
-        public List<string> NeutralDialogue { get; set; } = new List<string>();
-        public List<string> DislikedDialogue { get; set; } = new List<string>();
+        public List<string> InviteDialogueAccepted { get; set; } = new List<string>();
+        public List<string> InviteDialogueRejected { get; set; } = new List<string>();
+
+        public List<string> LikedDialogueDayOf { get; set; } = new List<string>();
+        public List<string> NeutralDialogueDayOf { get; set; } = new List<string>();
+        public List<string> DislikedDialogueDayOf { get; set; } = new List<string>();
+
+        public List<string> LikedDialogueDayAfter { get; set; } = new List<string>();
+        public List<string> NeutralDialogueDayAfter { get; set; } = new List<string>();
+        public List<string> DislikedDialogueDayAfter { get; set; } = new List<string>();
+
+        public string RequirementsCondition { get; set; }
+
+        public bool HasRequirements()
+        {
+            if (string.IsNullOrEmpty(RequirementsCondition))
+            {
+                return true;
+            }
+
+            return GameStateQuery.CheckConditions(RequirementsCondition);
+        }
 
 
         public override (bool Result, string Error) IsValid()
