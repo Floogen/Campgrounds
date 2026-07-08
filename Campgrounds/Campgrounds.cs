@@ -27,10 +27,13 @@ namespace Campgrounds
         internal static CampingManager campManager;
         internal static CurrencyManager currencyManager;
         internal static MessageManager messageManager;
+        internal static TentManager tentManager;
+        internal static VillagerManager villagerManager;
 
         public const string CAMPGROUND_DATA_PATH = "Data/PeacefulEnd_Campgrounds/Campgrounds";
         public const string CAMPING_TENTS_DATA_PATH = "Data/PeacefulEnd_Campgrounds/CampingTents";
         public const string CAMPFIRE_FOODS_DATA_PATH = "Data/PeacefulEnd_Campgrounds/CampfireFoods";
+        public const string VILLAGER_DATA_PATH = "Data/PeacefulEnd_Campgrounds/Villagers";
         public const string CAMPGROUND_DEFAULT_PREVIEW_TEXTURE_PATH = "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/Default_Preview";
 
         public override void Entry(IModHelper helper)
@@ -44,6 +47,8 @@ namespace Campgrounds
             campManager = new CampingManager(monitor, helper);
             currencyManager = new CurrencyManager(monitor, helper);
             messageManager = new MessageManager(monitor, helper);
+            tentManager = new TentManager(monitor, helper);
+            villagerManager = new VillagerManager(monitor, helper);
 
             try
             {
@@ -139,13 +144,17 @@ namespace Campgrounds
             {
                 e.LoadFrom(() => campManager.CampgroundData, AssetLoadPriority.Medium);
             }
-            else if (e.NameWithoutLocale.IsEquivalentTo(CAMPING_TENTS_DATA_PATH))
-            {
-                e.LoadFrom(() => campManager.CampingTentData, AssetLoadPriority.Medium);
-            }
             else if (e.NameWithoutLocale.IsEquivalentTo(CAMPFIRE_FOODS_DATA_PATH))
             {
                 e.LoadFrom(() => campManager.CampfireFoodData, AssetLoadPriority.Medium);
+            }
+            else if (e.NameWithoutLocale.IsEquivalentTo(CAMPING_TENTS_DATA_PATH))
+            {
+                e.LoadFrom(() => tentManager.CampingTentData, AssetLoadPriority.Medium);
+            }
+            else if (e.NameWithoutLocale.IsEquivalentTo(VILLAGER_DATA_PATH))
+            {
+                e.LoadFrom(() => villagerManager.VillagerData, AssetLoadPriority.Medium);
             }
             else if (e.NameWithoutLocale.IsEquivalentTo(CAMPGROUND_DEFAULT_PREVIEW_TEXTURE_PATH))
             {
@@ -155,28 +164,28 @@ namespace Campgrounds
 
         private void OnAssetInvalidated(object sender, AssetsInvalidatedEventArgs e)
         {
-            var villagerData = e.NamesWithoutLocale.FirstOrDefault(a => a.IsEquivalentTo("Data/PeacefulEnd_Campgrounds/Villagers"));
-            if (villagerData is not null)
-            {
-                //textureManager.Sync(Helper.GameContent.Load<Dictionary<string, AppearanceContentPack>>(appearanceDataAsset));
-            }
-
             var campData = e.NamesWithoutLocale.FirstOrDefault(a => a.IsEquivalentTo(CAMPGROUND_DATA_PATH));
             if (campData is not null)
             {
                 campManager.CampgroundData = Helper.GameContent.Load<List<CampgroundData>>(CAMPGROUND_DATA_PATH);
             }
 
-            var campingTentsData = e.NamesWithoutLocale.FirstOrDefault(a => a.IsEquivalentTo(CAMPING_TENTS_DATA_PATH));
-            if (campingTentsData is not null)
-            {
-                campManager.CampingTentData = Helper.GameContent.Load<List<CampingTentData>>(CAMPING_TENTS_DATA_PATH);
-            }
-
             var campfireFoodsData = e.NamesWithoutLocale.FirstOrDefault(a => a.IsEquivalentTo(CAMPFIRE_FOODS_DATA_PATH));
             if (campfireFoodsData is not null)
             {
                 campManager.CampfireFoodData = Helper.GameContent.Load<List<CampfireFoodData>>(CAMPFIRE_FOODS_DATA_PATH);
+            }
+
+            var campingTentsData = e.NamesWithoutLocale.FirstOrDefault(a => a.IsEquivalentTo(CAMPING_TENTS_DATA_PATH));
+            if (campingTentsData is not null)
+            {
+                tentManager.CampingTentData = Helper.GameContent.Load<List<CampingTentData>>(CAMPING_TENTS_DATA_PATH);
+            }
+
+            var villagerData = e.NamesWithoutLocale.FirstOrDefault(a => a.IsEquivalentTo(VILLAGER_DATA_PATH));
+            if (villagerData is not null)
+            {
+                villagerManager.VillagerData = Helper.GameContent.Load<List<VillagerData>>(VILLAGER_DATA_PATH);
             }
         }
     }

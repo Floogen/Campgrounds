@@ -24,10 +24,7 @@ namespace Campgrounds.Framework.Managers
         public const string LAST_CAMPSITE_SLEPT_MOD_DATA_ID = "Campgrounds.Campsite.LastCampsite.Slept.Id";
 
         public List<CampgroundData> CampgroundData { get { return _campgroundData; } set { FilterCampgroundData(value); } }
-        private List<CampgroundData> _campgroundData = new List<CampgroundData>();
-
-        public List<CampingTentData> CampingTentData { get { return _campingTentData; } set { FilterCampingTentsData(value); } }
-        private List<CampingTentData> _campingTentData = new List<CampingTentData>();        
+        private List<CampgroundData> _campgroundData = new List<CampgroundData>();    
 
         public List<CampfireFoodData> CampfireFoodData { get { return _campfireFoodData; } set { FilterCampfireFoodsData(value); } }
         private List<CampfireFoodData> _campfireFoodData = new List<CampfireFoodData>();
@@ -42,7 +39,6 @@ namespace Campgrounds.Framework.Managers
         private void OnGameLaunched(object sender, GameLaunchedEventArgs e)
         {
             CampgroundData = helper.GameContent.Load<List<CampgroundData>>(Campgrounds.CAMPGROUND_DATA_PATH);
-            CampingTentData = helper.GameContent.Load<List<CampingTentData>>(Campgrounds.CAMPING_TENTS_DATA_PATH);
             CampfireFoodData = helper.GameContent.Load<List<CampfireFoodData>>(Campgrounds.CAMPFIRE_FOODS_DATA_PATH);
         }
 
@@ -58,20 +54,6 @@ namespace Campgrounds.Framework.Managers
             }
 
             _campgroundData = campgroundData.Where(c => c.IsValid().Result is true).ToList();
-        }
-
-        private void FilterCampingTentsData(List<CampingTentData> campingTentData)
-        {
-            foreach (var campingTent in campingTentData)
-            {
-                var isValidData = campingTent.IsValid();
-                if (isValidData.Result is false)
-                {
-                    monitor.LogOnce($"Skipping invalid CampingTentData with name \"{campingTent.Id}\": {isValidData.Error}", LogLevel.Warn);
-                }
-            }
-
-            _campingTentData = campingTentData.Where(c => c.IsValid().Result is true).ToList();
         }
 
         private void FilterCampfireFoodsData(List<CampfireFoodData> campfireFoodData)

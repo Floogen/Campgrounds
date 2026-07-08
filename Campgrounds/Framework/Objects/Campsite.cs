@@ -34,7 +34,7 @@ namespace Campgrounds.Framework.Objects
             Guest = guest;
 
             CookingSpot = new CookingSpot() { CanCook = true };
-            CurrentCampTent = Campgrounds.campManager.CampingTentData.First();
+            CurrentCampTent = Campgrounds.tentManager.GetCurrentTent(who);
         }
 
         public GameLocation GetLocation()
