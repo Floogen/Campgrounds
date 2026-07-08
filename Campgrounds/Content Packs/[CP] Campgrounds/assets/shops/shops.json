@@ -27,7 +27,7 @@
             {
               "Id": "PeacefulEnd.Campgrounds.Items.CampingPass",
               "ItemId": "(O)PeacefulEnd.Campgrounds.Items.CampingPass",
-              "Price": 500,
+              "Price": 1000,
               "AvailableStock": 1,
               "AvailableStockLimit": "Player"
             },

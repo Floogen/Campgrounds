@@ -71,6 +71,20 @@ namespace Campgrounds.Framework.Utilities
                     break;
             }
         }
+        
+        
+        public static void OnOverrideCampingInviteResponse(Farmer who, string answer, NPC npc)
+        {
+            switch (answer)
+            {
+                case "Yes":
+                    Campgrounds.villagerManager.SetInvitedCharacter(null);
+                    npc.tryToReceiveActiveObject(who, probe: false);
+                    break;
+                case "No":
+                    break;
+            }
+        }
 
         public static bool IsCarRepaired()
         {

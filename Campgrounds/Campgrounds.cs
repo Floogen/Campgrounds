@@ -51,6 +51,7 @@ namespace Campgrounds
 
                 // Apply Character patches
                 new FarmerPatch(monitor, modHelper).Apply(harmony);
+                new NPCPatch(monitor, modHelper).Apply(harmony);
 
                 // Apply Location patches
                 new GameLocationPatch(monitor, modHelper).Apply(harmony);
