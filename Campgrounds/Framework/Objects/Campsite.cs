@@ -215,16 +215,36 @@ namespace Campgrounds.Framework.Objects
             {
                 location.largeTerrainFeatures.Add(new CampingTent(playerTentTile.Value, playerTentDirection, this, CurrentCampTent));
             }
-            if (Guest != null && !location.isTerrainFeatureAt((int)guestTentTile.Value.X, (int)guestTentTile.Value.Y))
+            if (Guest is not null && !location.isTerrainFeatureAt((int)guestTentTile.Value.X, (int)guestTentTile.Value.Y))
             {
-                // TODO: Change this for guest specific tent
-                location.largeTerrainFeatures.Add(new CampingTent(guestTentTile.Value, guestTentDirection, this, CurrentCampTent));
+                CampingTentData guestCampingTentData = null;
+                if (Guest is Farmer farmer && farmer is not null)
+                {
+                    guestCampingTentData = Campgrounds.tentManager.GetCurrentTent(farmer);
+                }
+                else if (Guest is NPC npc && npc is not null)
+                {
+                    var villagerData = Campgrounds.villagerManager.GetVillagerData(npc);
+                    guestCampingTentData = Campgrounds.tentManager.GetTent(villagerData.TentId);
+                }
+
+                if (guestCampingTentData is null)
+                {
+                    guestCampingTentData = Campgrounds.tentManager.GetStarterTent();
+                }
+                location.largeTerrainFeatures.Add(new CampingTent(guestTentTile.Value, guestTentDirection, this, guestCampingTentData));
             }
 
             // Place the cooking spot
             if (!location.objects.ContainsKey(cookingSpotTile.Value))
             {
                 location.objects.Add(cookingSpotTile.Value, CookingSpot);
+            }
+
+            // Warp the Guest (if player, skip since we warp them via message)
+            if (Guest is NPC guestNPC && guestNPC is not null && Data.GuestSpawnTile is not null)
+            {
+                Game1.warpCharacter(guestNPC, GetLocation(), Data.GuestSpawnTile.Value);
             }
 
             return true;

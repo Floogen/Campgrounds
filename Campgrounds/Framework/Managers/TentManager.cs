@@ -99,5 +99,10 @@ namespace Campgrounds.Framework.Managers
 
             return unlockedCampingTents;
         }
+
+        public CampingTentData GetTent(string tentId)
+        {
+            return CampingTentData.FirstOrDefault(t => t .Id.EqualsIgnoreCase(tentId));
+        }
     }
 }

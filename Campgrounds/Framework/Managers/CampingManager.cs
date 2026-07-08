@@ -90,8 +90,9 @@ namespace Campgrounds.Framework.Managers
             }
         }
 
-        public void StartTraveling(Farmer who, CampgroundData campgroundData, Character guest = null)
+        public void StartTraveling(Farmer who, CampgroundData campgroundData)
         {
+            var guest = Campgrounds.villagerManager.GetInvitedCharacter(who);
             var campsite = new Campsite(who, campgroundData, guest);
             if (ActiveCampsites.Any(c => c.Data == campgroundData) is false)
             {
@@ -106,6 +107,10 @@ namespace Campgrounds.Framework.Managers
             }
 
             Campgrounds.messageManager.Messages.Add(new TravelMessage(campgroundData));
+            if (guest is Farmer guestFarmer && guestFarmer is not null)
+            {
+                // TODO: Send net message so other farmer can trigger their own TravelMessage
+            }
 
             // Adjust the time by the CampgroundData.TravelTimeInHours
             Game1.timeOfDay += campgroundData.TravelTimeInHours * 100;

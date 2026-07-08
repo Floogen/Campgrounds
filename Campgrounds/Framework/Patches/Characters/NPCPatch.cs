@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using StardewModdingAPI;
 using StardewValley;
 using StardewValley.Extensions;
+using StardewValley.Locations;
 using StardewValley.Menus;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +37,7 @@ namespace Campgrounds.Framework.Patches.Characters
             }
 
             // Check if anyone else has been invited with Camping Pass
-            var currentInvitedCharacter = Campgrounds.villagerManager.GetInvitedCharacter();
+            var currentInvitedCharacter = Campgrounds.villagerManager.GetInvitedCharacter(who);
             if (currentInvitedCharacter is not null)
             {
                 if (currentInvitedCharacter == __instance)
@@ -53,8 +54,30 @@ namespace Campgrounds.Framework.Patches.Characters
             }
             else
             {
-                Campgrounds.villagerManager.SetInvitedCharacter(__instance);
-                Game1.DrawDialogue(new Dialogue(__instance, null, "Thank you for the invite! It will be fun to go camping."));
+                // Check they have an entry in VillagerData or use the VillagerManager.GENERIC_VILLAGER_ID default (only if they are marriage candidates)
+                var villageData = Campgrounds.villagerManager.GetVillagerData(__instance);
+                if (villageData is null && __instance.datable.Value is true)
+                {
+                    villageData = Campgrounds.villagerManager.GetGenericData();
+                }
+
+                if (villageData is not null && villageData.HasRequirements() is true)
+                {
+                    Campgrounds.villagerManager.SetInvitedCharacter(who, __instance);
+                    Game1.DrawDialogue(new Dialogue(__instance, null, Campgrounds.villagerManager.GetGameReadyDialogue(villageData.InviteDialogueAccepted)));
+                }
+                else
+                {
+                    List<string> rejectDialogue = new List<string>() { "Sorry, I don't really feel like camping right now." };
+                    if (villageData is not null)
+                    {
+                        rejectDialogue = villageData.InviteDialogueRejected;
+                    }
+                    Game1.DrawDialogue(new Dialogue(__instance, null, Campgrounds.villagerManager.GetGameReadyDialogue(rejectDialogue)));
+
+                    __result = false;
+                    return false;
+                }
             }
 
             __result = true;

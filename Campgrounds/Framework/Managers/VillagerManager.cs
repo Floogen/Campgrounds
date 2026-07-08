@@ -47,18 +47,18 @@ namespace Campgrounds.Framework.Managers
         {
             if (Game1.player.modData.ContainsKey(INVITED_CAMPSITE_INVITE_MOD_DATA_ID))
             {
-                return Game1.getCharacterFromName(Game1.player.modData[INVITED_CAMPSITE_INVITE_MOD_DATA_ID]);
+                return Game1.getCharacterFromName(who.modData[INVITED_CAMPSITE_INVITE_MOD_DATA_ID]);
             }
 
             return null;
         }
 
-        public void SetInvitedCharacter(Character character = null)
+        public void SetInvitedCharacter(Farmer who, Character character = null)
         {
-            Game1.player.modData[INVITED_CAMPSITE_INVITE_MOD_DATA_ID] = string.Empty;
+            who.modData[INVITED_CAMPSITE_INVITE_MOD_DATA_ID] = string.Empty;
             if (character != null)
             {
-                Game1.player.modData[INVITED_CAMPSITE_INVITE_MOD_DATA_ID] = character.Name;
+                who.modData[INVITED_CAMPSITE_INVITE_MOD_DATA_ID] = character.Name;
             }
         }
     }
