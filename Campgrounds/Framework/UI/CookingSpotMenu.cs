@@ -330,7 +330,8 @@ namespace Campgrounds.Framework.UI
                 {
                     if (c.hoverText.Equals("ghosted"))
                     {
-                        hoverText = "???";
+                        hoverTitle = "???";
+                        hoverText = pagesOfCraftingRecipes[currentCraftingPage][c].UnlockHint;
                         continue;
                     }
                     hoverTitle = pagesOfCraftingRecipes[currentCraftingPage][c].DisplayName;

@@ -22,6 +22,7 @@ namespace Campgrounds.Framework.Models.Data
         public List<string> BuffIds { get; set; } = new List<string>();
 
         public string UnlockCondition { get; set; }
+        public string UnlockHint { get; set; }
 
         public List<Buff> GetBuffs()
         {

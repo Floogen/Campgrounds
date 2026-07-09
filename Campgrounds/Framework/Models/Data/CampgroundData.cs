@@ -1,9 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using StardewValley;
 
 namespace Campgrounds.Framework.Models.Data
 {
@@ -21,6 +17,19 @@ namespace Campgrounds.Framework.Models.Data
         public int TravelTimeInHours { get; set; }
 
         public bool ForceForageRefreshOnVisit { get; set; }
+
+        public string UnlockCondition { get; set; }
+        public string UnlockHint { get; set; }
+
+        public bool IsUnlocked()
+        {
+            if (string.IsNullOrEmpty(UnlockCondition))
+            {
+                return true;
+            }
+
+            return GameStateQuery.CheckConditions(UnlockCondition);
+        }
 
         public override (bool Result, string Error) IsValid()
         {

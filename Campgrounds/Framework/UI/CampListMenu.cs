@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Campgrounds.Framework.UI
@@ -33,6 +34,7 @@ namespace Campgrounds.Framework.UI
         private OptionsButton _travelButton;
 
         private CampgroundData _selectedCampsite;
+        private string _hoverHint;
 
         public CampListMenu() : base((int)Utility.getTopLeftPositionForCenteringOnScreen(1280, 720).X, (int)Utility.getTopLeftPositionForCenteringOnScreen(1280, 720).Y, 1280, 720, showUpperRightCloseButton: true)
         {
@@ -77,7 +79,7 @@ namespace Campgrounds.Framework.UI
                     continue;
                 }
 
-                // Check if the outfits are being clicked
+                // Check if the campsites are being clicked
                 if (_campsiteButtons[i].containsPoint(x, y))
                 {
                     _selectedCampsite = _pages[_currentPage][i];
@@ -115,7 +117,22 @@ namespace Campgrounds.Framework.UI
 
         public override void performHoverAction(int x, int y)
         {
+            base.performHoverAction(x, y);
 
+            _hoverHint = "";
+            for (int i = 0; i < _campsiteButtons.Count; i++)
+            {
+                if (!(_pages.Count > 0 && _pages[_currentPage].Count > i))
+                {
+                    continue;
+                }
+
+                // Check if the campsite is being hovered
+                if (_campsiteButtons[i].containsPoint(x, y, 4) && _pages[_currentPage][i].IsUnlocked() is false)
+                {
+                    _hoverHint = _pages[_currentPage][i].UnlockHint;
+                }
+            }
         }
 
         private void SetupLayout()
@@ -168,11 +185,16 @@ namespace Campgrounds.Framework.UI
             _travelButton.bounds.X = _campsiteSummaryDisplayBox.X + _travelButton.bounds.Width / 2 + 8;
             _travelButton.bounds.Y = _campsiteSummaryDisplayBox.Y + _campsiteSummaryDisplayBox.Height - 96;
 
-            PaginatePacks(Campgrounds.campManager.CampgroundData);
+            PaginatePacks(Campgrounds.campManager.CampgroundData.OrderByDescending(c => c.IsUnlocked()).ThenBy(c => c.TravelTimeInHours).ToList());
         }
 
         public void StartTravelingToCampsite(bool skipRationCheck = false)
         {
+            if (_selectedCampsite.IsUnlocked() is false)
+            {
+                return;
+            }
+
             if (skipRationCheck is false && Campgrounds.currencyManager.GetCurrencyBalance(Models.Enums.Currency.CampRations) <= 0)
             {
                 Game1.currentLocation.createQuestionDialogue("Are you sure you want to travel without rations? You will not be able to make food at the campfire.", Game1.currentLocation.createYesNoResponses(), (Farmer who, string answer) => CampingHelper.OnLeaveWithoutRationsResponse(who, answer, this));
@@ -242,7 +264,7 @@ namespace Campgrounds.Framework.UI
             var secondaryCampsiteName = "";
             var travelTimeInfo = $"";
             var vehicleRequiredInfo = $"";
-            if (_selectedCampsite is not null && Game1.locationData.ContainsKey(_selectedCampsite.Id))
+            if (_selectedCampsite is not null && _selectedCampsite.IsUnlocked() && Game1.locationData.ContainsKey(_selectedCampsite.Id))
             {
                 campsiteName = Game1.locationData[_selectedCampsite.Id].DisplayName;
                 if (campsiteName.Length > 16)
@@ -304,7 +326,14 @@ namespace Campgrounds.Framework.UI
                     }
 
                     IClickableMenu.drawTextureBox(b, Game1.mouseCursors, new Rectangle(384, 396, 15, 15), _campsiteButtons[j].bounds.X, _campsiteButtons[j].bounds.Y, _campsiteButtons[j].bounds.Width, _campsiteButtons[j].bounds.Height, _campsiteButtons[j].containsPoint(Game1.getOldMouseX(), Game1.getOldMouseY()) ? Color.Wheat : Color.White, 4f, drawShadow: false);
-                    SpriteText.drawString(b, locationName, _campsiteButtons[j].bounds.X + 58, _campsiteButtons[j].bounds.Y + 20, color: new Color(86, 22, 12));
+                    if (campsite.IsUnlocked() is false)
+                    {
+                        SpriteText.drawString(b, "???", _campsiteButtons[j].bounds.X + 58, _campsiteButtons[j].bounds.Y + 20, color: Color.Black * 0.35f, alpha: 0.89f);
+                    }
+                    else
+                    {
+                        SpriteText.drawString(b, locationName, _campsiteButtons[j].bounds.X + 58, _campsiteButtons[j].bounds.Y + 20, color: new Color(86, 22, 12));
+                    }
                 }
             }
 
@@ -318,7 +347,7 @@ namespace Campgrounds.Framework.UI
                 _backButton.draw(b);
             }
 
-            if (_selectedCampsite is not null)
+            if (_selectedCampsite is not null && _selectedCampsite.IsUnlocked() is true)
             {
                 Texture2D previewCampsiteTexture = Campgrounds.modHelper.GameContent.Load<Texture2D>(Campgrounds.CAMPGROUND_DEFAULT_PREVIEW_TEXTURE_PATH);
                 float previewCampsiteScale = _selectedCampsite.PreviewTextureScale > 0f ? _selectedCampsite.PreviewTextureScale : 4f;
@@ -341,6 +370,11 @@ namespace Campgrounds.Framework.UI
 
             base.draw(b);
             base.drawMouse(b, ignore_transparency: true);
+
+            if (string.IsNullOrEmpty(_hoverHint) is false)
+            {
+                drawHoverText(b, _hoverHint, Game1.smallFont, 0, 0, -1, null, -1, null, null, 0, null, -1, -1, -1, 1f, null, null);
+            }
         }
     }
 }
