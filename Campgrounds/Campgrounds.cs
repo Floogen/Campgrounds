@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
+using StardewValley.Extensions;
 using StardewValley.Internal;
 using System;
 using System.Collections.Generic;
@@ -34,6 +35,7 @@ namespace Campgrounds
         public const string CAMPING_TENTS_DATA_PATH = "Data/PeacefulEnd_Campgrounds/CampingTents";
         public const string CAMPFIRE_FOODS_DATA_PATH = "Data/PeacefulEnd_Campgrounds/CampfireFoods";
         public const string VILLAGER_DATA_PATH = "Data/PeacefulEnd_Campgrounds/Villagers";
+
         public const string CAMPGROUND_DEFAULT_PREVIEW_TEXTURE_PATH = "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/Default_Preview";
 
         public override void Entry(IModHelper helper)
@@ -94,6 +96,19 @@ namespace Campgrounds
                 return new[]
                 {
                     new ItemQueryResult(new CampRations())
+                };
+            });
+
+            ItemQueryResolver.Register(CampsiteMap.CAMPSITE_MAP_ID, (string key, string arguments, ItemQueryContext context, bool avoidRepeat, HashSet<string> avoidItemIds, Action<string, string> logError) => {
+                string[] args = ArgUtility.SplitBySpaceQuoteAware(arguments);
+                if (ArgUtility.TryGet(args, 0, out string campgroundId, out string error) is false || (campManager.CampgroundData.FirstOrDefault(c => c.Id.EqualsIgnoreCase(campgroundId)) is var campgroundData && campgroundData is null))
+                {
+                    return ItemQueryResolver.Helpers.ErrorResult(key, arguments, logError, error);
+                }
+
+                return new[]
+                {
+                    new ItemQueryResult(new CampsiteMap(campgroundData))
                 };
             });
         }

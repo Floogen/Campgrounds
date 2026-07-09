@@ -21,6 +21,24 @@
           "CanBeTrashed": true,
           "ExcludeFromRandomSale": true,
           "ExcludeFromShippingCollection": true
+        },
+        "PeacefulEnd.Campgrounds.Items.CampsiteMap": {
+          "Name": "PeacefulEnd.Campgrounds.Items.CampsiteMap",
+          "DisplayName": "Campsite Map",
+          "Description": "A map to a campsite.",
+          "Type": "Basic",
+          "Category": 0,
+          "Price": 1000,
+
+          "Texture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/Items",
+          "SpriteIndex": 1,
+
+          "Edibility": -300,
+
+          "CanBeGivenAsGift": false,
+          "CanBeTrashed": true,
+          "ExcludeFromRandomSale": true,
+          "ExcludeFromShippingCollection": true
         }
       }
     },

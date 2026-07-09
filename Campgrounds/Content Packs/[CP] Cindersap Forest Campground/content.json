@@ -437,7 +437,10 @@
           },
           "Description": "A peaceful camping spot in Cindersap Forest.",
           "RequireVehicle": false,
-          "TravelTimeInHours": 0
+          "TravelTimeInHours": 0,
+
+          "UnlockCondition": "WORLD_STATE_ID MAP_UNLOCKED_CAMPGROUND:PeacefulEnd.Campgrounds.CindersapForestCampground",
+          "UnlockHint": "Unlocked after talking with the Cindersap Park Ranger."
         }
       }
     },
