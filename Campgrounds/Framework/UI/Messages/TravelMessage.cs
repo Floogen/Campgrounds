@@ -51,6 +51,10 @@ namespace Campgrounds.Framework.UI.Messages
                 }
 
                 _travelMessageText = $"After a {travelTime} {travelType}, you arrive at the campsite...";
+                if (Campgrounds.villagerManager.GetInvitedCharacter(Game1.player) != null)
+                {
+                    _travelMessageText = $"After a {travelTime} {travelType}, you and your friend arrive at the campsite...";
+                }
             }
         }
 

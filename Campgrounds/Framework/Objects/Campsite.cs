@@ -4,6 +4,7 @@ using Campgrounds.Framework.Models.Enums;
 using Microsoft.Xna.Framework;
 using StardewModdingAPI;
 using StardewValley;
+using StardewValley.Pathfinding;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,8 @@ namespace Campgrounds.Framework.Objects
         public CampingTentData CurrentCampTent { get; private set; }
 
         public bool IsTraveling { get; private set; }
+
+        private Stack<Dialogue> _cachedDialogue;
 
         public Campsite(Farmer who, CampgroundData data, Character guest = null)
         {
@@ -114,7 +117,7 @@ namespace Campgrounds.Framework.Objects
                 return;
             }
 
-            HandleCampsiteSetup();
+            HandleCampsiteSetup(isDayAfter: true);
 
             CookingSpot.HasCookedToday = false;
             if (location.farmers.Any(c => c == Camper) || location.characters.Any(c => c == Guest))
@@ -142,7 +145,7 @@ namespace Campgrounds.Framework.Objects
             }
         }
 
-        public bool HandleCampsiteSetup()
+        public bool HandleCampsiteSetup(bool isDayAfter = false)
         {
             var location = GetLocation();
             if (location is null)
@@ -245,6 +248,13 @@ namespace Campgrounds.Framework.Objects
             if (Guest is NPC guestNPC && guestNPC is not null && Data.GuestSpawnTile is not null)
             {
                 Game1.warpCharacter(guestNPC, GetLocation(), Data.GuestSpawnTile.Value);
+
+                // Cache previous dialogue
+                _cachedDialogue = new Stack<Dialogue>(guestNPC.CurrentDialogue.Reverse());
+
+                // Assign dialogue to character
+                var dialogue = Campgrounds.villagerManager.GetGameReadyDialogue(Campgrounds.villagerManager.GetCampsiteDialogue(Data, guestNPC, isDayAfter));
+                guestNPC.setNewDialogue(new Dialogue(guestNPC, null, dialogue));
             }
 
             return true;
@@ -253,6 +263,54 @@ namespace Campgrounds.Framework.Objects
         public void HandleExit()
         {
             Sanitize();
+
+            // Clear invited NPC
+            Campgrounds.villagerManager.SetInvitedCharacter(Camper, null);
+
+            if (Guest is NPC npc && npc is not null)
+            {
+                // Restore previous dialogue
+                npc.CurrentDialogue.Clear();
+                if (_cachedDialogue is not null)
+                {
+                    foreach (Dialogue d in _cachedDialogue.Reverse())
+                    {
+                        npc.CurrentDialogue.Push(d);
+                    }
+
+                    _cachedDialogue = null;
+                }
+
+                // Reset schedule
+                ReturnNPCToSchedule(npc);
+            }
+        }
+
+        private void ReturnNPCToSchedule(NPC npc)
+        {
+            if (npc.Schedule != null && npc.Schedule.Count > 0)
+            {
+                // Find the latest schedule entry
+                var validKeys = npc.Schedule.Keys.Where(t => t <= Game1.timeOfDay);
+                if (validKeys is null || validKeys.Count() == 0)
+                {
+                    // No valid schedule (send home)
+                    Game1.warpCharacter(npc, npc.DefaultMap, npc.DefaultPosition / 64f);
+                    return;
+                }
+
+                SchedulePathDescription entry = npc.Schedule[validKeys.Min()];
+                Game1.warpCharacter(npc, entry.targetLocationName, entry.targetTile);
+                npc.faceDirection(entry.facingDirection);
+
+                // Let the schedule system resync so they continue on to later entries
+                npc.checkSchedule(entry.time);
+            }
+            else
+            {
+                // No valid schedule (send home)
+                Game1.warpCharacter(npc, npc.DefaultMap, npc.DefaultPosition / 64f);
+            }
         }
 
         internal void Sleep()

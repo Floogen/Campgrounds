@@ -1,0 +1,425 @@
+﻿{
+  "Changes": [
+    // Add villager marriage candidates
+    {
+      "Action": "EditData",
+      "Target": "Data/PeacefulEnd_Campgrounds/Villagers",
+      "Entries": {
+        "Abigail": {
+          "Id": "Abigail",
+          //"TentId": "PeacefulEnd.Campgrounds.Tents.AbigailTent",
+
+          "LikedCampgrounds": [],
+          "DislikedCampgrounds": [],
+
+          "InviteDialogueAccepted": [
+            "Camping? Count me in!$h"
+          ],
+          "InviteDialogueRejected": [
+            "Camping? With you? Uh... no thanks.$s"
+          ],
+          "LikedDialogueDayOf": [
+            "This spot is awesome! It feels like the start of an adventure.$h",
+            "Thanks for inviting me!$h"
+          ],
+          "NeutralDialogueDayOf": [
+            "Not a bad spot. Let me know where I can help out!"
+          ],
+          "DislikedDialogueDayOf": [
+            "This is the spot you picked? Well... better than being stuck in my room all day.$s"
+          ],
+          "LikedDialogueDayAfter": [
+            "I have to tell Sebastian and Sam how fun it was. They totally have to come next time.$h",
+            "Thanks again for bringing me along!"
+          ],
+          "NeutralDialogueDayAfter": [
+            "The food last night was actually pretty good.",
+            "Is it weird to want roasted marshmallows for breakfast?$h"
+          ],
+          "DislikedDialogueDayAfter": [
+            "Next time let's camp somewhere with a little more... atmosphere.$s"
+          ],
+
+          "RequirementsCondition": "PLAYER_FRIENDSHIP_POINTS Current Abigail 500"
+        },
+        "Emily": {
+          "Id": "Emily",
+          //"TentId": "PeacefulEnd.Campgrounds.Tents.EmilyTent",
+
+          "InviteDialogueAccepted": [
+            "Camping? Oh, I'd love to! Sleeping under the open sky does wonders for your energy...$h"
+          ],
+          "InviteDialogueRejected": [
+            "Oh, I wish I could! But I'm working at the saloon tonight. Next time?$s"
+          ],
+          "LikedDialogueDayOf": [
+            "Wow, the energy here is amazing!$h",
+            "Can you feel it? The whole clearing is practically glowing."
+          ],
+          "NeutralDialogueDayOf": [
+            "This is a peaceful little spot!$h",
+            "I might do some meditating before dinner. Do you want to join?$h"
+          ],
+          "DislikedDialogueDayOf": [
+            "Hmm... the energy here feels a little stagnant.$s",
+            "No worries, though! Nothing a dance around the campfire can't fix.$h"
+          ],
+          "LikedDialogueDayAfter": [
+            "Dancing around the fire under the stars... I felt so free!$h",
+            "We really must do this again."
+          ],
+          "NeutralDialogueDayAfter": [
+            "There's just something about a meal cooked over an open flame. It just tastes better, you know?"
+          ],
+          "DislikedDialogueDayAfter": [
+            "We should find a place where the energy flows a little better."
+          ],
+
+          "RequirementsCondition": "PLAYER_FRIENDSHIP_POINTS Current Emily 500"
+        },
+        "Haley": {
+          "Id": "Haley",
+          //"TentId": "PeacefulEnd.Campgrounds.Tents.HaleyTent",
+
+          "InviteDialogueAccepted": [
+            "Camping? Like... outside, in the dirt?$a",
+            "Fine, but only because the light out there is supposed to be AMAZING for photos.$h"
+          ],
+          "InviteDialogueRejected": [
+            "Ew... No.$s"
+          ],
+          "LikedDialogueDayOf": [
+            "This is actually... kind of pretty?$h",
+            "Don't tell anyone I said that.$neutral"
+          ],
+          "NeutralDialogueDayOf": [
+            "It's nicer out here than I thought.$neutral",
+            "I'm still not touching any bugs, though. That's your job.$h"
+          ],
+          "DislikedDialogueDayOf": [
+            "Ugh... There is mud everywhere. This better be worth it.$s"
+          ],
+          "LikedDialogueDayAfter": [
+            "Okay, I admit it! I had fun camping with you.$h",
+            "We should do it again... after I wash my hair like three times.$neutral"
+          ],
+          "NeutralDialogueDayAfter": [
+            "The s'mores were the best part of this trip.$h",
+            "I wonder if we have time to make some more before heading out?$neutral"
+          ],
+          "DislikedDialogueDayAfter": [
+            "I couldn't sleep at all last night.$s",
+            "Next time we're going somewhere with, like... walls."
+          ],
+
+          "RequirementsCondition": "PLAYER_FRIENDSHIP_POINTS Current Haley 500"
+        },
+        "Leah": {
+          "Id": "Leah",
+          //"TentId": "PeacefulEnd.Campgrounds.Tents.LeahTent",
+
+          "InviteDialogueAccepted": [
+            "Camping? I would love to go! I'll bring my sketchbook... nature always looks different at dusk.$h"
+          ],
+          "InviteDialogueRejected": [
+            "Oh... I appreciate the thought. Maybe another time?$s"
+          ],
+          "LikedDialogueDayOf": [
+            "This spot is beautiful! Look at the light coming through the trees... I have to sketch this before it changes.$h",
+            "Being out here reminds me why I left the city. Thank you for inviting me.$h"
+          ],
+          "NeutralDialogueDayOf": [
+            "This is nice. I think I saw some wild plants on the walk in...",
+            "Want me to forage something up for dinner?$h"
+          ],
+          "DislikedDialogueDayOf": [
+            "Hmm... it's a little bare out here, honestly.$s",
+            "But every landscape has something worth drawing if you look long enough.$neutral"
+          ],
+          "LikedDialogueDayAfter": [
+            "I made some good sketches last night! I might just turn one of them into a painting.$h",
+            "There's just something about firelight...We have to do that again sometime.$h"
+          ],
+          "NeutralDialogueDayAfter": [
+            "Dinner by the campfire was lovely. Food always tastes better outdoors, don't you think?"
+          ],
+          "DislikedDialogueDayAfter": [
+            "I can't wait to be back home...$s",
+            "Next time, let's find somewhere with a bit more life to it."
+          ],
+
+          "RequirementsCondition": "PLAYER_FRIENDSHIP_POINTS Current Leah 500"
+        },
+        "Maru": {
+          "Id": "Maru",
+          //"TentId": "PeacefulEnd.Campgrounds.Tents.MaruTent",
+
+          "InviteDialogueAccepted": [
+            "Camping? Yes! The visibility away from town should be incredible... I'll bring my telescope.$h"
+          ],
+          "InviteDialogueRejected": [
+            "Oh, that sounds fun... but I'm on shift at the clinic today.$s"
+          ],
+          "LikedDialogueDayOf": [
+            "This site is perfect!$h",
+            "I have a feeling tonight's sky is going to be amazing."
+          ],
+          "NeutralDialogueDayOf": [
+            "This is a nice spot.",
+            "Want some help setting up? Let me see if I can tidy up our tents.$h"
+          ],
+          "DislikedDialogueDayOf": [
+            "Hm, this is not exactly the camping spot I imagined.$s",
+            "Oh well, best to make due with what we have!"
+          ],
+          "LikedDialogueDayAfter": [
+            "I've been up since sunrise taking notes. There is just so much to observe out here...",
+            "Can we stay another night? ...just kidding! Mostly.$h"
+          ],
+          "NeutralDialogueDayAfter": [
+            "I slept better than expected!$h",
+            "There is just something about sleeping outdoors that is really refreshing."
+          ],
+          "DislikedDialogueDayAfter": [
+            "The cloud cover last night ruined my observations.$s",
+            "Something also chewed on my equipment bag...$s"
+          ],
+
+          "RequirementsCondition": "PLAYER_FRIENDSHIP_POINTS Current Maru 500"
+        },
+        "Penny": {
+          "Id": "Penny",
+          //"TentId": "PeacefulEnd.Campgrounds.Tents.PennyTent",
+
+          "InviteDialogueAccepted": [
+            "Camping? Oh... I would really like that.",
+            "It will be nice to get away for a night!$h"
+          ],
+          "InviteDialogueRejected": [
+            "Oh, I'm sorry... I promised Jas and Vincent I would help them with their lessons today.$s"
+          ],
+          "LikedDialogueDayOf": [
+            "It's lovely out here... This is exactly the kind of place I daydream about.$h",
+            "Thank you for thinking of me. I... don't get invited on adventures very often."
+          ],
+          "NeutralDialogueDayOf": [
+            "This is a nice little spot. Let me see if I can put together some firewood.$h"
+          ],
+          "DislikedDialogueDayOf": [
+            "Oh... it's a little rough out here, isn't it?",
+            "Sorry, I don't mean to complain...$s"
+          ],
+          "LikedDialogueDayAfter": [
+            "I read by firelight until I couldn't keep my eyes open... I can't remember the last time I felt this peaceful.$h",
+            "I should see about bringing the kids out here. I am sure they would love it!$h"
+          ],
+          "NeutralDialogueDayAfter": [
+            "I hope you slept well. I thought I would tidy up around the tents a bit before breakfast.",
+            "The soup over the campfire last night reminded me of cooking at home... only it actually turned out well this time.$h"
+          ],
+          "DislikedDialogueDayAfter": [
+            "I didn't sleep very well... the ground was harder than I expected.$s",
+            "But please don't feel bad. I'm still glad you invited me.$neutral"
+          ],
+
+          "RequirementsCondition": "PLAYER_FRIENDSHIP_POINTS Current Penny 500"
+        },
+
+        "Alex": {
+          "Id": "Alex",
+          //"TentId": "PeacefulEnd.Campgrounds.Tents.AlexTent",
+
+          "InviteDialogueAccepted": [
+            "Camping? Sure, I'm in! Fresh air, hauling gear... what more could you need?$h"
+          ],
+          "InviteDialogueRejected": [
+            "Nah, sorry. Maybe next time!$s"
+          ],
+          "LikedDialogueDayOf": [
+            "Good call inviting me. Someone's gotta carry all the heavy stuff, right?$h"
+          ],
+          "NeutralDialogueDayOf": [
+            "Not a bad spot. Is there anything else that needs to be setup?"
+          ],
+          "DislikedDialogueDayOf": [
+            "Kind of a rough spot. Not much room to run around or anything...",
+            "Whatever, I'll just do push-ups until dinner.$s"
+          ],
+          "LikedDialogueDayAfter": [
+            "Man, I slept like a rock! Something about being outside all day just knocks you out.$h",
+            "I already got a morning run in around the site while you were still asleep!$h"
+          ],
+          "NeutralDialogueDayAfter": [
+            "Morning! Please tell me there's food soon. Outdoor cooking is great and all, but my stomach's been growling since sunrise."
+          ],
+          "DislikedDialogueDayAfter": [
+            "Ugh, my back is killing me from that ground. Next time we need to find a better spot.$s"
+          ],
+
+          "RequirementsCondition": "PLAYER_FRIENDSHIP_POINTS Current Alex 500"
+        },
+        "Elliott": {
+          "Id": "Elliott",
+          //"TentId": "PeacefulEnd.Campgrounds.Tents.ElliottTent",
+          "InviteDialogueAccepted": [
+            "A night beneath the stars? How could I refuse? Nature has always been the finest muse.$h"
+          ],
+          "InviteDialogueRejected": [
+            "I'm afraid I must decline... Perhaps another time, my friend.$s"
+          ],
+          "LikedDialogueDayOf": [
+            "You have a poet's eye for location, my friend. This place sings!$h"
+          ],
+          "NeutralDialogueDayOf": [
+            "An agreeable spot, I suppose. I've brought my journal, should inspiration strike."
+          ],
+          "DislikedDialogueDayOf": [
+            "I must confess this place leaves... much to be desired.$s"
+          ],
+          "LikedDialogueDayAfter": [
+            "You know, I came here expecting a simple diversion. To think I would find genuine inspiration!$h"
+          ],
+          "NeutralDialogueDayAfter": [
+            "Good morning. I do hope there's some coffee brewing...."
+          ],
+          "DislikedDialogueDayAfter": [
+            "I barely slept a wink and my hair is an absolute disaster...$s"
+          ],
+
+          "RequirementsCondition": "PLAYER_FRIENDSHIP_POINTS Current Elliott 500"
+        },
+        "Harvey": {
+          "Id": "Harvey",
+          //"TentId": "PeacefulEnd.Campgrounds.Tents.HarveyTent",
+          "InviteDialogueAccepted": [
+            "Camping? Oh! Well... yes, I'd love to come along. Fresh air is wonderful for your health, you know.$h"
+          ],
+          "InviteDialogueRejected": [
+            "Oh, I'm sorry... I really shouldn't leave the clinic unattended.$s"
+          ],
+          "LikedDialogueDayOf": [
+            "This is a lovely spot! And don't worry, I brought a fully stocked first aid kit.$h"
+          ],
+          "NeutralDialogueDayOf": [
+            "Nice place. Remember to stay hydrated, okay? People always underestimate how much water they need."
+          ],
+          "DislikedDialogueDayOf": [
+            "Hmm... is that poison oak over there? And the ground looks awfully uneven. Someone could twist an ankle...",
+            "I'm sorry, I don't mean to worry. I'll just... double-check the first aid supplies again.$s"
+          ],
+          "LikedDialogueDayAfter": [
+            "I slept surprisingly well! You know, studies show time in nature genuinely lowers stress levels.$h",
+            "I can feel it working already!"
+          ],
+          "NeutralDialogueDayAfter": [
+            "Good morning. I hope you stretched before getting up. Sleeping on the ground can be hard on the spine."
+          ],
+          "DislikedDialogueDayAfter": [
+            "I barely slept... every rustle in the bushes had me imagining worst-case scenarios.$s",
+            "I think I need some coffee..."
+          ],
+
+          "RequirementsCondition": "PLAYER_FRIENDSHIP_POINTS Current Harvey 500"
+        },
+        "Sam": {
+          "Id": "Sam",
+          //"TentId": "PeacefulEnd.Campgrounds.Tents.SamTent",
+          "InviteDialogueAccepted": [
+            "Hey, hey, hey! A camping trip? Now that's what I'm talking about!$h"
+          ],
+          "InviteDialogueRejected": [
+            "Aw man, I can't today... I promised my little brother I would hang out with him.$s"
+          ],
+          "LikedDialogueDayOf": [
+            "This spot is gnarly!$h",
+            "I'm gonna write a note on my wrist so I remember to bring Vincent out here someday. He'd love it."
+          ],
+          "NeutralDialogueDayOf": [
+            "Not bad, not bad.",
+            "Hey... is it just me, or does the fresh air make you hungry? I'm starving already."
+          ],
+          "DislikedDialogueDayOf": [
+            "Ugh, my nose is already running. Why'd we have to camp somewhere with so much... nature?$s"
+          ],
+          "LikedDialogueDayAfter": [
+            "I stayed up super late playing guitar by the fire, and nobody told me to keep it down. Best. Night. Ever.$h",
+            "I've totally got ideas for a new song now. Sebastian's gonna be so jealous he missed this.$h"
+          ],
+          "NeutralDialogueDayAfter": [
+            "So what's the plan for today? Pack up? More hanging out? I'm good either way, honestly."
+          ],
+          "DislikedDialogueDayAfter": [
+            "I barely slept, man. I kept thinking a spider was gonna crawl into my mouth or something.$s",
+            "Don't laugh! It could happen!$a"
+          ],
+
+          "RequirementsCondition": "PLAYER_FRIENDSHIP_POINTS Current Sam 500"
+        },
+        "Sebastian": {
+          "Id": "Sebastian",
+          //"TentId": "PeacefulEnd.Campgrounds.Tents.SebastianTent",
+          "InviteDialogueAccepted": [
+            "Camping? Sure, why not. It'll get Demetrius off my back about never leaving my room.$h"
+          ],
+          "InviteDialogueRejected": [
+            "Camping? That's... a lot of outside. Maybe another time."
+          ],
+          "LikedDialogueDayOf": [
+            "You know, this is the kind of place I'd normally ride my bike to just to be alone. Guess the company's not bad either.$h"
+          ],
+          "NeutralDialogueDayOf": [
+            "It's fine, I guess. I brought a book, so I'm set either way."
+          ],
+          "DislikedDialogueDayOf": [
+            "I checked around the whole site. Not a single frog. What kind of place is this?$s"
+          ],
+          "LikedDialogueDayAfter": [
+            "I stayed up most of the night just looking at the sky. The stars out here are unreal...$h"
+          ],
+          "NeutralDialogueDayAfter": [
+            "Morning. Please tell me somebody brought coffee. I don't function without it.",
+            "*yawn*... I'm used to being up all night, just... not on the ground."
+          ],
+          "DislikedDialogueDayAfter": [
+            "I barely slept. Give me my windowless room over this any day.$s"
+          ],
+
+          "RequirementsCondition": "PLAYER_FRIENDSHIP_POINTS Current Sebastian 500"
+        },
+        "Shane": {
+          "Id": "Shane",
+          //"TentId": "PeacefulEnd.Campgrounds.Tents.ShaneTent",
+          "InviteDialogueAccepted": [
+            "Camping? With me? ...You're serious. Huh.$s",
+            "Sure... Beats another night of frozen pizza and staring at the TV.$h"
+          ],
+          "InviteDialogueRejected": [
+            "Camping? In the woods? On the ground? ...I'll pass.$s"
+          ],
+          "LikedDialogueDayOf": [
+            "It's quiet out here. Not the lonely kind of quiet. The good kind.",
+            "There's a difference, trust me.$h"
+          ],
+          "NeutralDialogueDayOf": [
+            "So this is camping, huh? ...It's fine, I guess.",
+            "What do we do now, just... sit here?"
+          ],
+          "DislikedDialogueDayOf": [
+            "The ground's lumpy, there's bugs everywhere... starting to think my luck follows me wherever I go.$s"
+          ],
+          "LikedDialogueDayAfter": [
+            "Morning. Don't tell anyone I said this... but I'm glad you dragged me out here.$h"
+          ],
+          "NeutralDialogueDayAfter": [
+            "So... do we make breakfast... or is standing around groggy part of the camping experience too?"
+          ],
+          "DislikedDialogueDayAfter": [
+            "That's the worst I've slept in a while... and that's saying something.$s"
+          ],
+
+          "RequirementsCondition": "PLAYER_FRIENDSHIP_POINTS Current Shane 500"
+        }
+      }
+    }
+  ]
+}

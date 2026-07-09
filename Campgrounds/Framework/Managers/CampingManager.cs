@@ -80,13 +80,17 @@ namespace Campgrounds.Framework.Managers
                     continue;
                 }
 
-                Farmer guestFarmer = null;
+                Character guest = null;
                 if (location.farmers.Count > 1)
                 {
-                    guestFarmer = location.farmers.Skip(1).First();
+                    guest = location.farmers.Where(f => f != Game1.player).First();
+                }
+                else
+                {
+                    guest = Campgrounds.villagerManager.GetInvitedCharacter(Game1.player);
                 }
 
-                ActiveCampsites.Add(new Campsite(location.farmers.First(), campground, guestFarmer));
+                ActiveCampsites.Add(new Campsite(Game1.player, campground, guest));
             }
         }
 

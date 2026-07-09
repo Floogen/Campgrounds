@@ -146,11 +146,7 @@ namespace Campgrounds
 
         private void OnAssetRequested(object sender, AssetRequestedEventArgs e)
         {
-            if (e.NameWithoutLocale.IsEquivalentTo($"Data/PeacefulEnd_Campgrounds/Villagers"))
-            {
-                //e.LoadFrom(() => textureManager.GetIdToAppearanceModels<BodyContentPack>(), AssetLoadPriority.High);
-            }
-            else if (e.NameWithoutLocale.IsEquivalentTo(CAMPGROUND_DATA_PATH))
+            if (e.NameWithoutLocale.IsEquivalentTo(CAMPGROUND_DATA_PATH))
             {
                 e.LoadFrom(() => campManager.CampgroundData, AssetLoadPriority.Medium);
             }

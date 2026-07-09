@@ -445,6 +445,12 @@
       "Action": "Load",
       "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/CindersapForestCampgroundPreview",
       "FromFile": "assets/campgrounds/campgroundPreview.png"
+    },
+
+    // Add villager data
+    {
+      "Action": "Include",
+      "FromFile": "assets/campgrounds/campingVillagers.json"
     }
   ]
 }

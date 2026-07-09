@@ -127,6 +127,21 @@ namespace Campgrounds.Framework.Managers
             return GetGameReadyDialogue(GetDialogue(dialogue, npc));
         }
 
+        public List<string> GetCampsiteDialogue(CampgroundData campgroundData, NPC npc, bool isDayAfter)
+        {
+            var villagerData = GetVillagerData(npc);
+            if (villagerData.LikedCampgrounds.Any(c => c.EqualsIgnoreCase(campgroundData.Id)))
+            {
+                return isDayAfter is true ? GetDialogue(CampDialogue.LikedDayAfter, npc) : GetDialogue(CampDialogue.LikedDayOf, npc);
+            }
+            else if (villagerData.DislikedCampgrounds.Any(c => c.EqualsIgnoreCase(campgroundData.Id)))
+            {
+                return isDayAfter is true ? GetDialogue(CampDialogue.DislikedDayAfter, npc) : GetDialogue(CampDialogue.DislikedDayOf, npc);
+            }
+
+            return isDayAfter is true ? GetDialogue(CampDialogue.NeutralDayAfter, npc) : GetDialogue(CampDialogue.NeutralDayOf, npc);
+        }
+
         public string GetGameReadyDialogue(List<string> dialogue)
         {
             return string.Join("#$b#", dialogue);

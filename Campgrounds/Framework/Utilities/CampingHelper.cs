@@ -78,7 +78,7 @@ namespace Campgrounds.Framework.Utilities
             switch (answer)
             {
                 case "Yes":
-                    Campgrounds.villagerManager.SetInvitedCharacter(null);
+                    Campgrounds.villagerManager.SetInvitedCharacter(who, null);
                     npc.tryToReceiveActiveObject(who, probe: false);
                     break;
                 case "No":
