@@ -30,6 +30,11 @@
     },
     {
       "Action": "Load",
+      "Target": "Maps/{{ModId}}_CindersapParkOvergrown",
+      "FromFile": "assets/maps/CindersapParkOvergrown.tmx"
+    },
+    {
+      "Action": "Load",
       "Target": "Maps/{{ModId}}_CindersapParkShop",
       "FromFile": "assets/maps/CindersapParkShop.tmx"
     },

@@ -12,9 +12,11 @@ using StardewModdingAPI.Events;
 using StardewValley;
 using StardewValley.Extensions;
 using StardewValley.Internal;
+using StardewValley.Network;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using xTile;
 
 namespace Campgrounds
 {
@@ -37,6 +39,9 @@ namespace Campgrounds
         public const string VILLAGER_DATA_PATH = "Data/PeacefulEnd_Campgrounds/Villagers";
 
         public const string CAMPGROUND_DEFAULT_PREVIEW_TEXTURE_PATH = "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/Default_Preview";
+
+        public const string CINDERSAP_PARK_MAP_PATH = "Maps/PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark";
+        public const string CINDERSAP_PARK_OVERGROWN_MAP_PATH = "Maps/PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkOvergrown";
 
         public override void Entry(IModHelper helper)
         {
@@ -84,6 +89,7 @@ namespace Campgrounds
             GameLocation.RegisterTileAction("PeacefulEnd.Campgrounds_CampShop", MapActionHelper.HandleCampShop);
             GameLocation.RegisterTileAction("PeacefulEnd.Campgrounds_CampingSiteList", MapActionHelper.HandleCampingSiteList);
             GameLocation.RegisterTileAction("PeacefulEnd.Campgrounds_CarRepair", MapActionHelper.HandleCarRepair);
+            GameLocation.RegisterTileAction("PeacefulEnd.Campgrounds_RepairVisitorSite", MapActionHelper.HandleVisitorSiteRepair);
             GameLocation.RegisterTouchAction("PeacefulEnd.Campgrounds_CampingExit", (GameLocation location, string[] args, Farmer who, Vector2 tile) => MapActionHelper.HandleCampingExit(location, args, who, tile, false));
 
             // Register commands
@@ -180,6 +186,44 @@ namespace Campgrounds
             else if (e.NameWithoutLocale.IsEquivalentTo(CAMPGROUND_DEFAULT_PREVIEW_TEXTURE_PATH))
             {
                 e.LoadFrom(() => Helper.ModContent.Load<Texture2D>("Framework/Assets/defaultCampgroundPreview.png"), AssetLoadPriority.Medium);
+            }
+            else if (e.NameWithoutLocale.IsEquivalentTo(CINDERSAP_PARK_MAP_PATH))
+            {
+                e.Edit(asset =>
+                {
+                    // load the source map from your mod folder
+                    Map source = Helper.GameContent.Load<Map>(CINDERSAP_PARK_OVERGROWN_MAP_PATH);
+
+                    // Check which visitor campsite(s) have been unlocked
+                    var editor = asset.AsMap();
+                    if (NetWorldState.checkAnywhereForWorldStateID(CampingHelper.GetCindersapParkVisitorParkKey(1)) is false)
+                    {
+                        editor.PatchMap(
+                            source: source,
+                            sourceArea: new Rectangle(0, 25, 22, 26),
+                            targetArea: new Rectangle(0, 25, 22, 26),
+                            patchMode: PatchMapMode.Replace
+                        );
+                    }
+                    if (NetWorldState.checkAnywhereForWorldStateID(CampingHelper.GetCindersapParkVisitorParkKey(2)) is false)
+                    {
+                        editor.PatchMap(
+                            source: source,
+                            sourceArea: new Rectangle(0, 0, 35, 25),
+                            targetArea: new Rectangle(0, 0, 35, 25),
+                            patchMode: PatchMapMode.Replace
+                        );
+                    }
+                    if (NetWorldState.checkAnywhereForWorldStateID(CampingHelper.GetCindersapParkVisitorParkKey(3)) is false)
+                    {
+                        editor.PatchMap(
+                            source: source,
+                            sourceArea: new Rectangle(40, 0, 29, 51),
+                            targetArea: new Rectangle(40, 0, 29, 51),
+                            patchMode: PatchMapMode.Replace
+                        );
+                    }
+                });
             }
         }
 

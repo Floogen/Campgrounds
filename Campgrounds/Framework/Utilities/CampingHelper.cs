@@ -1,4 +1,5 @@
-﻿using Campgrounds.Framework.UI;
+﻿using Campgrounds.Framework.Models.Data;
+using Campgrounds.Framework.UI;
 using StardewValley;
 using StardewValley.Network;
 using System;
@@ -23,7 +24,67 @@ namespace Campgrounds.Framework.Utilities
                     break;
             }
         }
-        
+
+        public static void OnRepairVisitorSiteResponse(Farmer who, string answer, int siteId)
+        {
+            if  (answer != "Yes")
+            {
+                return;
+            }
+
+            switch (siteId)
+            {
+                case 1:
+                    NetWorldState.addWorldStateIDEverywhere(GetCindersapParkVisitorParkKey(siteId));
+
+                    Game1.player.Items.ReduceId("(O)335", 2);
+                    Game1.player.Items.ReduceId("(O)388", 100);
+                    break;
+                case 2:
+                    NetWorldState.addWorldStateIDEverywhere(GetCindersapParkVisitorParkKey(siteId));
+
+                    Game1.player.Items.ReduceId("(O)335", 5);
+                    Game1.player.Items.ReduceId("(O)709", 25);
+                    Game1.player.Items.ReduceId("(O)388", 200);
+                    break;
+                case 3:
+                    NetWorldState.addWorldStateIDEverywhere(GetCindersapParkVisitorParkKey(siteId));
+
+                    Game1.player.Items.ReduceId("(O)726", 5);
+                    Game1.player.Items.ReduceId("(O)335", 15);
+                    Game1.player.Items.ReduceId("(O)709", 50);
+                    Game1.player.Items.ReduceId("(O)390", 200);
+                    break;
+            }
+
+            Game1.globalFadeToBlack(() =>
+            {
+                Game1.freezeControls = true;
+                DelayedAction.playSoundAfterDelay("woodWhack", 1000, pitch: 100);
+                DelayedAction.playSoundAfterDelay("crafting", 1500);
+                DelayedAction.playSoundAfterDelay("crafting", 2500, pitch: 50);
+                DelayedAction.playSoundAfterDelay("woodWhack", 3000);
+                DelayedAction.playSoundAfterDelay("crafting", 3500, pitch: 100);
+                DelayedAction.playSoundAfterDelay("achievement", 4800);
+
+                Game1.viewportFreeze = true;
+                Game1.viewport.X = -10000;
+                Game1.pauseThenDoFunction(5000, () =>
+                {
+                    Game1.globalFadeToClear();
+                    Game1.viewportFreeze = false;
+                    Game1.freezeControls = false;
+                });
+
+                Campgrounds.modHelper.GameContent.InvalidateCache(Campgrounds.CINDERSAP_PARK_MAP_PATH);
+            });
+        }
+
+        public static string GetCindersapParkVisitorParkKey(int siteId)
+        {
+            return $"CINDERSAP_PARK_VISITOR_SITE_{siteId}";
+        }
+
         public static void OnRepairCarResponse(Farmer who, string answer)
         {
             switch (answer)
@@ -32,11 +93,11 @@ namespace Campgrounds.Framework.Utilities
                     Game1.globalFadeToBlack(() =>
                     {
                         Game1.freezeControls = true;
-                        DelayedAction.playSoundAfterDelay("crafting", 1000);
-                        DelayedAction.playSoundAfterDelay("crafting", 1500);
-                        DelayedAction.playSoundAfterDelay("crafting", 2000);
-                        DelayedAction.playSoundAfterDelay("crafting", 2500);
-                        DelayedAction.playSoundAfterDelay("axchop", 3000);
+                        DelayedAction.playSoundAfterDelay("hammer", 1000);
+                        DelayedAction.playSoundAfterDelay("clank", 1500);
+                        DelayedAction.playSoundAfterDelay("hammer", 2000);
+                        DelayedAction.playSoundAfterDelay("hammer", 2500);
+                        DelayedAction.playSoundAfterDelay("clank", 3000);
                         DelayedAction.playSoundAfterDelay("Ship", 3200);
 
                         Game1.viewportFreeze = true;
@@ -58,7 +119,7 @@ namespace Campgrounds.Framework.Utilities
                     break;
             }
         }
-        
+
         public static void OnLeaveWithoutRationsResponse(Farmer who, string answer, CampListMenu campListMenu)
         {
             switch (answer)
