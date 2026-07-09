@@ -3,7 +3,7 @@
  <properties>
   <property name="DayTiles" value="Front 3 2 256 Front 3 3 288 Front 10 2 256 Front 10 3 288 Back 3 5 228 Back 3 6 260 Back 10 5 228 Back 10 6 260"/>
   <property name="DefaultWarpLocation" value="9 11"/>
-  <property name="NightTiles" value="Front 3 2 1253 Front 3 3 1285 Front 10 2 1253 Front 10 3 1253 Back 3 5 199 Back 3 6 231 Back 10 5 199 Back 10 6 231"/>
+  <property name="NightTiles" value="Front 3 2 1253 Front 3 3 1285 Front 10 2 1253 Front 10 3 1285 Back 3 5 199 Back 3 6 231 Back 10 5 199 Back 10 6 231"/>
   <property name="Warp" value="9 12 PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark 36 28"/>
  </properties>
  <tileset firstgid="1" name="1" tilewidth="16" tileheight="16" tilecount="2176" columns="32">
