@@ -73,6 +73,7 @@ namespace Campgrounds
             helper.Events.GameLoop.SaveLoaded += OnSaveLoaded;
             helper.Events.GameLoop.Saving += OnSaving;
             helper.Events.GameLoop.DayStarted += OnDayStarted;
+            helper.Events.Player.Warped += OnWarped;
             helper.Events.Display.Rendered += OnRendered;
             helper.Events.Content.AssetRequested += OnAssetRequested;
             helper.Events.Content.AssetsInvalidated += OnAssetInvalidated;
@@ -127,6 +128,15 @@ namespace Campgrounds
         {
             campManager.HandleActiveCampsites();
             campManager.HandleForageSpawning();
+        }
+
+        private void OnWarped(object sender, WarpedEventArgs e)
+        {
+            var campsite = campManager.GetActiveCampsiteFromLocation(e.OldLocation);
+            if (campsite is not null)
+            {
+                campManager.EndCampingTrip(e.OldLocation);
+            }
         }
 
         private void OnRendered(object sender, RenderedEventArgs e)
