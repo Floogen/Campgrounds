@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="12" height="12" tilewidth="16" tileheight="16" infinite="0" nextlayerid="18" nextobjectid="16">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="12" height="12" tilewidth="16" tileheight="16" infinite="0" nextlayerid="18" nextobjectid="17">
  <properties>
   <property name="AmbientLight" value="120 65 120"/>
   <property name="DayTiles" value="AlwaysFront 45 25 907 AlwaysFront 59 6 907 AlwaysFront 39 37 907"/>
@@ -1338,13 +1338,13 @@
    </animation>
   </tile>
  </tileset>
- <layer id="1" name="Back" width="12" height="12">
+ <layer id="1" name="Back2" width="12" height="12">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,2132,2133,2134,2135,2136,2137,2138,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
@@ -1376,7 +1376,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,2109,0,0,0,0,0,0,0,0,0,
-0,0,2132,2133,2134,2135,2136,2137,2138,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,2147485804,2147485803,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
@@ -1428,6 +1428,12 @@
   <object id="15" name="TileData" x="96" y="48" width="16" height="16">
    <properties>
     <property name="Action" value="OpenShop Traveler down"/>
+   </properties>
+  </object>
+  <object id="16" name="TileData" x="80" y="96" width="16" height="16">
+   <properties>
+    <property name="HasSmoke" value="T"/>
+    <property name="IsCampfire" value="T"/>
    </properties>
   </object>
  </objectgroup>

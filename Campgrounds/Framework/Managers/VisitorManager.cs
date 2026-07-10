@@ -4,10 +4,13 @@ using Campgrounds.Framework.Models.Enums;
 using Campgrounds.Framework.UI;
 using Campgrounds.Framework.UI.Messages;
 using Campgrounds.Framework.Utilities;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewModdingAPI.Utilities;
 using StardewValley;
+using StardewValley.Extensions;
 using StardewValley.Network;
 using System;
 using System.Collections.Generic;
@@ -15,6 +18,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using xTile;
+using xTile.Dimensions;
+using xTile.Layers;
 
 namespace Campgrounds.Framework.Managers
 {
@@ -24,11 +29,18 @@ namespace Campgrounds.Framework.Managers
         private List<VisitorData> _visitorData = new List<VisitorData>();
 
         public Dictionary<VisitorSpots, VisitorData> ActiveVisitorSpots { get; set; } = new Dictionary<VisitorSpots, VisitorData>();
+        
+        public List<Vector2> CampfireTiles = new List<Vector2>();
+        public List<Vector2> SmokeTiles = new List<Vector2>();
+
+        private double _smokeTimer = 0f;
 
         public VisitorManager(IMonitor monitor, IModHelper helper) : base(monitor, helper)
         {
             helper.Events.GameLoop.GameLaunched += OnGameLaunched;
             helper.Events.GameLoop.DayStarted += OnDayStarted;
+            helper.Events.GameLoop.UpdateTicked += OnUpdateTicked;
+            helper.Events.Player.Warped += OnWarped;
             helper.Events.Content.AssetRequested += OnAssetRequested;
         }
 
@@ -73,6 +85,43 @@ namespace Campgrounds.Framework.Managers
 
             // Invalidate the park's map to force the patches to apply
             helper.GameContent.InvalidateCache(Campgrounds.CINDERSAP_PARK_MAP_PATH);
+
+            // Update any lighting / fires due to tile property changes
+            UpdateVisitorSpotTileProperties();
+        }
+
+        private void OnUpdateTicked(object sender, UpdateTickedEventArgs e)
+        {
+            if (Game1.game1.IsActive is false)
+            {
+                return;
+            }
+
+            if (_smokeTimer <= 0f)
+            {
+                _smokeTimer = 1000f;
+
+                var location = Game1.getLocationFromName("PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark");
+                if (location is null)
+                {
+                    return;
+                }
+
+                foreach (var smokeTile in SmokeTiles)
+                {
+                    Utility.addSmokePuff(location, smokeTile * 64f + new Vector2(24f, -16f));
+                }
+            }
+            else
+            {
+                _smokeTimer -= Game1.currentGameTime.ElapsedGameTime.TotalMilliseconds;
+            }
+        }
+
+        private void OnWarped(object sender, WarpedEventArgs e)
+        {
+            // Update lighting
+            UpdateCampfireLighting();
         }
 
         private void OnAssetRequested(object sender, AssetRequestedEventArgs e)
@@ -136,6 +185,57 @@ namespace Campgrounds.Framework.Managers
                         }
                     }
                 });
+            }
+        }
+
+        private void UpdateVisitorSpotTileProperties()
+        {
+            var location = Game1.getLocationFromName("PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark");
+            if (location is null)
+            {
+                return;
+            }
+
+            // Clear any campfire lighting
+            foreach (var lightSource in Game1.currentLightSources.Where(l => l.Value.Id.ContainsIgnoreCase("campfireParkLightSource_")).ToList())
+            {
+                Game1.currentLightSources.Remove(lightSource.Key);
+            }
+
+            // Clear current tracked fire tiles
+            CampfireTiles.Clear();
+            SmokeTiles.Clear();
+
+            // Update the park tiles
+            var layer = location.Map.GetLayer("Buildings");
+
+            for (int x = 0; x < layer.LayerWidth; x++)
+            {
+                for (int y = 0; y < layer.LayerHeight; y++)
+                {
+                    if (location.doesTileHaveProperty(x, y, "IsCampfire", "Buildings") != null)
+                    {
+                        CampfireTiles.Add(new Vector2(x, y));
+                        if (location.doesTileHaveProperty(x, y, "HasSmoke", "Buildings") != null)
+                        {
+                            SmokeTiles.Add(new Vector2(x, y));
+                        }
+                    }
+                }
+            }
+
+            // Update lighting
+            UpdateCampfireLighting();
+        }
+
+        private void UpdateCampfireLighting()
+        {
+            foreach (var campfireTile in CampfireTiles)
+            {
+                float yOffset = 32f;
+
+                var lightSource = new LightSource($"campfireParkLightSource_{Guid.NewGuid()}", LightSource.sconceLight, new Vector2(campfireTile.X * 64f + 32f, campfireTile.Y * 64f + yOffset), 2.5f, new Color(0, 80, 160));
+                Game1.currentLightSources.Add(lightSource);
             }
         }
 
