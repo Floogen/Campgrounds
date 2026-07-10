@@ -14,5 +14,6 @@ namespace Campgrounds.Framework.Models.Data.Visitors
     {
         public Vector2 Tile { get; set; }
         public Direction Direction { get; set; } = Direction.North;
+        public string SpawnVisitorName { get; set; }
     }
 }

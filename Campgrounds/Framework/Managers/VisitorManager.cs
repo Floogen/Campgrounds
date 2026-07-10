@@ -269,14 +269,15 @@ namespace Campgrounds.Framework.Managers
                 return;
             }
 
-            // Clear any existing visitorCount from the map
+            // Clear any existing visitors from the map
             foreach (var npc in location.characters.ToList())
             {
                 // TODO: Exclude the park's caretaker from the removal
                 NPCHelper.ReturnNPCToSchedule(npc);
             }
 
-            // Add required visitorCount to map
+            // Add required visitors to map
+            var manualVisitorTiles = new List<VisitorTile>();
             var visitorSpotToSpawnTiles = new Dictionary<VisitorSpots, List<VisitorTile>>()
             {
                 { VisitorSpots.SW, new List<VisitorTile>() },
@@ -302,9 +303,20 @@ namespace Campgrounds.Framework.Managers
                             visitorSpotToSpawnTiles[visitorSpot].Add(new VisitorTile() { Tile = new Vector2(x, y), Direction = direction });
                         }
                     }
+                    else if (string.IsNullOrEmpty(location.doesTileHaveProperty(x, y, "SpawnVisitorName", "Back")) is false)
+                    {
+                        Direction direction;
+                        if (Enum.TryParse<Direction>(location.doesTileHaveProperty(x, y, "VisitorFacingDirection", "Back"), true, out direction) is false)
+                        {
+                            direction = Direction.North;
+                        }
+
+                        manualVisitorTiles.Add(new VisitorTile() { Tile = new Vector2(x, y), Direction = direction, SpawnVisitorName = location.doesTileHaveProperty(x, y, "SpawnVisitorName", "Back") });
+                    }
                 }
             }
 
+            // Spawn in visitors added via VisitorData.StandardVisitorSettings
             foreach (var visitorSpot in visitorSpotToSpawnTiles)
             {
                 if (visitorSpot.Key == VisitorSpots.SW && NetWorldState.checkAnywhereForWorldStateID(CampingHelper.GetCindersapParkVisitorParkKey(1)) is true && ActiveVisitorSpots.ContainsKey(visitorSpot.Key))
@@ -320,6 +332,16 @@ namespace Campgrounds.Framework.Managers
                     AddVisitors(visitorSpot.Key, visitorSpot.Value, location);
                 }
             }
+
+            // Spawn in visitors added in via map tile property "SpawnVisitorName"
+            foreach (var visitorTile in manualVisitorTiles)
+            {
+                var visitor = Game1.getCharacterFromName(visitorTile.SpawnVisitorName);
+                if (visitor != null)
+                {
+                    NPCHelper.WarpAndSetDialogue(visitor, location, visitorTile.Tile, faceDirection: visitorTile.Direction, freeze: true);
+                }
+            }
         }
 
         private void AddVisitors(VisitorSpots visitorSpot, List<VisitorTile> visitorTiles, GameLocation location)
@@ -331,7 +353,7 @@ namespace Campgrounds.Framework.Managers
 
             int visitorIndex = 0;
             int visitorCount = ActiveVisitorSpots[visitorSpot].StandardVisitorSettings.Visitors.Count;
-            foreach (var visitorTile in visitorTiles)
+            foreach (var visitorTile in visitorTiles.OrderBy(x => Game1.random.Next()))
             {
                 if (visitorIndex >= visitorCount)
                 {

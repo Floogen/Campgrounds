@@ -59,6 +59,42 @@
       "Action": "Load",
       "Target": "Maps/{{ModId}}_ParkSpotNW_TravelingMerchant",
       "FromFile": "assets/maps/ParkSpotNW_TravelingMerchant.tmx"
+    },
+    {
+      "Action": "EditData",
+      "Target": "Data/PeacefulEnd_Campgrounds/ParkVisitors",
+      "Entries": {
+        "PeacefulEnd.Campgrounds.Visitors.AbiEmiMaru": {
+          "Id": "PeacefulEnd.Campgrounds.Visitors.AbiEmiMaru",
+
+          "PreferredDates": [
+            {
+              "Day": 9
+            }
+          ],
+
+          "AdvancedVisitorSettings": {
+            "RequiredSpot": "SE",
+            "MapPatches": [
+              {
+                "MapPath": "Maps/{{ModId}}_ParkSpotSE_AbiEmiMaru",
+                "ToArea": {
+                  "X": 53,
+                  "Y": 32,
+                  "Width": 12,
+                  "Height": 12
+                },
+                "PatchMode": "Overlay"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "Action": "Load",
+      "Target": "Maps/{{ModId}}_ParkSpotSE_AbiEmiMaru",
+      "FromFile": "assets/maps/ParkSpotSE_AbiEmiMaru.tmx"
     }
   ]
 }

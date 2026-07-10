@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="12" height="12" tilewidth="16" tileheight="16" infinite="0" nextlayerid="18" nextobjectid="17">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="12" height="12" tilewidth="16" tileheight="16" infinite="0" nextlayerid="18" nextobjectid="20">
  <properties>
   <property name="AmbientLight" value="120 65 120"/>
   <property name="DayTiles" value="AlwaysFront 45 25 907 AlwaysFront 59 6 907 AlwaysFront 39 37 907"/>
@@ -1338,17 +1338,17 @@
    </animation>
   </tile>
  </tileset>
- <layer id="1" name="Back2" width="12" height="12">
+ <layer id="1" name="Back" width="12" height="12">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,2109,0,0,0,0,0,0,0,0,0,
-0,0,2132,2133,2134,2135,2136,2137,2138,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,745,0,0,0,745,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,745,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0
@@ -1358,11 +1358,11 @@
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,2086,2087,2088,2089,2090,2091,2092,0,0,0,
-0,0,0,2110,2111,2112,2113,2114,2115,0,0,0,
+0,0,0,0,2247,2248,2249,2250,0,0,0,0,
+0,0,0,0,2270,2271,2272,2273,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,2147485827,2147485826,307,0,0,0,0,0,0,
+0,0,0,0,0,307,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
@@ -1377,7 +1377,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,2147485804,2147485803,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
@@ -1404,8 +1404,8 @@
  </layer>
  <layer id="15" name="AlwaysFront" width="12" height="12">
   <data encoding="csv">
-0,0,2040,2041,2042,2043,2044,2045,2046,0,0,0,
-0,0,2063,2064,2065,2066,2067,2068,2069,0,0,0,
+0,0,0,0,2201,2202,2203,2204,0,0,0,0,
+0,0,0,0,2224,2225,2226,2227,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
@@ -1418,18 +1418,27 @@
 0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="6" name="Back"/>
+ <objectgroup id="6" name="Back">
+  <object id="17" name="TileData" x="80" y="128" width="16" height="16">
+   <properties>
+    <property name="SpawnVisitorName" value="Abigail"/>
+    <property name="VisitorFacingDirection" value="North"/>
+   </properties>
+  </object>
+  <object id="18" name="TileData" x="48" y="96" width="16" height="16">
+   <properties>
+    <property name="SpawnVisitorName" value="Emily"/>
+    <property name="VisitorFacingDirection" value="East"/>
+   </properties>
+  </object>
+  <object id="19" name="TileData" x="112" y="96" width="16" height="16">
+   <properties>
+    <property name="SpawnVisitorName" value="Maru"/>
+    <property name="VisitorFacingDirection" value="West"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="7" name="Buildings">
-  <object id="14" name="TileData" x="80" y="48" width="16" height="16">
-   <properties>
-    <property name="Action" value="OpenShop Traveler down"/>
-   </properties>
-  </object>
-  <object id="15" name="TileData" x="96" y="48" width="16" height="16">
-   <properties>
-    <property name="Action" value="OpenShop Traveler down"/>
-   </properties>
-  </object>
   <object id="16" name="TileData" x="80" y="96" width="16" height="16">
    <properties>
     <property name="HasSmoke" value="T"/>
