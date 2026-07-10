@@ -22,6 +22,11 @@ namespace Campgrounds.Framework.Models.Data.Visitors
         public StandardVisitorSettings StandardVisitorSettings { get; set; }
         public MapVisitorSettings AdvancedVisitorSettings { get; set; }
 
+        /// <summary>
+        /// Optional. If not given, defaults to at least 7 days between repeat visits.
+        /// </summary>
+        public int? DaysRequiredBetweenVisits { get; set; }
+
         public string RequirementsCondition { get; set; }
 
         /// <summary>
@@ -110,6 +115,11 @@ namespace Campgrounds.Framework.Models.Data.Visitors
             if (StandardVisitorSettings is not null && AdvancedVisitorSettings is not null)
             {
                 return (false, $"Values have been given for StandardVisitorSettings AND AdvancedVisitorSettings. You can only specify one!");
+            }
+
+            if (DaysRequiredBetweenVisits is not null && DaysRequiredBetweenVisits.Value < 0)
+            {
+                return (false, $"DaysRequiredBetweenVisits must be greater or equal to 0!");
             }
 
             return (true, string.Empty);

@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using xTile;
 using xTile.Layers;
@@ -24,6 +25,9 @@ namespace Campgrounds.Framework.Managers
 {
     public class VisitorManager : BaseManager
     {
+        public const string LAST_VISIT_CACHE_MOD_DATA_ID = "Campgrounds.LastVisit.Cache.Id";
+        public const int REQUIRED_DAYS_BETWEEN_VISIT = 7;
+
         public List<VisitorData> VisitorData { get { return _visitorData; } set { FilterVisitorData(value); } }
         private List<VisitorData> _visitorData = new List<VisitorData>();
 
@@ -34,12 +38,13 @@ namespace Campgrounds.Framework.Managers
 
         private double _smokeTimer = 0f;
 
-        // TODO: Implement a weekly cooldown on individual VisitorData (once they visit)
+        private Dictionary<string, int> _visitorIdToLastVisitDate = new Dictionary<string, int>();
 
         public VisitorManager(IMonitor monitor, IModHelper helper) : base(monitor, helper)
         {
             helper.Events.GameLoop.GameLaunched += OnGameLaunched;
             helper.Events.GameLoop.DayStarted += OnDayStarted;
+            helper.Events.GameLoop.Saving += OnSaving; ;
             helper.Events.GameLoop.UpdateTicked += OnUpdateTicked;
             helper.Events.Player.Warped += OnWarped;
             helper.Events.Content.AssetRequested += OnAssetRequested;
@@ -52,35 +57,64 @@ namespace Campgrounds.Framework.Managers
 
         private void OnDayStarted(object sender, DayStartedEventArgs e)
         {
+            // Clear current active visitors
             ActiveVisitorSpots.Clear();
+
+            // Get the latest cache for recent visitors
+            if (Game1.player.modData.ContainsKey(LAST_VISIT_CACHE_MOD_DATA_ID))
+            {
+                _visitorIdToLastVisitDate = JsonSerializer.Deserialize<Dictionary<string, int>>(Game1.player.modData[LAST_VISIT_CACHE_MOD_DATA_ID]);
+            }
 
             // Get today's game date
             SDate today = SDate.Now();
 
-            // Determine visitorCount for the three available spots in the park
-            var visitorDataCopy = new List<VisitorData>(VisitorData);
+            // Determine visitors for the three available spots in the park
+            var filteredVisitorData = new List<VisitorData>();
+            foreach (var visitorData in VisitorData)
+            {
+                int daysRequiredBetweenRepeatVisit = REQUIRED_DAYS_BETWEEN_VISIT;
+                if (visitorData.DaysRequiredBetweenVisits is not null)
+                {
+                    daysRequiredBetweenRepeatVisit = visitorData.DaysRequiredBetweenVisits.Value;
+                }
+
+                // Skip if VisitorData has no preferred date today and is still within the visit cooldown
+                if (visitorData.HasPreferredDate(today) is false && _visitorIdToLastVisitDate.TryGetValue(visitorData.Id, out int daysSinceLastVisit) && today.DaysSinceStart - daysSinceLastVisit <= daysRequiredBetweenRepeatVisit)
+                {
+                    continue;
+                }
+
+                filteredVisitorData.Add(visitorData);
+            }
 
             // Get site 1 (SW)
-            var swParkSpotVisitorData = GetVisitorsForToday(visitorDataCopy, today, VisitorSpots.SW);
+            var swParkSpotVisitorData = GetVisitorsForToday(filteredVisitorData, today, VisitorSpots.SW);
             if (swParkSpotVisitorData != null)
             {
-                visitorDataCopy.Remove(swParkSpotVisitorData);
+                _visitorIdToLastVisitDate[swParkSpotVisitorData.Id] = today.DaysSinceStart;
+
+                filteredVisitorData.Remove(swParkSpotVisitorData);
                 ActiveVisitorSpots[VisitorSpots.SW] = swParkSpotVisitorData;
             }
 
             // Get site 2 (NW)
-            var nwParkSpotVisitorData = GetVisitorsForToday(visitorDataCopy, today, VisitorSpots.NW);
+            var nwParkSpotVisitorData = GetVisitorsForToday(filteredVisitorData, today, VisitorSpots.NW);
             if (nwParkSpotVisitorData != null)
             {
-                visitorDataCopy.Remove(nwParkSpotVisitorData);
+                _visitorIdToLastVisitDate[nwParkSpotVisitorData.Id] = today.DaysSinceStart;
+
+                filteredVisitorData.Remove(nwParkSpotVisitorData);
                 ActiveVisitorSpots[VisitorSpots.NW] = nwParkSpotVisitorData;
             }
 
             // Get site 2 (SE)
-            var seParkSpotVisitorData = GetVisitorsForToday(visitorDataCopy, today, VisitorSpots.SE);
+            var seParkSpotVisitorData = GetVisitorsForToday(filteredVisitorData, today, VisitorSpots.SE);
             if (seParkSpotVisitorData != null)
             {
-                visitorDataCopy.Remove(seParkSpotVisitorData);
+                _visitorIdToLastVisitDate[seParkSpotVisitorData.Id] = today.DaysSinceStart;
+
+                filteredVisitorData.Remove(seParkSpotVisitorData);
                 ActiveVisitorSpots[VisitorSpots.SE] = seParkSpotVisitorData;
             }
 
@@ -90,8 +124,13 @@ namespace Campgrounds.Framework.Managers
             // Update any lighting / fires due to visitorTile property changes
             UpdateVisitorSpotTileProperties();
 
-            // Handle adding / removing visitorCount
+            // Handle adding / removing visitors
             HandleVisitors();
+        }
+
+        private void OnSaving(object sender, SavingEventArgs e)
+        {
+            Game1.player.modData[LAST_VISIT_CACHE_MOD_DATA_ID] = JsonSerializer.Serialize(_visitorIdToLastVisitDate);
         }
 
         private void OnUpdateTicked(object sender, UpdateTickedEventArgs e)
@@ -420,9 +459,12 @@ namespace Campgrounds.Framework.Managers
             return allPreferredDateVisitors;
         }
 
-        public VisitorData GetRandomVisitorForFlexibleSpot(IEnumerable<VisitorData> visitors)
+        public IEnumerable<VisitorData> GetFlexibleVisitorData(IEnumerable<VisitorData> visitors, VisitorSpots visitorSpot)
         {
-            return GetRandomVisitor(visitors.Where(d => d.StandardVisitorSettings is not null));
+            var allFlexibleVisitors = visitors
+                .Where(d => d.StandardVisitorSettings is not null || (d.AdvancedVisitorSettings is not null && d.AdvancedVisitorSettings.RequiredSpot == visitorSpot));
+
+            return allFlexibleVisitors;
         }
 
         /// <summary>
@@ -448,7 +490,7 @@ namespace Campgrounds.Framework.Managers
 
                     if (parkSpotVisitorData is null)
                     {
-                        parkSpotVisitorData = GetRandomVisitorForFlexibleSpot(visitors);
+                        parkSpotVisitorData = GetRandomVisitor(GetFlexibleVisitorData(visitors, visitorSpot));
                     }
                 }
             }

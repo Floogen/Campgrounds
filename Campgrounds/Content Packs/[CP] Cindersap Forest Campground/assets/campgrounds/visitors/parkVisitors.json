@@ -67,12 +67,6 @@
         "PeacefulEnd.Campgrounds.Visitors.AbiEmiMaru": {
           "Id": "PeacefulEnd.Campgrounds.Visitors.AbiEmiMaru",
 
-          "PreferredDates": [
-            {
-              "Day": 9
-            }
-          ],
-
           "AdvancedVisitorSettings": {
             "RequiredSpot": "SE",
             "MapPatches": [
@@ -87,7 +81,12 @@
                 "PatchMode": "Overlay"
               }
             ]
-          }
+          },
+
+          "DaysRequiredBetweenVisits": 28,
+
+          // Skip camping if it raining, storming or if it is a festival / wedding day
+          "RequirementsCondition": "!WEATHER PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark Rain Storm GreenRain Festival Wedding"
         }
       }
     },

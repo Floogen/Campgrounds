@@ -35,7 +35,7 @@ namespace Campgrounds.Framework.Models.Common
         {
             if (Max.HasValue && Min > Max.Value)
             {
-                return (false, "The \"Max\" property must be greater than \"Year\" if given.");
+                return (false, "The \"Max\" property must be greater than \"Min\" if given.");
             }
 
             return (true, string.Empty);
