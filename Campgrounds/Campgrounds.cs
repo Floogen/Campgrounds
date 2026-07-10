@@ -1,5 +1,6 @@
 ﻿using Campgrounds.Framework.Managers;
 using Campgrounds.Framework.Models.Data;
+using Campgrounds.Framework.Models.Data.Visitors;
 using Campgrounds.Framework.Objects;
 using Campgrounds.Framework.Patches.Characters;
 using Campgrounds.Framework.Patches.Locations;
@@ -32,10 +33,12 @@ namespace Campgrounds
         internal static MessageManager messageManager;
         internal static TentManager tentManager;
         internal static VillagerManager villagerManager;
+        internal static VisitorManager visitorManager;
 
         public const string CAMPGROUND_DATA_PATH = "Data/PeacefulEnd_Campgrounds/Campgrounds";
         public const string CAMPING_TENTS_DATA_PATH = "Data/PeacefulEnd_Campgrounds/CampingTents";
         public const string CAMPFIRE_FOODS_DATA_PATH = "Data/PeacefulEnd_Campgrounds/CampfireFoods";
+        public const string PARK_VISITORS_DATA_PATH = "Data/PeacefulEnd_Campgrounds/ParkVisitors";
         public const string VILLAGER_DATA_PATH = "Data/PeacefulEnd_Campgrounds/Villagers";
 
         public const string CAMPGROUND_DEFAULT_PREVIEW_TEXTURE_PATH = "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/Default_Preview";
@@ -56,6 +59,7 @@ namespace Campgrounds
             messageManager = new MessageManager(monitor, helper);
             tentManager = new TentManager(monitor, helper);
             villagerManager = new VillagerManager(monitor, helper);
+            visitorManager = new VisitorManager(monitor, helper);
 
             try
             {
@@ -154,6 +158,10 @@ namespace Campgrounds
             {
                 e.LoadFrom(() => villagerManager.VillagerData, AssetLoadPriority.Medium);
             }
+            else if (e.NameWithoutLocale.IsEquivalentTo(PARK_VISITORS_DATA_PATH))
+            {
+                e.LoadFrom(() => visitorManager.VisitorData, AssetLoadPriority.Medium);
+            }
             else if (e.NameWithoutLocale.IsEquivalentTo(CAMPGROUND_DEFAULT_PREVIEW_TEXTURE_PATH))
             {
                 e.LoadFrom(() => Helper.ModContent.Load<Texture2D>("Framework/Assets/defaultCampgroundPreview.png"), AssetLoadPriority.Medium);
@@ -222,6 +230,12 @@ namespace Campgrounds
             if (villagerData is not null)
             {
                 villagerManager.VillagerData = Helper.GameContent.Load<List<VillagerData>>(VILLAGER_DATA_PATH);
+            }
+
+            var visitorData = e.NamesWithoutLocale.FirstOrDefault(a => a.IsEquivalentTo(PARK_VISITORS_DATA_PATH));
+            if (visitorData is not null)
+            {
+                visitorManager.VisitorData = Helper.GameContent.Load<List<VisitorData>>(PARK_VISITORS_DATA_PATH);
             }
         }
     }
