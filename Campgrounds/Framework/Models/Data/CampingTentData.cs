@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Campgrounds.Framework.Models.Common;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using StardewValley.GameData.Objects;
@@ -10,16 +11,16 @@ using System.Threading.Tasks;
 
 namespace Campgrounds.Framework.Models.Data
 {
-    public class CampingTentData : BaseData
+    public class CampingTentData : BaseModel
     {
         public string Id { get; set; }
         public string DisplayName { get; set; }
 
         public string TexturePath { get; set; }
-        public DirectionalSprite NorthSprite { get; set; }
-        public DirectionalSprite EastSprite { get; set; }
-        public DirectionalSprite SouthSprite { get; set; }
-        public DirectionalSprite WestSprite { get; set; }
+        public DirectionalSpriteModel NorthSprite { get; set; }
+        public DirectionalSpriteModel EastSprite { get; set; }
+        public DirectionalSpriteModel SouthSprite { get; set; }
+        public DirectionalSpriteModel WestSprite { get; set; }
 
         public List<string> RestingBuffIds { get; set; } = new List<string>();
 

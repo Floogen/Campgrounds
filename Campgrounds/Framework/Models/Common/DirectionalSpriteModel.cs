@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Campgrounds.Framework.Models
+namespace Campgrounds.Framework.Models.Common
 {
-    public class DirectionalSprite
+    public class DirectionalSpriteModel
     {
         public Vector2 EntranceTile { get; set; }
 

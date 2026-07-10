@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Campgrounds.Framework.Models.Data
 {
-    public class CampfireFoodData : BaseData
+    public class CampfireFoodData : BaseModel
     {
         public string Id { get; set; }
         public string DisplayName { get; set; }

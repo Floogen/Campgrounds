@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Campgrounds.Framework.Models.Data
 {
-    public class VillagerData : BaseData
+    public class VillagerData : BaseModel
     {
         public string Id { get; set; }
 

@@ -3,7 +3,7 @@ using StardewValley;
 
 namespace Campgrounds.Framework.Models.Data
 {
-    public class CampgroundData : BaseData
+    public class CampgroundData : BaseModel
     {
         public string Id { get; set; }
         public string Description { get; set; }

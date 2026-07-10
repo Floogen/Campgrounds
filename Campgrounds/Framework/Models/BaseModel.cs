@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Campgrounds.Framework.Models.Data
+namespace Campgrounds.Framework.Models
 {
-    public abstract class BaseData
+    public abstract class BaseModel
     {
         public abstract (bool Result, string Error) IsValid();
     }
