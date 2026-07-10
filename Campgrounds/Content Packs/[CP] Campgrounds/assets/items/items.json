@@ -4,10 +4,10 @@
       "Action": "EditData",
       "Target": "Data/Objects",
       "Entries": {
-        "PeacefulEnd.Campgrounds.Items.CampingPass": {
-          "Name": "PeacefulEnd.Campgrounds.Items.CampingPass",
-          "DisplayName": "Camping Pass",
-          "Description": "A camping pass. Giving this to a friend invites them to go camping with you.",
+        "PeacefulEnd.Campgrounds.Items.VisitorPass": {
+          "Name": "PeacefulEnd.Campgrounds.Items.VisitorPass",
+          "DisplayName": "Visitor Pass",
+          "Description": "A visitor pass. Giving this to a friend invites them to go camping with you.",
           "Type": "Basic",
           "Category": 0,
           "Price": 500,

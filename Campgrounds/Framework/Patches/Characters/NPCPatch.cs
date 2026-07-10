@@ -31,7 +31,7 @@ namespace Campgrounds.Framework.Patches.Characters
         [HarmonyPriority(Priority.VeryHigh)]
         private static bool TryToReceiveActiveObjectPrefix(NPC __instance, ref bool __result, Farmer who, bool probe = false)
         {
-            if (probe is true || who.ActiveObject is null || !who.ActiveObject.QualifiedItemId.EqualsIgnoreCase("(O)PeacefulEnd.Campgrounds.Items.CampingPass"))
+            if (probe is true || who.ActiveObject is null || !who.ActiveObject.QualifiedItemId.EqualsIgnoreCase("(O)PeacefulEnd.Campgrounds.Items.VisitorPass"))
             {
                 return true;
             }
