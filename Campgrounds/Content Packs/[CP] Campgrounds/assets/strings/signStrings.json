@@ -1,0 +1,23 @@
+﻿{
+  "Changes": [
+    {
+      "Action": "EditData",
+      "Target": "Strings/StringsFromMaps",
+      "Entries": {
+        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark_ParkSign": "Visitor Campgrounds:^Site 1 (SW)^Site 2 (NW)^Site 3 (SE)",
+        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark_Board1": "Various flyers about local events have been posted here.",
+        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark_Board2": "Some informational posters about the park and local wildlife.",
+        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark_TrashCan": "A mostly empty trashcan.",
+        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark_Vending1": "The vending machine has an assortment of beverages.",
+        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark_Vending2": "The vending machine has an assortment of snacks.",
+
+        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkShop_PhoneNotes": "Some neatly written notes have been placed here.",
+        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkShop_StickyNotes": "The board is covered in many different sticky notes.",
+        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkShop_Boxes": "Some store supplies, still inside their boxes.",
+        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkShop_Shelf1": "An assortment of camping supplies line the shelf.",
+        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkShop_Shelf2": "An assortment of everyday supplies line the shelf.",
+        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkShop_Brochures": "The shelf is filled with brochures about camping, wildlife and the park's history."
+      }
+    }
+  ]
+}

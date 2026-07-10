@@ -93,6 +93,12 @@
     {
       "Action": "Include",
       "FromFile": "assets/tools/tools.json"
+    },
+
+    // Add string data
+    {
+      "Action": "Include",
+      "FromFile": "assets/strings/signStrings.json"
     }
   ]
 }
