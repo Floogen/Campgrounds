@@ -18,7 +18,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using xTile;
-using xTile.Dimensions;
 using xTile.Layers;
 
 namespace Campgrounds.Framework.Managers
@@ -34,6 +33,8 @@ namespace Campgrounds.Framework.Managers
         public List<Vector2> SmokeTiles = new List<Vector2>();
 
         private double _smokeTimer = 0f;
+
+        // TODO: Implement a weekly cooldown on individual VisitorData (once they visit)
 
         public VisitorManager(IMonitor monitor, IModHelper helper) : base(monitor, helper)
         {
@@ -56,7 +57,7 @@ namespace Campgrounds.Framework.Managers
             // Get today's game date
             SDate today = SDate.Now();
 
-            // Determine visitors for the three available spots in the park
+            // Determine visitorCount for the three available spots in the park
             var visitorDataCopy = new List<VisitorData>(VisitorData);
 
             // Get site 1 (SW)
@@ -86,8 +87,11 @@ namespace Campgrounds.Framework.Managers
             // Invalidate the park's map to force the patches to apply
             helper.GameContent.InvalidateCache(Campgrounds.CINDERSAP_PARK_MAP_PATH);
 
-            // Update any lighting / fires due to tile property changes
+            // Update any lighting / fires due to visitorTile property changes
             UpdateVisitorSpotTileProperties();
+
+            // Handle adding / removing visitorCount
+            HandleVisitors();
         }
 
         private void OnUpdateTicked(object sender, UpdateTickedEventArgs e)
@@ -133,6 +137,9 @@ namespace Campgrounds.Framework.Managers
                     // Check which visitor campsite(s) have been unlocked
                     var editor = asset.AsMap();
 
+                    // Load the active version of the park map (for StandardVisitorSettings usage)
+                    Map activeParkMap = helper.GameContent.Load<Map>(Campgrounds.CINDERSAP_PARK_ACTIVE_MAP_PATH);
+
                     // SW Visitor Campsite
                     if (NetWorldState.checkAnywhereForWorldStateID(CampingHelper.GetCindersapParkVisitorParkKey(1)) is true && ActiveVisitorSpots.ContainsKey(VisitorSpots.SW))
                     {
@@ -148,6 +155,15 @@ namespace Campgrounds.Framework.Managers
                                     patchMode: mapPatch.PatchMode
                                 );
                             }
+                        }
+                        else if (visitorData.StandardVisitorSettings != null)
+                        {
+                            editor.PatchMap(
+                                source: activeParkMap,
+                                sourceArea: new Rectangle(0, 25, 22, 26),
+                                targetArea: new Rectangle(0, 25, 22, 26),
+                                patchMode: PatchMapMode.Replace
+                            );
                         }
                     }
 
@@ -166,6 +182,15 @@ namespace Campgrounds.Framework.Managers
                                 );
                             }
                         }
+                        else if (visitorData.StandardVisitorSettings != null)
+                        {
+                            editor.PatchMap(
+                                source: activeParkMap,
+                                sourceArea: new Rectangle(0, 0, 35, 25),
+                                targetArea: new Rectangle(0, 0, 35, 25),
+                                patchMode: PatchMapMode.Replace
+                            );
+                        }
                     }
 
                     if (NetWorldState.checkAnywhereForWorldStateID(CampingHelper.GetCindersapParkVisitorParkKey(3)) is true && ActiveVisitorSpots.ContainsKey(VisitorSpots.SE))
@@ -182,6 +207,15 @@ namespace Campgrounds.Framework.Managers
                                     patchMode: mapPatch.PatchMode
                                 );
                             }
+                        }
+                        else if (visitorData.StandardVisitorSettings != null)
+                        {
+                            editor.PatchMap(
+                                source: activeParkMap,
+                                sourceArea: new Rectangle(40, 0, 29, 51),
+                                targetArea: new Rectangle(40, 0, 29, 51),
+                                patchMode: PatchMapMode.Replace
+                            );
                         }
                     }
                 });
@@ -208,7 +242,6 @@ namespace Campgrounds.Framework.Managers
 
             // Update the park tiles
             var layer = location.Map.GetLayer("Buildings");
-
             for (int x = 0; x < layer.LayerWidth; x++)
             {
                 for (int y = 0; y < layer.LayerHeight; y++)
@@ -226,6 +259,91 @@ namespace Campgrounds.Framework.Managers
 
             // Update lighting
             UpdateCampfireLighting();
+        }
+
+        private void HandleVisitors()
+        {
+            var location = Game1.getLocationFromName("PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark");
+            if (location is null)
+            {
+                return;
+            }
+
+            // Clear any existing visitorCount from the map
+            foreach (var npc in location.characters.ToList())
+            {
+                // TODO: Exclude the park's caretaker from the removal
+                NPCHelper.ReturnNPCToSchedule(npc);
+            }
+
+            // Add required visitorCount to map
+            var visitorSpotToSpawnTiles = new Dictionary<VisitorSpots, List<VisitorTile>>()
+            {
+                { VisitorSpots.SW, new List<VisitorTile>() },
+                { VisitorSpots.NW, new List<VisitorTile>() },
+                { VisitorSpots.SE, new List<VisitorTile>() }
+            };
+
+            var layer = location.Map.GetLayer("Back");
+            for (int x = 0; x < layer.LayerWidth; x++)
+            {
+                for (int y = 0; y < layer.LayerHeight; y++)
+                {
+                    if (location.doesTileHaveProperty(x, y, "IsVisitorSpawn", "Back") != null && Enum.TryParse<VisitorSpots>(location.doesTileHaveProperty(x, y, "VisitorSpot", "Back"), true, out var visitorSpot))
+                    {
+                        Direction direction;
+                        if (Enum.TryParse<Direction>(location.doesTileHaveProperty(x, y, "VisitorFacingDirection", "Back"), true, out direction) is false)
+                        {
+                            direction = Direction.North;
+                        }
+
+                        if (ActiveVisitorSpots.ContainsKey(visitorSpot))
+                        {
+                            visitorSpotToSpawnTiles[visitorSpot].Add(new VisitorTile() { Tile = new Vector2(x, y), Direction = direction });
+                        }
+                    }
+                }
+            }
+
+            foreach (var visitorSpot in visitorSpotToSpawnTiles)
+            {
+                if (visitorSpot.Key == VisitorSpots.SW && NetWorldState.checkAnywhereForWorldStateID(CampingHelper.GetCindersapParkVisitorParkKey(1)) is true && ActiveVisitorSpots.ContainsKey(visitorSpot.Key))
+                {
+                    AddVisitors(visitorSpot.Key, visitorSpot.Value, location);
+                }
+                else if (visitorSpot.Key == VisitorSpots.NW && NetWorldState.checkAnywhereForWorldStateID(CampingHelper.GetCindersapParkVisitorParkKey(2)) is true && ActiveVisitorSpots.ContainsKey(visitorSpot.Key))
+                {
+                    AddVisitors(visitorSpot.Key, visitorSpot.Value, location);
+                }
+                else if (visitorSpot.Key == VisitorSpots.SE && NetWorldState.checkAnywhereForWorldStateID(CampingHelper.GetCindersapParkVisitorParkKey(3)) is true && ActiveVisitorSpots.ContainsKey(visitorSpot.Key))
+                {
+                    AddVisitors(visitorSpot.Key, visitorSpot.Value, location);
+                }
+            }
+        }
+
+        private void AddVisitors(VisitorSpots visitorSpot, List<VisitorTile> visitorTiles, GameLocation location)
+        {
+            if (ActiveVisitorSpots[visitorSpot].StandardVisitorSettings is null)
+            {
+                return;
+            }
+
+            int visitorIndex = 0;
+            int visitorCount = ActiveVisitorSpots[visitorSpot].StandardVisitorSettings.Visitors.Count;
+            foreach (var visitorTile in visitorTiles)
+            {
+                if (visitorIndex >= visitorCount)
+                {
+                    return;
+                }
+
+                var visitor = Game1.getCharacterFromName(ActiveVisitorSpots[visitorSpot].StandardVisitorSettings.Visitors[visitorIndex]);
+                if (visitor != null)
+                {
+                    NPCHelper.WarpAndSetDialogue(visitor, location, visitorTile.Tile, faceDirection: visitorTile.Direction, freeze: true);
+                }
+            }
         }
 
         private void UpdateCampfireLighting()
@@ -253,9 +371,18 @@ namespace Campgrounds.Framework.Managers
             _visitorData = visitorData.Where(d => d.IsValid().Result is true).ToList();
         }
 
+        public IEnumerable<VisitorData> GetPreferredDateMapPatchOnlyVisitorData(IEnumerable<VisitorData> visitors, SDate date, VisitorSpots visitorSpot)
+        {
+            var allPreferredDateVisitors = visitors
+                .Where(d => d.HasPreferredDate(date))
+                .Where(d => d.AdvancedVisitorSettings is not null && d.AdvancedVisitorSettings.RequiredSpot == visitorSpot);
+
+            return allPreferredDateVisitors;
+        }
+
         public IEnumerable<VisitorData> GetPreferredDateVisitorData(IEnumerable<VisitorData> visitors, SDate date, VisitorSpots visitorSpot)
         {
-            var allPreferredDateVisitors = VisitorData
+            var allPreferredDateVisitors = visitors
                 .Where(d => d.HasPreferredDate(date))
                 .Where(d => d.StandardVisitorSettings is not null || (d.AdvancedVisitorSettings is not null && d.AdvancedVisitorSettings.RequiredSpot == visitorSpot));
 
@@ -264,7 +391,7 @@ namespace Campgrounds.Framework.Managers
 
         public IEnumerable<VisitorData> GetPreferredDayVisitorData(IEnumerable<VisitorData> visitors, SDate date, VisitorSpots visitorSpot)
         {
-            var allPreferredDateVisitors = VisitorData
+            var allPreferredDateVisitors = visitors
                 .Where(d => d.HasPreferredDay(date))
                 .Where(d => d.StandardVisitorSettings is not null || (d.AdvancedVisitorSettings is not null && d.AdvancedVisitorSettings.RequiredSpot == visitorSpot));
 
@@ -276,20 +403,35 @@ namespace Campgrounds.Framework.Managers
             return GetRandomVisitor(visitors.Where(d => d.StandardVisitorSettings is not null));
         }
 
+        /// <summary>
+        /// VisitorData is selected based on following order of priority:<br/>
+        /// - Randomly select AdvancedVisitorSettings with PreferredDates that match the game's date for the specific spot.<br/>
+        /// - Randomly select any with PreferredDates that match the game's date.<br/>
+        /// - Randomly select any with PreferredDays that match the game's day.<br/>
+        /// - Randomly select any remaining eligible data.<br/>
+        /// </summary>
+        /// <param name="visitors"></param>
+        /// <param name="today"></param>
+        /// <param name="visitorSpot"></param>
+        /// <returns></returns>
         public VisitorData GetVisitorsForToday(IEnumerable<VisitorData> visitors, SDate today, VisitorSpots visitorSpot)
         {
-            var swParkSpotVisitorData = GetRandomVisitor(GetPreferredDateVisitorData(visitors, today, visitorSpot));
-            if (swParkSpotVisitorData is null)
+            var parkSpotVisitorData = GetRandomVisitor(GetPreferredDateMapPatchOnlyVisitorData(visitors, today, visitorSpot));
+            if (parkSpotVisitorData is null)
             {
-                swParkSpotVisitorData = GetRandomVisitor(GetPreferredDayVisitorData(visitors, today, visitorSpot));
-
-                if (swParkSpotVisitorData is null)
+                parkSpotVisitorData = GetRandomVisitor(GetPreferredDateVisitorData(visitors, today, visitorSpot));
+                if (parkSpotVisitorData is null)
                 {
-                    swParkSpotVisitorData = GetRandomVisitorForFlexibleSpot(visitors);
+                    parkSpotVisitorData = GetRandomVisitor(GetPreferredDayVisitorData(visitors, today, visitorSpot));
+
+                    if (parkSpotVisitorData is null)
+                    {
+                        parkSpotVisitorData = GetRandomVisitorForFlexibleSpot(visitors);
+                    }
                 }
             }
 
-            return swParkSpotVisitorData;
+            return parkSpotVisitorData;
         }
 
         private VisitorData GetRandomVisitor(IEnumerable<VisitorData> visitors)

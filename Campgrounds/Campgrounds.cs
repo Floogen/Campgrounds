@@ -45,6 +45,7 @@ namespace Campgrounds
 
         public const string CINDERSAP_PARK_MAP_PATH = "Maps/PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark";
         public const string CINDERSAP_PARK_OVERGROWN_MAP_PATH = "Maps/PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkOvergrown";
+        public const string CINDERSAP_PARK_ACTIVE_MAP_PATH = "Maps/PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkActive";
 
         public override void Entry(IModHelper helper)
         {
@@ -170,7 +171,7 @@ namespace Campgrounds
             {
                 e.Edit(asset =>
                 {
-                    // load the source map from your mod folder
+                    // Load the source map
                     Map source = Helper.GameContent.Load<Map>(CINDERSAP_PARK_OVERGROWN_MAP_PATH);
 
                     // Check which visitor campsite(s) have been unlocked

@@ -1,6 +1,29 @@
 ﻿{
   "Changes": [
-    // Add standard park visitors
+    // Add standard park visitors via StandardVisitorSettings
+    {
+      "Action": "EditData",
+      "Target": "Data/PeacefulEnd_Campgrounds/ParkVisitors",
+      "Entries": {
+        "PeacefulEnd.Campgrounds.Visitors.Willy": {
+          "Id": "PeacefulEnd.Campgrounds.Visitors.Willy",
+
+          "PreferredDates": [
+            {
+              "Day": 8
+            }
+          ],
+
+          "StandardVisitorSettings": {
+            "Visitors": [
+              "Willy"
+            ]
+          }
+        }
+      }
+    },
+
+    // Add standard park visitors via AdvancedVisitorSettings
     {
       "Action": "EditData",
       "Target": "Data/PeacefulEnd_Campgrounds/ParkVisitors",
@@ -15,7 +38,7 @@
           ],
 
           "AdvancedVisitorSettings": {
-            "RequiredSpot": "SW",
+            "RequiredSpot": "NW",
             "MapPatches": [
               {
                 "MapPath": "Maps/{{ModId}}_ParkSpotNW_TravelingMerchant",

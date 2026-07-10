@@ -2940,105 +2940,105 @@
   <object id="19" name="TileData" x="144" y="640" width="16" height="16">
    <properties>
     <property name="IsVisitorSpawn" value="T"/>
-    <property name="VisitorFacingDirection" value="W"/>
-    <property name="VisitorSpot" value="SE"/>
+    <property name="VisitorFacingDirection" value="West"/>
+    <property name="VisitorSpot" value="SW"/>
    </properties>
   </object>
   <object id="20" name="TileData" x="208" y="704" width="16" height="16">
    <properties>
     <property name="IsVisitorSpawn" value="T"/>
-    <property name="VisitorFacingDirection" value="N"/>
-    <property name="VisitorSpot" value="SE"/>
+    <property name="VisitorFacingDirection" value="North"/>
+    <property name="VisitorSpot" value="SW"/>
    </properties>
   </object>
   <object id="21" name="TileData" x="160" y="544" width="16" height="16">
    <properties>
     <property name="IsVisitorSpawn" value="T"/>
-    <property name="VisitorFacingDirection" value="S"/>
-    <property name="VisitorSpot" value="SE"/>
+    <property name="VisitorFacingDirection" value="South"/>
+    <property name="VisitorSpot" value="SW"/>
    </properties>
   </object>
   <object id="22" name="TileData" x="304" y="752" width="16" height="16">
    <properties>
     <property name="IsVisitorSpawn" value="T"/>
-    <property name="VisitorFacingDirection" value="E"/>
-    <property name="VisitorSpot" value="SE"/>
+    <property name="VisitorFacingDirection" value="East"/>
+    <property name="VisitorSpot" value="SW"/>
    </properties>
   </object>
   <object id="23" name="TileData" x="240" y="672" width="16" height="16">
    <properties>
     <property name="IsVisitorSpawn" value="T"/>
-    <property name="VisitorFacingDirection" value="W"/>
-    <property name="VisitorSpot" value="SE"/>
+    <property name="VisitorFacingDirection" value="West"/>
+    <property name="VisitorSpot" value="SW"/>
    </properties>
   </object>
   <object id="25" name="TileData" x="896" y="608" width="16" height="16">
    <properties>
     <property name="IsVisitorSpawn" value="T"/>
-    <property name="VisitorFacingDirection" value="E"/>
-    <property name="VisitorSpot" value="SW"/>
+    <property name="VisitorFacingDirection" value="East"/>
+    <property name="VisitorSpot" value="SE"/>
    </properties>
   </object>
   <object id="26" name="TileData" x="960" y="608" width="16" height="16">
    <properties>
     <property name="IsVisitorSpawn" value="T"/>
-    <property name="VisitorFacingDirection" value="W"/>
-    <property name="VisitorSpot" value="SW"/>
+    <property name="VisitorFacingDirection" value="West"/>
+    <property name="VisitorSpot" value="SE"/>
    </properties>
   </object>
   <object id="27" name="TileData" x="848" y="528" width="16" height="16">
    <properties>
     <property name="IsVisitorSpawn" value="T"/>
-    <property name="VisitorFacingDirection" value="S"/>
-    <property name="VisitorSpot" value="SW"/>
+    <property name="VisitorFacingDirection" value="South"/>
+    <property name="VisitorSpot" value="SE"/>
    </properties>
   </object>
   <object id="28" name="TileData" x="816" y="720" width="16" height="16">
    <properties>
     <property name="IsVisitorSpawn" value="T"/>
-    <property name="VisitorFacingDirection" value="E"/>
-    <property name="VisitorSpot" value="S"/>
+    <property name="VisitorFacingDirection" value="East"/>
+    <property name="VisitorSpot" value="SE"/>
    </properties>
   </object>
   <object id="29" name="TileData" x="1008" y="640" width="16" height="16">
    <properties>
     <property name="IsVisitorSpawn" value="T"/>
-    <property name="VisitorFacingDirection" value="W"/>
-    <property name="VisitorSpot" value="SW"/>
+    <property name="VisitorFacingDirection" value="West"/>
+    <property name="VisitorSpot" value="SE"/>
    </properties>
   </object>
   <object id="30" name="TileData" x="160" y="176" width="16" height="16">
    <properties>
     <property name="IsVisitorSpawn" value="T"/>
-    <property name="VisitorFacingDirection" value="W"/>
+    <property name="VisitorFacingDirection" value="West"/>
     <property name="VisitorSpot" value="NW"/>
    </properties>
   </object>
   <object id="31" name="TileData" x="96" y="176" width="16" height="16">
    <properties>
     <property name="IsVisitorSpawn" value="T"/>
-    <property name="VisitorFacingDirection" value="E"/>
+    <property name="VisitorFacingDirection" value="East"/>
     <property name="VisitorSpot" value="NW"/>
    </properties>
   </object>
   <object id="32" name="TileData" x="128" y="208" width="16" height="16">
    <properties>
     <property name="IsVisitorSpawn" value="T"/>
-    <property name="VisitorFacingDirection" value="N"/>
+    <property name="VisitorFacingDirection" value="North"/>
     <property name="VisitorSpot" value="NW"/>
    </properties>
   </object>
   <object id="33" name="TileData" x="208" y="128" width="16" height="16">
    <properties>
     <property name="IsVisitorSpawn" value="T"/>
-    <property name="VisitorFacingDirection" value="W"/>
+    <property name="VisitorFacingDirection" value="West"/>
     <property name="VisitorSpot" value="NW"/>
    </properties>
   </object>
   <object id="34" name="TileData" x="192" y="240" width="16" height="16">
    <properties>
     <property name="IsVisitorSpawn" value="T"/>
-    <property name="VisitorFacingDirection" value="S"/>
+    <property name="VisitorFacingDirection" value="South"/>
     <property name="VisitorSpot" value="NW"/>
    </properties>
   </object>

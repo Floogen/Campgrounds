@@ -35,6 +35,11 @@
     },
     {
       "Action": "Load",
+      "Target": "Maps/{{ModId}}_CindersapParkActive",
+      "FromFile": "assets/maps/CindersapParkActive.tmx"
+    },
+    {
+      "Action": "Load",
       "Target": "Maps/{{ModId}}_CindersapParkShop",
       "FromFile": "assets/maps/CindersapParkShop.tmx"
     },

@@ -1,6 +1,7 @@
 ﻿using Campgrounds.Framework.Managers;
 using Campgrounds.Framework.Models.Data;
 using Campgrounds.Framework.Models.Enums;
+using Campgrounds.Framework.Utilities;
 using Microsoft.Xna.Framework;
 using StardewModdingAPI;
 using StardewValley;
@@ -247,14 +248,11 @@ namespace Campgrounds.Framework.Objects
             // Warp the Guest (if player, skip since we warp them via message)
             if (Guest is NPC guestNPC && guestNPC is not null && Data.GuestSpawnTile is not null)
             {
-                Game1.warpCharacter(guestNPC, GetLocation(), Data.GuestSpawnTile.Value);
-
                 // Cache previous dialogue
                 _cachedDialogue = new Stack<Dialogue>(guestNPC.CurrentDialogue.Reverse());
 
-                // Assign dialogue to character
                 var dialogue = Campgrounds.villagerManager.GetGameReadyDialogue(Campgrounds.villagerManager.GetCampsiteDialogue(Data, guestNPC, isDayAfter));
-                guestNPC.setNewDialogue(new Dialogue(guestNPC, null, dialogue));
+                NPCHelper.WarpAndSetDialogue(guestNPC, GetLocation(), Data.GuestSpawnTile.Value, dialogue);
             }
 
             return true;
@@ -282,34 +280,7 @@ namespace Campgrounds.Framework.Objects
                 }
 
                 // Reset schedule
-                ReturnNPCToSchedule(npc);
-            }
-        }
-
-        private void ReturnNPCToSchedule(NPC npc)
-        {
-            if (npc.Schedule != null && npc.Schedule.Count > 0)
-            {
-                // Find the latest schedule entry
-                var validKeys = npc.Schedule.Keys.Where(t => t <= Game1.timeOfDay);
-                if (validKeys is null || validKeys.Count() == 0)
-                {
-                    // No valid schedule (send home)
-                    Game1.warpCharacter(npc, npc.DefaultMap, npc.DefaultPosition / 64f);
-                    return;
-                }
-
-                SchedulePathDescription entry = npc.Schedule[validKeys.Min()];
-                Game1.warpCharacter(npc, entry.targetLocationName, entry.targetTile);
-                npc.faceDirection(entry.facingDirection);
-
-                // Let the schedule system resync so they continue on to later entries
-                npc.checkSchedule(entry.time);
-            }
-            else
-            {
-                // No valid schedule (send home)
-                Game1.warpCharacter(npc, npc.DefaultMap, npc.DefaultPosition / 64f);
+                NPCHelper.ReturnNPCToSchedule(npc);
             }
         }
 

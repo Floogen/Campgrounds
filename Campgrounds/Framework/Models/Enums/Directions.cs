@@ -10,7 +10,7 @@ namespace Campgrounds.Framework.Models.Enums
     {
         North,
         East,
-        West,
-        South
+        South,
+        West
     }
 }
