@@ -1,0 +1,41 @@
+﻿{
+  "Changes": [
+    // Add standard park visitors
+    {
+      "Action": "EditData",
+      "Target": "Data/PeacefulEnd_Campgrounds/ParkVisitors",
+      "Entries": {
+        "PeacefulEnd.Campgrounds.Visitors.TravelingMerchant": {
+          "Id": "PeacefulEnd.Campgrounds.Visitors.TravelingMerchant",
+
+          "PreferredDates": [
+            {
+              "Day": 8
+            }
+          ],
+
+          "AdvancedVisitorSettings": {
+            "RequiredSpot": "SW",
+            "MapPatches": [
+              {
+                "MapPath": "Maps/{{ModId}}_ParkSpotNW_TravelingMerchant",
+                "ToArea": {
+                  "X": 5,
+                  "Y": 5,
+                  "Width": 12,
+                  "Height": 12
+                },
+                "PatchMode": "Overlay"
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "Action": "Load",
+      "Target": "Maps/{{ModId}}_ParkSpotNW_TravelingMerchant",
+      "FromFile": "assets/maps/ParkSpotNW_TravelingMerchant.tmx"
+    }
+  ]
+}

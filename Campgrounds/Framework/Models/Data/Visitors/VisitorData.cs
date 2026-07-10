@@ -16,8 +16,8 @@ namespace Campgrounds.Framework.Models.Data.Visitors
     {
         public string Id { get; set; }
 
-        public List<DateModel> PreferredDates { get; set; } = new List<DateModel>();
-        public List<DayOfWeek> PreferredDays { get; set; } = new List<DayOfWeek>();
+        public List<DateModel> PreferredDates { get; set; }
+        public List<DayOfWeek> PreferredDays { get; set; }
 
         public StandardVisitorSettings StandardVisitorSettings { get; set; }
         public MapVisitorSettings AdvancedVisitorSettings { get; set; }
@@ -59,6 +59,26 @@ namespace Campgrounds.Framework.Models.Data.Visitors
             }
 
             return true;
+        }
+
+        public bool HasPreferredDay(SDate date)
+        {
+            if (PreferredDays is null)
+            {
+                return false;
+            }
+
+            return PreferredDays.Any(d => d == date.DayOfWeek) is true;
+        }
+
+        public bool HasPreferredDate(SDate date)
+        {
+            if (PreferredDates is null)
+            {
+                return false;
+            }
+
+            return PreferredDates.Any(d => d.IsToday(date)) is true;
         }
 
         public bool HasRequirements()

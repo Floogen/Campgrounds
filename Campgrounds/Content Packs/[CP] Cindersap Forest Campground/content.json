@@ -416,6 +416,11 @@
       "Target": "Maps/PeacefulEnd.Campgrounds.CindersapForestCampground",
       "FromFile": "assets/maps/CindersapCampground.tmx"
     },
+    {
+      "Action": "Load",
+      "Target": "Maps/spring_cindersapForestCampgroundTilesheet",
+      "FromFile": "assets/maps/spring_cindersapForestCampgroundTilesheet.png"
+    },
 
     // Add the campground to the list
     {
@@ -466,6 +471,12 @@
     {
       "Action": "Include",
       "FromFile": "assets/campgrounds/villagers/campingVillagers.json"
+    },
+
+    // Add park visitors data
+    {
+      "Action": "Include",
+      "FromFile": "assets/campgrounds/visitors/parkVisitors.json"
     }
   ]
 }

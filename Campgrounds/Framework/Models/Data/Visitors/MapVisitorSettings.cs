@@ -14,7 +14,7 @@ namespace Campgrounds.Framework.Models.Data.Visitors
     public class MapVisitorSettings : BaseModel
     {
         public VisitorSpots? RequiredSpot { get; set; }
-        public MapPatchModel MapPatch { get; set; }
+        public List<MapPatchModel> MapPatches { get; set; }
 
         public override (bool Result, string Error) IsValid()
         {
@@ -23,13 +23,20 @@ namespace Campgrounds.Framework.Models.Data.Visitors
                 return (false, "Missing the \"RequiredSpot\" property!");
             }
 
-            if (MapPatch is null)
+            if (MapPatches is null || MapPatches.Count == 0)
             {
                 return (false, "Missing the \"MapPatchId\" property!");
             }
-            else if (MapPatch.IsValid().Result is false)
+
+            int mapPatchCount = 1;
+            foreach (var mapPatch in MapPatches)
             {
-                return (false, $"Error with the given MapPatch: {MapPatch.IsValid().Error}");
+                if (mapPatch.IsValid().Result is false)
+                {
+                    return (false, $"Error with MapPatch #{mapPatchCount}: {mapPatch.IsValid().Error}");
+                }
+
+                mapPatchCount += 1;
             }
 
             return (true, string.Empty);
