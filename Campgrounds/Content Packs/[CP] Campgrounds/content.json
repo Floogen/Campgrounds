@@ -54,18 +54,6 @@
       "FromFile": "assets/maps/cindersap_interior.png"
     },
 
-    // Add camping tent data
-    {
-      "Action": "Include",
-      "FromFile": "assets/campgrounds/campingTents.json"
-    },
-
-    // Add campfire food data
-    {
-      "Action": "Include",
-      "FromFile": "assets/campgrounds/campfireFoods.json"
-    },
-
     // Add various buffs
     {
       "Action": "Include",

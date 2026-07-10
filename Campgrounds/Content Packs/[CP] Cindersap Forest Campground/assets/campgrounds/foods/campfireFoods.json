@@ -48,7 +48,7 @@
     {
       "Action": "Load",
       "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/DefaultCampfireFoods",
-      "FromFile": "assets/campgrounds/defaultCampireFoods.png"
+      "FromFile": "assets/campgrounds/foods/defaultCampireFoods.png"
     }
   ]
 }

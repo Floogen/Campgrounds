@@ -450,6 +450,18 @@
       "FromFile": "assets/campgrounds/campgroundPreview.png"
     },
 
+    // Add camping tent data
+    {
+      "Action": "Include",
+      "FromFile": "assets/campgrounds/tents/campingTents.json"
+    },
+
+    // Add campfire food data
+    {
+      "Action": "Include",
+      "FromFile": "assets/campgrounds/foods/campfireFoods.json"
+    },
+
     // Add villager data
     {
       "Action": "Include",

@@ -136,7 +136,7 @@
     {
       "Action": "Load",
       "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/StarterTent",
-      "FromFile": "assets/campgrounds/starterTent.png"
+      "FromFile": "assets/campgrounds/tents/starterTent.png"
     }
   ]
 }
