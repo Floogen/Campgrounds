@@ -33,12 +33,11 @@ namespace Campgrounds.Framework.Patches.Locations
         {
             if (__instance.Name == "PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkGarage" && CampingHelper.IsCarRepaired() is false)
             {
-                float yOffset = 4f * (float)Math.Round(Math.Sin(Game1.currentGameTime.TotalGameTime.TotalMilliseconds / 250.0), 2);
-                b.Draw(Game1.mouseCursors, Game1.GlobalToLocal(Game1.viewport, new Vector2(3f * 64f, 2f * 64f + yOffset)), new Rectangle(141, 465, 20, 24), Color.White * 0.75f, 0f, Vector2.Zero, 4f, SpriteEffects.None, 0.095401f);
-                b.Draw(Game1.mouseCursors, Game1.GlobalToLocal(Game1.viewport, new Vector2(3.65f * 64f, 2.6f * 64f + yOffset)), new Rectangle(175, 425, 12, 12), Color.White * 0.75f, 0f, new Vector2(6f, 6f), 4f, SpriteEffects.None, 0.09541f);
+                DrawQuestionMarkBubble(b, new Vector2(2.9f, 2f), 0.095401f);
             }
             else if (__instance.Name == "PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark")
             {
+                // Draw campfires
                 foreach (var campfireTile in Campgrounds.visitorManager.CampfireTiles)
                 {
                     var x = campfireTile.X;
@@ -49,7 +48,28 @@ namespace Campgrounds.Framework.Patches.Locations
                     b.Draw(Game1.mouseCursors, Game1.GlobalToLocal(Game1.viewport, new Vector2(x * 64 + 32 - 12, y * 64)), new Rectangle(276 + (int)((Game1.currentGameTime.TotalGameTime.TotalMilliseconds + (double)(x * 2047) + (double)(y * 98)) % 400.0 / 100.0) * 12, 1985, 12, 11), Color.White, 0f, Vector2.Zero, 3f, SpriteEffects.None, draw_layer + 0.0009f);
                     b.Draw(Game1.mouseCursors, Game1.GlobalToLocal(Game1.viewport, new Vector2(x * 64 + 32 - 20, y * 64 + 12)), new Rectangle(276 + (int)((Game1.currentGameTime.TotalGameTime.TotalMilliseconds + (double)(x * 2077) + (double)(y * 98)) % 400.0 / 100.0) * 12, 1985, 12, 11), Color.White, 0f, Vector2.Zero, 3f, SpriteEffects.None, draw_layer + 0.001f);
                 }
+
+                // Draw sign "?" text
+                if (NetWorldState.checkAnywhereForWorldStateID(CampingHelper.GetCindersapParkVisitorParkKey(1)) is false)
+                {
+                    DrawQuestionMarkBubble(b, new Vector2(18.4f, 33.4f), 2f);
+                }
+                if (NetWorldState.checkAnywhereForWorldStateID(CampingHelper.GetCindersapParkVisitorParkKey(2)) is false)
+                {
+                    DrawQuestionMarkBubble(b, new Vector2(21.4f, 19.4f), 2f);
+                }
+                if (NetWorldState.checkAnywhereForWorldStateID(CampingHelper.GetCindersapParkVisitorParkKey(3)) is false)
+                {
+                    DrawQuestionMarkBubble(b, new Vector2(45.4f, 36.4f), 2f);
+                }
             }
+        }
+
+        private static void DrawQuestionMarkBubble(SpriteBatch b, Vector2 tile, float layer)
+        {
+            float yOffset = 4f * (float)Math.Round(Math.Sin(Game1.currentGameTime.TotalGameTime.TotalMilliseconds / 250.0), 2);
+            b.Draw(Game1.mouseCursors, Game1.GlobalToLocal(Game1.viewport, new Vector2(tile.X * 64f, tile.Y * 64f + yOffset)), new Rectangle(141, 465, 20, 24), Color.White * 0.75f, 0f, Vector2.Zero, 4f, SpriteEffects.None, layer);
+            b.Draw(Game1.mouseCursors, Game1.GlobalToLocal(Game1.viewport, new Vector2((tile.X + 0.65f) * 64f, (tile.Y + 0.6f) * 64f + yOffset)), new Rectangle(175, 425, 12, 12), Color.White * 0.75f, 0f, new Vector2(6f, 6f), 4f, SpriteEffects.None, layer + 0.00001f);
         }
 
         private static void IsActionableTilePostfix(GameLocation __instance, ref bool __result, int xTile, int yTile, Farmer who)
