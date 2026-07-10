@@ -465,7 +465,7 @@
     // Add villager data
     {
       "Action": "Include",
-      "FromFile": "assets/campgrounds/campingVillagers.json"
+      "FromFile": "assets/campgrounds/villagers/campingVillagers.json"
     }
   ]
 }
