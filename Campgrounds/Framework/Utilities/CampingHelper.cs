@@ -1,5 +1,6 @@
 ﻿using Campgrounds.Framework.Models.Data;
 using Campgrounds.Framework.UI;
+using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.Network;
 using System;
@@ -145,6 +146,84 @@ namespace Campgrounds.Framework.Utilities
                 case "No":
                     break;
             }
+        }
+
+        public static void OnWalkieTalkieCheckParkResponse(Farmer who, string answer)
+        {
+            switch (answer)
+            {
+                case "Yes":
+                    var cindersapPark = Game1.getLocationFromName("PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark");
+                    if (cindersapPark is null)
+                    {
+                        return;
+                    }
+
+                    // Close the dialogue menu before the event
+                    Game1.activeClickableMenu = null;
+
+                    // Get all current NPCs in the park and create actors of them
+                    var actorsPlace = new List<string>();
+                    foreach (NPC npc in cindersapPark.characters)
+                    {
+                        var tile = npc.TilePoint;
+                        actorsPlace.Add($"{npc.Name} {tile.X} {tile.Y} {npc.FacingDirection}");
+                    }
+
+                    // Create the warp for actors (in case event is started on Farm)
+                    var actorsWarp = new List<string>();
+                    foreach (NPC npc in cindersapPark.characters)
+                    {
+                        var tile = npc.TilePoint;
+                        actorsWarp.Add($"warp {npc.Name} {tile.X} {tile.Y} true/facedirection {npc.Name} {npc.FacingDirection} true");
+                    }
+                    var actorsWarpParsed = "";
+                    if (actorsWarp.Count > 0)
+                    {
+                        actorsWarpParsed = $"/{string.Join("/", actorsWarp)}";
+                    }
+
+                    string script = $"none/-1000 -1000/farmer -100 -100 2 {string.Join(" ", actorsPlace)}/skippable/viewport -1000 -1000/changeLocation PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark"
+                        + $"{actorsWarpParsed}"
+                        + "/message \"Let's see who is here...\""
+                        + "/viewport 13 41 true/pause 1500/message \"Site 1\""
+                        + "/viewport 11 10 true/pause 1500/message \"Site 2\""
+                        + "/viewport 58 37 true/pause 1500/message \"Site 3\""
+                        + "/end";
+
+                    FadeScreenHelper.StartFadeIn(afterFadeInAction: () =>
+                    {
+                        // Cache and adjust settings that need to be restored after event
+                        Vector2 originalPosition = Game1.player.Position;
+                        var zoomLevel = Game1.options.desiredBaseZoomLevel;
+                        Game1.options.desiredBaseZoomLevel = 0.75f;
+
+                        var walkieTalkieEvent = new Event(script);
+                        walkieTalkieEvent.onEventFinished += () => RestoreAfterWalkieTalkieEvent(originalPosition, zoomLevel);
+                        Game1.currentLocation.startEvent(walkieTalkieEvent);
+
+                        DelayedAction.functionAfterDelay(() =>
+                        {
+                            FadeScreenHelper.ImmediatelyStopFade();
+                        }, 100);
+
+                    });
+                    break;
+                case "No":
+                    break;
+            }
+        }
+
+        private static void RestoreAfterWalkieTalkieEvent(Vector2 originalPosition, float zoomLevel)
+        {
+            // Restore original location after a slight delay (100 ticks) due to odd behavior with Event in FarmHouse
+            // Patching after the event logic might be a more reliable or custom event key?
+            DelayedAction.functionAfterDelay(() =>
+            {
+                Game1.player.Position = originalPosition;
+            }, 100);
+
+            Game1.options.desiredBaseZoomLevel = zoomLevel;
         }
 
         public static bool IsCarRepaired()

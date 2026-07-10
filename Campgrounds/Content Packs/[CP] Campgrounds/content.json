@@ -87,6 +87,12 @@
     {
       "Action": "Include",
       "FromFile": "assets/campgrounds/campingVillagers.json"
+    },
+
+    // Add tool data
+    {
+      "Action": "Include",
+      "FromFile": "assets/tools/tools.json"
     }
   ]
 }

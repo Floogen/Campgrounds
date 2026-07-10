@@ -32,6 +32,13 @@
               "AvailableStockLimit": "Player"
             },
             {
+              "Id": "PeacefulEnd.Campgrounds.Tools.WalkieTalkie",
+              "ItemId": "(T)PeacefulEnd.Campgrounds.Tools.WalkieTalkie",
+              "Price": 2500,
+              "AvailableStock": 1,
+              "AvailableStockLimit": "Player"
+            },
+            {
               "Id": "PeacefulEnd.Campgrounds.Items.CampsiteMap",
               "ItemId": "PeacefulEnd.Campgrounds.Items.CampsiteMap PeacefulEnd.Campgrounds.CindersapForestCampground",
               "Price": 1000,

@@ -2951,7 +2951,7 @@
     <property name="VisitorSpot" value="SW"/>
    </properties>
   </object>
-  <object id="21" name="TileData" x="160" y="544" width="16" height="16">
+  <object id="21" name="TileData" x="208" y="640" width="16" height="16">
    <properties>
     <property name="IsVisitorSpawn" value="T"/>
     <property name="VisitorFacingDirection" value="South"/>

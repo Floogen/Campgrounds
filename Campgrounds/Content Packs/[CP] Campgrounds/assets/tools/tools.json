@@ -1,0 +1,27 @@
+﻿{
+  "Changes": [
+    {
+      "Action": "EditData",
+      "Target": "Data/Tools",
+      "Entries": {
+        "PeacefulEnd.Campgrounds.Tools.WalkieTalkie": {
+          "ClassName": "GenericTool",
+          "Name": "PeacefulEnd.Campgrounds.Tools.WalkieTalkie",
+          "DisplayName": "Walkie Talkie",
+          "Description": "A walkie talkie. Lets you see who is currently visiting the park's campground.",
+          "SalePrice": 5000,
+          "CanBeLostOnDeath": false,
+
+          "Texture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/Tools",
+          "SpriteIndex": 0
+        }
+      }
+    },
+
+    {
+      "Action": "Load",
+      "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/Tools",
+      "FromFile": "assets/tools/tools.png"
+    }
+  ]
+}

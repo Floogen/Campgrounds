@@ -83,6 +83,7 @@ namespace Campgrounds
             helper.Events.GameLoop.GameLaunched += OnGameLaunched;
             helper.Events.GameLoop.UpdateTicked += OnUpdateTicked;
             helper.Events.GameLoop.SaveLoaded += OnSaveLoaded;
+            helper.Events.Input.ButtonPressed += OnButtonPressed;
             helper.Events.Display.Rendered += OnRendered;
             helper.Events.Content.AssetRequested += OnAssetRequested;
             helper.Events.Content.AssetsInvalidated += OnAssetInvalidated;
@@ -133,6 +134,18 @@ namespace Campgrounds
             if (garageLocation is not null)
             {
                 CampingHelper.AttemptRepairCarMapTiles(garageLocation);
+            }
+        }
+
+        private void OnButtonPressed(object sender, ButtonPressedEventArgs e)
+        {
+            if (e.Button.IsUseToolButton() && Context.IsPlayerFree && Game1.activeClickableMenu is null && Game1.eventUp is false && Game1.player.CanMove is true && Game1.player.CurrentTool?.ItemId == "PeacefulEnd.Campgrounds.Tools.WalkieTalkie")
+            {
+                // Consume the button press to prevent the default animation from playing
+                Helper.Input.Suppress(e.Button);
+
+                // Ask if they want to start the cutscene (to show who is at park)
+                Game1.currentLocation.createQuestionDialogue($"*kshhh*^{(Game1.timeOfDay >= 1200 ? "Afternoon" : "Mornin'")} {Game1.player.displayName}! Lookin' to see who's over at the park?", Game1.currentLocation.createYesNoResponses(), CampingHelper.OnWalkieTalkieCheckParkResponse, null);
             }
         }
 
