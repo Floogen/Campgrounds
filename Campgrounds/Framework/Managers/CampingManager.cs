@@ -2,6 +2,7 @@
 using Campgrounds.Framework.Models.Enums;
 using Campgrounds.Framework.Objects;
 using Campgrounds.Framework.UI.Messages;
+using Campgrounds.Framework.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewModdingAPI;
@@ -24,7 +25,7 @@ namespace Campgrounds.Framework.Managers
         public const string LAST_CAMPSITE_SLEPT_MOD_DATA_ID = "Campgrounds.Campsite.LastCampsite.Slept.Id";
 
         public List<CampgroundData> CampgroundData { get { return _campgroundData; } set { FilterCampgroundData(value); } }
-        private List<CampgroundData> _campgroundData = new List<CampgroundData>();    
+        private List<CampgroundData> _campgroundData = new List<CampgroundData>();
 
         public List<CampfireFoodData> CampfireFoodData { get { return _campfireFoodData; } set { FilterCampfireFoodsData(value); } }
         private List<CampfireFoodData> _campfireFoodData = new List<CampfireFoodData>();
@@ -34,12 +35,45 @@ namespace Campgrounds.Framework.Managers
         public CampingManager(IMonitor monitor, IModHelper helper) : base(monitor, helper)
         {
             helper.Events.GameLoop.GameLaunched += OnGameLaunched;
+            helper.Events.GameLoop.SaveLoaded += OnSaveLoaded;
+            helper.Events.GameLoop.Saving += OnSaving;
+            helper.Events.GameLoop.DayStarted += OnDayStarted;
+            helper.Events.Player.Warped += OnWarped;
         }
 
         private void OnGameLaunched(object sender, GameLaunchedEventArgs e)
         {
             CampgroundData = helper.GameContent.Load<List<CampgroundData>>(Campgrounds.CAMPGROUND_DATA_PATH);
             CampfireFoodData = helper.GameContent.Load<List<CampfireFoodData>>(Campgrounds.CAMPFIRE_FOODS_DATA_PATH);
+        }
+
+        private void OnSaveLoaded(object sender, SaveLoadedEventArgs e)
+        {
+            FindActiveCampsites();
+        }
+
+        private void OnSaving(object sender, SavingEventArgs e)
+        {
+            // Sanitize any campsites before saving to prevent serialization issues
+            foreach (var campsite in ActiveCampsites)
+            {
+                campsite.Sanitize();
+            }
+        }
+
+        private void OnDayStarted(object sender, DayStartedEventArgs e)
+        {
+            HandleActiveCampsites();
+            HandleForageSpawning();
+        }
+
+        private void OnWarped(object sender, WarpedEventArgs e)
+        {
+            var campsite = GetActiveCampsiteFromLocation(e.OldLocation);
+            if (campsite is not null)
+            {
+                EndCampingTrip(e.OldLocation);
+            }
         }
 
         private void FilterCampgroundData(List<CampgroundData> campgroundData)

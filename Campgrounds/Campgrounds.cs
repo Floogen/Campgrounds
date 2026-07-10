@@ -78,9 +78,6 @@ namespace Campgrounds
             helper.Events.GameLoop.GameLaunched += OnGameLaunched;
             helper.Events.GameLoop.UpdateTicked += OnUpdateTicked;
             helper.Events.GameLoop.SaveLoaded += OnSaveLoaded;
-            helper.Events.GameLoop.Saving += OnSaving;
-            helper.Events.GameLoop.DayStarted += OnDayStarted;
-            helper.Events.Player.Warped += OnWarped;
             helper.Events.Display.Rendered += OnRendered;
             helper.Events.Content.AssetRequested += OnAssetRequested;
             helper.Events.Content.AssetsInvalidated += OnAssetInvalidated;
@@ -126,37 +123,11 @@ namespace Campgrounds
 
         private void OnSaveLoaded(object sender, SaveLoadedEventArgs e)
         {
-            campManager.FindActiveCampsites();
-
             // Repair garage car (if needed)
             var garageLocation = Game1.getLocationFromName("PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkGarage");
             if (garageLocation is not null)
             {
                 CampingHelper.AttemptRepairCarMapTiles(garageLocation);
-            }
-        }
-
-        private void OnSaving(object sender, SavingEventArgs e)
-        {
-            // Sanitize any campsites before saving to prevent serialization issues
-            foreach (var campsite in campManager.ActiveCampsites)
-            {
-                campsite.Sanitize();
-            }
-        }
-
-        private void OnDayStarted(object sender, DayStartedEventArgs e)
-        {
-            campManager.HandleActiveCampsites();
-            campManager.HandleForageSpawning();
-        }
-
-        private void OnWarped(object sender, WarpedEventArgs e)
-        {
-            var campsite = campManager.GetActiveCampsiteFromLocation(e.OldLocation);
-            if (campsite is not null)
-            {
-                campManager.EndCampingTrip(e.OldLocation);
             }
         }
 
