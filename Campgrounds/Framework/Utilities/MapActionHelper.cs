@@ -10,15 +10,7 @@ using xTile.Tiles;
 namespace Campgrounds.Framework.Utilities
 {
     public static class MapActionHelper
-    {
-        // Tile actions
-        public static bool HandleCampShop(GameLocation location, string[] args, Farmer player, Point point)
-        {
-            Utility.TryOpenShopMenu("PeacefulEnd.Campgrounds.Shops.CampShop", null, playOpenSound: true);
-
-            return true;
-        }
-        
+    {        
         public static bool HandleCampingSiteList(GameLocation location, string[] args, Farmer player, Point point)
         {
             Game1.activeClickableMenu = new CampListMenu();

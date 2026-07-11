@@ -4,7 +4,7 @@
       "Action": "EditData",
       "Target": "Data/Characters",
       "Entries": {
-        "PeacefulEnd.Campgrounds.Characters.Clementine": {
+        "PeacefulEnd.Campgrounds.Characters.Caretaker": {
           "DisplayName": "Clementine",
           "Gender": "Female",
           "Age": "Adult",
@@ -28,8 +28,8 @@
               "Id": "Outdoor",
               "Indoors": false,
               "Outdoors": true,
-              "Sprite": "Characters/PeacefulEnd.Campgrounds.Characters.Clementine_Outdoor",
-              "Portrait": "Portraits/PeacefulEnd.Campgrounds.Characters.Clementine_Outdoor"
+              "Sprite": "Characters/PeacefulEnd.Campgrounds.Characters.Caretaker_Outdoor",
+              "Portrait": "Portraits/PeacefulEnd.Campgrounds.Characters.Caretaker_Outdoor"
             }
           ]
         }
@@ -37,22 +37,22 @@
     },
     {
       "Action": "Load",
-      "Target": "Characters/PeacefulEnd.Campgrounds.Characters.Clementine_Outdoor",
+      "Target": "Characters/PeacefulEnd.Campgrounds.Characters.Caretaker_Outdoor",
       "FromFile": "assets/characters/outdoor_caretaker.png"
     },
     {
       "Action": "Load",
-      "Target": "Portraits/PeacefulEnd.Campgrounds.Characters.Clementine_Outdoor",
+      "Target": "Portraits/PeacefulEnd.Campgrounds.Characters.Caretaker_Outdoor",
       "FromFile": "assets/characters/outdoor_caretakerPortrait.png"
     },
     {
       "Action": "Load",
-      "Target": "Characters/PeacefulEnd.Campgrounds.Characters.Clementine",
+      "Target": "Characters/PeacefulEnd.Campgrounds.Characters.Caretaker",
       "FromFile": "assets/characters/indoor_caretaker.png"
     },
     {
       "Action": "Load",
-      "Target": "Portraits/PeacefulEnd.Campgrounds.Characters.Clementine",
+      "Target": "Portraits/PeacefulEnd.Campgrounds.Characters.Caretaker",
       "FromFile": "assets/characters/indoor_caretakerPortrait.png"
     }
   ]

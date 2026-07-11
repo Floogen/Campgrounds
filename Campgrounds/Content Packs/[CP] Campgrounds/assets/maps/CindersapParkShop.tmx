@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="16" height="14" tilewidth="16" tileheight="16" infinite="0" nextlayerid="14" nextobjectid="51">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="16" height="14" tilewidth="16" tileheight="16" infinite="0" nextlayerid="14" nextobjectid="53">
  <properties>
   <property name="DayTiles" value="Front 3 2 256 Front 3 3 288 Front 10 2 256 Front 10 3 288 Back 3 5 228 Back 3 6 260 Back 10 5 228 Back 10 6 260"/>
   <property name="DefaultWarpLocation" value="9 11"/>
@@ -183,8 +183,8 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="5" name="Back" visible="0"/>
- <objectgroup id="6" name="Buildings" visible="0">
+ <objectgroup id="5" name="Back"/>
+ <objectgroup id="6" name="Buildings">
   <object id="24" name="TileData" x="224" y="128" width="16" height="16">
    <properties>
     <property name="Action" value="Warp 2 7 PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkGarage"/>
@@ -197,12 +197,7 @@
   </object>
   <object id="29" name="TileData" x="80" y="112" width="16" height="16">
    <properties>
-    <property name="Action" value="PeacefulEnd.Campgrounds_CampShop"/>
-   </properties>
-  </object>
-  <object id="30" name="TileData" x="96" y="112" width="16" height="16">
-   <properties>
-    <property name="Action" value="PeacefulEnd.Campgrounds_CampShop"/>
+    <property name="Action" value="OpenShop PeacefulEnd.Campgrounds.Shops.CampShop"/>
    </properties>
   </object>
   <object id="31" name="TileData" x="112" y="80" width="16" height="16">
@@ -285,7 +280,17 @@
     <property name="Action" value="Message &quot;PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkShop_Brochures&quot;"/>
    </properties>
   </object>
+  <object id="51" name="TileData" x="96" y="112" width="16" height="16">
+   <properties>
+    <property name="Action" value="OpenShop PeacefulEnd.Campgrounds.Shops.CampShop"/>
+   </properties>
+  </object>
+  <object id="52" name="TileData" x="64" y="112" width="16" height="16">
+   <properties>
+    <property name="Action" value="Message &quot;PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkShop_FeedbackBox&quot;"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup id="7" name="Front" visible="0"/>
- <objectgroup id="8" name="Paths" visible="0"/>
+ <objectgroup id="7" name="Front"/>
+ <objectgroup id="8" name="Paths"/>
 </map>

@@ -90,7 +90,6 @@ namespace Campgrounds
             helper.Events.Content.AssetsInvalidated += OnAssetInvalidated;
 
             // Register actions
-            GameLocation.RegisterTileAction("PeacefulEnd.Campgrounds_CampShop", MapActionHelper.HandleCampShop);
             GameLocation.RegisterTileAction("PeacefulEnd.Campgrounds_CampingSiteList", MapActionHelper.HandleCampingSiteList);
             GameLocation.RegisterTileAction("PeacefulEnd.Campgrounds_CarRepair", MapActionHelper.HandleCarRepair);
             GameLocation.RegisterTileAction("PeacefulEnd.Campgrounds_RepairVisitorSite", MapActionHelper.HandleVisitorSiteRepair);

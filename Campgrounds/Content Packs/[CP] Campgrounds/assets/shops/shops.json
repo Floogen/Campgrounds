@@ -7,12 +7,32 @@
         "PeacefulEnd.Campgrounds.Shops.CampShop": {
           "Owners": [
             {
-              "Name": "AnyOrNone",
+              "Id": "Caretaker",
+              "Name": "PeacefulEnd.Campgrounds.Characters.Caretaker",
               "Dialogues": [
-                // dialogue any other time
                 {
                   "Id": "PeacefulEnd.Campgrounds.Shops.Dialogue.Default",
-                  "Dialogue": "..."
+                  "RandomDialogue": [
+                    "Heya @!",
+                    "Got some camping rations for sale.",
+                    "Welcome to the Cindersap Forest Park shop!",
+                    "Plannin' to go camping with ya friend? Got some visitor passes for sale."
+                  ]
+                },
+                {
+                  "Id": "PeacefulEnd.Campgrounds.Shops.Dialogue.Rain",
+                  "Dialogue": "Feel free to look around while ya dry off.",
+                  "Condition": "WEATHER Here Rain"
+                }
+              ]
+            },
+            {
+              "Id": "SelfService",
+              "Name": "AnyOrNone",
+              "Dialogues": [
+                {
+                  "Id": "PeacefulEnd.Campgrounds.Shops.Dialogue.Default",
+                  "Dialogue": "*Self-Service*"
                 }
               ]
             }
