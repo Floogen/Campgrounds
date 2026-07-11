@@ -310,7 +310,12 @@ namespace Campgrounds.Framework.Managers
             // Clear any existing visitors from the map
             foreach (var npc in location.characters.ToList())
             {
-                // TODO: Exclude the park's caretaker from the removal
+                // Exclude the park's character
+                if (npc.Name.EqualsIgnoreCase("PeacefulEnd.Campgrounds.Characters.Caretaker"))
+                {
+                    continue;
+                }
+
                 NPCHelper.ReturnNPCToSchedule(npc);
             }
 
