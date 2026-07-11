@@ -14,6 +14,7 @@ using StardewValley;
 using StardewValley.Extensions;
 using StardewValley.Internal;
 using StardewValley.Network;
+using StardewValley.TerrainFeatures;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -134,6 +135,19 @@ namespace Campgrounds
             if (garageLocation is not null)
             {
                 CampingHelper.AttemptRepairCarMapTiles(garageLocation);
+            }
+
+            // Clear bushes in front of park entrance
+            var forestLocation = Game1.getLocationFromName("Forest");
+            if (forestLocation is not null)
+            {
+                var boundary = new Rectangle(8, 0, 5, 12);
+                var removedBushes = forestLocation.largeTerrainFeatures.RemoveWhere(t => t is Bush && boundary.Contains(t.Tile));
+
+                if (removedBushes > 0)
+                {
+                    Monitor.Log($"Removed {removedBushes} bushes that were in the way of park entrance.", LogLevel.Info);
+                }
             }
         }
 
