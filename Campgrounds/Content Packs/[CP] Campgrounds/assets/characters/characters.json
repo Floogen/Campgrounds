@@ -1,0 +1,59 @@
+﻿{
+  "Changes": [
+    {
+      "Action": "EditData",
+      "Target": "Data/Characters",
+      "Entries": {
+        "PeacefulEnd.Campgrounds.Characters.Clementine": {
+          "DisplayName": "Clementine",
+          "Gender": "Female",
+          "Age": "Adult",
+          "CanSocialize": "False",
+          "IntroductionsQuest": false,
+          "PerfectionScore": false,
+          "CanBeRomanced": false,
+          "Home": [
+            {
+              "Id": "Default",
+              "Location": "PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkShop",
+              "Tile": {
+                "X": 6,
+                "Y": 6
+              },
+              "Direction": "down"
+            }
+          ],
+          "Appearance": [
+            {
+              "Id": "Outdoor",
+              "Indoors": false,
+              "Outdoors": true,
+              "Sprite": "Characters/PeacefulEnd.Campgrounds.Characters.Clementine_Outdoor",
+              "Portrait": "Portraits/PeacefulEnd.Campgrounds.Characters.Clementine_Outdoor"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "Action": "Load",
+      "Target": "Characters/PeacefulEnd.Campgrounds.Characters.Clementine_Outdoor",
+      "FromFile": "assets/characters/outdoor_caretaker.png"
+    },
+    {
+      "Action": "Load",
+      "Target": "Portraits/PeacefulEnd.Campgrounds.Characters.Clementine_Outdoor",
+      "FromFile": "assets/characters/outdoor_caretakerPortrait.png"
+    },
+    {
+      "Action": "Load",
+      "Target": "Characters/PeacefulEnd.Campgrounds.Characters.Clementine",
+      "FromFile": "assets/characters/indoor_caretaker.png"
+    },
+    {
+      "Action": "Load",
+      "Target": "Portraits/PeacefulEnd.Campgrounds.Characters.Clementine",
+      "FromFile": "assets/characters/indoor_caretakerPortrait.png"
+    }
+  ]
+}

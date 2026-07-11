@@ -135,6 +135,12 @@
     {
       "Action": "Include",
       "FromFile": "assets/strings/signStrings.json"
+    },
+
+    // Add character data
+    {
+      "Action": "Include",
+      "FromFile": "assets/characters/characters.json"
     }
   ]
 }
