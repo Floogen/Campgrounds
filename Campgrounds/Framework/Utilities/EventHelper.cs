@@ -1,4 +1,5 @@
-﻿using Campgrounds.Framework.Models.Data;
+﻿using Campgrounds.Framework.Managers;
+using Campgrounds.Framework.Models.Data;
 using Campgrounds.Framework.Models.Enums;
 using Campgrounds.Framework.Objects;
 using StardewValley;
@@ -27,17 +28,17 @@ namespace Campgrounds.Framework.Utilities
 
         public static void GiveCampsiteMapCommand(Event @event, string[] args, EventContext context)
         {
-            if (!ArgUtility.TryGet(args, 1, out string mapId, out string error))
+            if (!ArgUtility.TryGet(args, 1, out string campgroundDataId, out string error))
             {
                 context.LogErrorAndSkip(error);
                 return;
             }
 
-            var campgroundData = Campgrounds.campManager.CampgroundData.FirstOrDefault(c => c.Id.EqualsIgnoreCase(mapId));
+            var campgroundData = Campgrounds.campManager.CampgroundData.FirstOrDefault(c => c.Id.EqualsIgnoreCase(campgroundDataId));
             if (campgroundData is not null)
             {
                 // Give map
-                CampsiteMap.UnlockAndHoldAboveHead(mapId, $"You have discovered the campsite: {Campgrounds.campManager.GetLocationNameFromData(campgroundData)}!");
+                Campgrounds.itemManager.UnlockSpecialAndHoldAboveHead(Campgrounds.itemManager.GetCampsiteMapUnlockKey(campgroundDataId), ItemManager.CAMPSITE_MAP_ID, $"You have discovered the campsite: {Campgrounds.campManager.GetLocationNameFromDataId(campgroundData.Id)}!");
             }
             @event.CurrentCommand++;
         }

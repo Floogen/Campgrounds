@@ -128,12 +128,12 @@ namespace Campgrounds.Framework.Managers
             }
         }
 
-        public string GetLocationNameFromData(CampgroundData campgroundData)
+        public string GetLocationNameFromDataId(string campgroundDataId)
         {
             string locationName = string.Empty;
-            if (Game1.locationData.ContainsKey(campgroundData.Id))
+            if (Game1.locationData.ContainsKey(campgroundDataId))
             {
-                locationName = Game1.locationData[campgroundData.Id].DisplayName;
+                locationName = Game1.locationData[campgroundDataId].DisplayName;
             }
 
             return locationName;

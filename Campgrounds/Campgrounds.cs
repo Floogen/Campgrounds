@@ -4,6 +4,7 @@ using Campgrounds.Framework.Models.Data.Visitors;
 using Campgrounds.Framework.Objects;
 using Campgrounds.Framework.Patches.Characters;
 using Campgrounds.Framework.Patches.Locations;
+using Campgrounds.Framework.Patches.Objects;
 using Campgrounds.Framework.Utilities;
 using HarmonyLib;
 using Microsoft.Xna.Framework;
@@ -31,6 +32,7 @@ namespace Campgrounds
 
         internal static CampingManager campManager;
         internal static CurrencyManager currencyManager;
+        internal static ItemManager itemManager;
         internal static MessageManager messageManager;
         internal static TentManager tentManager;
         internal static VillagerManager villagerManager;
@@ -58,6 +60,7 @@ namespace Campgrounds
             // Create managers
             campManager = new CampingManager(monitor, helper);
             currencyManager = new CurrencyManager(monitor, helper);
+            itemManager = new ItemManager(monitor, helper);
             messageManager = new MessageManager(monitor, helper);
             tentManager = new TentManager(monitor, helper);
             villagerManager = new VillagerManager(monitor, helper);
@@ -73,6 +76,9 @@ namespace Campgrounds
 
                 // Apply Location patches
                 new GameLocationPatch(monitor, modHelper).Apply(harmony);
+                
+                // Apply Object patches
+                new ObjectPatch(monitor, modHelper).Apply(harmony);
             }
             catch (Exception e)
             {
@@ -113,17 +119,17 @@ namespace Campgrounds
                 };
             });
 
-            ItemQueryResolver.Register(CampsiteMap.CAMPSITE_MAP_ID, (string key, string arguments, ItemQueryContext context, bool avoidRepeat, HashSet<string> avoidItemIds, Action<string, string> logError) => {
+            ItemQueryResolver.Register(ItemManager.CAMPSITE_MAP_ID, (string key, string arguments, ItemQueryContext context, bool avoidRepeat, HashSet<string> avoidItemIds, Action<string, string> logError) => {
                 string[] args = ArgUtility.SplitBySpaceQuoteAware(arguments);
                 if (ArgUtility.TryGet(args, 0, out string campgroundId, out string error) is false || (campManager.CampgroundData.FirstOrDefault(c => c.Id.EqualsIgnoreCase(campgroundId)) is var campgroundData && campgroundData is null))
                 {
                     return ItemQueryResolver.Helpers.ErrorResult(key, arguments, logError, error);
                 }
 
-                return new[]
-                {
-                    new ItemQueryResult(new CampsiteMap(campgroundData))
-                };
+                Item item = ItemRegistry.Create(ItemManager.CAMPSITE_MAP_ID);
+                item.modData[ItemManager.CAMPSITE_MAP_CAMPGROUND_MOD_DATA_ID] = campgroundId;
+
+                return new[] { new ItemQueryResult(item) };
             });
         }
 

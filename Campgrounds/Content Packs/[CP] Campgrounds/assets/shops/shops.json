@@ -60,7 +60,7 @@
             },
             {
               "Id": "PeacefulEnd.Campgrounds.Items.CampsiteMap",
-              "ItemId": "PeacefulEnd.Campgrounds.Items.CampsiteMap PeacefulEnd.Campgrounds.CindersapForestCampground",
+              "ItemId": "(O)PeacefulEnd.Campgrounds.Items.CampsiteMap PeacefulEnd.Campgrounds.CindersapForestCampground",
               "Price": 1000,
               "AvailableStock": 1,
               "AvailableStockLimit": "Player",
