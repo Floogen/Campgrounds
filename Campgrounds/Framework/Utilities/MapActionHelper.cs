@@ -1,6 +1,7 @@
 ﻿using Campgrounds.Framework.UI;
 using Microsoft.Xna.Framework;
 using StardewValley;
+using StardewValley.Extensions;
 using StardewValley.GameData.Shops;
 using StardewValley.Internal;
 using System;
@@ -13,7 +14,14 @@ namespace Campgrounds.Framework.Utilities
     {        
         public static bool HandleCampingSiteList(GameLocation location, string[] args, Farmer player, Point point)
         {
-            Game1.activeClickableMenu = new CampListMenu();
+            if (player.eventsSeen.Any(e => e.EqualsIgnoreCase("PeacefulEnd.Campgrounds.Events.CampingIntro")))
+            {
+                Game1.activeClickableMenu = new CampListMenu();
+            }
+            else
+            {
+                Game1.drawObjectDialogue("You should talk to Clementine first before using the camping board.");
+            }
 
             return true;
         }
