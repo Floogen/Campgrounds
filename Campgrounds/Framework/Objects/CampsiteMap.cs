@@ -25,7 +25,7 @@ namespace Campgrounds.Framework.Objects
 
         public string QualifiedItemId => TypeDefinitionId + "CampsiteMap";
 
-        public string DisplayName => $"Campsite Map ({GetLocationName()})";
+        public string DisplayName => $"Campsite Map ({Campgrounds.campManager.GetLocationNameFromData(CampgroundData)})";
 
         public string Name => CAMPSITE_MAP_ID;
 
@@ -42,20 +42,20 @@ namespace Campgrounds.Framework.Objects
 
         public bool actionWhenPurchased(string shopId)
         {
-            // Unlock the associated campground
-            NetWorldState.addWorldStateIDEverywhere($"MAP_UNLOCKED_CAMPGROUND:{CampgroundData.Id}");
-
             // Exit current menu
             Game1.exitActiveMenu();
 
             // Display message
-            HoldUpMap($"You have discovered the campsite: {GetLocationName()}!");
+            UnlockAndHoldAboveHead(CampgroundData.Id, $"You have discovered the campsite: {Campgrounds.campManager.GetLocationNameFromData(CampgroundData)}!");
 
             return true;
         }
 
-        private void HoldUpMap(string message)
+        public static void UnlockAndHoldAboveHead(string campgroundDataId, string message)
         {
+            // Unlock the associated campground
+            NetWorldState.addWorldStateIDEverywhere($"MAP_UNLOCKED_CAMPGROUND:{campgroundDataId}");
+
             Game1.player.completelyStopAnimatingOrDoingAction();
 
             Game1.MusicDuckTimer = 2000f;
@@ -105,23 +105,12 @@ namespace Campgrounds.Framework.Objects
 
         public string getDescription()
         {
-            var locationName = GetLocationName();
+            var locationName = Campgrounds.campManager.GetLocationNameFromData(CampgroundData);
             if (string.IsNullOrEmpty(locationName) is false)
             {
                 return $"A map to the {locationName}.";
             }
             return "A map to a campsite.";
-        }
-
-        private string GetLocationName()
-        {
-            string locationName = string.Empty;
-            if (Game1.locationData.ContainsKey(CampgroundData.Id))
-            {
-                locationName = Game1.locationData[CampgroundData.Id].DisplayName;
-            }
-
-            return locationName;
         }
 
         public int maximumStackSize()

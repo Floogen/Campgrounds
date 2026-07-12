@@ -128,6 +128,17 @@ namespace Campgrounds.Framework.Managers
             }
         }
 
+        public string GetLocationNameFromData(CampgroundData campgroundData)
+        {
+            string locationName = string.Empty;
+            if (Game1.locationData.ContainsKey(campgroundData.Id))
+            {
+                locationName = Game1.locationData[campgroundData.Id].DisplayName;
+            }
+
+            return locationName;
+        }
+
         public void StartTraveling(Farmer who, CampgroundData campgroundData)
         {
             var guest = Campgrounds.villagerManager.GetInvitedCharacter(who);

@@ -97,6 +97,10 @@ namespace Campgrounds
 
             // Register commands
             helper.ConsoleCommands.Add("campgrounds_addrations", "Adds camping ration currency to the farmer.", (cmd, args) => { if (int.TryParse(args[0], out int amount)) { currencyManager.ChangeCurrencyBalance(Framework.Models.Enums.Currency.CampRations, amount); } });
+
+            // Register event command
+            Event.RegisterCommand("PeacefulEnd.Campgrounds_GiveRations", EventHelper.GiveRationsCommand);
+            Event.RegisterCommand("PeacefulEnd.Campgrounds_GiveCampsiteMap", EventHelper.GiveCampsiteMapCommand);
         }
 
         private void OnGameLaunched(object sender, GameLaunchedEventArgs e)

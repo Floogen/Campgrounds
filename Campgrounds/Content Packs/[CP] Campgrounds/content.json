@@ -141,6 +141,12 @@
     {
       "Action": "Include",
       "FromFile": "assets/characters/characters.json"
+    },
+
+    // Add event data
+    {
+      "Action": "Include",
+      "FromFile": "assets/events/events.json"
     }
   ]
 }
