@@ -76,9 +76,10 @@ namespace Campgrounds
 
                 // Apply Location patches
                 new GameLocationPatch(monitor, modHelper).Apply(harmony);
-                
+
                 // Apply Object patches
                 new ObjectPatch(monitor, modHelper).Apply(harmony);
+                new ItemPatch(monitor, modHelper).Apply(harmony);
             }
             catch (Exception e)
             {

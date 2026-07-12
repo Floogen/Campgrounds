@@ -31,28 +31,43 @@ namespace Campgrounds.Framework.Managers
         {
             foreach (var item in e.Added)
             {
-                if (item is null)
+                if (IsCustomItem(item) is false)
                 {
                     continue;
                 }
 
                 // Handle recipe-like items (campsite map, campfire food recipes, tent schematics)
-                if (item.QualifiedItemId.EqualsIgnoreCase(CAMPSITE_MAP_ID))
-                {
-                    if (item.modData.TryGetValue(CAMPSITE_MAP_CAMPGROUND_MOD_DATA_ID, out string campgroundDataId))
-                    {
-                        // Exit current menu
-                        Game1.exitActiveMenu();
-
-                        UnlockSpecialAndHoldAboveHead(GetCampsiteMapUnlockKey(campgroundDataId), CAMPSITE_MAP_ID, $"You have discovered the campsite: {Campgrounds.campManager.GetLocationNameFromDataId(campgroundDataId)}!");
-                    }
-
-                    e.Player.removeItemFromInventory(item);
-                }
+                HandleCustomItem(e.Player, item);
             }
         }
 
-        public (bool Result, string Name) HasCustomName(StardewValley.Object item)
+        public void HandleCustomItem(Farmer farmer, Item item)
+        {
+            if (item.QualifiedItemId.EqualsIgnoreCase(CAMPSITE_MAP_ID))
+            {
+                if (item.modData.TryGetValue(CAMPSITE_MAP_CAMPGROUND_MOD_DATA_ID, out string campgroundDataId))
+                {
+                    // Exit current menu
+                    Game1.exitActiveMenu();
+
+                    UnlockSpecialAndHoldAboveHead(GetCampsiteMapUnlockKey(campgroundDataId), CAMPSITE_MAP_ID, $"You have discovered the campsite: {Campgrounds.campManager.GetLocationNameFromDataId(campgroundDataId)}!");
+                }
+
+                farmer.removeItemFromInventory(item);
+            }
+        }
+
+        public bool IsCustomItem(Item item)
+        {
+            if (item.QualifiedItemId.EqualsIgnoreCase(CAMPSITE_MAP_ID))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public (bool Result, string Name) HasCustomName(Item item)
         {
             if (item is not null)
             {
@@ -65,7 +80,7 @@ namespace Campgrounds.Framework.Managers
             return (false, string.Empty);
         }
 
-        public (bool Result, string Description) HasCustomDescription(StardewValley.Object item)
+        public (bool Result, string Description) HasCustomDescription(Item item)
         {
             if (item is not null)
             {
