@@ -84,6 +84,11 @@ namespace Campgrounds.Framework.Utilities
         }
 
         // Touch actions
+        public static void HandleParkClosed(GameLocation location, string[] args, Farmer player, Vector2 tile)
+        {
+            Game1.drawObjectDialogue("The pathway is blocked by fallen trees and overgrown brush. It looks like nobody's been through here in years.");
+        }
+
         public static void HandleCampingExit(GameLocation location, string[] args, Farmer player, Vector2 tile, bool skipLeaveEarlyCheck = false)
         {
             var campsite = Campgrounds.campManager.GetActiveCampsiteFromLocation(location);

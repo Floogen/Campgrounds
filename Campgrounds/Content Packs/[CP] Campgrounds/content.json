@@ -59,7 +59,49 @@
       "FromFile": "assets/maps/cindersap_interior.png"
     },
 
-    // Patch Forest map
+    // Patch Forest map (closed)
+    {
+      "Action": "EditMap",
+      "Target": "Maps/Forest",
+      "FromFile": "assets/maps/ForestPatchClosed.tmx",
+      "FromArea": {
+        "X": 2,
+        "Y": 0,
+        "Width": 13,
+        "Height": 7
+      },
+      "ToArea": {
+        "X": 2,
+        "Y": 0,
+        "Width": 13,
+        "Height": 7
+      },
+      "When": {
+        "HasSeenEvent |contains=PeacefulEnd.Campgrounds.Events.CaretakerIntro": "false"
+      }
+    },
+    {
+      "Action": "EditMap",
+      "Target": "Maps/Forest",
+      "FromFile": "assets/maps/ForestPatchClosed.tmx",
+      "FromArea": {
+        "X": 4,
+        "Y": 0,
+        "Width": 11,
+        "Height": 12
+      },
+      "ToArea": {
+        "X": 4,
+        "Y": 0,
+        "Width": 11,
+        "Height": 12
+      },
+      "When": {
+        "HasSeenEvent |contains=PeacefulEnd.Campgrounds.Events.CaretakerIntro": "false"
+      }
+    },
+
+    // Patch Forest map (open)
     {
       "Action": "EditMap",
       "Target": "Maps/Forest",
@@ -75,6 +117,9 @@
         "Y": 0,
         "Width": 13,
         "Height": 7
+      },
+      "When": {
+        "HasSeenEvent": "PeacefulEnd.Campgrounds.Events.CaretakerIntro"
       }
     },
     {
@@ -92,6 +137,9 @@
         "Y": 0,
         "Width": 11,
         "Height": 12
+      },
+      "When": {
+        "HasSeenEvent": "PeacefulEnd.Campgrounds.Events.CaretakerIntro"
       }
     },
 

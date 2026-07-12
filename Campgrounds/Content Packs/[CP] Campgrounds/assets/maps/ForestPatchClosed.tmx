@@ -5021,7 +5021,7 @@
 0,0,0,0,0,994,969,969,968,969,969,969,970,943,947,
 0,0,0,0,0,0,0,0,4550,4551,4552,4553,4554,970,946,
 0,0,0,0,0,0,0,0,4573,4574,4575,4576,4577,994,969,
-0,0,0,0,0,0,0,0,0,4597,4598,4599,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -5036,8 +5036,8 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,994,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,4570,4571,4572,0,0,0,
+0,0,0,0,0,0,0,0,0,4593,4594,4595,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -5047,17 +5047,17 @@
  <objectgroup id="10" name="Back">
   <object id="39" name="TileData" x="160" y="48" width="16" height="16">
    <properties>
-    <property name="TouchAction" value="Warp PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark 36 50"/>
+    <property name="TouchAction" value="PeacefulEnd.Campgrounds_ParkClosed"/>
    </properties>
   </object>
   <object id="40" name="TileData" x="144" y="48" width="16" height="16">
    <properties>
-    <property name="TouchAction" value="Warp PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark 36 50"/>
+    <property name="TouchAction" value="PeacefulEnd.Campgrounds_ParkClosed"/>
    </properties>
   </object>
   <object id="41" name="TileData" x="176" y="48" width="16" height="16">
    <properties>
-    <property name="TouchAction" value="Warp PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark 36 50"/>
+    <property name="TouchAction" value="PeacefulEnd.Campgrounds_ParkClosed"/>
    </properties>
   </object>
  </objectgroup>

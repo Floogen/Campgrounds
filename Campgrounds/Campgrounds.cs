@@ -93,6 +93,7 @@ namespace Campgrounds
             GameLocation.RegisterTileAction("PeacefulEnd.Campgrounds_CampingSiteList", MapActionHelper.HandleCampingSiteList);
             GameLocation.RegisterTileAction("PeacefulEnd.Campgrounds_CarRepair", MapActionHelper.HandleCarRepair);
             GameLocation.RegisterTileAction("PeacefulEnd.Campgrounds_RepairVisitorSite", MapActionHelper.HandleVisitorSiteRepair);
+            GameLocation.RegisterTouchAction("PeacefulEnd.Campgrounds_ParkClosed", MapActionHelper.HandleParkClosed);
             GameLocation.RegisterTouchAction("PeacefulEnd.Campgrounds_CampingExit", (GameLocation location, string[] args, Farmer who, Vector2 tile) => MapActionHelper.HandleCampingExit(location, args, who, tile, false));
 
             // Register commands
