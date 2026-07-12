@@ -185,7 +185,7 @@ namespace Campgrounds.Framework.UI
             _travelButton.bounds.X = _campsiteSummaryDisplayBox.X + _travelButton.bounds.Width / 2 + 8;
             _travelButton.bounds.Y = _campsiteSummaryDisplayBox.Y + _campsiteSummaryDisplayBox.Height - 96;
 
-            PaginatePacks(Campgrounds.campManager.CampgroundData.OrderByDescending(c => c.IsUnlocked()).ThenBy(c => c.TravelTimeInHours).ToList());
+            PaginatePacks(Campgrounds.campManager.CampgroundData.Where(c => c.HideUntilUnlocked is false).OrderByDescending(c => c.IsUnlocked()).ThenBy(c => c.TravelTimeInHours).ToList());
         }
 
         public void StartTravelingToCampsite(bool skipRationCheck = false)
