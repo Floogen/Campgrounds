@@ -20,9 +20,11 @@ namespace Campgrounds.Framework.Managers
     {
         public const string CAMPSITE_MAP_ID = "(O)PeacefulEnd.Campgrounds.Items.CampsiteMap";
         public const string CAMPFIRE_RECIPE_ID = "(O)PeacefulEnd.Campgrounds.Items.CampfireRecipe";
+        public const string TENT_SCHEMATIC_ID = "(O)PeacefulEnd.Campgrounds.Items.TentSchematic";
 
         public const string CAMPSITE_MAP_MOD_DATA_ID = "Campgrounds.Items.CampsiteMap.Data.Id";
         public const string CAMPFIRE_RECIPE_MOD_DATA_ID = "Campgrounds.Items.CampfireRecipe.Data.Id";
+        public const string TENT_SCHEMATIC_MOD_DATA_ID = "Campgrounds.Items.TentSchematic.Data.Id";
 
         public ItemManager(IMonitor monitor, IModHelper helper) : base(monitor, helper)
         {
@@ -69,11 +71,23 @@ namespace Campgrounds.Framework.Managers
 
                 farmer.removeItemFromInventory(item);
             }
+            else if (item.QualifiedItemId.EqualsIgnoreCase(TENT_SCHEMATIC_ID))
+            {
+                if (item.modData.TryGetValue(TENT_SCHEMATIC_MOD_DATA_ID, out string tentDataId) && Campgrounds.tentManager.GetTentDataById(tentDataId) is CampingTentData campingTentData && campingTentData is not null)
+                {
+                    // Exit current menu
+                    Game1.exitActiveMenu();
+
+                    UnlockSpecialAndHoldAboveHead(GetTentSchematicUnlockKey(tentDataId), TENT_SCHEMATIC_ID, $"You have discovered the tent schematic: {campingTentData.DisplayName}!");
+                }
+
+                farmer.removeItemFromInventory(item);
+            }
         }
 
         public bool IsCustomItem(Item item)
         {
-            if (item.QualifiedItemId.EqualsIgnoreCase(CAMPSITE_MAP_ID) || item.QualifiedItemId.EqualsIgnoreCase(CAMPFIRE_RECIPE_ID))
+            if (item.QualifiedItemId.EqualsIgnoreCase(CAMPSITE_MAP_ID) || item.QualifiedItemId.EqualsIgnoreCase(CAMPFIRE_RECIPE_ID) || item.QualifiedItemId.EqualsIgnoreCase(TENT_SCHEMATIC_ID))
             {
                 return true;
             }
@@ -97,6 +111,14 @@ namespace Campgrounds.Framework.Managers
                         return (true, $"Campfire Recipe ({campfireFoodData.DisplayName})");
                     }
                 }
+                if (item.QualifiedItemId.EqualsIgnoreCase(TENT_SCHEMATIC_ID) && item.modData.TryGetValue(TENT_SCHEMATIC_MOD_DATA_ID, out string campingTentDataId))
+                {
+                    var campingTentData = Campgrounds.tentManager.GetTentDataById(campingTentDataId);
+                    if (campingTentData is not null)
+                    {
+                        return (true, $"Tent Schematic ({campingTentData.DisplayName})");
+                    }
+                }
             }
 
             return (false, string.Empty);
@@ -116,6 +138,14 @@ namespace Campgrounds.Framework.Managers
                     if (campfireFoodData is not null)
                     {
                         return (true, $"A recipe for cooking {campfireFoodData.DisplayName} on a campfire.");
+                    }
+                }
+                if (item.QualifiedItemId.EqualsIgnoreCase(TENT_SCHEMATIC_ID) && item.modData.TryGetValue(TENT_SCHEMATIC_MOD_DATA_ID, out string campingTentDataId))
+                {
+                    var campingTentData = Campgrounds.tentManager.GetTentDataById(campingTentDataId);
+                    if (campingTentData is not null)
+                    {
+                        return (true, $"A book containing the designs of a {campingTentData.DisplayName}.");
                     }
                 }
             }
@@ -141,6 +171,16 @@ namespace Campgrounds.Framework.Managers
             }
 
             return $"RECIPE_UNLOCKED_CAMPFIRE_FOOD:{campfireFoodDataId}";
+        }
+
+        public string GetTentSchematicUnlockKey(string campingTentDataId)
+        {
+            if (string.IsNullOrEmpty(campingTentDataId))
+            {
+                return string.Empty;
+            }
+
+            return $"SCHEMATIC_UNLOCKED_TENT:{campingTentDataId}";
         }
 
         public void UnlockSpecialAndHoldAboveHead(string unlockKey, string itemId, string message)

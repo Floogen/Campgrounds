@@ -8,11 +8,10 @@
         "PeacefulEnd.Campgrounds.Tents.StarterTent": {
           "Id": "PeacefulEnd.Campgrounds.Tents.StarterTent",
           "DisplayName": "Starter Tent",
+          "Description": "Lightweight and simple to pitch. A good first shelter for an aspiring camper.",
+
           "NumberOfAllowedCampfireMeals": 1,
-          "RestingBuffIds": [
-            "PeacefulEnd.Campgrounds.Buffs.LowStaminaBuff",
-            "PeacefulEnd.Campgrounds.Buffs.LowXPBuff"
-          ],
+          "RestingBuffIds": [],
           "TexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/StarterTent",
           "SouthSprite": {
             "EntranceTile": {
@@ -137,6 +136,146 @@
       "Action": "Load",
       "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/StarterTent",
       "FromFile": "assets/campgrounds/tents/starterTent.png"
+    },
+
+    // Add standard camping tent
+    {
+      "Action": "EditData",
+      "Target": "Data/PeacefulEnd_Campgrounds/CampingTents",
+      "Entries": {
+        "PeacefulEnd.Campgrounds.Tents.StandardTent": {
+          "Id": "PeacefulEnd.Campgrounds.Tents.StandardTent",
+          "DisplayName": "Standard Tent",
+          "Description": "A solid, weatherproof tent. Roomy enough to sleep comfortably.",
+
+          "NumberOfAllowedCampfireMeals": 1,
+          "RestingBuffIds": [
+            "PeacefulEnd.Campgrounds.Buffs.LowXPBuff"
+          ],
+          "TexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/StandardTent",
+          "SouthSprite": {
+            "EntranceTile": {
+              "X": 16,
+              "Y": 48
+            },
+            "DisplayRectangle": {
+              "X": 0,
+              "Y": 0,
+              "Width": 48,
+              "Height": 64
+            },
+            "BoundaryRectangle": {
+              "X": 0,
+              "Y": 32,
+              "Width": 48,
+              "Height": 32
+            },
+
+            "ShadowRectangle": {
+              "X": 0,
+              "Y": 80,
+              "Width": 64,
+              "Height": 48
+            },
+            "ShadowOffset": {
+              "X": 16,
+              "Y": 32
+            }
+          },
+          "EastSprite": {
+            "EntranceTile": {
+              "X": 32,
+              "Y": 32
+            },
+            "DisplayRectangle": {
+              "X": 48,
+              "Y": 0,
+              "Width": 48,
+              "Height": 64
+            },
+            "BoundaryRectangle": {
+              "X": 0,
+              "Y": 16,
+              "Width": 48,
+              "Height": 48
+            },
+
+            "ShadowRectangle": {
+              "X": 0,
+              "Y": 80,
+              "Width": 64,
+              "Height": 48
+            },
+            "ShadowOffset": {
+              "X": 16,
+              "Y": 32
+            }
+          },
+          "WestSprite": {
+            "EntranceTile": {
+              "X": 0,
+              "Y": 32
+            },
+            "DisplayRectangle": {
+              "X": 96,
+              "Y": 0,
+              "Width": 48,
+              "Height": 64
+            },
+            "BoundaryRectangle": {
+              "X": 0,
+              "Y": 16,
+              "Width": 48,
+              "Height": 48
+            },
+
+            "ShadowRectangle": {
+              "X": 0,
+              "Y": 80,
+              "Width": 64,
+              "Height": 48
+            },
+            "ShadowOffset": {
+              "X": 16,
+              "Y": 32
+            }
+          },
+          "NorthSprite": {
+            "EntranceTile": {
+              "X": 16,
+              "Y": 32
+            },
+            "DisplayRectangle": {
+              "X": 144,
+              "Y": 0,
+              "Width": 48,
+              "Height": 64
+            },
+            "BoundaryRectangle": {
+              "X": 0,
+              "Y": 32,
+              "Width": 48,
+              "Height": 32
+            },
+
+            "ShadowRectangle": {
+              "X": 0,
+              "Y": 80,
+              "Width": 64,
+              "Height": 48
+            },
+            "ShadowOffset": {
+              "X": 16,
+              "Y": 32
+            }
+          }
+        }
+      }
+    },
+    {
+      "Action": "Load",
+      "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/StandardTent",
+      "FromFile": "assets/campgrounds/tents/standardTent.png"
     }
   ]
 }

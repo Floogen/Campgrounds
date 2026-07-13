@@ -145,6 +145,19 @@ namespace Campgrounds
 
                 return new[] { new ItemQueryResult(item) };
             });
+
+            ItemQueryResolver.Register(ItemManager.TENT_SCHEMATIC_ID, (string key, string arguments, ItemQueryContext context, bool avoidRepeat, HashSet<string> avoidItemIds, Action<string, string> logError) => {
+                string[] args = ArgUtility.SplitBySpaceQuoteAware(arguments);
+                if (ArgUtility.TryGet(args, 0, out string campingTentDataId, out string error) is false || (tentManager.GetTentDataById(campingTentDataId) is var campingTentData && campingTentData is null))
+                {
+                    return ItemQueryResolver.Helpers.ErrorResult(key, arguments, logError, error);
+                }
+
+                Item item = ItemRegistry.Create(ItemManager.TENT_SCHEMATIC_ID);
+                item.modData[ItemManager.TENT_SCHEMATIC_MOD_DATA_ID] = campingTentDataId;
+
+                return new[] { new ItemQueryResult(item) };
+            });
         }
 
         private void OnUpdateTicked(object sender, UpdateTickedEventArgs e)

@@ -57,6 +57,24 @@
           "CanBeTrashed": true,
           "ExcludeFromRandomSale": true,
           "ExcludeFromShippingCollection": true
+        },
+        "PeacefulEnd.Campgrounds.Items.TentSchematic": {
+          "Name": "PeacefulEnd.Campgrounds.Items.TentSchematic",
+          "DisplayName": "Tent Schematic",
+          "Description": "A book containing the designs of a camping tent.",
+          "Type": "Basic",
+          "Category": 0,
+          "Price": 1000,
+
+          "Texture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/Items",
+          "SpriteIndex": 3,
+
+          "Edibility": -300,
+
+          "CanBeGivenAsGift": false,
+          "CanBeTrashed": true,
+          "ExcludeFromRandomSale": true,
+          "ExcludeFromShippingCollection": true
         }
       }
     },

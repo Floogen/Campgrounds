@@ -5,21 +5,31 @@
       "Target": "Data/Shops",
       "TargetField": [ "PeacefulEnd.Campgrounds.Shops.CampShop", "Items" ],
       "Entries": {
-        "PeacefulEnd.Campgrounds.Items.CampsiteMap": {
-          "Id": "PeacefulEnd.Campgrounds.Items.CampsiteMap",
+        // This should be given by default via event, left as safety
+        "PeacefulEnd.Campgrounds.Items.CampsiteMap.DefaultSite": {
+          "Id": "PeacefulEnd.Campgrounds.Items.CampsiteMap.DefaultSite",
           "ItemId": "(O)PeacefulEnd.Campgrounds.Items.CampsiteMap PeacefulEnd.Campgrounds.CindersapForestCampground",
           "Price": 1000,
           "AvailableStock": 1,
           "AvailableStockLimit": "Player",
           "Condition": "!WORLD_STATE_ID MAP_UNLOCKED_CAMPGROUND:PeacefulEnd.Campgrounds.CindersapForestCampground"
         },
-        "PeacefulEnd.Campgrounds.Items.CampfireRecipe": {
-          "Id": "PeacefulEnd.Campgrounds.Items.CampfireRecipe",
+
+        "PeacefulEnd.Campgrounds.Items.CampfireRecipe.SausageOnAStick": {
+          "Id": "PeacefulEnd.Campgrounds.Items.CampfireRecipe.SausageOnAStick",
           "ItemId": "(O)PeacefulEnd.Campgrounds.Items.CampfireRecipe PeacefulEnd.Campgrounds.Foods.SausageOnAStick",
           "Price": 1000,
           "AvailableStock": 1,
           "AvailableStockLimit": "Player",
-          "Condition": "!WORLD_STATE_ID RECIPE_UNLOCKED_CAMPFIRE_FOOD:PeacefulEnd.Campgrounds.Foods.SausageOnAStickk"
+          "Condition": "!WORLD_STATE_ID RECIPE_UNLOCKED_CAMPFIRE_FOOD:PeacefulEnd.Campgrounds.Foods.SausageOnAStick"
+        },
+        "PeacefulEnd.Campgrounds.Items.TentSchematic.StandardTent": {
+          "Id": "PeacefulEnd.Campgrounds.Items.TentSchematic.StandardTent",
+          "ItemId": "(O)PeacefulEnd.Campgrounds.Items.TentSchematic PeacefulEnd.Campgrounds.Tents.StandardTent",
+          "Price": 1000,
+          "AvailableStock": 1,
+          "AvailableStockLimit": "Player",
+          "Condition": "!WORLD_STATE_ID SCHEMATIC_UNLOCKED_TENT:PeacefulEnd.Campgrounds.Tents.StandardTent"
         }
       }
     }

@@ -48,6 +48,11 @@ namespace Campgrounds.Framework.Managers
             _campingTentData = campingTentData.Where(c => c.IsValid().Result is true).ToList();
         }
 
+        public CampingTentData GetTentDataById(string tentDataId)
+        {
+            return CampingTentData.FirstOrDefault(t => t.Id.EqualsIgnoreCase(tentDataId));
+        }
+
         public CampingTentData GetStarterTent()
         {
             return _campingTentData.FirstOrDefault(t => t.Id.EqualsIgnoreCase(STARTER_TENT_ID));
