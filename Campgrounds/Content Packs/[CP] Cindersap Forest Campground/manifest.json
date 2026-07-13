@@ -11,6 +11,11 @@
       "UniqueID": "PeacefulEnd.Campgrounds.Core",
       "IsRequired": true,
       "MinimumVersion": "%ProjectVersion%"
+    },
+    {
+      "UniqueID": "PeacefulEnd.Campgrounds.ContentPatcher",
+      "IsRequired": true,
+      "MinimumVersion": "%ProjectVersion%"
     }
   ],
   "ContentPackFor": {
