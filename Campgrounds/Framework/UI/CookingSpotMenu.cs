@@ -490,6 +490,10 @@ namespace Campgrounds.Framework.UI
 
                 drawHoverText(b, hoverText, Game1.smallFont, 0, 0, hoverRecipe.RationCost, hoverTitle, -1, buffIcons, null, 0, null, -1, -1, -1, 1f, null, null);
             }
+            else if (string.IsNullOrEmpty(hoverText) is false)
+            {
+                drawHoverText(b, hoverText, Game1.smallFont, 0, 0, -1, hoverTitle, -1, null, null, 0, null, -1, -1, -1, 1f, null, null);
+            }
         }
     }
 }
