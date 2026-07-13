@@ -6,8 +6,8 @@
       "Entries": {
         "PeacefulEnd.Campgrounds.Items.VisitorPass": {
           "Name": "PeacefulEnd.Campgrounds.Items.VisitorPass",
-          "DisplayName": "{i18n:items.visitorPass.name}}",
-          "Description": "{i18n:items.visitorPass.description}}",
+          "DisplayName": "{{i18n:items.visitorPass.name}}",
+          "Description": "{{i18n:items.visitorPass.description}}",
           "Type": "Basic",
           "Category": 0,
           "Price": 500,
@@ -24,8 +24,8 @@
         },
         "PeacefulEnd.Campgrounds.Items.CampsiteMap": {
           "Name": "PeacefulEnd.Campgrounds.Items.CampsiteMap",
-          "DisplayName": "{i18n:items.campsiteMap.name}}",
-          "Description": "{i18n:items.campsiteMap.description}}",
+          "DisplayName": "{{i18n:items.campsiteMap.name}}",
+          "Description": "{{i18n:items.campsiteMap.description}}",
           "Type": "Basic",
           "Category": 0,
           "Price": 1000,
@@ -42,8 +42,8 @@
         },
         "PeacefulEnd.Campgrounds.Items.CampfireRecipe": {
           "Name": "PeacefulEnd.Campgrounds.Items.CampfireRecipe",
-          "DisplayName": "{i18n:items.campfireRecipe.name}}",
-          "Description": "{i18n:items.campfireRecipe.description}}",
+          "DisplayName": "{{i18n:items.campfireRecipe.name}}",
+          "Description": "{{i18n:items.campfireRecipe.description}}",
           "Type": "Basic",
           "Category": 0,
           "Price": 1000,
@@ -60,8 +60,8 @@
         },
         "PeacefulEnd.Campgrounds.Items.TentSchematic": {
           "Name": "PeacefulEnd.Campgrounds.Items.TentSchematic",
-          "DisplayName": "{i18n:items.tentSchematic.name}}",
-          "Description": "{i18n:items.tentSchematic.description}}",
+          "DisplayName": "{{i18n:items.tentSchematic.name}}",
+          "Description": "{{i18n:items.tentSchematic.description}}",
           "Type": "Basic",
           "Category": 0,
           "Price": 1000,

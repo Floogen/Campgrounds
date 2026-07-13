@@ -13,15 +13,15 @@
                 {
                   "Id": "PeacefulEnd.Campgrounds.Shops.Dialogue.Default",
                   "RandomDialogue": [
-                    "{i18n:dialogue.campshop.random1}}",
-                    "{i18n:dialogue.campshop.random2}}",
-                    "{i18n:dialogue.campshop.random3}}",
-                    "{i18n:dialogue.campshop.random4}}"
+                    "{{i18n:dialogue.campshop.random1}}",
+                    "{{i18n:dialogue.campshop.random2}}",
+                    "{{i18n:dialogue.campshop.random3}}",
+                    "{{i18n:dialogue.campshop.random4}}"
                   ]
                 },
                 {
                   "Id": "PeacefulEnd.Campgrounds.Shops.Dialogue.Rain",
-                  "Dialogue": "{i18n:dialogue.campshop.rain}}",
+                  "Dialogue": "{{i18n:dialogue.campshop.rain}}",
                   "Condition": "WEATHER Here Rain"
                 }
               ]
