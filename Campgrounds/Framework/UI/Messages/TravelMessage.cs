@@ -44,17 +44,12 @@ namespace Campgrounds.Framework.UI.Messages
                         break;
                 }
 
-                string travelType = "hike";
-                if (_campgroundData.RequireVehicle)
-                {
-                    travelType = "drive";
-                }
+                string travelType = _campgroundData.RequireVehicle ? "drive" : "hike";
 
-                _travelMessageText = $"After a {travelTime} {travelType}, you arrive at the campsite...";
-                if (Campgrounds.villagerManager.GetInvitedCharacter(Game1.player) != null)
-                {
-                    _travelMessageText = $"After a {travelTime} {travelType}, you and your friend arrive at the campsite...";
-                }
+                bool hasFriend = Campgrounds.villagerManager.GetInvitedCharacter(Game1.player) != null;
+                string baseKey = hasFriend ? "travel.arrivalWithFriend" : "travel.arrival";
+
+                _travelMessageText = Campgrounds.modHelper.Translation.Get($"{baseKey}.{travelType}.{travelTime}");
             }
         }
 

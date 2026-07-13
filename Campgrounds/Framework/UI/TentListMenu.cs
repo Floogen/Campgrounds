@@ -145,14 +145,20 @@ namespace Campgrounds.Framework.UI
                         tentBuffs = $"\n - {string.Join("\n - ", buffs.Select(b => b.displayName))}";
                         if (_pages[_currentPage][i].NumberOfAllowedCampfireMeals > 1)
                         {
-                            tentBuffs += $"\n - {_pages[_currentPage][i].NumberOfAllowedCampfireMeals - 1} bonus meal(s)";
+                            tentBuffs += $"\n - {Campgrounds.modHelper.Translation.Get("ui.text.bonusMeals", new
+                            {
+                                count = _pages[_currentPage][i].NumberOfAllowedCampfireMeals - 1
+                            })}";
                         }
                         else if (buffs.Count == 0)
                         {
-                            tentBuffs = "\nNone";
+                            tentBuffs = Campgrounds.modHelper.Translation.Get("ui.text.none");
                         }
 
-                        _hoverHint = $"Buffs:{tentBuffs}";
+                        _hoverHint = Campgrounds.modHelper.Translation.Get("ui.text.buffs", new
+                        {
+                            buffs = tentBuffs
+                        });
                     }
                 }
             }
@@ -205,7 +211,7 @@ namespace Campgrounds.Framework.UI
                 myID = 101
             };
 
-            string _activateButtonText = "Set as Tent";
+            string _activateButtonText = Campgrounds.modHelper.Translation.Get("ui.buttons.setTent.name");
             var textSize = Game1.dialogueFont.MeasureString(_activateButtonText);
 
             int buttonWidth = (int)textSize.X + 64;
@@ -290,23 +296,19 @@ namespace Campgrounds.Framework.UI
             Game1.DrawBox(_tentInfoDisplayBox.X, _tentInfoDisplayBox.Y, _tentInfoDisplayBox.Width, _tentInfoDisplayBox.Height);
             Game1.DrawBox(_tentPreviewBox.X, _tentPreviewBox.Y, _tentPreviewBox.Width, _tentPreviewBox.Height);
 
-            var tentName = "Select";
+            var tentName = "";
             var secondaryTentName = "";
             var tentDescription = "";
             if (_selectedCampingTent is not null && _selectedCampingTent.IsUnlocked())
             {
-                tentName = _selectedCampingTent.DisplayName;
-                if (tentName.Length > 16)
-                {
-                    secondaryTentName = tentName.Substring(16, tentName.Length - 16);
-                    tentName = $"{tentName.Substring(0, 16).TrimEnd()}";
-                }
+                (tentName, secondaryTentName) = TextHelper.SplitLabel(_selectedCampingTent.DisplayName);
 
                 tentDescription = _selectedCampingTent.Description;
             }
             else
             {
-                secondaryTentName = "a Tent";
+                int maxLength = Campgrounds.modHelper.Translation.LocaleEnum is LocalizedContentManager.LanguageCode.en ? 7 : 16;
+                (tentName, secondaryTentName) = TextHelper.SplitLabel(Campgrounds.modHelper.Translation.Get("ui.text.selectPromptTent"), maxLength);
             }
 
             SpriteText.drawStringHorizontallyCenteredAt(b, tentName, (int)_tentNamePosition.X + 4, (int)_tentNamePosition.Y);
@@ -322,7 +324,7 @@ namespace Campgrounds.Framework.UI
             }
 
             // Draw the tent buttons
-            SpriteText.drawStringWithScrollCenteredAt(b, "Tents", (int)_campingTentsDisplayPosition.X, (int)_campingTentsDisplayPosition.Y);
+            SpriteText.drawStringWithScrollCenteredAt(b, Campgrounds.modHelper.Translation.Get("ui.text.tents"), (int)_campingTentsDisplayPosition.X, (int)_campingTentsDisplayPosition.Y);
             Game1.DrawBox(_tentsDisplayBox.X, _tentsDisplayBox.Y, _tentsDisplayBox.Width, _tentsDisplayBox.Height);
             for (int j = 0; j < _campingTentButtons.Count; j++)
             {
@@ -381,7 +383,7 @@ namespace Campgrounds.Framework.UI
                 }
                 else
                 {
-                    SpriteText.drawStringWithScrollCenteredAt(b, "Current Tent", _tentInfoDisplayBox.Center.X, _activateButton.bounds.Y);
+                    SpriteText.drawStringWithScrollCenteredAt(b, Campgrounds.modHelper.Translation.Get("ui.text.currentTent"), _tentInfoDisplayBox.Center.X, _activateButton.bounds.Y);
                 }
             }
 

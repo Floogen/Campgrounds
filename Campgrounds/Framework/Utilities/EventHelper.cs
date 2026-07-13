@@ -38,7 +38,10 @@ namespace Campgrounds.Framework.Utilities
             if (campgroundData is not null)
             {
                 // Give map
-                Campgrounds.itemManager.UnlockSpecialAndHoldAboveHead(Campgrounds.itemManager.GetCampsiteMapUnlockKey(campgroundDataId), ItemManager.CAMPSITE_MAP_ID, $"You have discovered the campsite: {Campgrounds.campManager.GetLocationNameFromDataId(campgroundData.Id)}!");
+                Campgrounds.itemManager.UnlockSpecialAndHoldAboveHead(Campgrounds.itemManager.GetCampsiteMapUnlockKey(campgroundDataId), ItemManager.CAMPSITE_MAP_ID, Campgrounds.modHelper.Translation.Get("messages.discovered.campsite", new
+                {
+                    campsiteName = Campgrounds.campManager.GetLocationNameFromDataId(campgroundData.Id)
+                }));
             }
             @event.CurrentCommand++;
         }

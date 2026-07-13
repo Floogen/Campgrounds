@@ -42,11 +42,19 @@ namespace Campgrounds.Framework.Patches.Characters
             {
                 if (currentInvitedCharacter == __instance)
                 {
-                    Game1.drawObjectDialogue($"You already invited {__instance.displayName} to go camping.");
+                    Game1.drawObjectDialogue(_helper.Translation.Get("dialogues.general.repeatInvited", new
+                    {
+                        npcName = __instance.displayName
+                    }));
                 }
                 else
                 {
-                    who.currentLocation.createQuestionDialogue($"You already invited {currentInvitedCharacter.displayName} to go camping. Invite {__instance.displayName} instead?", who.currentLocation.createYesNoResponses(), (Farmer who, string answer) => CampingHelper.OnOverrideCampingInviteResponse(who, answer, __instance));
+                    string question = _helper.Translation.Get("dialogues.general.alreadyInvitedButInviteOther", new
+                    {
+                        currentNpcName = currentInvitedCharacter.displayName,
+                        newNpcName = __instance.displayName
+                    });
+                    who.currentLocation.createQuestionDialogue(question, who.currentLocation.createYesNoResponses(), (Farmer who, string answer) => CampingHelper.OnOverrideCampingInviteResponse(who, answer, __instance));
                 }
 
                 __result = false;
@@ -68,7 +76,7 @@ namespace Campgrounds.Framework.Patches.Characters
                 }
                 else
                 {
-                    List<string> rejectDialogue = new List<string>() { "Sorry, I don't really feel like camping right now." };
+                    List<string> rejectDialogue = new List<string>() { _helper.Translation.Get("dialogues.general.defaultReject") };
                     if (villageData is not null)
                     {
                         rejectDialogue = villageData.InviteDialogueRejected;

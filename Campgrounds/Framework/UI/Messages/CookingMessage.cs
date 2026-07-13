@@ -26,7 +26,7 @@ namespace Campgrounds.Framework.UI.Messages
 
         private void PlayCinematic()
         {
-            _messageText = $"The fire crackles as you cook the camp rations into a warm meal.";
+            _messageText = Campgrounds.modHelper.Translation.Get("messages.cooking.fluff1");
 
             Game1.playSound("fireball");
             DelayedAction.playSoundAfterDelay("bubbles", 1000);
@@ -67,7 +67,7 @@ namespace Campgrounds.Framework.UI.Messages
                 }
                 else
                 {
-                    _secondaryMessageText = "With a full belly, you are sure to get a good night's rest.";
+                    _secondaryMessageText = Campgrounds.modHelper.Translation.Get("messages.cooking.fluff2");
                     _messageTimer = 5000;
                     _hasDisplayedSecondaryMessage = true;
                 }

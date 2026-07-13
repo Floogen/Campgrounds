@@ -185,10 +185,10 @@ namespace Campgrounds.Framework.Utilities
 
                     string script = $"none/-1000 -1000/farmer -100 -100 2 {string.Join(" ", actorsPlace)}/skippable/viewport -1000 -1000/changeLocation PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark"
                         + $"{actorsWarpParsed}"
-                        + "/message \"Let's see who is here...\""
-                        + "/viewport 13 41 true/pause 1500/message \"Site 1\""
-                        + "/viewport 11 10 true/pause 1500/message \"Site 2\""
-                        + "/viewport 58 37 true/pause 1500/message \"Site 3\""
+                        + $"/message {Campgrounds.modHelper.Translation.Get("events.walkieTalkie.seeWhoHere")}"
+                        + $"/viewport 13 41 true/pause 1500/message {Campgrounds.modHelper.Translation.Get("events.walkieTalkie.site1")}"
+                        + $"/viewport 11 10 true/pause 1500/message {Campgrounds.modHelper.Translation.Get("events.walkieTalkie.site2")}"
+                        + $"/viewport 58 37 true/pause 1500/message {Campgrounds.modHelper.Translation.Get("events.walkieTalkie.site3")}"
                         + "/end";
 
                     FadeScreenHelper.StartFadeIn(afterFadeInAction: () =>

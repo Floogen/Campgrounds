@@ -46,12 +46,12 @@ namespace Campgrounds.Framework.Objects
                 }
                 else
                 {
-                    Game1.activeClickableMenu = new DialogueBox("Yesterday's campfire, now just a pile of ashes.");
+                    Game1.activeClickableMenu = new DialogueBox(Campgrounds.modHelper.Translation.Get("dialogues.general.cookingSpotAfterSleep"));
                 }
             }
             else
             {
-                Game1.activeClickableMenu = new DialogueBox("You already cooked enough for today.");
+                Game1.activeClickableMenu = new DialogueBox(Campgrounds.modHelper.Translation.Get("dialogues.general.cookingSpotAfterCooking"));
             }
 
             return true;

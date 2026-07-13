@@ -111,7 +111,7 @@ namespace Campgrounds.Framework.UI
                 downButton.bounds.Y = craftingPageY() + 192 + 32;
             }
 
-            _prepMealsButton = new OptionsButton("Start Cooking", StartCookingFood);
+            _prepMealsButton = new OptionsButton(Campgrounds.modHelper.Translation.Get("ui.buttons.cooking.name"), StartCookingFood);
             _prepMealsButton.bounds.X = xPositionOnScreen + (width + _prepMealsButton.bounds.Width) / 2 - 56;
             _prepMealsButton.bounds.Y = yPositionOnScreen + height - 108;
 
@@ -432,22 +432,33 @@ namespace Campgrounds.Framework.UI
 
             base.draw(b);
 
-            SpriteText.drawStringWithScrollCenteredAt(b, "Campfire Cooking", xPositionOnScreen + width / 2, yPositionOnScreen + 55);
-            SpriteText.drawStringWithScrollCenteredAt(b, "Summary", xPositionOnScreen + width / 2, horizontalPartitionY + 4);
+            SpriteText.drawStringWithScrollCenteredAt(b, Campgrounds.modHelper.Translation.Get("ui.text.campfireCooking"), xPositionOnScreen + width / 2, yPositionOnScreen + 55);
+            SpriteText.drawStringWithScrollCenteredAt(b, Campgrounds.modHelper.Translation.Get("ui.text.summary"), xPositionOnScreen + width / 2, horizontalPartitionY + 4);
 
             var buffs = _campsite.CurrentCampTent.GetBuffs();
             var tentBuffs = $"\n - {string.Join("\n - ", buffs.Select(b => b.displayName))}";
             if (_campsite.CurrentCampTent.NumberOfAllowedCampfireMeals > 1)
             {
-                tentBuffs += $"\n - {_campsite.CurrentCampTent.NumberOfAllowedCampfireMeals - 1} bonus meal(s)";
+                tentBuffs += $"\n - {Campgrounds.modHelper.Translation.Get("ui.text.bonusMeals", new
+                {
+                    count = _campsite.CurrentCampTent.NumberOfAllowedCampfireMeals - 1
+                })}";
             }
             else if (buffs.Count == 0)
             {
-                tentBuffs = "\n - None";
+                tentBuffs = $"\n - {Campgrounds.modHelper.Translation.Get("ui.text.none")}";
             }
 
-            b.DrawString(Game1.dialogueFont, $"Tent Buffs:{tentBuffs}", new Vector2(xPositionOnScreen + +IClickableMenu.borderWidth, horizontalPartitionY + 44), Game1.textColor);
-            b.DrawString(Game1.dialogueFont, $"Meals: {selectedCampfireFoods.Count}/{_campsite.CurrentCampTent.NumberOfAllowedCampfireMeals}", new Vector2(xPositionOnScreen + width - 232, horizontalPartitionY + 44), Game1.textColor);
+            b.DrawString(Game1.dialogueFont, Campgrounds.modHelper.Translation.Get("ui.text.tentBuffs", new
+            {
+                buffs = tentBuffs
+            }), new Vector2(xPositionOnScreen + +IClickableMenu.borderWidth, horizontalPartitionY + 44), Game1.textColor);
+            
+            b.DrawString(Game1.dialogueFont, Campgrounds.modHelper.Translation.Get("ui.text.meals", new
+            {
+                selectedMeals = selectedCampfireFoods.Count,
+                totalMeals = _campsite.CurrentCampTent.NumberOfAllowedCampfireMeals
+            }), new Vector2(xPositionOnScreen + width - 232, horizontalPartitionY + 44), Game1.textColor);
 
             if (downButton != null && currentCraftingPage < pagesOfCraftingRecipes.Count - 1)
             {

@@ -1,0 +1,115 @@
+﻿{
+  // Custom items
+  "customItems.campRations.name": "Camp Rations",
+  "customItems.campRations.description": "An assortment of cooking ingredients. Useful while camping out in the wilderness.",
+
+  // Custom recipe items
+  "customItems.campsiteMap.name": "Campsite Map ({{campsiteName}})",
+  "customItems.campsiteMap.description": "A map to the {{description}}.",
+
+  "customItems.campfireRecipe.name": "Campfire Recipe ({{campfireRecipeName}})",
+  "customItems.campfireRecipe.description": "A recipe for cooking {{description}} on a campfire.",
+
+  "customItems.tentSchematic.name": "Tent Schematic ({{tentSchematicName}})",
+  "customItems.tentSchematic.description": "A book containing the designs of a {{description}}.",
+
+  // Events
+  "events.walkieTalkie.seeWhoHere": "\"Let's see who is here...\"",
+  "events.walkieTalkie.site1": "\"Site 1\"",
+  "events.walkieTalkie.site2": "\"Site 2\"",
+  "events.walkieTalkie.site3": "\"Site 3\"",
+
+  // General dialogues
+  "dialogues.general.tentClickAfterSleep": "Time to head back.",
+  "dialogues.general.cookingSpotAfterCooking": "You already cooked enough for today.",
+  "dialogues.general.cookingSpotAfterSleep": "Yesterday's campfire, now just a pile of ashes.",
+
+  "dialogues.general.repeatInvited": "You already invited {{npcName}} to go camping.",
+  "dialogues.general.alreadyInvitedButInviteOther": "You already invited {{currentNpcName}} to go camping. Invite {{newNpcName}} instead?",
+  "dialogues.general.defaultReject": "Sorry, I don't really feel like camping right now.",
+
+  "dialogues.shop.greeting": "Heya neighbor! What can I getcha?",
+  "dialogues.shop.browseSupplies": "Browse Supplies",
+  "dialogues.shop.tentCatalogue": "Tent Catalogue",
+  "dialogues.shop.leave": "Leave",
+
+  "dialogues.traveling.campingWithoutRations": "Are you sure you want to travel without rations? You will not be able to make food at the campfire.",
+  "dialogues.traveling.notEnoughTime": "There is not enough time to reach that campsite before midnight...",
+  "dialogues.traveling.vehicleRequired": "This campsite requires a vehicle to reach. You see a note attached to the map...",
+  "dialogues.traveling.vehicleRequiredNote": "\"You can use my grandmother's old car in the garage! It will need some work to get running again though.\" - Clem",
+
+  // Messages
+  "messages.garage.repairCar": "Repair the car?",
+  "messages.garage.repairCarMissingItems": "The car is in bad shape. You could get it working again with 5 battery packs, 10 iron bars and 100 wood.",
+
+  "messages.site1.repair": "Clean up the campsite?",
+  "messages.site1.repairMissingItems": "This campsite is in disrepair. You can get it cleaned up with 2 iron bars and 100 wood.",
+
+  "messages.site2.repair": "Fix up the campsite?",
+  "messages.site2.repairMissingItems": "This campsite needs a lot of work. You can restore it with 5 iron bars, 25 hardwood and 200 wood.",
+
+  "messages.site3.repair": "Rebuild the campsite?",
+  "messages.site3.repairMissingItems": "This campsite has been completely reclaimed by nature. You can rebuild it with 5 pine tar, 15 iron bars, 50 hardwood and 200 stone.",
+
+  "messages.parkPathwayClosed": "The pathway is blocked by fallen trees and overgrown brush. It looks like nobody's been through here in years.",
+
+  "messages.camping.talkToClem": "You should talk to Clementine first before using the camping board.",
+  "messages.camping.leaveWithoutCamping": "Leave without camping? You will not receive any buffs.",
+  "messages.camping.headBackToPark": "Head back to the park",
+  "messages.camping.returnHome": "Return home",
+  "messages.camping.cancel": "Cancel",
+  "messages.camping.leave": "Leave the campground?",
+
+  // Messages (discovering)
+  "messages.discovered.campsite": "You have discovered the campsite: {{campsiteName}}!",
+  "messages.discovered.campfireRecipe": "You have discovered the campfire cooking recipe: {{recipeName}}!",
+  "messages.discovered.tentSchematic": "You have discovered the tent schematic: {{tentName}}!",
+
+  // Messsages (cooking)
+  "messages.cooking.fluff1": "The fire crackles as you cook the camp rations into a warm meal.",
+  "messages.cooking.fluff2": "With a full belly, you are sure to get a good night's rest.",
+
+  // Messsages (traveling)
+  "travel.arrival.hike.quick": "After a quick hike, you arrive at the campsite...",
+  "travel.arrival.hike.short": "After a short hike, you arrive at the campsite...",
+  "travel.arrival.hike.long": "After a long hike, you arrive at the campsite...",
+  "travel.arrival.drive.quick": "After a quick drive, you arrive at the campsite...",
+  "travel.arrival.drive.short": "After a short drive, you arrive at the campsite...",
+  "travel.arrival.drive.long": "After a long drive, you arrive at the campsite...",
+
+  "travel.arrivalWithFriend.hike.quick": "After a quick hike, you and your friend arrive at the campsite...",
+  "travel.arrivalWithFriend.hike.short": "After a short hike, you and your friend arrive at the campsite...",
+  "travel.arrivalWithFriend.hike.long": "After a long hike, you and your friend arrive at the campsite...",
+  "travel.arrivalWithFriend.drive.quick": "After a quick drive, you and your friend arrive at the campsite...",
+  "travel.arrivalWithFriend.drive.short": "After a short drive, you and your friend arrive at the campsite...",
+  "travel.arrivalWithFriend.drive.long": "After a long drive, you and your friend arrive at the campsite...",
+
+  // Question dialogues
+  "questions.tools.walkieTalkie.morning": "*kshhh*^Mornin' {{playerName}}! Lookin' to see who's over at the park?",
+  "questions.tools.walkieTalkie.afternoon": "*kshhh*^Afternoon {{playerName}}! Lookin' to see who's over at the park?",
+
+  // UI
+  "ui.buttons.travel.name": "Travel",
+  "ui.buttons.cooking.name": "Start Cooking",
+  "ui.buttons.setTent.name": "Set as Tent",
+
+  "ui.text.selectPrompt": "Select a Campsite",
+  "ui.text.selectPromptTent": "Select a Tent",
+
+  "ui.text.travelTime": "Travel Time: {{hours}} hr(s)",
+  "ui.text.requiresVehicle.yes": "Requires Vehicle: Yes",
+  "ui.text.requiresVehicle.no": "Requires Vehicle: No",
+  "ui.text.info": "Info",
+  "ui.text.tents": "Tents",
+  "ui.text.currentTent": "Current Tent",
+  "ui.text.campsites": "Campsites",
+  "ui.text.campfireCooking": "Campfire Cooking",
+  "ui.text.summary": "Summary",
+
+  "ui.text.bonusMeals": "{{count}} bonus meal(s)",
+  "ui.text.none": "None",
+
+  "ui.text.buffs": "Buffs:{{buffs}}",
+  "ui.text.tentBuffs": "Tent Buffs:{{buffs}}",
+  "ui.text.meals": "Meals: {{selectedMeals}}/{{totalMeals}}"
+}

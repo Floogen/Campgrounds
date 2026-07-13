@@ -126,7 +126,7 @@ namespace Campgrounds.Framework.Objects
             {
                 if (Campgrounds.campManager.GetLastCampsiteSleptIn(Game1.player) == _campsite.Data.Id)
                 {
-                    Game1.activeClickableMenu = new DialogueBox("Time to head back.");
+                    Game1.activeClickableMenu = new DialogueBox(Campgrounds.modHelper.Translation.Get("dialogues.general.tentClickAfterSleep"));
                 }
                 else
                 {

@@ -20,7 +20,7 @@ namespace Campgrounds.Framework.Objects
 
         public string QualifiedItemId => TypeDefinitionId + "CampRations";
 
-        public string DisplayName => "Camp Rations";
+        public string DisplayName => Campgrounds.modHelper.Translation.Get("customItems.campRations.name");
 
         public string Name => CurrencyManager.CAMP_RATION_CURRENCY_ID;
 
@@ -51,7 +51,7 @@ namespace Campgrounds.Framework.Objects
 
         public string getDescription()
         {
-            return "An assortment of cooking ingredients. Useful while camping out in the wilderness.";
+            return Campgrounds.modHelper.Translation.Get("customItems.campRations.description");
         }
 
         public int maximumStackSize()

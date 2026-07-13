@@ -54,7 +54,10 @@ namespace Campgrounds.Framework.Managers
                     // Exit current menu
                     Game1.exitActiveMenu();
 
-                    UnlockSpecialAndHoldAboveHead(GetCampsiteMapUnlockKey(campgroundDataId), CAMPSITE_MAP_ID, $"You have discovered the campsite: {Campgrounds.campManager.GetLocationNameFromDataId(campgroundDataId)}!");
+                    UnlockSpecialAndHoldAboveHead(GetCampsiteMapUnlockKey(campgroundDataId), CAMPSITE_MAP_ID, helper.Translation.Get("messages.discovered.campsite", new
+                    {
+                        campsiteName = Campgrounds.campManager.GetLocationNameFromDataId(campgroundDataId)
+                    }));
                 }
 
                 farmer.removeItemFromInventory(item);
@@ -66,7 +69,10 @@ namespace Campgrounds.Framework.Managers
                     // Exit current menu
                     Game1.exitActiveMenu();
 
-                    UnlockSpecialAndHoldAboveHead(GetCampfireRecipeUnlockKey(campfireFoodDataId), CAMPFIRE_RECIPE_ID, $"You have discovered the campfire cooking recipe: {campfireFoodData.DisplayName}!");
+                    UnlockSpecialAndHoldAboveHead(GetCampfireRecipeUnlockKey(campfireFoodDataId), CAMPFIRE_RECIPE_ID, helper.Translation.Get("messages.discovered.campfireRecipe", new
+                    {
+                        recipeName = campfireFoodData.DisplayName
+                    }));
                 }
 
                 farmer.removeItemFromInventory(item);
@@ -78,7 +84,10 @@ namespace Campgrounds.Framework.Managers
                     // Exit current menu
                     Game1.exitActiveMenu();
 
-                    UnlockSpecialAndHoldAboveHead(GetTentSchematicUnlockKey(tentDataId), TENT_SCHEMATIC_ID, $"You have discovered the tent schematic: {campingTentData.DisplayName}!");
+                    UnlockSpecialAndHoldAboveHead(GetTentSchematicUnlockKey(tentDataId), TENT_SCHEMATIC_ID, helper.Translation.Get("messages.discovered.tentSchematic", new
+                    {
+                        tentName = campingTentData.DisplayName
+                    }));
                 }
 
                 farmer.removeItemFromInventory(item);
@@ -101,14 +110,20 @@ namespace Campgrounds.Framework.Managers
             {
                 if (item.QualifiedItemId.EqualsIgnoreCase(CAMPSITE_MAP_ID) && item.modData.TryGetValue(CAMPSITE_MAP_MOD_DATA_ID, out string campgroundDataId))
                 {
-                    return (true, $"Campsite Map ({Campgrounds.campManager.GetLocationNameFromDataId(campgroundDataId)})");
+                    return (true, helper.Translation.Get("customItems.campsiteMap.name", new
+                    {
+                        campsiteName = Campgrounds.campManager.GetLocationNameFromDataId(campgroundDataId)
+                    }));
                 }
                 if (item.QualifiedItemId.EqualsIgnoreCase(CAMPFIRE_RECIPE_ID) && item.modData.TryGetValue(CAMPFIRE_RECIPE_MOD_DATA_ID, out string campfireFoodDataId))
                 {
                     var campfireFoodData = Campgrounds.campManager.GetCampfireFoodDataById(campfireFoodDataId);
                     if (campfireFoodData is not null)
                     {
-                        return (true, $"Campfire Recipe ({campfireFoodData.DisplayName})");
+                        return (true, helper.Translation.Get("customItems.campfireRecipe.name", new
+                        {
+                            campfireRecipeName = campfireFoodData.DisplayName
+                        }));
                     }
                 }
                 if (item.QualifiedItemId.EqualsIgnoreCase(TENT_SCHEMATIC_ID) && item.modData.TryGetValue(TENT_SCHEMATIC_MOD_DATA_ID, out string campingTentDataId))
@@ -116,7 +131,10 @@ namespace Campgrounds.Framework.Managers
                     var campingTentData = Campgrounds.tentManager.GetTentDataById(campingTentDataId);
                     if (campingTentData is not null)
                     {
-                        return (true, $"Tent Schematic ({campingTentData.DisplayName})");
+                        return (true, helper.Translation.Get("customItems.tentSchematic.name", new
+                        {
+                            tentSchematicName = campingTentData.DisplayName
+                        }));
                     }
                 }
             }
@@ -130,14 +148,20 @@ namespace Campgrounds.Framework.Managers
             {
                 if (item.QualifiedItemId.EqualsIgnoreCase(CAMPSITE_MAP_ID) && item.modData.TryGetValue(CAMPSITE_MAP_MOD_DATA_ID, out string campgroundDataId))
                 {
-                    return (true, $"A map to the {Campgrounds.campManager.GetLocationNameFromDataId(campgroundDataId)}.");
+                    return (true, helper.Translation.Get("customItems.campsiteMap.description", new
+                    {
+                        description = Campgrounds.campManager.GetLocationNameFromDataId(campgroundDataId)
+                    }));
                 }
                 if (item.QualifiedItemId.EqualsIgnoreCase(CAMPFIRE_RECIPE_ID) && item.modData.TryGetValue(CAMPFIRE_RECIPE_MOD_DATA_ID, out string campfireFoodDataId))
                 {
                     var campfireFoodData = Campgrounds.campManager.GetCampfireFoodDataById(campfireFoodDataId);
                     if (campfireFoodData is not null)
                     {
-                        return (true, $"A recipe for cooking {campfireFoodData.DisplayName} on a campfire.");
+                        return (true, helper.Translation.Get("customItems.campfireRecipe.description", new
+                        {
+                            description = campfireFoodData.DisplayName
+                        }));
                     }
                 }
                 if (item.QualifiedItemId.EqualsIgnoreCase(TENT_SCHEMATIC_ID) && item.modData.TryGetValue(TENT_SCHEMATIC_MOD_DATA_ID, out string campingTentDataId))
@@ -145,7 +169,10 @@ namespace Campgrounds.Framework.Managers
                     var campingTentData = Campgrounds.tentManager.GetTentDataById(campingTentDataId);
                     if (campingTentData is not null)
                     {
-                        return (true, $"A book containing the designs of a {campingTentData.DisplayName}.");
+                        return (true, helper.Translation.Get("customItems.tentSchematic.description", new
+                        {
+                            description = campingTentData.DisplayName
+                        }));
                     }
                 }
             }

@@ -181,7 +181,7 @@ namespace Campgrounds.Framework.UI
                 myID = 101
             };
 
-            _travelButton = new OptionsButton("Travel", () => StartTravelingToCampsite(skipRationCheck: false));
+            _travelButton = new OptionsButton(Campgrounds.modHelper.Translation.Get("ui.buttons.travel.name"), () => StartTravelingToCampsite(skipRationCheck: false));
             _travelButton.bounds.X = _campsiteSummaryDisplayBox.X + _travelButton.bounds.Width / 2 + 8;
             _travelButton.bounds.Y = _campsiteSummaryDisplayBox.Y + _campsiteSummaryDisplayBox.Height - 96;
 
@@ -197,7 +197,7 @@ namespace Campgrounds.Framework.UI
 
             if (skipRationCheck is false && Campgrounds.currencyManager.GetCurrencyBalance(Models.Enums.Currency.CampRations) <= 0)
             {
-                Game1.currentLocation.createQuestionDialogue("Are you sure you want to travel without rations? You will not be able to make food at the campfire.", Game1.currentLocation.createYesNoResponses(), (Farmer who, string answer) => CampingHelper.OnLeaveWithoutRationsResponse(who, answer, this));
+                Game1.currentLocation.createQuestionDialogue(Campgrounds.modHelper.Translation.Get("dialogues.traveling.campingWithoutRations"), Game1.currentLocation.createYesNoResponses(), (Farmer who, string answer) => CampingHelper.OnLeaveWithoutRationsResponse(who, answer, this));
             }
             else
             {
@@ -206,16 +206,16 @@ namespace Campgrounds.Framework.UI
                 // Handle traveling to campsite (verify enough time to travel, don't allow if will reach campsite at or after midnight)
                 if (Game1.timeOfDay + (_selectedCampsite.TravelTimeInHours * 100) >= 2400)
                 {
-                    Game1.activeClickableMenu = new DialogueBox("There is not enough time to reach that campsite before midnight...");
+                    Game1.activeClickableMenu = new DialogueBox(Campgrounds.modHelper.Translation.Get("dialogues.traveling.notEnoughTime"));
                     return;
                 }
                 if (_selectedCampsite.RequireVehicle is true && CampingHelper.IsCarRepaired() is false)
                 {
                     var dialogue = new List<string>()
-                {
-                    "This campsite requires a vehicle to reach. You see a note attached to the map...",
-                    "\"You can use my grandmother's old car in the garage! It will need some work to get running again though.\" - Vesi"
-                };
+                    {
+                        Campgrounds.modHelper.Translation.Get("dialogues.traveling.vehicleRequired"),
+                        Campgrounds.modHelper.Translation.Get("dialogues.traveling.vehicleRequiredNote")
+                    };
                     Game1.activeClickableMenu = new DialogueBox(dialogue);
                     return;
                 }
@@ -258,27 +258,31 @@ namespace Campgrounds.Framework.UI
 
             Game1.DrawBox(_campsiteSummaryDisplayBox.X, _campsiteSummaryDisplayBox.Y, _campsiteSummaryDisplayBox.Width, _campsiteSummaryDisplayBox.Height);
             Game1.DrawBox(_mapDisplayBox.X, _mapDisplayBox.Y, _mapDisplayBox.Width, _mapDisplayBox.Height);
-            //b.Draw((Game1.timeOfDay >= 1900) ? Game1.nightbg : Game1.daybg, _characterSpriteDrawPosition, Color.White);
 
-            var campsiteName = "Select";
+            var campsiteName = "";
             var secondaryCampsiteName = "";
-            var travelTimeInfo = $"";
-            var vehicleRequiredInfo = $"";
+            var travelTimeInfo = "";
+            var vehicleRequiredInfo = "";
+
             if (_selectedCampsite is not null && _selectedCampsite.IsUnlocked() && Game1.locationData.ContainsKey(_selectedCampsite.Id))
             {
-                campsiteName = Game1.locationData[_selectedCampsite.Id].DisplayName;
-                if (campsiteName.Length > 16)
-                {
-                    secondaryCampsiteName = campsiteName.Substring(16, campsiteName.Length - 16);
-                    campsiteName = $"{campsiteName.Substring(0, 16).TrimEnd()}";
-                }
+                (campsiteName, secondaryCampsiteName) = TextHelper.SplitLabel(Game1.locationData[_selectedCampsite.Id].DisplayName);
 
-                travelTimeInfo = $"Travel Time: {_selectedCampsite.TravelTimeInHours} hr(s)";
-                vehicleRequiredInfo = $"Requires Vehicle: {(_selectedCampsite.RequireVehicle ? "Yes" : "No")}";
+                travelTimeInfo = Campgrounds.modHelper.Translation.Get("ui.text.travelTime", new
+                {
+                    hours = _selectedCampsite.TravelTimeInHours
+                });
+
+                vehicleRequiredInfo = Campgrounds.modHelper.Translation.Get(
+                    _selectedCampsite.RequireVehicle
+                        ? "ui.text.requiresVehicle.yes"
+                        : "ui.text.requiresVehicle.no"
+                );
             }
             else
             {
-                secondaryCampsiteName = "a Campsite";
+                int maxLength = Campgrounds.modHelper.Translation.LocaleEnum is LocalizedContentManager.LanguageCode.en ? 7 : 16;
+                (campsiteName, secondaryCampsiteName) = TextHelper.SplitLabel(Campgrounds.modHelper.Translation.Get("ui.text.selectPrompt"), maxLength);
             }
 
             SpriteText.drawStringHorizontallyCenteredAt(b, campsiteName, (int)_campsiteNamePosition.X + 4, (int)_campsiteNamePosition.Y);
@@ -289,7 +293,7 @@ namespace Campgrounds.Framework.UI
             
             if (string.IsNullOrEmpty(travelTimeInfo) is false || string.IsNullOrEmpty(vehicleRequiredInfo) is false)
             {
-                SpriteText.drawStringHorizontallyCenteredAt(b, "Info", (int)_infoDisplayPosition.X, (int)_infoDisplayPosition.Y);
+                SpriteText.drawStringHorizontallyCenteredAt(b, Campgrounds.modHelper.Translation.Get("ui.text.info"), (int)_infoDisplayPosition.X, (int)_infoDisplayPosition.Y);
             }
             if (string.IsNullOrEmpty(travelTimeInfo) is false)
             {
@@ -307,7 +311,7 @@ namespace Campgrounds.Framework.UI
             }
 
             // Draw the campsite buttons
-            SpriteText.drawStringWithScrollCenteredAt(b, "Campsites", (int)_campSitesDisplayPosition.X, (int)_campSitesDisplayPosition.Y);
+            SpriteText.drawStringWithScrollCenteredAt(b, Campgrounds.modHelper.Translation.Get("ui.text.campsites"), (int)_campSitesDisplayPosition.X, (int)_campSitesDisplayPosition.Y);
             Game1.DrawBox(_campsitesDisplayBox.X, _campsitesDisplayBox.Y, _campsitesDisplayBox.Width, _campsitesDisplayBox.Height);
             for (int j = 0; j < _campsiteButtons.Count; j++)
             {
