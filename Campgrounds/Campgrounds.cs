@@ -197,7 +197,7 @@ namespace Campgrounds
                 Helper.Input.Suppress(e.Button);
 
                 // Ask if they want to start the cutscene (to show who is at park)
-                string text = Helper.Translation.Get(Game1.timeOfDay >= 1200 ? "walkieTalkie.greeting.afternoon" : "walkieTalkie.greeting.morning", new { playerName = Game1.player.displayName });
+                string text = Helper.Translation.Get(Game1.timeOfDay >= 1200 ? "questions.tools.walkieTalkie.afternoon" : "questions.tools.walkieTalkie.morning", new { playerName = Game1.player.displayName });
                 Game1.currentLocation.createQuestionDialogue(text, Game1.currentLocation.createYesNoResponses(), CampingHelper.OnWalkieTalkieCheckParkResponse, null);
             }
         }
