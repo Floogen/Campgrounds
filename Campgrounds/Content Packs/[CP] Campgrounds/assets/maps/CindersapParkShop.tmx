@@ -197,7 +197,7 @@
   </object>
   <object id="29" name="TileData" x="80" y="112" width="16" height="16">
    <properties>
-    <property name="Action" value="OpenShop PeacefulEnd.Campgrounds.Shops.CampShop"/>
+    <property name="Action" value="PeacefulEnd.Campgrounds_CampShopCounter"/>
    </properties>
   </object>
   <object id="31" name="TileData" x="112" y="80" width="16" height="16">
@@ -282,7 +282,7 @@
   </object>
   <object id="51" name="TileData" x="96" y="112" width="16" height="16">
    <properties>
-    <property name="Action" value="OpenShop PeacefulEnd.Campgrounds.Shops.CampShop"/>
+    <property name="Action" value="PeacefulEnd.Campgrounds_CampShopCounter"/>
    </properties>
   </object>
   <object id="52" name="TileData" x="64" y="112" width="16" height="16">

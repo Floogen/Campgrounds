@@ -83,6 +83,20 @@ namespace Campgrounds.Framework.Utilities
             return true;
         }
 
+        public static bool HandleCampShopCounter(GameLocation location, string[] arg2, Farmer farmer, Point point)
+        {
+            var responses = new Response[]
+            {
+                new Response("Shop", "Browse Supplies"),
+                new Response("Tents", "Tent Catalogue"),
+                new Response("Leave", "Leave")
+            };
+
+            location.createQuestionDialogue("Heya neighbor! What can I getcha?", responses, CampingHelper.OnCampShopCounterResponse);
+
+            return true;
+        }
+
         // Touch actions
         public static void HandleParkClosed(GameLocation location, string[] args, Farmer player, Vector2 tile)
         {

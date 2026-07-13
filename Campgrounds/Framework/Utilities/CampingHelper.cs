@@ -2,6 +2,7 @@
 using Campgrounds.Framework.UI;
 using Microsoft.Xna.Framework;
 using StardewValley;
+using StardewValley.Menus;
 using StardewValley.Network;
 using System;
 using System.Collections.Generic;
@@ -132,8 +133,7 @@ namespace Campgrounds.Framework.Utilities
                     Game1.activeClickableMenu = campListMenu;
                     break;
             }
-        }
-        
+        }        
         
         public static void OnOverrideCampingInviteResponse(Farmer who, string answer, NPC npc)
         {
@@ -303,6 +303,19 @@ namespace Campgrounds.Framework.Utilities
                     break;
                 case "CancelCampingExit":
                     return;
+            }
+        }
+
+        public static void OnCampShopCounterResponse(Farmer who, string answer)
+        {
+            switch (answer)
+            {
+                case "Shop":
+                    Utility.TryOpenShopMenu("PeacefulEnd.Campgrounds.Shops.CampShop", "PeacefulEnd.Campgrounds.Characters.Caretaker");
+                    break;
+                case "Tents":
+                    Game1.activeClickableMenu = new TentListMenu();
+                    break;
             }
         }
     }
