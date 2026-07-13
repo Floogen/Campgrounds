@@ -7,8 +7,8 @@
       "Entries": {
         // Stamina buffs
         "PeacefulEnd.Campgrounds.Buffs.LowStaminaBuff": {
-          "DisplayName": "Stamina Boost (+25)",
-          "Description": "Your stamina is increased from camping!",
+          "DisplayName": "{{i18n:buffs.stamina.name |amount=25}}",
+          "Description": "{{i18n:buffs.stamina.description}}",
           "Duration": 420000,
           "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 1,
@@ -17,8 +17,8 @@
           }
         },
         "PeacefulEnd.Campgrounds.Buffs.MedStaminaBuff": {
-          "DisplayName": "Stamina Boost (+50)",
-          "Description": "Your stamina is increased from camping!",
+          "DisplayName": "{{i18n:buffs.stamina.name |amount=50}}",
+          "Description": "{{i18n:buffs.stamina.description}}",
           "Duration": 420000,
           "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 1,
@@ -27,8 +27,8 @@
           }
         },
         "PeacefulEnd.Campgrounds.Buffs.HighStaminaBuff": {
-          "DisplayName": "Stamina Boost (+75)",
-          "Description": "Your stamina is increased from camping!",
+          "DisplayName": "{{i18n:buffs.stamina.name |amount=75}}",
+          "Description": "{{i18n:buffs.stamina.description}}",
           "Duration": 420000,
           "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 1,
@@ -37,8 +37,8 @@
           }
         },
         "PeacefulEnd.Campgrounds.Buffs.MaxStaminaBuff": {
-          "DisplayName": "Stamina Boost (+100)",
-          "Description": "Your stamina is increased from camping!",
+          "DisplayName": "{{i18n:buffs.stamina.name |amount=100}}",
+          "Description": "{{i18n:buffs.stamina.description}}",
           "Duration": 420000,
           "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 1,
@@ -51,29 +51,29 @@
 
         // XP buffs
         "PeacefulEnd.Campgrounds.Buffs.LowXPBuff": {
-          "DisplayName": "XP Boost (x1.25)",
-          "Description": "Your XP gain is increased from camping!",
+          "DisplayName": "{{i18n:buffs.xp.name |multiplier=1.25}}",
+          "Description": "{{i18n:buffs.xp.description}}",
           "Duration": 420000,
           "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 3
         },
         "PeacefulEnd.Campgrounds.Buffs.MedXPBuff": {
-          "DisplayName": "XP Boost (x1.5)",
-          "Description": "Your XP gain is increased from camping!",
+          "DisplayName": "{{i18n:buffs.xp.name |multiplier=1.5}}",
+          "Description": "{{i18n:buffs.xp.description}}",
           "Duration": 420000,
           "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 3
         },
         "PeacefulEnd.Campgrounds.Buffs.HighXPBuff": {
-          "DisplayName": "XP Boost (x1.75)",
-          "Description": "Your XP gain is increased from camping!",
+          "DisplayName": "{{i18n:buffs.xp.name |multiplier=1.75}}",
+          "Description": "{{i18n:buffs.xp.description}}",
           "Duration": 420000,
           "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 3
         },
         "PeacefulEnd.Campgrounds.Buffs.MaxXPBuff": {
-          "DisplayName": "XP Boost (x2)",
-          "Description": "Your XP gain is increased from camping!",
+          "DisplayName": "{{i18n:buffs.xp.name |multiplier=2}}",
+          "Description": "{{i18n:buffs.xp.description}}",
           "Duration": 420000,
           "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 3
@@ -81,8 +81,8 @@
 
         // Luck buffs
         "PeacefulEnd.Campgrounds.Buffs.LowLuckBuff": {
-          "DisplayName": "Luck Boost (+1)",
-          "Description": "Your luck is increased from camping!",
+          "DisplayName": "{{i18n:buffs.luck.name |amount=1}}",
+          "Description": "{{i18n:buffs.luck.description}}",
           "Duration": 420000,
           "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 4,
@@ -91,8 +91,8 @@
           }
         },
         "PeacefulEnd.Campgrounds.Buffs.MedLuckBuff": {
-          "DisplayName": "Luck Boost (+2)",
-          "Description": "Your luck is increased from camping!",
+          "DisplayName": "{{i18n:buffs.luck.name |amount=2}}",
+          "Description": "{{i18n:buffs.luck.description}}",
           "Duration": 420000,
           "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 4,
@@ -101,8 +101,8 @@
           }
         },
         "PeacefulEnd.Campgrounds.Buffs.HighLuckBuff": {
-          "DisplayName": "Luck Boost (+3)",
-          "Description": "Your luck is increased from camping!",
+          "DisplayName": "{{i18n:buffs.luck.name |amount=3}}",
+          "Description": "{{i18n:buffs.luck.description}}",
           "Duration": 420000,
           "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 4,
@@ -111,8 +111,8 @@
           }
         },
         "PeacefulEnd.Campgrounds.Buffs.MaxLuckBuff": {
-          "DisplayName": "Luck Boost (+4)",
-          "Description": "Your luck is increased from camping!",
+          "DisplayName": "{{i18n:buffs.luck.name |amount=4}}",
+          "Description": "{{i18n:buffs.luck.description}}",
           "Duration": 420000,
           "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 4,
@@ -123,8 +123,8 @@
 
         // Speed buffs
         "PeacefulEnd.Campgrounds.Buffs.LowSpeedBuff": {
-          "DisplayName": "Speed Boost (+1)",
-          "Description": "Your speed is increased from camping!",
+          "DisplayName": "{{i18n:buffs.speed.name |amount=1}}",
+          "Description": "{{i18n:buffs.speed.description}}",
           "Duration": 420000,
           "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 5,
@@ -133,8 +133,8 @@
           }
         },
         "PeacefulEnd.Campgrounds.Buffs.MedSpeedBuff": {
-          "DisplayName": "Speed Boost (+2)",
-          "Description": "Your speed is increased from camping!",
+          "DisplayName": "{{i18n:buffs.speed.name |amount=2}}",
+          "Description": "{{i18n:buffs.speed.description}}",
           "Duration": 420000,
           "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 5,
@@ -143,8 +143,8 @@
           }
         },
         "PeacefulEnd.Campgrounds.Buffs.HighSpeedBuff": {
-          "DisplayName": "Speed Boost (+3)",
-          "Description": "Your speed is increased from camping!",
+          "DisplayName": "{{i18n:buffs.speed.name |amount=3}}",
+          "Description": "{{i18n:buffs.speed.description}}",
           "Duration": 420000,
           "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 5,
@@ -153,8 +153,8 @@
           }
         },
         "PeacefulEnd.Campgrounds.Buffs.MaxSpeedBuff": {
-          "DisplayName": "Speed Boost (+4)",
-          "Description": "Your speed is increased from camping!",
+          "DisplayName": "{{i18n:buffs.speed.name |amount=4}}",
+          "Description": "{{i18n:buffs.speed.description}}",
           "Duration": 420000,
           "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 5,

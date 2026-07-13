@@ -13,35 +13,35 @@
           "DislikedCampgrounds": [],
 
           "InviteDialogueAccepted": [
-            "Camping? That sounds like a great time, count me in!$h"
+            "{{i18n:villagers.generic.inviteAccepted1}}"
           ],
           "InviteDialogueRejected": [
-            "I am not interested, sorry.$s"
+            "{{i18n:villagers.generic.inviteRejected1}}"
           ],
 
           "LikedDialogueDayOf": [
-            "This is a wonderful camping spot!$h",
-            "Thank you for inviting me!"
+            "{{i18n:villagers.generic.likedDayOf1}}",
+            "{{i18n:villagers.generic.likedDayOf2}}"
           ],
           "NeutralDialogueDayOf": [
-            "This is a nice spot you found.$neutral",
-            "Thank you for inviting me here."
+            "{{i18n:villagers.generic.neutralDayOf1}}",
+            "{{i18n:villagers.generic.neutralDayOf2}}"
           ],
           "DislikedDialogueDayOf": [
-            "I'm not much of a fan of the camping spot you picked...$a",
-            "Well at least I will try to make the most of being here."
+            "{{i18n:villagers.generic.dislikedDayOf1}}",
+            "{{i18n:villagers.generic.dislikedDayOf2}}"
           ],
 
           "LikedDialogueDayAfter": [
-            "I can't wait to come back here again. I had a great time!$h",
-            "Thank you again for bringing me along!"
+            "{{i18n:villagers.generic.likedDayAfter1}}",
+            "{{i18n:villagers.generic.likedDayAfter2}}"
           ],
           "NeutralDialogueDayAfter": [
-            "It was nice to share a meal over the campfire.$neutral",
-            "Thinking about last night's food has me feeling hungry again!"
+            "{{i18n:villagers.generic.neutralDayAfter1}}",
+            "{{i18n:villagers.generic.neutralDayAfter2}}"
           ],
           "DislikedDialogueDayAfter": [
-            "I can't wait to get home.$neutral"
+            "{{i18n:villagers.generic.dislikedDayAfter1}}"
           ]
         }
       }

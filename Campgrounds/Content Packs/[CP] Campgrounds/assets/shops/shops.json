@@ -13,15 +13,15 @@
                 {
                   "Id": "PeacefulEnd.Campgrounds.Shops.Dialogue.Default",
                   "RandomDialogue": [
-                    "Heya @!",
-                    "Got some camping rations for sale.",
-                    "Welcome to the Cindersap Forest Park shop!",
-                    "Plannin' to go camping with ya friend? Got some visitor passes for sale."
+                    "{i18n:dialogue.campshop.random1}}",
+                    "{i18n:dialogue.campshop.random2}}",
+                    "{i18n:dialogue.campshop.random3}}",
+                    "{i18n:dialogue.campshop.random4}}"
                   ]
                 },
                 {
                   "Id": "PeacefulEnd.Campgrounds.Shops.Dialogue.Rain",
-                  "Dialogue": "Feel free to look around while ya dry off.",
+                  "Dialogue": "{i18n:dialogue.campshop.rain}}",
                   "Condition": "WEATHER Here Rain"
                 }
               ]

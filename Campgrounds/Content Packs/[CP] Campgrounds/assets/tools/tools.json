@@ -7,8 +7,8 @@
         "PeacefulEnd.Campgrounds.Tools.WalkieTalkie": {
           "ClassName": "GenericTool",
           "Name": "PeacefulEnd.Campgrounds.Tools.WalkieTalkie",
-          "DisplayName": "Walkie Talkie",
-          "Description": "A walkie talkie. Lets you see who is currently visiting the park's campground.",
+          "DisplayName": "{{i18n:tools.walkieTalkie.name}}",
+          "Description": "{{i18n:tools.walkieTalkie.description}}",
           "SalePrice": 5000,
           "CanBeLostOnDeath": false,
 

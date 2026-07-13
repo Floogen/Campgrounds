@@ -4,20 +4,20 @@
       "Action": "EditData",
       "Target": "Strings/StringsFromMaps",
       "Entries": {
-        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark_ParkSign": "Visitor Campgrounds:^Site 1 (SW)^Site 2 (NW)^Site 3 (SE)",
-        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark_Board1": "Various flyers about local events have been posted here.",
-        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark_Board2": "Some informational posters about the park and local wildlife.",
-        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark_TrashCan": "A mostly empty trashcan.",
-        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark_Vending1": "The vending machine has an assortment of beverages.",
-        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark_Vending2": "The vending machine has an assortment of snacks.",
+        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark_ParkSign": "{{i18n:examine.text.parksign}}",
+        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark_Board1": "{{i18n:examine.text.parkBoard1}}",
+        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark_Board2": "{{i18n:examine.text.parkBoard2}}",
+        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark_TrashCan": "{{i18n:examine.text.parkTrashCan}}",
+        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark_Vending1": "{{i18n:examine.text.parkVending1}}",
+        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark_Vending2": "{{i18n:examine.text.parkVending2}}",
 
-        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkShop_PhoneNotes": "Some neatly written notes have been placed here.",
-        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkShop_StickyNotes": "The board is covered in many different sticky notes.",
-        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkShop_Boxes": "Some store supplies, still inside their boxes.",
-        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkShop_Shelf1": "An assortment of camping supplies line the shelf.",
-        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkShop_Shelf2": "An assortment of everyday supplies line the shelf.",
-        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkShop_Brochures": "The shelf is filled with brochures about camping, wildlife and the park's history.",
-        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkShop_FeedbackBox": "A box with a note attached: \"Tell us about your stay\".#It seems quite dusty."
+        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkShop_PhoneNotes": "{{i18n:examine.text.shopPhoneNotes}}",
+        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkShop_StickyNotes": "{{i18n:examine.text.shopStickyNotes}}",
+        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkShop_Boxes": "{{i18n:examine.text.shopBoxes}}",
+        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkShop_Shelf1": "{{i18n:examine.text.shopShelf1}}",
+        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkShop_Shelf2": "{{i18n:examine.text.shopShelf2}}",
+        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkShop_Brochures": "{{i18n:examine.text.shopBrochures}}",
+        "PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkShop_FeedbackBox": "{{i18n:examine.text.shopFeedbackBox}}"
       }
     }
   ]

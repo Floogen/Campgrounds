@@ -1,0 +1,96 @@
+﻿{
+  // Buffs
+  "buffs.stamina.name": "Stamina Boost (+{{amount}})",
+  "buffs.stamina.description": "Your stamina is increased from camping!",
+
+  "buffs.xp.name": "XP Boost (x{{multiplier}})",
+  "buffs.xp.description": "Your XP gain is increased from camping!",
+
+  "buffs.luck.name": "Luck Boost (+{{amount}})",
+  "buffs.luck.description": "Your luck is increased from camping!",
+
+  "buffs.speed.name": "Speed Boost (+{{amount}})",
+  "buffs.speed.description": "Your speed is increased from camping!",
+
+  // Camping dialogues (generic villagers)
+  "villagers.generic.inviteAccepted1": "Camping? That sounds like a great time, count me in!$h",
+  "villagers.generic.inviteRejected1": "I am not interested, sorry.$s",
+
+  "villagers.generic.likedDayOf1": "This is a wonderful camping spot!$h",
+  "villagers.generic.likedDayOf2": "Thank you for inviting me!",
+  "villagers.generic.neutralDayOf1": "This is a nice spot you found.",
+  "villagers.generic.neutralDayOf2": "Thank you for inviting me here.",
+  "villagers.generic.dislikedDayOf1": "I'm not much of a fan of the camping spot you picked...$a",
+  "villagers.generic.dislikedDayOf2": "Well at least I will try to make the most of being here.",
+
+  "villagers.generic.likedDayAfter1": "I can't wait to come back here again. I had a great time!$h",
+  "villagers.generic.likedDayAfter2": "Thank you again for bringing me along!",
+  "villagers.generic.neutralDayAfter1": "It was nice to share a meal over the campfire.",
+  "villagers.generic.neutralDayAfter2": "Thinking about last night's food has me feeling hungry again!",
+  "villagers.generic.dislikedDayAfter1": "I can't wait to get home...$s",
+
+  // Characters
+  "characters.clementine.displayName": "Clementine",
+
+  // Event dialogues (Character Intro)
+  "events.caretakerIntro.greeting": "Heya neighbor! Hopin' I didn't sneak up on ya.$h",
+  "events.caretakerIntro.introduction": "Name's Clementine, but folks just call me Clem. I'm yer new neighbor, over at the old campin' park down south.#$b#Well, 'neighbor' in the country sense. Close enough to borrow sugar, far enough ya gotta really want it!$h",
+  "events.caretakerIntro.backstory": "Ya might be wonderin' what brings me to these parts. Well, that'd be my Granny's doing...#$b#That old campin' park used to be hers, back in the day. She sent a letter askin' me to look after the place.#$b#Her way of tellin' me it was time to put my roots down somewhere, I s'pose.$h",
+  "events.caretakerIntro.parkOpen": "Anyhow, I came by to tell ya the park's open! Still got some patchin' up to do, but if campin' sounds like yer kinda thing, stop on by sometime.",
+  "events.caretakerIntro.grandpa": "Ya know Granny used to talk about yer grandpa now and again. Always said he was a kind and hardworkin' man.#$b#Kinda nice, ain't it? Them knowin' each other back then, and here we are, neighbors.",
+  "events.caretakerIntro.farewell": "Well, it was nice meetin' ya, @! See ya around.$h",
+
+  // Event dialogues (Character Intro)
+  "events.campingIntro.greeting": "Heya @! Welcome to the Cindersap Forest Park.$h",
+  "events.campingIntro.campsites": "So, ya ready to start campin'?#$b#First things first, ya gotta pick a campsite. Did ya see that board with the little flag out front?#$b#It'll have all the available campsites, includin' the time it'll take to reach 'em.#$b#Now, fair warnin': not every campsite's a walk away. Granny's old car's sittin' in the garage for ya to use... once she gets some fixin'.$s#$b#Since yer just startin' out, let me grab some things for ya.",
+  "events.campingIntro.searching": "Now where did I leave 'em...",
+  "events.campingIntro.starterKit": "Here, a little starter kit! Can't have ya starvin' or sleepin' under a bush out there.$h",
+  "events.campingIntro.starterKitMessage": "Clementine hands you a small tent and some rations.",
+  "events.campingIntro.rations": "Now, about those camp rations. Out at camp, ya can't exactly run back to yer kitchen when ya start feelin' hungry. That's what rations are for!#$b#I sell 'em right here in the shop, along with other supplies. Use 'em at the campfire to cook yerself up somethin' warm.$h",
+  "events.campingIntro.map": "Let's get ya pointed to yer first campsite. Here, take this map...",
+  "events.campingIntro.campsite": "Nothin' fancy out there, but it's a quiet spot with a workin' firepit and more stars than ya can count. Reckon that's plenty.$h",
+  "events.campingIntro.visitorPass": "Oh, and one last thing! If ya want a friend to tag along while yer campin', grab a visitor pass from my shop.#$b#Ain't nothin' wrong with havin' the woods to yerself, but a fire's always warmer with somebody beside it.$h",
+  "events.campingIntro.farewell": "Well, that's about everything! Thank ya for stoppin' by, @.#$b#And happy campin'!$h",
+
+  // Items
+  "items.visitorPass.name": "Visitor Pass",
+  "items.visitorPass.description": "A visitor pass. Giving this to a friend invites them to go camping with you.",
+
+  "items.campsiteMap.name": "Campsite Map",
+  "items.campsiteMap.description": "A map to a campsite.",
+
+  "items.campfireRecipe.name": "Campfire Recipe",
+  "items.campfireRecipe.description": "A recipe for cooking on a campfire.",
+
+  "items.tentSchematic.name": "Tent Schematic",
+  "items.tentSchematic.description": "A book containing the designs of a camping tent.",
+
+  // Shop dialogues
+  "dialogue.campshop.random1": "Heya @!",
+  "dialogue.campshop.random2": "Got some camping rations for sale.",
+  "dialogue.campshop.random3": "Welcome to the Cindersap Forest Park shop!",
+  "dialogue.campshop.random4": "Plannin' to go camping with ya friend? Got some visitor passes for sale.",
+
+  "dialogue.campshop.rain": "Feel free to look around while ya dry off.",
+
+  // Examine dialogue (Cindersap Park)
+  "examine.text.parkSign": "Visitor Campgrounds:^Site 1 (SW)^Site 2 (NW)^Site 3 (SE)",
+  "examine.text.parkBoard1": "Various flyers about local events have been posted here.",
+  "examine.text.parkBoard2": "Some informational posters about the park and local wildlife.",
+  "examine.text.parkTrashCan": "A mostly empty trashcan.",
+  "examine.text.parkVending1": "The vending machine has an assortment of beverages.",
+  "examine.text.parkVending2": "The vending machine has an assortment of snacks.",
+
+  // Examine dialogue (Cindersap Park Shop)
+  "examine.text.shopPhoneNotes": "Some neatly written notes have been placed here.",
+  "examine.text.shopStickyNotes": "The board is covered in many different sticky notes.",
+  "examine.text.shopBoxes": "Some store supplies, still inside their boxes.",
+  "examine.text.shopShelf1": "An assortment of camping supplies line the shelf.",
+  "examine.text.shopShelf2": "An assortment of everyday supplies line the shelf.",
+  "examine.text.shopBrochures": "The shelf is filled with brochures about camping, wildlife and the park's history.",
+  "examine.text.shopFeedbackBox": "A box with a note attached: \"Tell us about your stay\".#It seems quite dusty.",
+
+  // Tools
+  "tools.walkieTalkie.name": "Walkie Talkie",
+  "tools.walkieTalkie.description": "A walkie talkie. Lets you see who is currently visiting the park's campground."
+}
