@@ -185,7 +185,7 @@ namespace Campgrounds.Framework.UI
             _travelButton.bounds.X = _campsiteSummaryDisplayBox.X + _travelButton.bounds.Width / 2 + 8;
             _travelButton.bounds.Y = _campsiteSummaryDisplayBox.Y + _campsiteSummaryDisplayBox.Height - 96;
 
-            PaginatePacks(Campgrounds.campManager.CampgroundData.Where(c => c.HideUntilUnlocked is false).OrderByDescending(c => c.IsUnlocked()).ThenBy(c => c.TravelTimeInHours).ToList());
+            PaginatePacks(Campgrounds.campManager.CampgroundData.Where(c => c.HideUntilUnlocked is false).ToList());
         }
 
         public void StartTravelingToCampsite(bool skipRationCheck = false)
@@ -230,7 +230,7 @@ namespace Campgrounds.Framework.UI
             _pages = new List<List<CampgroundData>>();
 
             int count = campsites.Count - 1;
-            foreach (var contentPack in campsites.OrderBy(p => p.Id))
+            foreach (var contentPack in campsites.OrderByDescending(c => c.IsUnlocked()).ThenBy(c => c.TravelTimeInHours).ThenBy(p => p.Id))
             {
                 int which = campsites.Count - 1 - count;
                 int page = which / SITES_PER_PAGE;
