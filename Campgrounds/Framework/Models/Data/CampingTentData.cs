@@ -15,6 +15,7 @@ namespace Campgrounds.Framework.Models.Data
     {
         public string Id { get; set; }
         public string DisplayName { get; set; }
+        public string Description { get; set; }
 
         public string TexturePath { get; set; }
         public DirectionalSpriteModel NorthSprite { get; set; }
@@ -27,6 +28,9 @@ namespace Campgrounds.Framework.Models.Data
         public int NumberOfAllowedCampfireMeals { get { return _numberOfAllowedCampfireMeals; } set { _numberOfAllowedCampfireMeals = Math.Min(5, Math.Max(value, 1)); } }
         private int _numberOfAllowedCampfireMeals = 1;
 
+        public string UnlockCondition { get; set; }
+        public string UnlockHint { get; set; }
+
         public List<Buff> GetBuffs()
         {
             List<Buff> buffs = new List<Buff>();
@@ -36,6 +40,16 @@ namespace Campgrounds.Framework.Models.Data
             }
 
             return buffs;
+        }
+
+        public bool IsUnlocked()
+        {
+            if (string.IsNullOrEmpty(UnlockCondition))
+            {
+                return true;
+            }
+
+            return GameStateQuery.CheckConditions(UnlockCondition);
         }
 
         public override (bool Result, string Error) IsValid()
