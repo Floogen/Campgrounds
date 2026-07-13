@@ -477,6 +477,12 @@
     {
       "Action": "Include",
       "FromFile": "assets/campgrounds/visitors/parkVisitors.json"
+    },
+
+    // Edit Camping Shop data
+    {
+      "Action": "Include",
+      "FromFile": "assets/campgrounds/shops/shops.json"
     }
   ]
 }

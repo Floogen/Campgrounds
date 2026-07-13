@@ -59,14 +59,6 @@
               "AvailableStockLimit": "Player"
             },
             {
-              "Id": "PeacefulEnd.Campgrounds.Items.CampsiteMap",
-              "ItemId": "(O)PeacefulEnd.Campgrounds.Items.CampsiteMap PeacefulEnd.Campgrounds.CindersapForestCampground",
-              "Price": 1000,
-              "AvailableStock": 1,
-              "AvailableStockLimit": "Player",
-              "Condition": "!WORLD_STATE_ID MAP_UNLOCKED_CAMPGROUND:PeacefulEnd.Campgrounds.CindersapForestCampground"
-            },
-            {
               "Id": "PeacefulEnd.Campgrounds.Shops.CampShop.Wood.Discounted",
               "Condition": "YEAR 1 1",
               "ItemId": "(O)388",
