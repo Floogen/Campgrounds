@@ -7,7 +7,7 @@
       "Target": "Data/Locations",
       "Entries": {
         "PeacefulEnd.Campgrounds.CindersapForestCampground": {
-          "DisplayName": "Cindersap Forest Campground",
+          "DisplayName": "{{i18n:map.cindersapForestCampground.name}}",
           "CreateOnLoad": {
             "MapPath": "Maps/PeacefulEnd.Campgrounds.CindersapForestCampground"
           },

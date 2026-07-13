@@ -7,8 +7,8 @@
       "Entries": {
         "PeacefulEnd.Campgrounds.Tents.StarterTent": {
           "Id": "PeacefulEnd.Campgrounds.Tents.StarterTent",
-          "DisplayName": "Starter Tent",
-          "Description": "Lightweight and simple to pitch. A good first shelter for an aspiring camper.",
+          "DisplayName": "{{i18n:campingTents.starterTent.name}}",
+          "Description": "{{i18n:campingTents.starterTent.description}}",
 
           "NumberOfAllowedCampfireMeals": 1,
           "RestingBuffIds": [],
@@ -145,8 +145,8 @@
       "Entries": {
         "PeacefulEnd.Campgrounds.Tents.StandardTent": {
           "Id": "PeacefulEnd.Campgrounds.Tents.StandardTent",
-          "DisplayName": "Standard Tent",
-          "Description": "A solid, weatherproof tent. Roomy enough to sleep comfortably.",
+          "DisplayName": "{{i18n:campingTents.standardTent.name}}",
+          "Description": "{{i18n:campingTents.standardTent.description}}",
 
           "NumberOfAllowedCampfireMeals": 1,
           "RestingBuffIds": [

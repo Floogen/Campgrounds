@@ -7,8 +7,8 @@
       "Entries": {
         "PeacefulEnd.Campgrounds.Foods.MarshmallowOnAStick": {
           "Id": "PeacefulEnd.Campgrounds.Foods.MarshmallowOnAStick",
-          "DisplayName": "Marshmallow on a Stick",
-          "Description": "A true campfire classic.",
+          "DisplayName": "{{i18n:foods.marshmallowOnAStick.name}}",
+          "Description": "{{i18n:foods.marshmallowOnAStick.description}}",
 
           "RationCost": 1,
 
@@ -26,8 +26,8 @@
         },
         "PeacefulEnd.Campgrounds.Foods.CoffeeInATin": {
           "Id": "PeacefulEnd.Campgrounds.Foods.CoffeeInATin",
-          "DisplayName": "Coffee in a Tin",
-          "Description": "Some campfire brewed coffee.",
+          "DisplayName": "{{i18n:foods.coffeeInATin.name}}",
+          "Description": "{{i18n:foods.coffeeInATin.description}}",
 
           "RationCost": 1,
 
@@ -45,8 +45,8 @@
         },
         "PeacefulEnd.Campgrounds.Foods.SausageOnAStick": {
           "Id": "PeacefulEnd.Campgrounds.Foods.SausageOnAStick",
-          "DisplayName": "Sausage on a Stick",
-          "Description": "A sausage on a stick.",
+          "DisplayName": "{{i18n:foods.sausageOnAStick.name}}",
+          "Description": "{{i18n:foods.sausageOnAStick.description}}",
 
           "RationCost": 1,
 
@@ -61,14 +61,14 @@
             "PeacefulEnd.Campgrounds.Buffs.LowStaminaBuff"
           ],
           "UnlockCondition": "WORLD_STATE_ID RECIPE_UNLOCKED_CAMPFIRE_FOOD:PeacefulEnd.Campgrounds.Foods.SausageOnAStick",
-          "UnlockHint": "Purchase the recipe from the Cindersap Forest Park shop."
+          "UnlockHint": "{{i18n:foods.sausageOnAStick.unlockHint}}"
         }
       }
     },
     {
       "Action": "Load",
       "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/DefaultCampfireFoods",
-      "FromFile": "assets/campgrounds/foods/defaultCampireFoods.png"
+      "FromFile": "assets/campgrounds/foods/defaultCampfireFoods.png"
     }
   ]
 }
