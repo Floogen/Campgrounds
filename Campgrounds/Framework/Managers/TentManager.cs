@@ -68,7 +68,7 @@ namespace Campgrounds.Framework.Managers
             CampingTentData tentData = null;
             if (who.modData.ContainsKey(CURRENT_TENT_MOD_DATA_ID))
             {
-                tentData = _campingTentData.FirstOrDefault(t => t.Id.EqualsIgnoreCase(who.modData[CURRENT_TENT_MOD_DATA_ID]));
+                tentData = GetTentDataById(who.modData[CURRENT_TENT_MOD_DATA_ID]);
             }
 
             if (tentData is null)
@@ -103,11 +103,6 @@ namespace Campgrounds.Framework.Managers
             }
 
             return unlockedCampingTents;
-        }
-
-        public CampingTentData GetTent(string tentId)
-        {
-            return CampingTentData.FirstOrDefault(t => t .Id.EqualsIgnoreCase(tentId));
         }
     }
 }
