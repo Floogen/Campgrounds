@@ -9,6 +9,7 @@ using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
 using StardewValley.Characters;
+using StardewValley.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -126,6 +127,11 @@ namespace Campgrounds.Framework.Managers
 
                 ActiveCampsites.Add(new Campsite(Game1.player, campground, guest));
             }
+        }
+
+        public CampfireFoodData GetCampfireFoodDataById(string id)
+        {
+            return CampfireFoodData.FirstOrDefault(c => c.Id.EqualsIgnoreCase(id));
         }
 
         public string GetLocationNameFromDataId(string campgroundDataId)

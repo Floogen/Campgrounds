@@ -128,7 +128,20 @@ namespace Campgrounds
                 }
 
                 Item item = ItemRegistry.Create(ItemManager.CAMPSITE_MAP_ID);
-                item.modData[ItemManager.CAMPSITE_MAP_CAMPGROUND_MOD_DATA_ID] = campgroundId;
+                item.modData[ItemManager.CAMPSITE_MAP_MOD_DATA_ID] = campgroundId;
+
+                return new[] { new ItemQueryResult(item) };
+            });
+
+            ItemQueryResolver.Register(ItemManager.CAMPFIRE_RECIPE_ID, (string key, string arguments, ItemQueryContext context, bool avoidRepeat, HashSet<string> avoidItemIds, Action<string, string> logError) => {
+                string[] args = ArgUtility.SplitBySpaceQuoteAware(arguments);
+                if (ArgUtility.TryGet(args, 0, out string campfireFoodDataId, out string error) is false || (campManager.GetCampfireFoodDataById(campfireFoodDataId) is var campfireFoodData && campfireFoodData is null))
+                {
+                    return ItemQueryResolver.Helpers.ErrorResult(key, arguments, logError, error);
+                }
+
+                Item item = ItemRegistry.Create(ItemManager.CAMPFIRE_RECIPE_ID);
+                item.modData[ItemManager.CAMPFIRE_RECIPE_MOD_DATA_ID] = campfireFoodDataId;
 
                 return new[] { new ItemQueryResult(item) };
             });

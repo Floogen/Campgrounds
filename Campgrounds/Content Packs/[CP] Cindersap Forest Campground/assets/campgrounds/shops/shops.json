@@ -13,6 +13,13 @@
           "AvailableStockLimit": "Player",
           "Condition": "!WORLD_STATE_ID MAP_UNLOCKED_CAMPGROUND:PeacefulEnd.Campgrounds.CindersapForestCampground"
         },
+        "PeacefulEnd.Campgrounds.Items.CampfireRecipe": {
+          "Id": "PeacefulEnd.Campgrounds.Items.CampfireRecipe",
+          "ItemId": "(O)PeacefulEnd.Campgrounds.Items.CampfireRecipe PeacefulEnd.Campgrounds.Foods.SausageOnAStick",
+          "Price": 1000,
+          "AvailableStock": 1,
+          "AvailableStockLimit": "Player",
+          "Condition": "!WORLD_STATE_ID RECIPE_UNLOCKED_CAMPFIRE_FOOD:PeacefulEnd.Campgrounds.Foods.SausageOnAStickk"
         }
       }
     }

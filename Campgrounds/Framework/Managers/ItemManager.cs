@@ -19,8 +19,10 @@ namespace Campgrounds.Framework.Managers
     public class ItemManager : BaseManager
     {
         public const string CAMPSITE_MAP_ID = "(O)PeacefulEnd.Campgrounds.Items.CampsiteMap";
+        public const string CAMPFIRE_RECIPE_ID = "(O)PeacefulEnd.Campgrounds.Items.CampfireRecipe";
 
-        public const string CAMPSITE_MAP_CAMPGROUND_MOD_DATA_ID = "Campgrounds.Items.CampsiteMap.Data.Id";
+        public const string CAMPSITE_MAP_MOD_DATA_ID = "Campgrounds.Items.CampsiteMap.Data.Id";
+        public const string CAMPFIRE_RECIPE_MOD_DATA_ID = "Campgrounds.Items.CampfireRecipe.Data.Id";
 
         public ItemManager(IMonitor monitor, IModHelper helper) : base(monitor, helper)
         {
@@ -45,7 +47,7 @@ namespace Campgrounds.Framework.Managers
         {
             if (item.QualifiedItemId.EqualsIgnoreCase(CAMPSITE_MAP_ID))
             {
-                if (item.modData.TryGetValue(CAMPSITE_MAP_CAMPGROUND_MOD_DATA_ID, out string campgroundDataId))
+                if (item.modData.TryGetValue(CAMPSITE_MAP_MOD_DATA_ID, out string campgroundDataId))
                 {
                     // Exit current menu
                     Game1.exitActiveMenu();
@@ -55,11 +57,23 @@ namespace Campgrounds.Framework.Managers
 
                 farmer.removeItemFromInventory(item);
             }
+            else if (item.QualifiedItemId.EqualsIgnoreCase(CAMPFIRE_RECIPE_ID))
+            {
+                if (item.modData.TryGetValue(CAMPFIRE_RECIPE_MOD_DATA_ID, out string campfireFoodDataId) && Campgrounds.campManager.GetCampfireFoodDataById(campfireFoodDataId) is CampfireFoodData campfireFoodData && campfireFoodData is not null)
+                {
+                    // Exit current menu
+                    Game1.exitActiveMenu();
+
+                    UnlockSpecialAndHoldAboveHead(GetCampfireRecipeUnlockKey(campfireFoodDataId), CAMPFIRE_RECIPE_ID, $"You have discovered the campfire cooking recipe: {campfireFoodData.DisplayName}!");
+                }
+
+                farmer.removeItemFromInventory(item);
+            }
         }
 
         public bool IsCustomItem(Item item)
         {
-            if (item.QualifiedItemId.EqualsIgnoreCase(CAMPSITE_MAP_ID))
+            if (item.QualifiedItemId.EqualsIgnoreCase(CAMPSITE_MAP_ID) || item.QualifiedItemId.EqualsIgnoreCase(CAMPFIRE_RECIPE_ID))
             {
                 return true;
             }
@@ -71,9 +85,17 @@ namespace Campgrounds.Framework.Managers
         {
             if (item is not null)
             {
-                if (item.QualifiedItemId.EqualsIgnoreCase(CAMPSITE_MAP_ID) && item.modData.TryGetValue(CAMPSITE_MAP_CAMPGROUND_MOD_DATA_ID, out string campgroundDataId))
+                if (item.QualifiedItemId.EqualsIgnoreCase(CAMPSITE_MAP_ID) && item.modData.TryGetValue(CAMPSITE_MAP_MOD_DATA_ID, out string campgroundDataId))
                 {
                     return (true, $"Campsite Map ({Campgrounds.campManager.GetLocationNameFromDataId(campgroundDataId)})");
+                }
+                if (item.QualifiedItemId.EqualsIgnoreCase(CAMPFIRE_RECIPE_ID) && item.modData.TryGetValue(CAMPFIRE_RECIPE_MOD_DATA_ID, out string campfireFoodDataId))
+                {
+                    var campfireFoodData = Campgrounds.campManager.GetCampfireFoodDataById(campfireFoodDataId);
+                    if (campfireFoodData is not null)
+                    {
+                        return (true, $"Campfire Recipe ({campfireFoodData.DisplayName})");
+                    }
                 }
             }
 
@@ -84,9 +106,17 @@ namespace Campgrounds.Framework.Managers
         {
             if (item is not null)
             {
-                if (item.QualifiedItemId.EqualsIgnoreCase(CAMPSITE_MAP_ID) && item.modData.TryGetValue(CAMPSITE_MAP_CAMPGROUND_MOD_DATA_ID, out string campgroundDataId))
+                if (item.QualifiedItemId.EqualsIgnoreCase(CAMPSITE_MAP_ID) && item.modData.TryGetValue(CAMPSITE_MAP_MOD_DATA_ID, out string campgroundDataId))
                 {
                     return (true, $"A map to the {Campgrounds.campManager.GetLocationNameFromDataId(campgroundDataId)}.");
+                }
+                if (item.QualifiedItemId.EqualsIgnoreCase(CAMPFIRE_RECIPE_ID) && item.modData.TryGetValue(CAMPFIRE_RECIPE_MOD_DATA_ID, out string campfireFoodDataId))
+                {
+                    var campfireFoodData = Campgrounds.campManager.GetCampfireFoodDataById(campfireFoodDataId);
+                    if (campfireFoodData is not null)
+                    {
+                        return (true, $"A recipe for cooking {campfireFoodData.DisplayName} on a campfire.");
+                    }
                 }
             }
 
@@ -101,6 +131,16 @@ namespace Campgrounds.Framework.Managers
             }
 
             return $"MAP_UNLOCKED_CAMPGROUND:{campgroundDataId}";
+        }
+
+        public string GetCampfireRecipeUnlockKey(string campfireFoodDataId)
+        {
+            if (string.IsNullOrEmpty(campfireFoodDataId))
+            {
+                return string.Empty;
+            }
+
+            return $"RECIPE_UNLOCKED_CAMPFIRE_FOOD:{campfireFoodDataId}";
         }
 
         public void UnlockSpecialAndHoldAboveHead(string unlockKey, string itemId, string message)

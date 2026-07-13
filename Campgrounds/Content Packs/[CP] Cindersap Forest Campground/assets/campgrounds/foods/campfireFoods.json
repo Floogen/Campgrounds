@@ -42,6 +42,26 @@
             "PeacefulEnd.Campgrounds.Buffs.LowSpeedBuff"
           ],
           "UnlockCondition": ""
+        },
+        "PeacefulEnd.Campgrounds.Foods.SausageOnAStick": {
+          "Id": "PeacefulEnd.Campgrounds.Foods.SausageOnAStick",
+          "DisplayName": "Sausage on a Stick",
+          "Description": "A sausage on a stick.",
+
+          "RationCost": 1,
+
+          "TexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/DefaultCampfireFoods",
+          "SourceRectangle": {
+            "X": 32,
+            "Y": 0,
+            "Width": 16,
+            "Height": 16
+          },
+          "BuffIds": [
+            "PeacefulEnd.Campgrounds.Buffs.LowStaminaBuff"
+          ],
+          "UnlockCondition": "WORLD_STATE_ID RECIPE_UNLOCKED_CAMPFIRE_FOOD:PeacefulEnd.Campgrounds.Foods.SausageOnAStick",
+          "UnlockHint": "Purchase the recipe from the Cindersap Forest Park shop."
         }
       }
     },

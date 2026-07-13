@@ -39,6 +39,24 @@
           "CanBeTrashed": true,
           "ExcludeFromRandomSale": true,
           "ExcludeFromShippingCollection": true
+        },
+        "PeacefulEnd.Campgrounds.Items.CampfireRecipe": {
+          "Name": "PeacefulEnd.Campgrounds.Items.CampfireRecipe",
+          "DisplayName": "Campfire Recipe",
+          "Description": "A recipe for cooking on a campfire.",
+          "Type": "Basic",
+          "Category": 0,
+          "Price": 1000,
+
+          "Texture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/Items",
+          "SpriteIndex": 2,
+
+          "Edibility": -300,
+
+          "CanBeGivenAsGift": false,
+          "CanBeTrashed": true,
+          "ExcludeFromRandomSale": true,
+          "ExcludeFromShippingCollection": true
         }
       }
     },
