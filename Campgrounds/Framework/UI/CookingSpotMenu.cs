@@ -175,7 +175,7 @@ namespace Campgrounds.Framework.UI
             List<ClickableTextureComponent[,]> pageLayouts = new List<ClickableTextureComponent[,]>();
             pageLayouts.Add(pageLayout);
 
-            foreach (var campfireRecipe in campfireFoodRecipes)
+            foreach (var campfireRecipe in campfireFoodRecipes.Where(c => c.HideUntilUnlocked is false))
             {
                 i++;
                 while (spaceOccupied(pageLayout, x, y, campfireRecipe))

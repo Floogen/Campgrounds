@@ -24,6 +24,11 @@ namespace Campgrounds.Framework.Models.Data
         public string UnlockCondition { get; set; }
         public string UnlockHint { get; set; }
 
+        /// <summary>
+        /// If true, the campsite will be hidden from the CampListMenu until the player unlocks it (UnlockHint will be ignored).
+        /// </summary>
+        public bool HideUntilUnlocked { get; set; }
+
         public List<Buff> GetBuffs()
         {
             List<Buff> buffs = new List<Buff>();
