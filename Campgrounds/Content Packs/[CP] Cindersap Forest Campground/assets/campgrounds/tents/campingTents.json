@@ -152,6 +152,10 @@
           "RestingBuffIds": [
             "PeacefulEnd.Campgrounds.Buffs.LowXPBuff"
           ],
+
+          "UnlockCondition": "WORLD_STATE_ID SCHEMATIC_UNLOCKED_TENT:PeacefulEnd.Campgrounds.Tents.StandardTent",
+          "UnlockHint": "Purchase the schematic from the Cindersap Forest Park shop.",
+
           "TexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/StandardTent",
           "SouthSprite": {
             "EntranceTile": {

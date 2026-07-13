@@ -80,7 +80,7 @@ namespace Campgrounds.Framework.UI
                 }
 
                 // Check if the campsites are being clicked
-                if (_campsiteButtons[i].containsPoint(x, y))
+                if (_campsiteButtons[i].containsPoint(x, y) && _pages[_currentPage][i].IsUnlocked())
                 {
                     _selectedCampsite = _pages[_currentPage][i];
                 }
