@@ -1,4 +1,5 @@
-﻿using Campgrounds.Framework.Models.Data;
+﻿using Campgrounds.Framework.Models.Common;
+using Campgrounds.Framework.Models.Data;
 using Campgrounds.Framework.Models.Enums;
 using Campgrounds.Framework.Utilities;
 using Microsoft.Xna.Framework;
@@ -183,39 +184,41 @@ namespace Campgrounds.Framework.Objects
             Rectangle? shadowDisplayRectangle = null;
             Vector2 shadowOffset = Vector2.Zero;
             int layerHeightOffset = 0;
+
+            DirectionalSpriteModel directionalSprite = null;
             switch (Direction)
             {
                 case Direction.North:
-                    spriteDisplayRectangle = _campingTentData.NorthSprite.DisplayRectangle;
-                    shadowDisplayRectangle = _campingTentData.NorthSprite.ShadowRectangle;
-                    shadowOffset = _campingTentData.NorthSprite.ShadowOffset;
-                    layerHeightOffset = _campingTentData.NorthSprite.DisplayRectangle.Height / 16;
+                    directionalSprite = _campingTentData.NorthSprite;
                     break;
                 case Direction.East:
-                    spriteDisplayRectangle = _campingTentData.EastSprite.DisplayRectangle;
-                    shadowDisplayRectangle = _campingTentData.EastSprite.ShadowRectangle;
-                    shadowOffset = _campingTentData.EastSprite.ShadowOffset;
-                    layerHeightOffset = _campingTentData.EastSprite.DisplayRectangle.Height / 16;
+                    directionalSprite = _campingTentData.EastSprite;
                     break;
                 case Direction.South:
-                    spriteDisplayRectangle = _campingTentData.SouthSprite.DisplayRectangle;
-                    shadowDisplayRectangle = _campingTentData.SouthSprite.ShadowRectangle;
-                    shadowOffset = _campingTentData.SouthSprite.ShadowOffset;
-                    layerHeightOffset = _campingTentData.SouthSprite.DisplayRectangle.Height / 16;
+                    directionalSprite = _campingTentData.SouthSprite;
                     break;
                 case Direction.West:
-                    spriteDisplayRectangle = _campingTentData.WestSprite.DisplayRectangle;
-                    shadowDisplayRectangle = _campingTentData.WestSprite.ShadowRectangle;
-                    shadowOffset = _campingTentData.WestSprite.ShadowOffset;
-                    layerHeightOffset = _campingTentData.WestSprite.DisplayRectangle.Height / 16;
+                    directionalSprite = _campingTentData.WestSprite;
                     break;
             }
 
+            if (directionalSprite is null)
+            {
+                return;
+            }
+
+            spriteDisplayRectangle = directionalSprite.DisplayRectangle;
+            shadowDisplayRectangle = directionalSprite.ShadowRectangle;
+            shadowOffset = directionalSprite.ShadowOffset;
+            layerHeightOffset = directionalSprite.DisplayRectangle.Height / 16;
+
+            var spriteEffects = (directionalSprite.FlipHorizontally ? SpriteEffects.FlipHorizontally : SpriteEffects.None) | (directionalSprite.FlipVertically ? SpriteEffects.FlipVertically : SpriteEffects.None);
+
             if (shadowDisplayRectangle is not null)
             {
-                spriteBatch.Draw(spriteTexture, Game1.GlobalToLocal(tileLocation * 64), shadowDisplayRectangle, Color.White, 0f, -shadowOffset, 4f, SpriteEffects.None, 0.0001f);
+                spriteBatch.Draw(spriteTexture, Game1.GlobalToLocal(tileLocation * 64), shadowDisplayRectangle, Color.White, 0f, -shadowOffset, 4f, spriteEffects, 0.0001f);
             }
-            spriteBatch.Draw(spriteTexture, Game1.GlobalToLocal(tileLocation * 64), spriteDisplayRectangle, Color.White, 0f, Vector2.Zero, 4f, SpriteEffects.None, (tileLocation.Y + layerHeightOffset) * 64f / 10000f);
+            spriteBatch.Draw(spriteTexture, Game1.GlobalToLocal(tileLocation * 64), spriteDisplayRectangle, Color.White, 0f, Vector2.Zero, 4f, spriteEffects, (tileLocation.Y + layerHeightOffset) * 64f / 10000f);
         }
     }
 }
