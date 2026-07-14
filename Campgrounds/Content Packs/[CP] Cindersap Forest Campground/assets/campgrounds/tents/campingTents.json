@@ -300,6 +300,162 @@
       "Action": "Load",
       "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/StandardTent",
       "FromFile": "assets/campgrounds/tents/standardTent.png"
+    },
+
+    {
+      "Action": "EditData",
+      "Target": "Data/PeacefulEnd_Campgrounds/CampingTents",
+      "Entries": {
+        "PeacefulEnd.Campgrounds.Tents.SturdyTent": {
+          "Id": "PeacefulEnd.Campgrounds.Tents.SturdyTent",
+          "DisplayName": "{{i18n:campingTents.sturdyTent.name}}",
+          "Description": "{{i18n:campingTents.sturdyTent.description}}",
+
+          "NumberOfAllowedCampfireMeals": 2,
+          "RestingBuffIds": [
+            "PeacefulEnd.Campgrounds.Buffs.LowXPBuff"
+          ],
+
+          "UnlockCondition": "WORLD_STATE_ID SCHEMATIC_UNLOCKED_TENT:PeacefulEnd.Campgrounds.Tents.SturdyTent",
+          "UnlockHint": "Purchase the schematic from the Cindersap Forest Park shop after camping 10 times.",
+
+          "TexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/SturdyTent",
+          "PreviewOffset": {
+            "X": 0,
+            "Y": -20
+          },
+          "SouthSprite": {
+            "EntranceTile": {
+              "X": 32,
+              "Y": 64
+            },
+            "DisplayRectangle": {
+              "X": 0,
+              "Y": 0,
+              "Width": 80,
+              "Height": 80
+            },
+            "BoundaryRectangle": {
+              "X": 16,
+              "Y": 16,
+              "Width": 48,
+              "Height": 64
+            },
+
+            "ShadowRectangle": {
+              "X": 80,
+              "Y": 96,
+              "Width": 64,
+              "Height": 64
+            },
+            "ShadowOffset": {
+              "X": 5,
+              "Y": 20
+            }
+          },
+          "WestSprite": {
+            "EntranceTile": {
+              "X": 0,
+              "Y": 48
+            },
+            "TileOffset": {
+              "X": 0,
+              "Y": -8
+            },
+            "DisplayRectangle": {
+              "X": 80,
+              "Y": 0,
+              "Width": 80,
+              "Height": 80
+            },
+            "BoundaryRectangle": {
+              "X": 0,
+              "Y": 32,
+              "Width": 80,
+              "Height": 48
+            },
+
+            "ShadowRectangle": {
+              "X": 0,
+              "Y": 96,
+              "Width": 80,
+              "Height": 64
+            },
+            "ShadowOffset": {
+              "X": 0,
+              "Y": 12
+            }
+          },
+          "EastSprite": {
+            "FlipHorizontally": true,
+            "EntranceTile": {
+              "X": 0,
+              "Y": 48
+            },
+            "TileOffset": {
+              "X": 0,
+              "Y": -8
+            },
+            "DisplayRectangle": {
+              "X": 80,
+              "Y": 0,
+              "Width": 80,
+              "Height": 80
+            },
+            "BoundaryRectangle": {
+              "X": 0,
+              "Y": 32,
+              "Width": 80,
+              "Height": 48
+            },
+
+            "ShadowRectangle": {
+              "X": 0,
+              "Y": 96,
+              "Width": 80,
+              "Height": 64
+            },
+            "ShadowOffset": {
+              "X": 0,
+              "Y": 12
+            }
+          },
+          "NorthSprite": {
+            "EntranceTile": {
+              "X": 32,
+              "Y": 16
+            },
+            "DisplayRectangle": {
+              "X": 160,
+              "Y": 0,
+              "Width": 80,
+              "Height": 80
+            },
+            "BoundaryRectangle": {
+              "X": 16,
+              "Y": 16,
+              "Width": 48,
+              "Height": 64
+            },
+
+            "ShadowRectangle": {
+              "X": 80,
+              "Y": 96,
+              "Width": 64,
+              "Height": 64
+            },
+            "ShadowOffset": {
+              "X": 5,
+              "Y": 20
+            }
+          }
+        }
+      }
+    },
+    {
+      "Action": "Load",
+      "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/SturdyTent",
+      "FromFile": "assets/campgrounds/tents/sturdyTent.png"
     }
   ]
 }

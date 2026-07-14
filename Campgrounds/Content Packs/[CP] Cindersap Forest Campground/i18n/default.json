@@ -17,6 +17,9 @@
   "campingTents.standardTent.name": "Standard Tent",
   "campingTents.standardTent.description": "A solid, weatherproof tent. Roomy enough to sleep comfortably.",
 
+  "campingTents.sturdyTent.name": "Sturdy Tent",
+  "campingTents.sturdyTent.description": "Sturdy and dependable. Stands firm through wind, rain, and restless nights.",
+
   // Map
   "map.cindersapForestCampground.name": "Cindersap Forest Campground",
 
