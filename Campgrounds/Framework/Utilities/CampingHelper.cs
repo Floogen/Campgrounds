@@ -27,7 +27,12 @@ namespace Campgrounds.Framework.Utilities
                 return;
             }
 
-            if (ArgUtility.TryGet(args, 1, out string characterName, out string characterNameError) is true && Game1.getCharacterFromName(characterName) is Character character && character is not null)
+            if (ArgUtility.TryGet(args, 1, out string tentId, out string tentIdError) is true && Campgrounds.tentManager.GetTentDataById(tentId) is var tentData && tentData is not null)
+            {
+                Campgrounds.tentManager.SetCurrentTent(Game1.player, tentData);
+            }
+
+            if (ArgUtility.TryGet(args, 2, out string characterName, out string characterNameError) is true && Game1.getCharacterFromName(characterName) is Character character && character is not null)
             {
                 Campgrounds.villagerManager.SetInvitedCharacter(Game1.player, character);
             }
