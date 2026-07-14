@@ -1,13 +1,8 @@
 ﻿using Campgrounds.Framework.Models.Common;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+using Campgrounds.Framework.Models.Enums;
 using StardewValley;
-using StardewValley.GameData.Objects;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Campgrounds.Framework.Models.Data
 {
@@ -45,6 +40,32 @@ namespace Campgrounds.Framework.Models.Data
             }
 
             return buffs;
+        }
+
+        public SizeModel GetTileSize(Direction direction)
+        {
+            var size = new SizeModel();
+            switch (direction)
+            {
+                case Direction.North:
+                    size.Height = NorthSprite.DisplayRectangle.Height / 16;
+                    size.Width = NorthSprite.DisplayRectangle.Width / 16;
+                    break;
+                case Direction.East:
+                    size.Height = EastSprite.DisplayRectangle.Height / 16;
+                    size.Width = EastSprite.DisplayRectangle.Width / 16;
+                    break;
+                case Direction.South:
+                    size.Height = SouthSprite.DisplayRectangle.Height / 16;
+                    size.Width = SouthSprite.DisplayRectangle.Width / 16;
+                    break;
+                case Direction.West:
+                    size.Height = WestSprite.DisplayRectangle.Height / 16;
+                    size.Width = WestSprite.DisplayRectangle.Width / 16;
+                    break;
+            }
+
+            return size;
         }
 
         public bool IsUnlocked()

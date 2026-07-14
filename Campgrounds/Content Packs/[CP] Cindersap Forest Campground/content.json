@@ -440,6 +440,10 @@
             "X": 17,
             "Y": 23
           },
+          "MaxTentTileSize": {
+            "Width": 3,
+            "Height": 4
+          },
           "Description": "A peaceful camping spot in Cindersap Forest.",
           "RequireVehicle": false,
           "TravelTimeInHours": 0,

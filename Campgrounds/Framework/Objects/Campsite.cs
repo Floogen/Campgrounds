@@ -154,72 +154,31 @@ namespace Campgrounds.Framework.Objects
                 return false;
             }
 
-            // Get tent tiles
-            var layer = location.Map.GetLayer("Back");
+            // Get campground map details
+            var campgroundMapDetails = CampingHelper.GetCampgroundMapDetails(location);
 
-            Vector2? playerTentTile = null;
-            Vector2? guestTentTile = null;
-
-            Direction playerTentDirection = Direction.South;
-            Direction guestTentDirection = Direction.South;
-
-            Vector2? cookingSpotTile = null;
-
-            for (int x = 0; x < layer.LayerWidth; x++)
-            {
-                for (int y = 0; y < layer.LayerHeight; y++)
-                {
-                    if (location.doesTileHaveProperty(x, y, "IsCampingSpot", "Back") != null)
-                    {
-                        if (location.doesTileHaveProperty(x, y, "IsForGuest", "Back") == "T")
-                        {
-                            if (Enum.TryParse<Direction>(location.doesTileHaveProperty(x, y, "CampingDirection", "Back"), out var direction))
-                            {
-                                guestTentDirection = direction;
-                            }
-
-                            guestTentTile = new Vector2(x, y);
-                        }
-                        else
-                        {
-                            if (Enum.TryParse<Direction>(location.doesTileHaveProperty(x, y, "CampingDirection", "Back"), out var direction))
-                            {
-                                playerTentDirection = direction;
-                            }
-
-                            playerTentTile = new Vector2(x, y);
-                        }
-                    }
-
-                    if (location.doesTileHaveProperty(x, y, "IsCookingSpot", "Back") != null)
-                    {
-                        cookingSpotTile = new Vector2(x, y);
-                    }
-                }
-            }
-
-            if (playerTentTile is null)
+            if (campgroundMapDetails.PlayerTentTile is null)
             {
                 Campgrounds.monitor.LogOnce($"The campgrounds map with name {Data.Id} is missing the player's tent spot (IsCampingSpot tile property on Back layer)", LogLevel.Warn);
                 return false;
             }
-            if (guestTentTile is null)
+            if (campgroundMapDetails.GuestTentTile is null)
             {
                 Campgrounds.monitor.LogOnce($"The campgrounds map with name {Data.Id} is missing the guest's tent spot (IsCampingSpot and IsForGuest tile property on Back layer)", LogLevel.Warn);
                 return false;
             }
-            if (cookingSpotTile is null)
+            if (campgroundMapDetails.CookingSpotTile is null)
             {
                 Campgrounds.monitor.LogOnce($"The campgrounds map with name {Data.Id} is missing a cooking spot (IsCookingSpot tile property on Back layer)", LogLevel.Warn);
                 return false;
             }
 
             // Place the tents
-            if (!location.isTerrainFeatureAt((int)playerTentTile.Value.X, (int)playerTentTile.Value.Y))
+            if (!location.isTerrainFeatureAt((int)campgroundMapDetails.PlayerTentTile.Value.X, (int)campgroundMapDetails.PlayerTentTile.Value.Y))
             {
-                location.largeTerrainFeatures.Add(new CampingTent(playerTentTile.Value, playerTentDirection, this, CurrentCampTent, owner: Camper));
+                location.largeTerrainFeatures.Add(new CampingTent(campgroundMapDetails.PlayerTentTile.Value, campgroundMapDetails.PlayerTentDirection, this, CurrentCampTent, owner: Camper));
             }
-            if (Guest is not null && !location.isTerrainFeatureAt((int)guestTentTile.Value.X, (int)guestTentTile.Value.Y))
+            if (Guest is not null && !location.isTerrainFeatureAt((int)campgroundMapDetails.GuestTentTile.Value.X, (int)campgroundMapDetails.GuestTentTile.Value.Y))
             {
                 CampingTentData guestCampingTentData = null;
                 if (Guest is Farmer farmer && farmer is not null)
@@ -236,13 +195,13 @@ namespace Campgrounds.Framework.Objects
                 {
                     guestCampingTentData = Campgrounds.tentManager.GetStarterTent();
                 }
-                location.largeTerrainFeatures.Add(new CampingTent(guestTentTile.Value, guestTentDirection, this, guestCampingTentData));
+                location.largeTerrainFeatures.Add(new CampingTent(campgroundMapDetails.GuestTentTile.Value, campgroundMapDetails.GuestTentDirection, this, guestCampingTentData));
             }
 
             // Place the cooking spot
-            if (!location.objects.ContainsKey(cookingSpotTile.Value))
+            if (!location.objects.ContainsKey(campgroundMapDetails.CookingSpotTile.Value))
             {
-                location.objects.Add(cookingSpotTile.Value, CookingSpot);
+                location.objects.Add(campgroundMapDetails.CookingSpotTile.Value, CookingSpot);
             }
 
             // Warp the Guest (if player, skip since we warp them via message)

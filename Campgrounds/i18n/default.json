@@ -34,6 +34,7 @@
   "dialogues.shop.leave": "Leave",
 
   "dialogues.traveling.campingWithoutRations": "Are you sure you want to travel without rations? You will not be able to make food at the campfire.",
+  "dialogues.traveling.tentTooBig": "Your tent is too large for this campsite. Use a smaller one or try a different campsite.",
   "dialogues.traveling.notEnoughTime": "There is not enough time to reach that campsite before midnight...",
   "dialogues.traveling.vehicleRequired": "This campsite requires a vehicle to reach. You see a note attached to the map...",
   "dialogues.traveling.vehicleRequiredNote": "\"You can use my grandmother's old car in the garage! It will need some work to get running again though.\" - Clem",

@@ -1,4 +1,6 @@
 ﻿using Campgrounds.Framework.Models.Data;
+using Campgrounds.Framework.Models.Enums;
+using Campgrounds.Framework.Models.Game;
 using Campgrounds.Framework.UI;
 using Microsoft.Xna.Framework;
 using StardewValley;
@@ -16,6 +18,7 @@ namespace Campgrounds.Framework.Utilities
 {
     public static class CampingHelper
     {
+        // Commands
         public static void StartCampingCommand(string command, string[] args)
         {
             if (ArgUtility.TryGet(args, 0, out string campgroundId, out string error) is false || (Campgrounds.campManager.CampgroundData.FirstOrDefault(c => c.Id.EqualsIgnoreCase(campgroundId)) is var campgroundData && campgroundData is null))
@@ -31,6 +34,56 @@ namespace Campgrounds.Framework.Utilities
             Campgrounds.campManager.StartTraveling(Game1.player, campgroundData);
         }
 
+        public static CampgroundMapDetails GetCampgroundMapDetails(GameLocation location)
+        {
+            // Get tent tiles
+            var layer = location.Map.GetLayer("Back");
+
+            Vector2? playerTentTile = null;
+            Vector2? guestTentTile = null;
+
+            Direction playerTentDirection = Direction.South;
+            Direction guestTentDirection = Direction.South;
+
+            Vector2? cookingSpotTile = null;
+
+            for (int x = 0; x < layer.LayerWidth; x++)
+            {
+                for (int y = 0; y < layer.LayerHeight; y++)
+                {
+                    if (location.doesTileHaveProperty(x, y, "IsCampingSpot", "Back") != null)
+                    {
+                        if (location.doesTileHaveProperty(x, y, "IsForGuest", "Back") == "T")
+                        {
+                            if (Enum.TryParse<Direction>(location.doesTileHaveProperty(x, y, "CampingDirection", "Back"), out var direction))
+                            {
+                                guestTentDirection = direction;
+                            }
+
+                            guestTentTile = new Vector2(x, y);
+                        }
+                        else
+                        {
+                            if (Enum.TryParse<Direction>(location.doesTileHaveProperty(x, y, "CampingDirection", "Back"), out var direction))
+                            {
+                                playerTentDirection = direction;
+                            }
+
+                            playerTentTile = new Vector2(x, y);
+                        }
+                    }
+
+                    if (location.doesTileHaveProperty(x, y, "IsCookingSpot", "Back") != null)
+                    {
+                        cookingSpotTile = new Vector2(x, y);
+                    }
+                }
+            }
+
+            return new CampgroundMapDetails() { PlayerTentTile = playerTentTile, PlayerTentDirection = playerTentDirection, GuestTentTile = guestTentTile, GuestTentDirection = guestTentDirection, CookingSpotTile = cookingSpotTile };
+        }
+
+        // Dialogue related responses
         public static void OnTentSleepResponse(Farmer who, string answer)
         {
             switch (answer)

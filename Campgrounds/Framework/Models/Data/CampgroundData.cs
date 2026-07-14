@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Campgrounds.Framework.Models.Common;
+using Campgrounds.Framework.Models.Enums;
+using Microsoft.Xna.Framework;
 using StardewValley;
 
 namespace Campgrounds.Framework.Models.Data
@@ -11,6 +13,7 @@ namespace Campgrounds.Framework.Models.Data
         public float PreviewTextureScale { get; set; } = 4f;
         public Vector2? PlayerSpawnTile { get; set; }
         public Vector2? GuestSpawnTile { get; set; }
+        public SizeModel MaxTentTileSize { get; set; }
         public string TravelScreenText { get; set; }
 
         public bool RequireVehicle { get; set; }
@@ -25,6 +28,22 @@ namespace Campgrounds.Framework.Models.Data
         /// If true, the campsite will be hidden from the CampListMenu until the player unlocks it (UnlockHint will be ignored).
         /// </summary>
         public bool HideUntilUnlocked { get; set; }
+
+        public bool IsTentValid(Direction direction, CampingTentData campingTentData)
+        {
+            if (campingTentData is null)
+            {
+                return false;
+            }
+
+            var tentSize = campingTentData.GetTileSize(direction);
+            if (MaxTentTileSize is not null && (tentSize.Height > MaxTentTileSize.Height || tentSize.Width > MaxTentTileSize.Width))
+            {
+                return false;
+            }
+
+            return true;
+        }
 
         public bool IsUnlocked()
         {
@@ -60,6 +79,11 @@ namespace Campgrounds.Framework.Models.Data
             else if (TravelTimeInHours >= 16)
             {
                 return (false, "The \"TravelTimeInHours\" can't be greater than 16!");
+            }
+
+            if (MaxTentTileSize is not null && MaxTentTileSize.IsValid().Result is false)
+            {
+                return (false, $"Error with \"MaxTentTileSize\": {MaxTentTileSize.IsValid().Error}");
             }
 
             return (true, string.Empty);

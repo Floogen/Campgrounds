@@ -195,6 +195,14 @@ namespace Campgrounds.Framework.UI
                 return;
             }
 
+            var campgroundMapDetails = CampingHelper.GetCampgroundMapDetails(Game1.getLocationFromName(_selectedCampsite.Id));
+            var currentTentData = Campgrounds.tentManager.GetCurrentTent(Game1.player);
+            if (_selectedCampsite.IsTentValid(campgroundMapDetails.PlayerTentDirection, currentTentData) is false)
+            {
+                Game1.drawObjectDialogue(Campgrounds.modHelper.Translation.Get("dialogues.traveling.tentTooBig"));
+                return;
+            }
+
             if (skipRationCheck is false && Campgrounds.currencyManager.GetCurrencyBalance(Models.Enums.Currency.CampRations) <= 0)
             {
                 Game1.currentLocation.createQuestionDialogue(Campgrounds.modHelper.Translation.Get("dialogues.traveling.campingWithoutRations"), Game1.currentLocation.createYesNoResponses(), (Farmer who, string answer) => CampingHelper.OnLeaveWithoutRationsResponse(who, answer, this));
