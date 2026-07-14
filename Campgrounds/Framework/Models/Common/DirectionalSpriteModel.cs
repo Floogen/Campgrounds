@@ -15,7 +15,7 @@ namespace Campgrounds.Framework.Models.Common
         public Rectangle DisplayRectangle { get; set; }
         public Rectangle BoundaryRectangle { get; set; }
 
-        public Rectangle ShadowRectangle { get; set; }
+        public Rectangle? ShadowRectangle { get; set; }
         public Vector2 ShadowOffset { get; set; }
     }
 }
