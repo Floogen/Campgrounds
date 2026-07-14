@@ -2,6 +2,7 @@
 using Campgrounds.Framework.UI;
 using Microsoft.Xna.Framework;
 using StardewValley;
+using StardewValley.Extensions;
 using StardewValley.Menus;
 using StardewValley.Network;
 using System;
@@ -15,6 +16,21 @@ namespace Campgrounds.Framework.Utilities
 {
     public static class CampingHelper
     {
+        public static void StartCampingCommand(string command, string[] args)
+        {
+            if (ArgUtility.TryGet(args, 0, out string campgroundId, out string error) is false || (Campgrounds.campManager.CampgroundData.FirstOrDefault(c => c.Id.EqualsIgnoreCase(campgroundId)) is var campgroundData && campgroundData is null))
+            {
+                return;
+            }
+
+            if (ArgUtility.TryGet(args, 1, out string characterName, out string characterNameError) is true && Game1.getCharacterFromName(characterName) is Character character && character is not null)
+            {
+                Campgrounds.villagerManager.SetInvitedCharacter(Game1.player, character);
+            }
+
+            Campgrounds.campManager.StartTraveling(Game1.player, campgroundData);
+        }
+
         public static void OnTentSleepResponse(Farmer who, string answer)
         {
             switch (answer)
