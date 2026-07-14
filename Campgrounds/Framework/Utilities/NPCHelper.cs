@@ -37,6 +37,9 @@ namespace Campgrounds.Framework.Utilities
         }
         public static void ReturnNPCToSchedule(NPC npc)
         {
+            // Enable schedule
+            npc.ignoreScheduleToday = false;
+
             if (npc.Schedule != null && npc.Schedule.Count > 0)
             {
                 // Find the latest schedule entry

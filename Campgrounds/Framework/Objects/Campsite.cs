@@ -251,6 +251,14 @@ namespace Campgrounds.Framework.Objects
                 // Cache previous dialogue
                 _cachedDialogue = new Stack<Dialogue>(guestNPC.CurrentDialogue.Reverse());
 
+                // Clear any controllers
+                guestNPC.controller = null;
+                guestNPC.temporaryController = null;
+                guestNPC.Halt();
+
+                // Disable schedule
+                guestNPC.ignoreScheduleToday = true;
+
                 var dialogue = Campgrounds.villagerManager.GetGameReadyDialogue(Campgrounds.villagerManager.GetCampsiteDialogue(Data, guestNPC, isDayAfter));
                 NPCHelper.WarpAndSetDialogue(guestNPC, GetLocation(), Data.GuestSpawnTile.Value, dialogue);
             }
