@@ -78,7 +78,7 @@ namespace Campgrounds.Framework.Patches.Locations
             {
                 foreach (CampingTent campingTent in __instance.largeTerrainFeatures.Where(t => t is CampingTent))
                 {
-                    if (campingTent.GetEntranceTile() == new Vector2(xTile, yTile))
+                    if (campingTent.GetEntranceTile() == new Vector2(xTile, yTile) && campingTent.IsOwner(who))
                     {
                         __result = true;
                         return;

@@ -217,7 +217,7 @@ namespace Campgrounds.Framework.Objects
             // Place the tents
             if (!location.isTerrainFeatureAt((int)playerTentTile.Value.X, (int)playerTentTile.Value.Y))
             {
-                location.largeTerrainFeatures.Add(new CampingTent(playerTentTile.Value, playerTentDirection, this, CurrentCampTent));
+                location.largeTerrainFeatures.Add(new CampingTent(playerTentTile.Value, playerTentDirection, this, CurrentCampTent, owner: Camper));
             }
             if (Guest is not null && !location.isTerrainFeatureAt((int)guestTentTile.Value.X, (int)guestTentTile.Value.Y))
             {

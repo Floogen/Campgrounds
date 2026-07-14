@@ -21,8 +21,9 @@ namespace Campgrounds.Framework.Objects
 
         private Campsite _campsite;
         private CampingTentData _campingTentData;
+        private Character _owner;
 
-        public CampingTent(Vector2 tile, Direction direction, Campsite campsite, CampingTentData campingTentData) : base(true)
+        public CampingTent(Vector2 tile, Direction direction, Campsite campsite, CampingTentData campingTentData, Character owner = null) : base(true)
         {
             Tile = tile;
 
@@ -30,8 +31,14 @@ namespace Campgrounds.Framework.Objects
 
             _campsite = campsite;
             _campingTentData = campingTentData;
+            _owner = owner;
 
             isDestroyedByNPCTrample = false;
+        }
+
+        public bool IsOwner(Farmer who)
+        {
+            return _owner == who;
         }
 
         private Vector2 GetOffsetTile()
@@ -122,7 +129,7 @@ namespace Campgrounds.Framework.Objects
             Vector2 tilePosition = GetEntranceTile();
             Vector2 playerGrab = Game1.player.GetGrabTile();
 
-            if ((playerGrab == tilePosition || (playerGrab.X == tilePosition.X && playerGrab.Y >= tilePosition.Y)) && !Game1.newDay && Game1.shouldTimePass() && Game1.player.hasMoved && !Game1.player.passedOut)
+            if ((playerGrab == tilePosition || (playerGrab.X == tilePosition.X && playerGrab.Y >= tilePosition.Y)) && !Game1.newDay && Game1.shouldTimePass() && Game1.player.hasMoved && !Game1.player.passedOut && IsOwner(Game1.player))
             {
                 if (Campgrounds.campManager.GetLastCampsiteSleptIn(Game1.player) == _campsite.Data.Id)
                 {
@@ -132,7 +139,6 @@ namespace Campgrounds.Framework.Objects
                 {
                     Location.createQuestionDialogue(Game1.content.LoadString("Strings\\Locations:FarmHouse_Bed_GoToSleep"), Location.createYesNoResponses(), CampingHelper.OnTentSleepResponse, null);
                 }
-
             }
 
             return base.performUseAction(tileLocation);
