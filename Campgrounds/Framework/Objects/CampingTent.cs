@@ -41,21 +41,43 @@ namespace Campgrounds.Framework.Objects
             return _owner == who;
         }
 
-        private Vector2 GetOffsetTile()
+        private Vector2 GetActualTile()
+        {
+            var tile = Tile;
+            switch (Direction)
+            {
+                case Direction.North:
+                    tile = new Vector2(Tile.X, Tile.Y - (_campingTentData.NorthSprite.EntranceTile.X / 16) + (_campingTentData.NorthSprite.EntranceTile.Y / 16));
+                    break;
+                case Direction.East:
+                    tile = new Vector2(Tile.X - (_campingTentData.EastSprite.EntranceTile.X / 16), Tile.Y - (_campingTentData.EastSprite.EntranceTile.Y / 16));
+                    break;
+                case Direction.South:
+                    tile = new Vector2(Tile.X - (_campingTentData.SouthSprite.EntranceTile.X / 16), Tile.Y - (_campingTentData.SouthSprite.EntranceTile.Y / 16));
+                    break;
+                case Direction.West:
+                    tile = new Vector2(Tile.X + (_campingTentData.WestSprite.EntranceTile.X / 16), Tile.Y - (_campingTentData.WestSprite.EntranceTile.Y / 16));
+                    break;
+            }
+
+            return tile + (GetTileOffset() / 16f);
+        }
+
+        private Vector2 GetTileOffset()
         {
             switch (Direction)
             {
                 case Direction.North:
-                    return new Vector2(Tile.X, Tile.Y - (_campingTentData.NorthSprite.DisplayRectangle.Height / 16) + (_campingTentData.NorthSprite.BoundaryRectangle.Height / 16));
+                    return _campingTentData.NorthSprite.TileOffset;
                 case Direction.East:
-                    return new Vector2(Tile.X - (_campingTentData.WestSprite.DisplayRectangle.Width / 16) + 1, Tile.Y - (_campingTentData.EastSprite.DisplayRectangle.Height / 16) + 1);
+                    return _campingTentData.EastSprite.TileOffset;
                 case Direction.South:
-                    return new Vector2(Tile.X, Tile.Y - (_campingTentData.SouthSprite.DisplayRectangle.Height / 16) + 1);
+                    return _campingTentData.SouthSprite.TileOffset;
                 case Direction.West:
-                    return new Vector2(Tile.X, Tile.Y - (_campingTentData.WestSprite.DisplayRectangle.Height / 16) + 1);
+                    return _campingTentData.WestSprite.TileOffset;
             }
 
-            return Tile;
+            return Vector2.Zero;
         }
 
         public override Rectangle getBoundingBox()
@@ -77,23 +99,26 @@ namespace Campgrounds.Framework.Objects
 
         private Rectangle GetScaledBoundary(Rectangle boundaryRectangle)
         {
-            Vector2 tileLocation = GetOffsetTile();
+            Vector2 tileLocation = GetActualTile();
             switch (Direction)
             {
                 case Direction.North:
-                    tileLocation = new Vector2(tileLocation.X, tileLocation.Y + _campingTentData.NorthSprite.BoundaryRectangle.Y / 16);
+                    tileLocation = new Vector2(tileLocation.X + boundaryRectangle.X / 16, tileLocation.Y + boundaryRectangle.Y / 16);
                     break;
                 case Direction.East:
-                    tileLocation = new Vector2(tileLocation.X, tileLocation.Y + _campingTentData.EastSprite.BoundaryRectangle.Y / 16);
+                    tileLocation = new Vector2(tileLocation.X + boundaryRectangle.X / 16, tileLocation.Y + boundaryRectangle.Y / 16);
                     break;
                 case Direction.South:
-                    tileLocation = new Vector2(tileLocation.X, tileLocation.Y + _campingTentData.SouthSprite.BoundaryRectangle.Y / 16);
+                    tileLocation = new Vector2(tileLocation.X + boundaryRectangle.X / 16, tileLocation.Y + boundaryRectangle.Y / 16);
                     break;
                 case Direction.West:
-                    tileLocation = new Vector2(tileLocation.X, tileLocation.Y + _campingTentData.WestSprite.BoundaryRectangle.Y / 16);
+                    tileLocation = new Vector2(tileLocation.X + boundaryRectangle.X / 16, tileLocation.Y + boundaryRectangle.Y / 16);
                     break;
             }
-            return new Rectangle((int)(tileLocation.X) * 64, (int)(tileLocation.Y) * 64, boundaryRectangle.Width * 4, boundaryRectangle.Height * 4);
+
+            int tileOffsetX = (int)(Math.Abs(GetTileOffset().X) + 15) / 16 * 16;
+            int tileOffsetY = (int)(Math.Abs(GetTileOffset().Y) + 15) / 16 * 16;
+            return new Rectangle((int)(tileLocation.X) * 64, (int)(tileLocation.Y) * 64, (boundaryRectangle.Width * 4) + tileOffsetX, (boundaryRectangle.Height * 4) + tileOffsetY);
         }
 
         public override bool isPassable(Character c = null)
@@ -103,7 +128,7 @@ namespace Campgrounds.Framework.Objects
 
         public Vector2 GetEntranceTile()
         {
-            Vector2 tilePosition = GetOffsetTile();
+            Vector2 tilePosition = GetActualTile();
             switch (Direction)
             {
                 case Direction.North:
@@ -119,7 +144,7 @@ namespace Campgrounds.Framework.Objects
                     tilePosition = _campingTentData.WestSprite.EntranceTile;
                     break;
             }
-            tilePosition = (tilePosition / 16) + GetOffsetTile();
+            tilePosition = (tilePosition / 16) + GetActualTile();
 
             return tilePosition;
         }
@@ -151,7 +176,7 @@ namespace Campgrounds.Framework.Objects
 
         public override void draw(SpriteBatch spriteBatch)
         {
-            Vector2 tileLocation = GetOffsetTile();
+            Vector2 tileLocation = GetActualTile();
             var spriteTexture = Campgrounds.modHelper.GameContent.Load<Texture2D>(_campingTentData.TexturePath);
 
             Rectangle? spriteDisplayRectangle = null;

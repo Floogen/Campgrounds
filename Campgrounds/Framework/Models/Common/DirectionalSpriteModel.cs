@@ -10,6 +10,7 @@ namespace Campgrounds.Framework.Models.Common
     public class DirectionalSpriteModel
     {
         public Vector2 EntranceTile { get; set; }
+        public Vector2 TileOffset { get; set; }
 
         public Rectangle DisplayRectangle { get; set; }
         public Rectangle BoundaryRectangle { get; set; }

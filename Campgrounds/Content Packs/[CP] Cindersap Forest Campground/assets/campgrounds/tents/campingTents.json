@@ -47,6 +47,10 @@
               "X": 0,
               "Y": 32
             },
+            "TileOffset": {
+              "X": 0,
+              "Y": -8
+            },
             "DisplayRectangle": {
               "X": 48,
               "Y": 0,
@@ -75,6 +79,10 @@
             "EntranceTile": {
               "X": 32,
               "Y": 32
+            },
+            "TileOffset": {
+              "X": 0,
+              "Y": -8
             },
             "DisplayRectangle": {
               "X": 96,
@@ -191,6 +199,10 @@
               "X": 0,
               "Y": 32
             },
+            "TileOffset": {
+              "X": 0,
+              "Y": -8
+            },
             "DisplayRectangle": {
               "X": 48,
               "Y": 0,
@@ -219,6 +231,10 @@
             "EntranceTile": {
               "X": 32,
               "Y": 32
+            },
+            "TileOffset": {
+              "X": 0,
+              "Y": -8
             },
             "DisplayRectangle": {
               "X": 96,
