@@ -165,6 +165,10 @@
           "UnlockHint": "Purchase the schematic from the Cindersap Forest Park shop.",
 
           "TexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/StandardTent",
+          "PreviewOffset": {
+            "X": 0,
+            "Y": -20
+          },
           "SouthSprite": {
             "EntranceTile": {
               "X": 16,

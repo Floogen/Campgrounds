@@ -375,7 +375,7 @@ namespace Campgrounds.Framework.UI
                 var centerPosition = new Vector2(MathF.Floor(_tentPreviewBox.X + (_tentPreviewBox.Width - campingTentBoundary.Width * previewCampsiteScale) / 2f), MathF.Floor(_tentPreviewBox.Y + (_tentPreviewBox.Height - campingTentBoundary.Height * previewCampsiteScale) / 2f - 8));
                 var cropBoundary = new Rectangle(_tentPreviewBox.X, _tentPreviewBox.Y, _tentPreviewBox.Width, _tentPreviewBox.Height);
                 
-                DrawCropped(b, previewCampingTentTexture, campingTentBoundary, centerPosition, previewCampsiteScale, cropBoundary, Color.White);
+                DrawCropped(b, previewCampingTentTexture, campingTentBoundary, centerPosition + _selectedCampingTent.PreviewOffset, previewCampsiteScale, cropBoundary, Color.White);
 
                 if (_selectedCampingTent.Id != Campgrounds.tentManager.GetCurrentTent(Game1.player).Id)
                 {

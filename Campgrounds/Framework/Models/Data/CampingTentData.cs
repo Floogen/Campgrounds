@@ -1,5 +1,6 @@
 ﻿using Campgrounds.Framework.Models.Common;
 using Campgrounds.Framework.Models.Enums;
+using Microsoft.Xna.Framework;
 using StardewValley;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace Campgrounds.Framework.Models.Data
         public string Description { get; set; }
 
         public string TexturePath { get; set; }
+        public Vector2 PreviewOffset { get; set; } = Vector2.Zero;
         public DirectionalSpriteModel NorthSprite { get; set; }
         public DirectionalSpriteModel EastSprite { get; set; }
         public DirectionalSpriteModel SouthSprite { get; set; }
