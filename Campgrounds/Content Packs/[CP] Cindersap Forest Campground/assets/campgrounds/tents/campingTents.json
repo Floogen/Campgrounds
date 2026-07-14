@@ -42,7 +42,7 @@
               "Y": 32
             }
           },
-          "EastSprite": {
+          "WestSprite": {
             "EntranceTile": {
               "X": 0,
               "Y": 32
@@ -71,7 +71,7 @@
               "Y": 32
             }
           },
-          "WestSprite": {
+          "EastSprite": {
             "EntranceTile": {
               "X": 32,
               "Y": 32
@@ -186,7 +186,7 @@
               "Y": 32
             }
           },
-          "EastSprite": {
+          "WestSprite": {
             "EntranceTile": {
               "X": 0,
               "Y": 32
@@ -215,7 +215,7 @@
               "Y": 32
             }
           },
-          "WestSprite": {
+          "EastSprite": {
             "EntranceTile": {
               "X": 32,
               "Y": 32
