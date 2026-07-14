@@ -38,7 +38,7 @@
               "Height": 48
             },
             "ShadowOffset": {
-              "X": 16,
+              "X": -16,
               "Y": 32
             }
           },
@@ -71,7 +71,7 @@
               "Height": 48
             },
             "ShadowOffset": {
-              "X": 16,
+              "X": -16,
               "Y": 32
             }
           },
@@ -104,7 +104,7 @@
               "Height": 48
             },
             "ShadowOffset": {
-              "X": 16,
+              "X": -16,
               "Y": 32
             }
           },
@@ -133,7 +133,7 @@
               "Height": 48
             },
             "ShadowOffset": {
-              "X": 16,
+              "X": -16,
               "Y": 32
             }
           }
@@ -172,36 +172,36 @@
           "SouthSprite": {
             "EntranceTile": {
               "X": 16,
-              "Y": 48
+              "Y": 64
             },
             "DisplayRectangle": {
               "X": 0,
               "Y": 0,
               "Width": 48,
-              "Height": 64
+              "Height": 80
             },
             "BoundaryRectangle": {
               "X": 0,
-              "Y": 32,
+              "Y": 16,
               "Width": 48,
-              "Height": 32
+              "Height": 64
             },
 
             "ShadowRectangle": {
-              "X": 0,
-              "Y": 80,
+              "X": 80,
+              "Y": 96,
               "Width": 64,
-              "Height": 48
+              "Height": 64
             },
             "ShadowOffset": {
-              "X": 16,
-              "Y": 32
+              "X": -13,
+              "Y": 22
             }
           },
           "WestSprite": {
             "EntranceTile": {
               "X": 0,
-              "Y": 32
+              "Y": 48
             },
             "TileOffset": {
               "X": 0,
@@ -210,87 +210,87 @@
             "DisplayRectangle": {
               "X": 48,
               "Y": 0,
-              "Width": 48,
-              "Height": 64
+              "Width": 64,
+              "Height": 80
             },
             "BoundaryRectangle": {
               "X": 0,
-              "Y": 32,
-              "Width": 48,
+              "Y": 48,
+              "Width": 64,
               "Height": 32
             },
 
             "ShadowRectangle": {
               "X": 0,
-              "Y": 80,
+              "Y": 96,
               "Width": 64,
-              "Height": 48
+              "Height": 64
             },
             "ShadowOffset": {
-              "X": 16,
-              "Y": 32
+              "X": 1,
+              "Y": 30
             }
           },
           "EastSprite": {
             "EntranceTile": {
-              "X": 32,
-              "Y": 32
+              "X": 48,
+              "Y": 48
             },
             "TileOffset": {
               "X": 0,
               "Y": -8
             },
             "DisplayRectangle": {
-              "X": 96,
+              "X": 112,
               "Y": 0,
-              "Width": 48,
-              "Height": 64
+              "Width": 64,
+              "Height": 80
             },
             "BoundaryRectangle": {
               "X": 0,
-              "Y": 32,
-              "Width": 48,
+              "Y": 48,
+              "Width": 64,
               "Height": 32
             },
 
             "ShadowRectangle": {
               "X": 0,
-              "Y": 80,
+              "Y": 96,
               "Width": 64,
-              "Height": 48
+              "Height": 64
             },
             "ShadowOffset": {
-              "X": 16,
-              "Y": 32
+              "X": -2,
+              "Y": 30
             }
           },
           "NorthSprite": {
             "EntranceTile": {
               "X": 16,
-              "Y": 32
+              "Y": 16
             },
             "DisplayRectangle": {
-              "X": 144,
+              "X": 176,
               "Y": 0,
               "Width": 48,
-              "Height": 64
+              "Height": 80
             },
             "BoundaryRectangle": {
               "X": 0,
-              "Y": 32,
+              "Y": 16,
               "Width": 48,
-              "Height": 32
+              "Height": 64
             },
 
             "ShadowRectangle": {
-              "X": 0,
-              "Y": 80,
+              "X": 80,
+              "Y": 96,
               "Width": 64,
-              "Height": 48
+              "Height": 64
             },
             "ShadowOffset": {
-              "X": 16,
-              "Y": 32
+              "X": -13,
+              "Y": 22
             }
           }
         }

@@ -210,9 +210,11 @@ namespace Campgrounds.Framework.Objects
                     layerHeightOffset = _campingTentData.WestSprite.DisplayRectangle.Height / 16;
                     break;
             }
-            shadowOffset = new Vector2(16, 32);
 
-            spriteBatch.Draw(spriteTexture, Game1.GlobalToLocal(tileLocation * 64), shadowDisplayRectangle, Color.White, 0f, new Vector2(shadowOffset.X, -shadowOffset.Y), 4f, SpriteEffects.None, 0.0001f);
+            if (shadowDisplayRectangle is not null)
+            {
+                spriteBatch.Draw(spriteTexture, Game1.GlobalToLocal(tileLocation * 64), shadowDisplayRectangle, Color.White, 0f, -shadowOffset, 4f, SpriteEffects.None, 0.0001f);
+            }
             spriteBatch.Draw(spriteTexture, Game1.GlobalToLocal(tileLocation * 64), spriteDisplayRectangle, Color.White, 0f, Vector2.Zero, 4f, SpriteEffects.None, (tileLocation.Y + layerHeightOffset) * 64f / 10000f);
         }
     }
