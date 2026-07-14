@@ -1855,7 +1855,7 @@
 </data>
  </layer>
  <objectgroup id="6" name="Back">
-  <object id="4" name="TileData" x="224" y="320" width="16" height="16">
+  <object id="4" name="TileData" x="240" y="320" width="16" height="16">
    <properties>
     <property name="CampingDirection" value="South"/>
     <property name="CampingType" value="Tent"/>
