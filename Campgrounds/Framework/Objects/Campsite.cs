@@ -123,6 +123,7 @@ namespace Campgrounds.Framework.Objects
             CookingSpot.HasCookedToday = false;
             if (location.farmers.Any(c => c == Camper) || location.characters.Any(c => c == Guest))
             {
+                Game1.stats.Increment(CampingManager.TOTAL_NIGHTS_GONE_CAMPING_STAT_ID, 1);
                 CookingSpot.CanCook = false;
             }
 

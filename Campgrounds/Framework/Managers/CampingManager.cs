@@ -22,6 +22,8 @@ namespace Campgrounds.Framework.Managers
 {
     public class CampingManager : BaseManager
     {
+        public static string TOTAL_NIGHTS_GONE_CAMPING_STAT_ID = "PeacefulEnd.Campgrounds_TotalNightsGoneCamping";
+
         public const string CACHED_BUFF_IDS_MOD_DATA_ID = "Campgrounds.Buffs.Cache.Id";
         public const string LAST_CAMPSITE_SLEPT_MOD_DATA_ID = "Campgrounds.Campsite.LastCampsite.Slept.Id";
 
