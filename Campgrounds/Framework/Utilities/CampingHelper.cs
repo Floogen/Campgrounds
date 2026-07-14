@@ -1,4 +1,5 @@
-﻿using Campgrounds.Framework.Models.Data;
+﻿using Campgrounds.Framework.Managers;
+using Campgrounds.Framework.Models.Data;
 using Campgrounds.Framework.Models.Enums;
 using Campgrounds.Framework.Models.Game;
 using Campgrounds.Framework.UI;
@@ -32,6 +33,16 @@ namespace Campgrounds.Framework.Utilities
             }
 
             Campgrounds.campManager.StartTraveling(Game1.player, campgroundData);
+        }
+
+        public static void SetTotalNightsCamping(string command, string[] args)
+        {
+            if (ArgUtility.TryGetInt(args, 0, out int totalNights, out string error) is false)
+            {
+                return;
+            }
+
+            Game1.stats.Set(CampingManager.TOTAL_NIGHTS_GONE_CAMPING_STAT_ID, totalNights);
         }
 
         public static CampgroundMapDetails GetCampgroundMapDetails(GameLocation location)
