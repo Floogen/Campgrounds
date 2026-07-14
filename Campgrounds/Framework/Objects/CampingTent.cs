@@ -47,7 +47,7 @@ namespace Campgrounds.Framework.Objects
             switch (Direction)
             {
                 case Direction.North:
-                    tile = new Vector2(Tile.X, Tile.Y - (_campingTentData.NorthSprite.EntranceTile.X / 16) + (_campingTentData.NorthSprite.EntranceTile.Y / 16));
+                    tile = new Vector2(Tile.X - (_campingTentData.NorthSprite.EntranceTile.X / 16), Tile.Y - (_campingTentData.NorthSprite.EntranceTile.X / 16));
                     break;
                 case Direction.East:
                     tile = new Vector2(Tile.X - (_campingTentData.EastSprite.EntranceTile.X / 16), Tile.Y - (_campingTentData.EastSprite.EntranceTile.Y / 16));
