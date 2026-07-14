@@ -44,7 +44,7 @@
           },
           "EastSprite": {
             "EntranceTile": {
-              "X": 32,
+              "X": 0,
               "Y": 32
             },
             "DisplayRectangle": {
@@ -55,9 +55,9 @@
             },
             "BoundaryRectangle": {
               "X": 0,
-              "Y": 16,
+              "Y": 32,
               "Width": 48,
-              "Height": 48
+              "Height": 32
             },
 
             "ShadowRectangle": {
@@ -73,7 +73,7 @@
           },
           "WestSprite": {
             "EntranceTile": {
-              "X": 0,
+              "X": 32,
               "Y": 32
             },
             "DisplayRectangle": {
@@ -84,9 +84,9 @@
             },
             "BoundaryRectangle": {
               "X": 0,
-              "Y": 16,
+              "Y": 32,
               "Width": 48,
-              "Height": 48
+              "Height": 32
             },
 
             "ShadowRectangle": {
@@ -188,7 +188,7 @@
           },
           "EastSprite": {
             "EntranceTile": {
-              "X": 32,
+              "X": 0,
               "Y": 32
             },
             "DisplayRectangle": {
@@ -199,9 +199,9 @@
             },
             "BoundaryRectangle": {
               "X": 0,
-              "Y": 16,
+              "Y": 32,
               "Width": 48,
-              "Height": 48
+              "Height": 32
             },
 
             "ShadowRectangle": {
@@ -217,7 +217,7 @@
           },
           "WestSprite": {
             "EntranceTile": {
-              "X": 0,
+              "X": 32,
               "Y": 32
             },
             "DisplayRectangle": {
@@ -228,9 +228,9 @@
             },
             "BoundaryRectangle": {
               "X": 0,
-              "Y": 16,
+              "Y": 32,
               "Width": 48,
-              "Height": 48
+              "Height": 32
             },
 
             "ShadowRectangle": {
