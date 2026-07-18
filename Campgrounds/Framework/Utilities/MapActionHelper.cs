@@ -28,6 +28,12 @@ namespace Campgrounds.Framework.Utilities
 
         public static bool HandleCarRepair(GameLocation location, string[] args, Farmer player, Point point)
         {
+            if (player.eventsSeen.Any(e => e.EqualsIgnoreCase("PeacefulEnd.Campgrounds.Events.CampingIntro")) is false)
+            {
+                Game1.drawObjectDialogue(Campgrounds.modHelper.Translation.Get("messages.camping.talkToClemGeneric"));
+                return false;
+            }
+
             if (player.Items.ContainsId("(O)787", 5) && player.Items.ContainsId("(O)335", 10) && player.Items.ContainsId("(O)388", 100))
             {
                 location.createQuestionDialogue(Campgrounds.modHelper.Translation.Get("messages.garage.repairCar"), location.createYesNoResponses(), CampingHelper.OnRepairCarResponse);
@@ -44,6 +50,12 @@ namespace Campgrounds.Framework.Utilities
         {
             if (ArgUtility.TryGetInt(args, 1, out int siteId, out string error) is false)
             {
+                return false;
+            }
+
+            if (farmer.eventsSeen.Any(e => e.EqualsIgnoreCase("PeacefulEnd.Campgrounds.Events.CampingIntro")) is false)
+            {
+                Game1.drawObjectDialogue(Campgrounds.modHelper.Translation.Get("messages.camping.talkToClemGeneric"));
                 return false;
             }
 

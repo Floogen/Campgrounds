@@ -55,6 +55,7 @@
   "messages.parkPathwayClosed": "The pathway is blocked by fallen trees and overgrown brush. It looks like nobody's been through here in years.",
 
   "messages.camping.talkToClem": "You should talk to Clementine first before using the camping board.",
+  "messages.camping.talkToClemGeneric": "You should talk to Clementine first.",
   "messages.camping.leaveWithoutCamping": "Leave without camping? You will not receive any buffs.",
   "messages.camping.headBackToPark": "Head back to the park",
   "messages.camping.returnHome": "Return home",
