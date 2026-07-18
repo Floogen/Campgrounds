@@ -1,4 +1,4 @@
-﻿using Campgrounds.Framework.Models.Data;
+using Campgrounds.Framework.Models.Data;
 using Campgrounds.Framework.Models.Data.Visitors;
 using Campgrounds.Framework.Models.Enums;
 using Campgrounds.Framework.UI;
@@ -28,11 +28,19 @@ namespace Campgrounds.Framework.Managers
         public const string NEXT_VISIT_COOLDOWN_MOD_DATA_ID = "Campgrounds.NextVisit.Cooldown.Id";
         public const int REQUIRED_DAYS_BETWEEN_VISIT = 7;
 
+        // The order in which the park's visitor spots claim a visitor. Earlier spots pick first.
+        public static readonly VisitorSpots[] VISITOR_SPOT_FILL_ORDER = new VisitorSpots[]
+        {
+            VisitorSpots.SW,
+            VisitorSpots.NW,
+            VisitorSpots.SE
+        };
+
         public List<VisitorData> VisitorData { get { return _visitorData; } set { FilterVisitorData(value); } }
         private List<VisitorData> _visitorData = new List<VisitorData>();
 
         public Dictionary<VisitorSpots, VisitorData> ActiveVisitorSpots { get; set; } = new Dictionary<VisitorSpots, VisitorData>();
-        
+
         public List<Vector2> CampfireTiles = new List<Vector2>();
         public List<Vector2> SmokeTiles = new List<Vector2>();
 
@@ -65,6 +73,11 @@ namespace Campgrounds.Framework.Managers
             {
                 _visitorIdToNextVisitCooldown = JsonSerializer.Deserialize<Dictionary<string, int>>(Game1.player.modData[NEXT_VISIT_COOLDOWN_MOD_DATA_ID]);
             }
+            else
+            {
+                // No cached cooldowns for this save, so clear any carried over from a previously loaded one
+                _visitorIdToNextVisitCooldown.Clear();
+            }
 
             // Get today's game date
             SDate today = SDate.Now();
@@ -82,25 +95,20 @@ namespace Campgrounds.Framework.Managers
                 filteredVisitorData.Add(visitorData);
             }
 
-            // Get site 1 (SW)
-            var swParkSpotVisitorData = GetVisitorsForToday(filteredVisitorData, today, VisitorSpots.SW);
-            if (swParkSpotVisitorData != null)
+            // Determine the visitor for each repaired spot, in fill order.
+            // Unrepaired spots are skipped entirely so they don't consume a visitor or burn its cooldown.
+            foreach (var visitorSpot in VISITOR_SPOT_FILL_ORDER)
             {
-                SetActiveVisitor(VisitorSpots.SW, today, filteredVisitorData, swParkSpotVisitorData);
-            }
+                if (IsVisitorSpotRepaired(visitorSpot) is false)
+                {
+                    continue;
+                }
 
-            // Get site 2 (NW)
-            var nwParkSpotVisitorData = GetVisitorsForToday(filteredVisitorData, today, VisitorSpots.NW);
-            if (nwParkSpotVisitorData != null)
-            {
-                SetActiveVisitor(VisitorSpots.NW, today, filteredVisitorData, nwParkSpotVisitorData);
-            }
-
-            // Get site 2 (SE)
-            var seParkSpotVisitorData = GetVisitorsForToday(filteredVisitorData, today, VisitorSpots.SE);
-            if (seParkSpotVisitorData != null)
-            {
-                SetActiveVisitor(VisitorSpots.SE, today, filteredVisitorData, seParkSpotVisitorData);
+                var parkSpotVisitorData = GetVisitorsForToday(filteredVisitorData, today, visitorSpot);
+                if (parkSpotVisitorData != null)
+                {
+                    SetActiveVisitor(visitorSpot, today, filteredVisitorData, parkSpotVisitorData);
+                }
             }
 
             // Invalidate the park's map to force the patches to apply
@@ -164,36 +172,14 @@ namespace Campgrounds.Framework.Managers
                     // Load the active version of the park map (for StandardVisitorSettings usage)
                     Map activeParkMap = helper.GameContent.Load<Map>(Campgrounds.CINDERSAP_PARK_ACTIVE_MAP_PATH);
 
-                    // SW Visitor Campsite
-                    if (NetWorldState.checkAnywhereForWorldStateID(CampingHelper.GetCindersapParkVisitorParkKey(1)) is true && ActiveVisitorSpots.ContainsKey(VisitorSpots.SW))
+                    foreach (var visitorSpot in VISITOR_SPOT_FILL_ORDER)
                     {
-                        var visitorData = ActiveVisitorSpots[VisitorSpots.SW];
-                        if (visitorData.AdvancedVisitorSettings != null)
+                        if (IsVisitorSpotRepaired(visitorSpot) is false || ActiveVisitorSpots.ContainsKey(visitorSpot) is false)
                         {
-                            foreach (var mapPatch in visitorData.AdvancedVisitorSettings.MapPatches)
-                            {
-                                editor.PatchMap(
-                                    source: helper.GameContent.Load<Map>(mapPatch.MapPath),
-                                    sourceArea: mapPatch.FromArea,
-                                    targetArea: mapPatch.ToArea,
-                                    patchMode: mapPatch.PatchMode
-                                );
-                            }
+                            continue;
                         }
-                        else if (visitorData.StandardVisitorSettings != null)
-                        {
-                            editor.PatchMap(
-                                source: activeParkMap,
-                                sourceArea: new Rectangle(0, 25, 22, 26),
-                                targetArea: new Rectangle(0, 25, 22, 26),
-                                patchMode: PatchMapMode.Replace
-                            );
-                        }
-                    }
 
-                    if (NetWorldState.checkAnywhereForWorldStateID(CampingHelper.GetCindersapParkVisitorParkKey(2)) is true && ActiveVisitorSpots.ContainsKey(VisitorSpots.NW))
-                    {
-                        var visitorData = ActiveVisitorSpots[VisitorSpots.NW];
+                        var visitorData = ActiveVisitorSpots[visitorSpot];
                         if (visitorData.AdvancedVisitorSettings != null)
                         {
                             foreach (var mapPatch in visitorData.AdvancedVisitorSettings.MapPatches)
@@ -208,42 +194,55 @@ namespace Campgrounds.Framework.Managers
                         }
                         else if (visitorData.StandardVisitorSettings != null)
                         {
+                            var visitorSpotArea = GetVisitorSpotArea(visitorSpot);
                             editor.PatchMap(
                                 source: activeParkMap,
-                                sourceArea: new Rectangle(0, 0, 35, 25),
-                                targetArea: new Rectangle(0, 0, 35, 25),
-                                patchMode: PatchMapMode.Replace
-                            );
-                        }
-                    }
-
-                    if (NetWorldState.checkAnywhereForWorldStateID(CampingHelper.GetCindersapParkVisitorParkKey(3)) is true && ActiveVisitorSpots.ContainsKey(VisitorSpots.SE))
-                    {
-                        var visitorData = ActiveVisitorSpots[VisitorSpots.SE];
-                        if (visitorData.AdvancedVisitorSettings != null)
-                        {
-                            foreach (var mapPatch in visitorData.AdvancedVisitorSettings.MapPatches)
-                            {
-                                editor.PatchMap(
-                                    source: helper.GameContent.Load<Map>(mapPatch.MapPath),
-                                    sourceArea: mapPatch.FromArea,
-                                    targetArea: mapPatch.ToArea,
-                                    patchMode: mapPatch.PatchMode
-                                );
-                            }
-                        }
-                        else if (visitorData.StandardVisitorSettings != null)
-                        {
-                            editor.PatchMap(
-                                source: activeParkMap,
-                                sourceArea: new Rectangle(40, 0, 29, 51),
-                                targetArea: new Rectangle(40, 0, 29, 51),
+                                sourceArea: visitorSpotArea,
+                                targetArea: visitorSpotArea,
                                 patchMode: PatchMapMode.Replace
                             );
                         }
                     }
                 });
             }
+        }
+
+        /// <summary>Gets the park's site number for the given visitor spot, as used by the repair tile action and world state keys.</summary>
+        public static int GetVisitorSpotSiteId(VisitorSpots visitorSpot)
+        {
+            switch (visitorSpot)
+            {
+                case VisitorSpots.SW:
+                    return 1;
+                case VisitorSpots.NW:
+                    return 2;
+                case VisitorSpots.SE:
+                    return 3;
+            }
+
+            return 0;
+        }
+
+        /// <summary>Gets the park map area covered by the given visitor spot.</summary>
+        public static Rectangle GetVisitorSpotArea(VisitorSpots visitorSpot)
+        {
+            switch (visitorSpot)
+            {
+                case VisitorSpots.SW:
+                    return new Rectangle(0, 25, 22, 26);
+                case VisitorSpots.NW:
+                    return new Rectangle(0, 0, 35, 25);
+                case VisitorSpots.SE:
+                    return new Rectangle(40, 0, 29, 51);
+            }
+
+            return Rectangle.Empty;
+        }
+
+        /// <summary>Gets whether the player has repaired the given visitor spot's site.</summary>
+        public static bool IsVisitorSpotRepaired(VisitorSpots visitorSpot)
+        {
+            return NetWorldState.checkAnywhereForWorldStateID(CampingHelper.GetCindersapParkVisitorParkKey(GetVisitorSpotSiteId(visitorSpot)));
         }
 
         private void SetActiveVisitor(VisitorSpots visitorSpot, SDate today, List<VisitorData> visitorDataCache, VisitorData visitorData)
@@ -362,15 +361,7 @@ namespace Campgrounds.Framework.Managers
             // Spawn in visitors added via VisitorData.StandardVisitorSettings
             foreach (var visitorSpot in visitorSpotToSpawnTiles)
             {
-                if (visitorSpot.Key == VisitorSpots.SW && NetWorldState.checkAnywhereForWorldStateID(CampingHelper.GetCindersapParkVisitorParkKey(1)) is true && ActiveVisitorSpots.ContainsKey(visitorSpot.Key))
-                {
-                    AddVisitors(visitorSpot.Key, visitorSpot.Value, location);
-                }
-                else if (visitorSpot.Key == VisitorSpots.NW && NetWorldState.checkAnywhereForWorldStateID(CampingHelper.GetCindersapParkVisitorParkKey(2)) is true && ActiveVisitorSpots.ContainsKey(visitorSpot.Key))
-                {
-                    AddVisitors(visitorSpot.Key, visitorSpot.Value, location);
-                }
-                else if (visitorSpot.Key == VisitorSpots.SE && NetWorldState.checkAnywhereForWorldStateID(CampingHelper.GetCindersapParkVisitorParkKey(3)) is true && ActiveVisitorSpots.ContainsKey(visitorSpot.Key))
+                if (IsVisitorSpotRepaired(visitorSpot.Key) && ActiveVisitorSpots.ContainsKey(visitorSpot.Key))
                 {
                     AddVisitors(visitorSpot.Key, visitorSpot.Value, location);
                 }
@@ -395,19 +386,28 @@ namespace Campgrounds.Framework.Managers
             }
 
             int visitorIndex = 0;
-            int visitorCount = ActiveVisitorSpots[visitorSpot].StandardVisitorSettings.Visitors.Count;
+            var visitorNames = ActiveVisitorSpots[visitorSpot].StandardVisitorSettings.Visitors;
             foreach (var visitorTile in visitorTiles.OrderBy(x => Game1.random.Next()))
             {
-                if (visitorIndex >= visitorCount)
+                // Skip past any names that don't resolve, so an unknown NPC doesn't consume a spawn tile
+                NPC visitor = null;
+                while (visitor is null && visitorIndex < visitorNames.Count)
+                {
+                    visitor = Game1.getCharacterFromName(visitorNames[visitorIndex]);
+                    if (visitor is null)
+                    {
+                        monitor.LogOnce($"Unable to find the NPC \"{visitorNames[visitorIndex]}\", given by the VisitorData \"{ActiveVisitorSpots[visitorSpot].Id}\".", LogLevel.Warn);
+                    }
+
+                    visitorIndex++;
+                }
+
+                if (visitor is null)
                 {
                     return;
                 }
 
-                var visitor = Game1.getCharacterFromName(ActiveVisitorSpots[visitorSpot].StandardVisitorSettings.Visitors[visitorIndex]);
-                if (visitor != null)
-                {
-                    NPCHelper.WarpAndSetDialogue(visitor, location, visitorTile.Tile, faceDirection: visitorTile.Direction, freeze: true);
-                }
+                NPCHelper.WarpAndSetDialogue(visitor, location, visitorTile.Tile, faceDirection: visitorTile.Direction, freeze: true);
             }
         }
 

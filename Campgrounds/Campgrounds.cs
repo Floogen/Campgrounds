@@ -128,39 +128,57 @@ namespace Campgrounds
 
             ItemQueryResolver.Register(ItemManager.CAMPSITE_MAP_ID, (string key, string arguments, ItemQueryContext context, bool avoidRepeat, HashSet<string> avoidItemIds, Action<string, string> logError) => {
                 string[] args = ArgUtility.SplitBySpaceQuoteAware(arguments);
-                if (ArgUtility.TryGet(args, 0, out string campgroundId, out string error) is false || (campManager.CampgroundData.FirstOrDefault(c => c.Id.EqualsIgnoreCase(campgroundId)) is var campgroundData && campgroundData is null))
+                if (ArgUtility.TryGet(args, 0, out string campgroundId, out string error) is false)
                 {
                     return ItemQueryResolver.Helpers.ErrorResult(key, arguments, logError, error);
                 }
 
+                var campgroundData = campManager.CampgroundData.FirstOrDefault(c => c.Id.EqualsIgnoreCase(campgroundId));
+                if (campgroundData is null)
+                {
+                    return ItemQueryResolver.Helpers.ErrorResult(key, arguments, logError, $"No campground found with the ID \"{campgroundId}\".");
+                }
+
                 Item item = ItemRegistry.Create(ItemManager.CAMPSITE_MAP_ID);
-                item.modData[ItemManager.CAMPSITE_MAP_MOD_DATA_ID] = campgroundId;
+                item.modData[ItemManager.CAMPSITE_MAP_MOD_DATA_ID] = campgroundData.Id;
 
                 return new[] { new ItemQueryResult(item) };
             });
 
             ItemQueryResolver.Register(ItemManager.CAMPFIRE_RECIPE_ID, (string key, string arguments, ItemQueryContext context, bool avoidRepeat, HashSet<string> avoidItemIds, Action<string, string> logError) => {
                 string[] args = ArgUtility.SplitBySpaceQuoteAware(arguments);
-                if (ArgUtility.TryGet(args, 0, out string campfireFoodDataId, out string error) is false || (campManager.GetCampfireFoodDataById(campfireFoodDataId) is var campfireFoodData && campfireFoodData is null))
+                if (ArgUtility.TryGet(args, 0, out string campfireFoodDataId, out string error) is false)
                 {
                     return ItemQueryResolver.Helpers.ErrorResult(key, arguments, logError, error);
                 }
 
+                var campfireFoodData = campManager.GetCampfireFoodDataById(campfireFoodDataId);
+                if (campfireFoodData is null)
+                {
+                    return ItemQueryResolver.Helpers.ErrorResult(key, arguments, logError, $"No campfire food found with the ID \"{campfireFoodDataId}\".");
+                }
+
                 Item item = ItemRegistry.Create(ItemManager.CAMPFIRE_RECIPE_ID);
-                item.modData[ItemManager.CAMPFIRE_RECIPE_MOD_DATA_ID] = campfireFoodDataId;
+                item.modData[ItemManager.CAMPFIRE_RECIPE_MOD_DATA_ID] = campfireFoodData.Id;
 
                 return new[] { new ItemQueryResult(item) };
             });
 
             ItemQueryResolver.Register(ItemManager.TENT_SCHEMATIC_ID, (string key, string arguments, ItemQueryContext context, bool avoidRepeat, HashSet<string> avoidItemIds, Action<string, string> logError) => {
                 string[] args = ArgUtility.SplitBySpaceQuoteAware(arguments);
-                if (ArgUtility.TryGet(args, 0, out string campingTentDataId, out string error) is false || (tentManager.GetTentDataById(campingTentDataId) is var campingTentData && campingTentData is null))
+                if (ArgUtility.TryGet(args, 0, out string campingTentDataId, out string error) is false)
                 {
                     return ItemQueryResolver.Helpers.ErrorResult(key, arguments, logError, error);
                 }
 
+                var campingTentData = tentManager.GetTentDataById(campingTentDataId);
+                if (campingTentData is null)
+                {
+                    return ItemQueryResolver.Helpers.ErrorResult(key, arguments, logError, $"No camping tent found with the ID \"{campingTentDataId}\".");
+                }
+
                 Item item = ItemRegistry.Create(ItemManager.TENT_SCHEMATIC_ID);
-                item.modData[ItemManager.TENT_SCHEMATIC_MOD_DATA_ID] = campingTentDataId;
+                item.modData[ItemManager.TENT_SCHEMATIC_MOD_DATA_ID] = campingTentData.Id;
 
                 return new[] { new ItemQueryResult(item) };
             });

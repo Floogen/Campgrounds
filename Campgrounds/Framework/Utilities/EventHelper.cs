@@ -1,4 +1,4 @@
-﻿using Campgrounds.Framework.Managers;
+using Campgrounds.Framework.Managers;
 using Campgrounds.Framework.Models.Data;
 using Campgrounds.Framework.Models.Enums;
 using Campgrounds.Framework.Objects;
@@ -19,8 +19,12 @@ namespace Campgrounds.Framework.Utilities
                 return;
             }
 
-            // Add rations
-            Campgrounds.currencyManager.ChangeCurrencyBalance(Currency.CampRations, amount);
+            // Change the rations balance, which is rejected outright rather than clamped if the player can't cover it
+            if (Campgrounds.currencyManager.ChangeCurrencyBalance(Currency.CampRations, amount) is false)
+            {
+                context.LogErrorAndSkip($"Unable to change the player's Camp Rations balance by {amount}, as their current balance is {Campgrounds.currencyManager.GetCurrencyBalance(Currency.CampRations)}.");
+                return;
+            }
 
             // Tell the event to advance to the next command
             @event.CurrentCommand++;
@@ -35,14 +39,19 @@ namespace Campgrounds.Framework.Utilities
             }
 
             var campgroundData = Campgrounds.campManager.CampgroundData.FirstOrDefault(c => c.Id.EqualsIgnoreCase(campgroundDataId));
-            if (campgroundData is not null)
+            if (campgroundData is null)
             {
-                // Give map
-                Campgrounds.itemManager.UnlockSpecialAndHoldAboveHead(Campgrounds.itemManager.GetCampsiteMapUnlockKey(campgroundDataId), ItemManager.CAMPSITE_MAP_ID, Campgrounds.modHelper.Translation.Get("messages.discovered.campsite", new
-                {
-                    campsiteName = Campgrounds.campManager.GetLocationNameFromDataId(campgroundData.Id)
-                }));
+                context.LogErrorAndSkip($"No campground found with the ID \"{campgroundDataId}\".");
+                return;
             }
+
+            // Give map
+            Campgrounds.itemManager.UnlockSpecialAndHoldAboveHead(Campgrounds.itemManager.GetCampsiteMapUnlockKey(campgroundData.Id), ItemManager.CAMPSITE_MAP_ID, Campgrounds.modHelper.Translation.Get("messages.discovered.campsite", new
+            {
+                campsiteName = Campgrounds.campManager.GetLocationNameFromDataId(campgroundData.Id)
+            }));
+
+            // Tell the event to advance to the next command
             @event.CurrentCommand++;
         }
     }
