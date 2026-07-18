@@ -122,13 +122,19 @@ namespace Campgrounds.Framework.Managers
             return dialogue;
         }
 
-        public string GetGameReadyDialogue(CampDialogue dialogue, NPC npc)
-        {
-            return GetGameReadyDialogue(GetDialogue(dialogue, npc));
-        }
-
         public List<string> GetCampsiteDialogue(CampgroundData campgroundData, NPC npc, bool isDayAfter)
         {
+            // Check for campsite specific overrides
+            if (isDayAfter is false && campgroundData.DialogueOverrides.Any(o => o.HasOverride(CampDialogue.NeutralDayOf, npc.Name)))
+            {
+                return campgroundData.DialogueOverrides.First(o => o.Id.EqualsIgnoreCase(npc.Name)).DialogueDayOfOverride;
+            }
+            if (isDayAfter is true && campgroundData.DialogueOverrides.Any(o => o.HasOverride(CampDialogue.NeutralDayAfter, npc.Name)))
+            {
+                return campgroundData.DialogueOverrides.First(o => o.Id.EqualsIgnoreCase(npc.Name)).DialogueDayAfterOverride;
+            }
+
+            // Get general dialogue
             var villagerData = GetVillagerData(npc);
             if (villagerData.LikedCampgrounds.Any(c => c.EqualsIgnoreCase(campgroundData.Id)))
             {

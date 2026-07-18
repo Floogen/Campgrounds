@@ -1,7 +1,9 @@
 ﻿using Campgrounds.Framework.Models.Common;
+using Campgrounds.Framework.Models.Data.Visitors;
 using Campgrounds.Framework.Models.Enums;
 using Microsoft.Xna.Framework;
 using StardewValley;
+using System.Collections.Generic;
 
 namespace Campgrounds.Framework.Models.Data
 {
@@ -20,6 +22,12 @@ namespace Campgrounds.Framework.Models.Data
         public int TravelTimeInHours { get; set; }
 
         public bool ForceForageRefreshOnVisit { get; set; }
+
+
+        /// <summary>
+        /// Overrides the standard VillagerData dialogues for any matching NPC
+        /// </summary>
+        public List<VisitorDialogueOverride> DialogueOverrides { get; set; } = new List<VisitorDialogueOverride>();
 
         public string UnlockCondition { get; set; }
         public string UnlockHint { get; set; }
