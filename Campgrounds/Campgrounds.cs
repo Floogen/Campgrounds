@@ -5,6 +5,7 @@ using Campgrounds.Framework.Objects;
 using Campgrounds.Framework.Patches.Characters;
 using Campgrounds.Framework.Patches.Locations;
 using Campgrounds.Framework.Patches.Objects;
+using Campgrounds.Framework.UI;
 using Campgrounds.Framework.Utilities;
 using HarmonyLib;
 using Microsoft.Xna.Framework;
@@ -108,6 +109,7 @@ namespace Campgrounds
             helper.ConsoleCommands.Add("campgrounds_addrations", "Adds camping ration currency to the farmer.", (cmd, args) => { if (int.TryParse(args[0], out int amount)) { currencyManager.ChangeCurrencyBalance(Framework.Models.Enums.Currency.CampRations, amount); } });
             helper.ConsoleCommands.Add("campgrounds_startcamp", "campgrounds_startcamp <CAMPGROUND_DATA_ID> [TENT_DATA_ID] [GUEST_NAME]", CampingHelper.StartCampingCommand);
             helper.ConsoleCommands.Add("campgrounds_setcampingtotaldays", "campgrounds_setcampingtotaldays <TOTAL_DAYS>", CampingHelper.SetTotalNightsCamping);
+            helper.ConsoleCommands.Add("campgrounds_opententmenu", "campgrounds_opententmenu", (cmd, args) => { Game1.activeClickableMenu = new TentListMenu(); });
 
             // Register event command
             Event.RegisterCommand("PeacefulEnd.Campgrounds_GiveRations", EventHelper.GiveRationsCommand);
