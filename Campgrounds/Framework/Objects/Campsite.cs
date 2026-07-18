@@ -189,7 +189,10 @@ namespace Campgrounds.Framework.Objects
                 else if (Guest is NPC npc && npc is not null)
                 {
                     var villagerData = Campgrounds.villagerManager.GetVillagerData(npc);
-                    guestCampingTentData = Campgrounds.tentManager.GetTentDataById(villagerData.TentId);
+                    if (villagerData is not null)
+                    {
+                        guestCampingTentData = Campgrounds.tentManager.GetTentDataById(villagerData.TentId);
+                    }
                 }
 
                 if (guestCampingTentData is null)
