@@ -13,6 +13,7 @@
           "NumberOfAllowedCampfireMeals": 1,
           "RestingBuffIds": [],
           "TexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/StarterTent",
+          "GrayscaleTexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/StarterTentGrayscale",
           "SouthSprite": {
             "EntranceTile": {
               "X": 16,
@@ -145,6 +146,11 @@
       "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/StarterTent",
       "FromFile": "assets/campgrounds/tents/starterTent.png"
     },
+    {
+      "Action": "Load",
+      "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/StarterTentGrayscale",
+      "FromFile": "assets/campgrounds/tents/starterTentGrayscale.png"
+    },
 
     // Add standard camping tent
     {
@@ -165,6 +171,7 @@
           "UnlockHint": "Purchase the schematic from the Cindersap Forest Park shop.",
 
           "TexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/StandardTent",
+          "GrayscaleTexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/StandardTentGrayscale",
           "PreviewOffset": {
             "X": 0,
             "Y": -20
@@ -300,6 +307,11 @@
       "Action": "Load",
       "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/StandardTent",
       "FromFile": "assets/campgrounds/tents/standardTent.png"
+    },
+    {
+      "Action": "Load",
+      "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/StandardTentGrayscale",
+      "FromFile": "assets/campgrounds/tents/standardTentGrayscale.png"
     },
 
     {

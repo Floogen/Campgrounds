@@ -14,6 +14,7 @@ namespace Campgrounds.Framework.Models.Data
         public string Description { get; set; }
 
         public string TexturePath { get; set; }
+        public string? GrayscaleTexturePath { get; set; }
         public Vector2 PreviewOffset { get; set; } = Vector2.Zero;
         public DirectionalSpriteModel NorthSprite { get; set; }
         public DirectionalSpriteModel EastSprite { get; set; }
@@ -84,7 +85,12 @@ namespace Campgrounds.Framework.Models.Data
         {
             if (string.IsNullOrEmpty(DisplayName))
             {
-                return (false, "DisplayName needs to be set!");
+                return (false, "DisplayName needs to be given!");
+            }
+
+            if (string.IsNullOrEmpty(TexturePath))
+            {
+                return (false, "TexturePath needs to be given!");
             }
 
             if (NorthSprite is null)

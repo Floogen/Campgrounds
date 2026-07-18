@@ -218,7 +218,19 @@ namespace Campgrounds.Framework.Objects
             {
                 spriteBatch.Draw(spriteTexture, Game1.GlobalToLocal(tileLocation * 64), shadowDisplayRectangle, Color.White, 0f, -shadowOffset, 4f, spriteEffects, 0.0001f);
             }
-            spriteBatch.Draw(spriteTexture, Game1.GlobalToLocal(tileLocation * 64), spriteDisplayRectangle, Color.White, 0f, Vector2.Zero, 4f, spriteEffects, (tileLocation.Y + layerHeightOffset) * 64f / 10000f);
+
+            var layerOffset = (tileLocation.Y + layerHeightOffset) * 64f / 10000f;
+            spriteBatch.Draw(spriteTexture, Game1.GlobalToLocal(tileLocation * 64), spriteDisplayRectangle, Color.White, 0f, Vector2.Zero, 4f, spriteEffects, layerOffset);
+
+            if (_owner is Farmer)
+            {
+                var tentColor = Campgrounds.tentManager.GetTentColor(Game1.player, _campingTentData.Id);
+                if (tentColor is not null)
+                {
+                    Texture2D spriteTextureGrayscale = Campgrounds.modHelper.GameContent.Load<Texture2D>(_campingTentData.GrayscaleTexturePath);
+                    spriteBatch.Draw(spriteTextureGrayscale, Game1.GlobalToLocal(tileLocation * 64), spriteDisplayRectangle, tentColor.Value, 0f, Vector2.Zero, 4f, spriteEffects, layerOffset + 0.00001f);
+                }
+            }
         }
     }
 }

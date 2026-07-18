@@ -1,11 +1,14 @@
 ﻿using Campgrounds.Framework.Managers;
 using Campgrounds.Framework.Models.Data;
 using Campgrounds.Framework.Objects;
+using Campgrounds.Framework.UI.Menus;
+using Campgrounds.Framework.UI.Menus.Common;
 using Campgrounds.Framework.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
 using StardewValley.BellsAndWhistles;
+using StardewValley.Buildings;
 using StardewValley.Menus;
 using System;
 using System.Collections.Generic;
@@ -37,6 +40,7 @@ namespace Campgrounds.Framework.UI
         private ClickableTextureComponent _backButton;
         private ClickableTextureComponent _forwardButton;
         private OptionsButton _activateButton;
+        private ClickableTextureComponent _paintButton;
 
         private CampingTentData _selectedCampingTent;
         private string _hoverHint;
@@ -75,6 +79,17 @@ namespace Campgrounds.Framework.UI
                 return;
             }
 
+            if (_paintButton.containsPoint(x, y) && _paintButton.visible is true)
+            {
+                PaintColor paintColor = new PaintColor(Campgrounds.tentManager.GetTentColor(Game1.player, _selectedCampingTent.Id));
+
+                var paintMenu = new TentPaintingMenu(_selectedCampingTent, paintColor, "Tent Paint")
+                {
+                    onColorChanged = (PaintColor color) => Campgrounds.tentManager.SetTentColor(Game1.player, _selectedCampingTent.Id, color.GetColor())
+                };
+                base.SetChildMenu(paintMenu);
+            }
+
             for (int i = 0; i < _campingTentButtons.Count; i++)
             {
                 if (!(_pages.Count > 0 && _pages[_currentPage].Count > i))
@@ -86,6 +101,12 @@ namespace Campgrounds.Framework.UI
                 if (_campingTentButtons[i].containsPoint(x, y) && _pages[_currentPage][i].IsUnlocked())
                 {
                     _selectedCampingTent = _pages[_currentPage][i];
+
+                    _paintButton.visible = false;
+                    if (_selectedCampingTent is not null && string.IsNullOrEmpty(_selectedCampingTent.GrayscaleTexturePath) is false)
+                    {
+                        _paintButton.visible = true;
+                    }
                 }
             }
 
@@ -120,9 +141,17 @@ namespace Campgrounds.Framework.UI
 
         public override void performHoverAction(int x, int y)
         {
+            _hoverHint = "";
+
             base.performHoverAction(x, y);
 
-            _hoverHint = "";
+            _paintButton.tryHover(x, y);
+            if (_paintButton.containsPoint(x, y))
+            {
+                _hoverHint = _paintButton.name;
+                return;
+            }
+
             for (int i = 0; i < _campingTentButtons.Count; i++)
             {
                 if (!(_pages.Count > 0 && _pages[_currentPage].Count > i))
@@ -209,6 +238,14 @@ namespace Campgrounds.Framework.UI
             _forwardButton = new ClickableTextureComponent(new Rectangle(_tentsDisplayBox.X + _tentsDisplayBox.Width - 64, _tentsDisplayBox.Y + _tentsDisplayBox.Height + 32, 48, 44), Game1.mouseCursors, new Rectangle(365, 495, 12, 11), 4f)
             {
                 myID = 101
+            };
+            _paintButton = new ClickableTextureComponent(Game1.content.LoadString("Strings\\UI:Carpenter_PaintBuildings"), new Rectangle(_tentInfoDisplayBox.X + _tentInfoDisplayBox.Width - 72, _tentInfoDisplayBox.Y + 192, 64, 64), null, null, Game1.mouseCursors2, new Microsoft.Xna.Framework.Rectangle(80, 208, 16, 16), 4f)
+            {
+                myID = 105,
+                rightNeighborID = -99998,
+                leftNeighborID = -99998,
+                upNeighborID = 109,
+                visible = false
             };
 
             string _activateButtonText = Campgrounds.modHelper.Translation.Get("ui.buttons.setTent.name");
@@ -366,6 +403,9 @@ namespace Campgrounds.Framework.UI
                 _backButton.draw(b);
             }
 
+            // Draw paint button
+            _paintButton.draw(b);
+
             if (_selectedCampingTent is not null && _selectedCampingTent.IsUnlocked() is true)
             {
                 Texture2D previewCampingTentTexture = Campgrounds.modHelper.GameContent.Load<Texture2D>(_selectedCampingTent.TexturePath);
@@ -374,8 +414,15 @@ namespace Campgrounds.Framework.UI
 
                 var centerPosition = new Vector2(MathF.Floor(_tentPreviewBox.X + (_tentPreviewBox.Width - campingTentBoundary.Width * previewCampsiteScale) / 2f), MathF.Floor(_tentPreviewBox.Y + (_tentPreviewBox.Height - campingTentBoundary.Height * previewCampsiteScale) / 2f - 8));
                 var cropBoundary = new Rectangle(_tentPreviewBox.X, _tentPreviewBox.Y, _tentPreviewBox.Width, _tentPreviewBox.Height);
-                
+
                 DrawCropped(b, previewCampingTentTexture, campingTentBoundary, centerPosition + _selectedCampingTent.PreviewOffset, previewCampsiteScale, cropBoundary, Color.White);
+
+                var tentColor = Campgrounds.tentManager.GetTentColor(Game1.player, _selectedCampingTent.Id);
+                if (tentColor is not null)
+                {
+                    Texture2D previewCampingTentTextureGrayscale = Campgrounds.modHelper.GameContent.Load<Texture2D>(_selectedCampingTent.GrayscaleTexturePath);
+                    DrawCropped(b, previewCampingTentTextureGrayscale, campingTentBoundary, centerPosition + _selectedCampingTent.PreviewOffset, previewCampsiteScale, cropBoundary, tentColor.Value);
+                }
 
                 if (_selectedCampingTent.Id != Campgrounds.tentManager.GetCurrentTent(Game1.player).Id)
                 {
@@ -390,7 +437,7 @@ namespace Campgrounds.Framework.UI
             base.draw(b);
             base.drawMouse(b, ignore_transparency: true);
 
-            if (string.IsNullOrEmpty(_hoverHint) is false)
+            if (string.IsNullOrEmpty(_hoverHint) is false && GetChildMenu() is null)
             {
                 drawHoverText(b, _hoverHint, Game1.smallFont, 0, 0, -1, null, -1, null, null, 0, null, -1, -1, -1, 1f, null, null);
             }

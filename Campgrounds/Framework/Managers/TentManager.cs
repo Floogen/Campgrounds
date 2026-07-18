@@ -1,6 +1,7 @@
 ﻿using Campgrounds.Framework.Models.Data;
 using Campgrounds.Framework.UI;
 using Campgrounds.Framework.UI.Messages;
+using Microsoft.Xna.Framework;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
@@ -19,6 +20,9 @@ namespace Campgrounds.Framework.Managers
     {
         public const string CURRENT_TENT_MOD_DATA_ID = "Campgrounds.Tents.Active.Id";
         public const string UNLOCKED_TENT_MOD_DATA_ID = "Campgrounds.Tents.Unlocked.Id";
+
+        private const string TENT_COLOR_MOD_DATA_ID_PREFIX = "Campgrounds.Tents.Color";
+
         public const string STARTER_TENT_ID = "PeacefulEnd.Campgrounds.Tents.StarterTent";
 
         public List<CampingTentData> CampingTentData { get { return _campingTentData; } set { FilterCampingTentsData(value); } }
@@ -46,6 +50,27 @@ namespace Campgrounds.Framework.Managers
             }
 
             _campingTentData = campingTentData.Where(c => c.IsValid().Result is true).ToList();
+        }
+
+        public Color? GetTentColor(Farmer who, string tentDataId)
+        {
+            if (who.modData.TryGetValue($"{TENT_COLOR_MOD_DATA_ID_PREFIX}.{tentDataId}", out string colorValue) is false)
+            {
+                return null;
+            }
+
+            return Utility.StringToColor(colorValue);
+        }
+
+        public void SetTentColor(Farmer who, string tentDataId, Color? color)
+        {
+            if (color is null)
+            {
+                who.modData[$"{TENT_COLOR_MOD_DATA_ID_PREFIX}.{tentDataId}"] = string.Empty;
+                return;
+            }
+
+            who.modData[$"{TENT_COLOR_MOD_DATA_ID_PREFIX}.{tentDataId}"] = string.Join(" ", color.Value.R, color.Value.G, color.Value.B);
         }
 
         public CampingTentData GetTentDataById(string tentDataId)
