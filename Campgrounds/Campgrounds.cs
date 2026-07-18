@@ -118,6 +118,7 @@ namespace Campgrounds
 
         private void OnGameLaunched(object sender, GameLaunchedEventArgs e)
         {
+            // Handle custom items
             ItemQueryResolver.Register(CurrencyManager.CAMP_RATION_CURRENCY_ID, (string key, string arguments, ItemQueryContext context, bool avoidRepeat, HashSet<string> avoidItemIds, Action<string, string> logError) => {
                 return new[]
                 {
@@ -162,6 +163,19 @@ namespace Campgrounds
                 item.modData[ItemManager.TENT_SCHEMATIC_MOD_DATA_ID] = campingTentDataId;
 
                 return new[] { new ItemQueryResult(item) };
+            });
+
+            // Handle custom visitor shops
+            ItemQueryResolver.Register($"PeacefulEnd.Campgrounds_UNKNOWN_COOKING_RECIPES", (string key, string arguments, ItemQueryContext context, bool avoidRepeat, HashSet<string> avoidItemIds, Action<string, string> logError) => {
+                Farmer who = context.Player ?? Game1.player;
+
+                var items = new List<ItemQueryResult>(); 
+                foreach (var recipeObject in ShopHelper.GetDailyUnknownCookingRecipes(who, int.MaxValue))
+                {
+                    items.Add(new ItemQueryResult(recipeObject));
+                }
+
+                return items;
             });
         }
 

@@ -83,6 +83,7 @@
             ]
           },
 
+          // Camp once every 20 to 40 days
           "DaysRequiredBetweenVisits": "{{Random: {{Range: 20, 40}} }}",
 
           // Skip camping if raining, storming or if it is a festival / wedding day
@@ -94,6 +95,42 @@
       "Action": "Load",
       "Target": "Maps/{{ModId}}_ParkSpotSE_AbiEmiMaru",
       "FromFile": "assets/maps/ParkSpotSE_AbiEmiMaru.tmx"
+    },
+    {
+      "Action": "EditData",
+      "Target": "Data/PeacefulEnd_Campgrounds/ParkVisitors",
+      "Entries": {
+        "PeacefulEnd.Campgrounds.Visitors.RecipeMerchant": {
+          "Id": "PeacefulEnd.Campgrounds.Visitors.RecipeMerchant",
+
+          "AdvancedVisitorSettings": {
+            "RequiredSpot": "SW",
+            "MapPatches": [
+              {
+                "MapPath": "Maps/{{ModId}}_ParkSpotSW_RecipeMerchant",
+                "ToArea": {
+                  "X": 6,
+                  "Y": 30,
+                  "Width": 12,
+                  "Height": 12
+                },
+                "PatchMode": "Overlay"
+              }
+            ]
+          },
+
+          "PreferredDates": [
+            {
+              "Day": 18
+            }
+          ]
+        }
+      }
+    },
+    {
+      "Action": "Load",
+      "Target": "Maps/{{ModId}}_ParkSpotSW_RecipeMerchant",
+      "FromFile": "assets/maps/ParkSpotSW_RecipeMerchant.tmx"
     }
   ]
 }

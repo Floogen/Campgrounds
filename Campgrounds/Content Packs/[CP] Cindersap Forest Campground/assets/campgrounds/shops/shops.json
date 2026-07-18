@@ -58,6 +58,30 @@
           "AfterID": "PeacefulEnd.Campgrounds.Tools.WalkieTalkie"
         }
       ]
+    },
+
+    // Visitor merchants
+    {
+      "Action": "EditData",
+      "Target": "Data/Shops",
+      "Entries": {
+        "Campgrounds.RecipeShop": {
+          "ApplyProfitMargins": false,
+          "Items": [
+            {
+              "Id": "{{ModId}}_RandomRecipes",
+              "ItemId": "PeacefulEnd.Campgrounds_UNKNOWN_COOKING_RECIPES",
+              "MaxItems": "{{Random: {{Range: 3, 5}} }}",
+              "PriceModifiers": [
+                {
+                  "Modification": "Multiply",
+                  "Amount": "{{Random: {{Range: 2, 3}} }}"
+                }
+              ]
+            }
+          ]
+        }
+      }
     }
   ]
 }
