@@ -18,11 +18,11 @@ namespace Campgrounds.Framework.Models.Common
 
         public override (bool Result, string Error) IsValid()
         {
-            if (Width < 0)
+            if (Width <= 0)
             {
                 return (false, "The \"Width\" property must be greater than 0.");
             }
-            if (Height < 0)
+            if (Height <= 0)
             {
                 return (false, "The \"Height\" property must be greater than 0.");
             }

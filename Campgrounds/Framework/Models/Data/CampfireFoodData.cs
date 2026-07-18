@@ -62,6 +62,10 @@ namespace Campgrounds.Framework.Models.Data
                 return (false, "RationCost must be greater or equal to 0!");
             }
 
+            if (string.IsNullOrEmpty(TexturePath))
+            {
+                return (false, "Missing TexturePath!");
+            }
             if (SourceRectangle is null)
             {
                 return (false, "Missing SourceRectangle!");

@@ -25,7 +25,7 @@ namespace Campgrounds.Framework.Models.Data.Visitors
 
             if (MapPatches is null || MapPatches.Count == 0)
             {
-                return (false, "Missing the \"MapPatchId\" property!");
+                return (false, "Missing the \"MapPatches\" property!");
             }
 
             int mapPatchCount = 1;

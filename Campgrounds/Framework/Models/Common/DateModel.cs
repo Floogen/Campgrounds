@@ -62,9 +62,9 @@ namespace Campgrounds.Framework.Models.Common
                 return (false, "The \"Day\" property must be between 1 and 28 (inclusive).");
             }
 
-            if (SpecificYear is not null && SpecificYear.Value < 1)
+            if (SpecificYear is not null && SpecificYear.Value <= 0)
             {
-                return (false, "The \"SpecificYear\" property must be greater than 1.");
+                return (false, "The \"SpecificYear\" property must be greater than 0.");
             }
 
             if (YearRange is not null)
