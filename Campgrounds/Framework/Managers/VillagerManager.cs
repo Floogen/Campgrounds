@@ -62,37 +62,13 @@ namespace Campgrounds.Framework.Managers
             return VillagerData.FirstOrDefault(v => v.Id.EqualsIgnoreCase(npc.Name));
         }
 
-        public List<string> GetGenericDialogue(CampDialogue campDialogue)
+        public List<string> GetDialogueFromData(VillagerData villagerData, CampDialogue campDialogue)
         {
-            var genericVillagerData = GetGenericData();
-            switch (campDialogue)
+            if (villagerData is null)
             {
-                case CampDialogue.InviteAccepted:
-                    return genericVillagerData.InviteDialogueAccepted;
-                case CampDialogue.InviteRejected:
-                    return genericVillagerData.InviteDialogueRejected;
-                case CampDialogue.LikedDayOf:
-                    return genericVillagerData.LikedDialogueDayOf;
-                case CampDialogue.NeutralDayOf:
-                    return genericVillagerData.NeutralDialogueDayOf;
-                case CampDialogue.DislikedDayOf:
-                    return genericVillagerData.DislikedDialogueDayOf;
-                case CampDialogue.LikedDayAfter:
-                    return genericVillagerData.LikedDialogueDayAfter;
-                case CampDialogue.NeutralDayAfter:
-                    return genericVillagerData.NeutralDialogueDayAfter;
-                case CampDialogue.DislikedDayAfter:
-                    return genericVillagerData.DislikedDialogueDayAfter;
+                return new List<string>();
             }
 
-            return new List<string>();
-        }
-
-        public List<string> GetDialogue(CampDialogue campDialogue, NPC npc)
-        {
-            var dialogue = new List<string>();
-
-            var villagerData = GetVillagerData(npc);
             switch (campDialogue)
             {
                 case CampDialogue.InviteAccepted:
@@ -113,7 +89,19 @@ namespace Campgrounds.Framework.Managers
                     return villagerData.DislikedDialogueDayAfter;
             }
 
-            // Supplement dialogue with generic values if given one is empty
+            return new List<string>();
+        }
+
+        public List<string> GetGenericDialogue(CampDialogue campDialogue)
+        {
+            return GetDialogueFromData(GetGenericData(), campDialogue);
+        }
+
+        public List<string> GetDialogue(CampDialogue campDialogue, NPC npc)
+        {
+            var dialogue = GetDialogueFromData(GetVillagerData(npc), campDialogue);
+
+            // Supplement dialogue with generic values if the given one is empty
             if (dialogue.Count == 0)
             {
                 dialogue = GetGenericDialogue(campDialogue);
@@ -136,11 +124,11 @@ namespace Campgrounds.Framework.Managers
 
             // Get general dialogue
             var villagerData = GetVillagerData(npc);
-            if (villagerData.LikedCampgrounds.Any(c => c.EqualsIgnoreCase(campgroundData.Id)))
+            if (villagerData?.LikedCampgrounds.Any(c => c.EqualsIgnoreCase(campgroundData.Id)) is true)
             {
                 return isDayAfter is true ? GetDialogue(CampDialogue.LikedDayAfter, npc) : GetDialogue(CampDialogue.LikedDayOf, npc);
             }
-            else if (villagerData.DislikedCampgrounds.Any(c => c.EqualsIgnoreCase(campgroundData.Id)))
+            else if (villagerData?.DislikedCampgrounds.Any(c => c.EqualsIgnoreCase(campgroundData.Id)) is true)
             {
                 return isDayAfter is true ? GetDialogue(CampDialogue.DislikedDayAfter, npc) : GetDialogue(CampDialogue.DislikedDayOf, npc);
             }
