@@ -140,7 +140,8 @@
       },
       "When": {
         "HasSeenEvent": "PeacefulEnd.Campgrounds.Events.CaretakerIntro"
-      }
+      },
+      "Update": "OnDayStart, OnLocationChange"
     },
 
     // Add various buffs
