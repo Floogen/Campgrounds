@@ -112,10 +112,10 @@
                 "Height": 16
               },
               "Frames": [
-                { "Duration": 100, "SourceRectangle": { "X": 70, "Y": 0, "Width": 5, "Height": 16 } },
-                { "Duration": 100, "SourceRectangle": { "X": 75, "Y": 0, "Width": 5, "Height": 16 } },
-                { "Duration": 100, "SourceRectangle": { "X": 80, "Y": 0, "Width": 5, "Height": 16 } },
-                { "Duration": 100, "SourceRectangle": { "X": 85, "Y": 0, "Width": 5, "Height": 16 } },
+                { "Duration": 100, "SourcePoint": { "X": 70, "Y": 0 } },
+                { "Duration": 100, "SourcePoint": { "X": 75, "Y": 0 } },
+                { "Duration": 100, "SourcePoint": { "X": 80, "Y": 0 } },
+                { "Duration": 100, "SourcePoint": { "X": 85, "Y": 0 } },
               ],
               "Position": {
                 "X": 326,
@@ -134,10 +134,10 @@
                 "Height": 16
               },
               "Frames": [
-                { "Duration": 100, "SourceRectangle": { "X": 70, "Y": 0, "Width": 5, "Height": 16 } },
-                { "Duration": 100, "SourceRectangle": { "X": 75, "Y": 0, "Width": 5, "Height": 16 } },
-                { "Duration": 100, "SourceRectangle": { "X": 80, "Y": 0, "Width": 5, "Height": 16 } },
-                { "Duration": 100, "SourceRectangle": { "X": 85, "Y": 0, "Width": 5, "Height": 16 } },
+                { "Duration": 100, "SourcePoint": { "X": 70, "Y": 0 } },
+                { "Duration": 100, "SourcePoint": { "X": 75, "Y": 0 } },
+                { "Duration": 100, "SourcePoint": { "X": 80, "Y": 0 } },
+                { "Duration": 100, "SourcePoint": { "X": 85, "Y": 0 } },
               ],
               "Position": {
                 "X": 345,
@@ -156,10 +156,10 @@
                 "Height": 16
               },
               "Frames": [
-                { "Duration": 100, "SourceRectangle": { "X": 70, "Y": 0, "Width": 5, "Height": 16 } },
-                { "Duration": 100, "SourceRectangle": { "X": 75, "Y": 0, "Width": 5, "Height": 16 } },
-                { "Duration": 100, "SourceRectangle": { "X": 80, "Y": 0, "Width": 5, "Height": 16 } },
-                { "Duration": 100, "SourceRectangle": { "X": 85, "Y": 0, "Width": 5, "Height": 16 } },
+                { "Duration": 100, "SourcePoint": { "X": 70, "Y": 0 } },
+                { "Duration": 100, "SourcePoint": { "X": 75, "Y": 0 } },
+                { "Duration": 100, "SourcePoint": { "X": 80, "Y": 0 } },
+                { "Duration": 100, "SourcePoint": { "X": 85, "Y": 0 } },
               ],
               "Position": {
                 "X": 337,
@@ -178,10 +178,10 @@
                 "Height": 16
               },
               "Frames": [
-                { "Duration": 100, "SourceRectangle": { "X": 70, "Y": 0, "Width": 5, "Height": 16 } },
-                { "Duration": 100, "SourceRectangle": { "X": 75, "Y": 0, "Width": 5, "Height": 16 } },
-                { "Duration": 100, "SourceRectangle": { "X": 80, "Y": 0, "Width": 5, "Height": 16 } },
-                { "Duration": 100, "SourceRectangle": { "X": 85, "Y": 0, "Width": 5, "Height": 16 } },
+                { "Duration": 100, "SourcePoint": { "X": 70, "Y": 0 } },
+                { "Duration": 100, "SourcePoint": { "X": 75, "Y": 0 } },
+                { "Duration": 100, "SourcePoint": { "X": 80, "Y": 0 } },
+                { "Duration": 100, "SourcePoint": { "X": 85, "Y": 0 } },
               ],
               "Position": {
                 "X": 335,
@@ -200,10 +200,10 @@
                 "Height": 16
               },
               "Frames": [
-                { "Duration": 100, "SourceRectangle": { "X": 70, "Y": 0, "Width": 5, "Height": 16 } },
-                { "Duration": 100, "SourceRectangle": { "X": 75, "Y": 0, "Width": 5, "Height": 16 } },
-                { "Duration": 100, "SourceRectangle": { "X": 80, "Y": 0, "Width": 5, "Height": 16 } },
-                { "Duration": 100, "SourceRectangle": { "X": 85, "Y": 0, "Width": 5, "Height": 16 } },
+                { "Duration": 100, "SourcePoint": { "X": 70, "Y": 0 } },
+                { "Duration": 100, "SourcePoint": { "X": 75, "Y": 0 } },
+                { "Duration": 100, "SourcePoint": { "X": 80, "Y": 0 } },
+                { "Duration": 100, "SourcePoint": { "X": 85, "Y": 0 } },
               ],
               "Position": {
                 "X": 312,
@@ -222,10 +222,10 @@
                 "Height": 16
               },
               "Frames": [
-                { "Duration": 100, "SourceRectangle": { "X": 70, "Y": 0, "Width": 5, "Height": 16 } },
-                { "Duration": 100, "SourceRectangle": { "X": 75, "Y": 0, "Width": 5, "Height": 16 } },
-                { "Duration": 100, "SourceRectangle": { "X": 80, "Y": 0, "Width": 5, "Height": 16 } },
-                { "Duration": 100, "SourceRectangle": { "X": 85, "Y": 0, "Width": 5, "Height": 16 } },
+                { "Duration": 100, "SourcePoint": { "X": 70, "Y": 0 } },
+                { "Duration": 100, "SourcePoint": { "X": 75, "Y": 0 } },
+                { "Duration": 100, "SourcePoint": { "X": 80, "Y": 0 } },
+                { "Duration": 100, "SourcePoint": { "X": 85, "Y": 0 } },
               ],
               "Position": {
                 "X": 312,
