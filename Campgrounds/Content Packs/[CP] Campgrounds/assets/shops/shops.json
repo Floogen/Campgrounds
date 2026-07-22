@@ -63,10 +63,11 @@
               "ItemId": "(O)PeacefulEnd.Campgrounds.Items.CampingGuide",
               "Price": 1,
               "AvailableStock": 1,
-              "AvailableStockLimit": "Player"
+              "AvailableStockLimit": "Player",
+              "Condition": "!PLAYER_HAS_ITEM Current (O)PeacefulEnd.Campgrounds.Items.CampingGuide"
             },
             {
-              "Id": "PeacefulEnd.Campgrounds.Items.CampsiteMap.DefaultSite",
+              "Id": "PeacefulEnd.Campgrounds.Items.CampsiteMap.MinesCampground",
               "ItemId": "(O)PeacefulEnd.Campgrounds.Items.CampsiteMap PeacefulEnd.Campgrounds.ContentPatcher_MinesCampground",
               "Price": 2500,
               "AvailableStock": 1,
