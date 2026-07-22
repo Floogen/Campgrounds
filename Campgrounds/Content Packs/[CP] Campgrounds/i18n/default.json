@@ -51,9 +51,8 @@
   "events.campingIntro.starterKitMessage": "Clementine hands you a small tent and some rations.",
   "events.campingIntro.rations": "Now, about those camp rations. Out at camp, ya can't exactly run back to yer kitchen when ya start feelin' hungry. That's what rations are for!#$b#I sell 'em right here in the shop, along with other supplies. Use 'em at the campfire to cook yerself up somethin' warm.$h",
   "events.campingIntro.map": "Let's get ya pointed to yer first campsite. Here, take this map...",
-  "events.campingIntro.campsite": "Nothin' fancy out there, but it's a quiet spot with a workin' firepit and more stars than ya can count. Reckon that's plenty.$h",
-  "events.campingIntro.visitorPass": "If ya want a friend to tag along while yer campin', grab a visitor pass from my shop.#$b#Ain't nothin' wrong with havin' the woods to yerself, but a fire's always warmer with somebody beside it.$h",
-  "events.campingIntro.campingNotes": "I also put together some of my notes into a little guide for ya. Hopin' it'll come in handy!",
+  "events.campingIntro.campsite": "Nothin' fancy out there, but it's a quiet spot with a workin' firepit and more stars than ya can count. Reckon that's plenty.$h#$b#If ya want a friend to tag along, grab a visitor pass from my shop.",
+  "events.campingIntro.campingNotes": "Oh, before I forget!#$b#I put together some notes into a little guide for ya. Hopin' it'll come in handy!$h",
   "events.campingIntro.farewell": "Well, that's about everything! Thank ya for stoppin' by, @.#$b#And happy campin'!$h",
 
   // Items
