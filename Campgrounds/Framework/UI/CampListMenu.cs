@@ -128,9 +128,13 @@ namespace Campgrounds.Framework.UI
                 }
 
                 // Check if the campsite is being hovered
-                if (_campsiteButtons[i].containsPoint(x, y, 4) && _pages[_currentPage][i].IsUnlocked() is false)
+                if (_campsiteButtons[i].containsPoint(x, y, 4))
                 {
-                    _hoverHint = _pages[_currentPage][i].UnlockHint;
+                    _hoverHint = _pages[_currentPage][i].Description;
+                    if (_pages[_currentPage][i].IsUnlocked() is false)
+                    {
+                        _hoverHint = _pages[_currentPage][i].UnlockHint;
+                    }
                 }
             }
         }
