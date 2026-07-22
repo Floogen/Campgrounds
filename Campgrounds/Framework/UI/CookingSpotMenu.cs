@@ -126,9 +126,11 @@ namespace Campgrounds.Framework.UI
 
             // Cache the buffs so they can be applied in next morning
             var buffs = _campsite.CurrentCampTent.GetBuffs();
+
+            // Food buffs bring their own duration, where a specified duration takes priority over the default
             foreach (var campfireFood in selectedCampfireFoods)
             {
-                foreach (Buff buff in campfireFood.GetBuffs())
+                foreach (Buff buff in campfireFood.GetBuffs(_campsite.CurrentCampTent.FoodBuffDuration))
                 {
                     buffs.Add(buff);
                 }
@@ -482,7 +484,7 @@ namespace Campgrounds.Framework.UI
                 string[] buffIcons = null;
                 BuffEffects effects = new BuffEffects();
                 int millisecondsDuration = int.MinValue;
-                foreach (Buff buff in hoverRecipe.GetBuffs())
+                foreach (Buff buff in hoverRecipe.GetBuffs(_campsite.CurrentCampTent.FoodBuffDuration))
                 {
                     effects.Add(buff.effects);
                     if (buff.millisecondsDuration == -2 || (buff.millisecondsDuration > millisecondsDuration && millisecondsDuration != -2))

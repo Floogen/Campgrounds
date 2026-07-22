@@ -21,7 +21,15 @@ namespace Campgrounds.Framework.Models.Data
         public DirectionalSpriteModel SouthSprite { get; set; }
         public DirectionalSpriteModel WestSprite { get; set; }
 
-        public List<string> RestingBuffIds { get; set; } = new List<string>();
+        /// <summary>
+        /// Determines how long the food buffs last by default. Can be overriden by food's Buffs.Duration.
+        /// </summary>
+        public int FoodBuffDuration { get; set; } = BuffData.DEFAULT_DURATION;
+        /// <summary>
+        /// Determines how long the resting buffs last by default. Can be overriden by resting buff's Buffs.Duration.
+        /// </summary>
+        public int RestingBuffDuration { get; set; } = BuffData.DEFAULT_DURATION;
+        public List<BuffData> RestingBuffs { get; set; } = new List<BuffData>();
 
         public int NumberOfAllowedCampfireMeals { get { return _numberOfAllowedCampfireMeals; } set { _numberOfAllowedCampfireMeals = Math.Min(5, Math.Max(value, 1)); } }
         private int _numberOfAllowedCampfireMeals = 1;
@@ -37,9 +45,12 @@ namespace Campgrounds.Framework.Models.Data
         public List<Buff> GetBuffs()
         {
             List<Buff> buffs = new List<Buff>();
-            foreach (var buffId in RestingBuffIds)
+            foreach (var buffData in RestingBuffs)
             {
-                buffs.Add(new Buff(buffId));
+                var buff = new Buff(buffData.Id);
+                buff.millisecondsDuration = buffData.Duration != 0 ? buffData.Duration : RestingBuffDuration;
+
+                buffs.Add(buff);
             }
 
             return buffs;

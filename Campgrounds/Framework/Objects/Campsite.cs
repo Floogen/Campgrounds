@@ -59,12 +59,13 @@ namespace Campgrounds.Framework.Objects
 
         public void CacheBuffs(List<Buff> buffs)
         {
-            // Cache the data via CustomFields / modData
-            Camper.modDataForSerialization[CampingManager.CACHED_BUFF_IDS_MOD_DATA_ID] = JsonSerializer.Serialize(buffs.Select(b => b.id));
+            // Cache the data via CustomFields / modData, keeping each buff's duration so it can be restored next morning
+            var cachedBuffs = buffs.Select(b => new BuffData() { Id = b.id, Duration = b.millisecondsDuration }).ToList();
+            Camper.modDataForSerialization[CampingManager.CACHED_BUFF_IDS_MOD_DATA_ID] = JsonSerializer.Serialize(cachedBuffs);
 
             if (Guest is Farmer guestFarmer && guestFarmer is not null)
             {
-                guestFarmer.modDataForSerialization[CampingManager.CACHED_BUFF_IDS_MOD_DATA_ID] = JsonSerializer.Serialize(buffs.Select(b => b.id));
+                guestFarmer.modDataForSerialization[CampingManager.CACHED_BUFF_IDS_MOD_DATA_ID] = JsonSerializer.Serialize(cachedBuffs);
             }
 
             CookingSpot.HasCookedToday = true;
@@ -97,11 +98,11 @@ namespace Campgrounds.Framework.Objects
 
             if (string.IsNullOrEmpty(rawBuffText) is false)
             {
-                var buffIds = JsonSerializer.Deserialize<List<string>>(Camper.modDataForSerialization[CampingManager.CACHED_BUFF_IDS_MOD_DATA_ID]);
-                foreach (var buffId in buffIds)
+                var cachedBuffs = JsonSerializer.Deserialize<List<BuffData>>(rawBuffText);
+                foreach (var buffData in cachedBuffs)
                 {
-                    var buff = new Buff(buffId);
-                    buff.millisecondsDuration = 420000;
+                    var buff = new Buff(buffData.Id);
+                    buff.millisecondsDuration = buffData.Duration;
 
                     Camper.applyBuff(buff);
                     if (guestFarmer is not null)

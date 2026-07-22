@@ -19,7 +19,7 @@ namespace Campgrounds.Framework.Models.Data
         public string TexturePath { get; set; }
         public Rectangle? SourceRectangle { get; set; }
 
-        public List<string> BuffIds { get; set; } = new List<string>();
+        public List<BuffData> Buffs { get; set; } = new List<BuffData>();
 
         public string UnlockCondition { get; set; }
         public string UnlockHint { get; set; }
@@ -29,12 +29,15 @@ namespace Campgrounds.Framework.Models.Data
         /// </summary>
         public bool HideUntilUnlocked { get; set; }
 
-        public List<Buff> GetBuffs()
+        public List<Buff> GetBuffs(int defaultDuration)
         {
             List<Buff> buffs = new List<Buff>();
-            foreach (var buffId in BuffIds)
+            foreach (var buffData in Buffs)
             {
-                buffs.Add(new Buff(buffId));
+                Buff buff = new Buff(buffData.Id);
+                buff.millisecondsDuration = buffData.Duration != 0 ? buffData.Duration : defaultDuration;
+
+                buffs.Add(buff);
             }
 
             return buffs;
