@@ -152,7 +152,7 @@
         "{{ModId}}_MinesCampground": {
           "Id": "{{ModId}}_MinesCampground",
           "ForceForageRefreshOnVisit": true,
-          "PreviewTexturePath": "",
+          "PreviewTexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/MineCampgroundPreview",
           "PreviewTextureScale": 4.0,
           "PlayerSpawnTile": {
             "X": 12,
@@ -353,6 +353,11 @@
           ]
         }
       }
+    },
+    {
+      "Action": "Load",
+      "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/MineCampgroundPreview",
+      "FromFile": "assets/maps/previewMines.png"
     },
     {
       "Action": "Load",
