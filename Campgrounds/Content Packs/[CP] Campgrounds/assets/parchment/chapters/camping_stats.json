@@ -70,7 +70,17 @@
               "SpacingAfter": 32
             },
           ],
-          "Background": []
+          "Background": [
+            {
+              "Type": "Heading",
+              "FontType": "Small",
+              "Text": "1",
+              "Position": {
+                "X": 0,
+                "Y": 500
+              }
+            },
+          ]
         },
         "camping_stats-1": {
           "Id": "camping_stats-1",
@@ -119,7 +129,63 @@
               "SpacingAfter": 32
             },
           ],
-          "Background": []
+          "Background": [
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 96,
+                "Y": 32,
+                "Width": 32,
+                "Height": 32
+              },
+              "Position": {
+                "X": 30,
+                "Y": 375
+              },
+              "Scale": 5,
+              "SpriteEffects": "FlipHorizontally"
+            },
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 64,
+                "Y": 16,
+                "Width": 32,
+                "Height": 32
+              },
+              "Position": {
+                "X": 160,
+                "Y": 380
+              },
+              "Scale": 5,
+            },
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 96,
+                "Y": 32,
+                "Width": 32,
+                "Height": 32
+              },
+              "Position": {
+                "X": 280,
+                "Y": 390
+              },
+              "Scale": 5,
+            },
+            {
+              "Type": "Heading",
+              "FontType": "Small",
+              "Text": "2",
+              "Position": {
+                "X": 440,
+                "Y": 500
+              }
+            },
+          ]
         },
       }
     }

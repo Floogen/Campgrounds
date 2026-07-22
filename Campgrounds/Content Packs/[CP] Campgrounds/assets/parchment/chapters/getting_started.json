@@ -35,7 +35,32 @@
               "MarginLeft": 12,
             }
           ],
-          "Background": []
+          "Background": [
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 86,
+                "Y": 108,
+                "Width": 9,
+                "Height": 18
+              },
+              "Position": {
+                "X": 390,
+                "Y": 420
+              },
+              "Scale": 6,
+            },
+            {
+              "Type": "Heading",
+              "FontType": "Small",
+              "Text": "1",
+              "Position": {
+                "X": 0,
+                "Y": 500
+              }
+            },
+          ]
         },
         "getting_started-1": {
           "Id": "getting_started-1",
@@ -50,6 +75,15 @@
             }
           ],
           "Background": [
+            {
+              "Type": "Heading",
+              "FontType": "Small",
+              "Text": "2",
+              "Position": {
+                "X": 440,
+                "Y": 500
+              }
+            },
             {
               "Type": "Image",
               "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookPictures",
@@ -105,21 +139,6 @@
                 "Y": 4
               }
             },
-            {
-              "Type": "Image",
-              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
-              "TextureSourceRectangle": {
-                "X": 86,
-                "Y": 108,
-                "Width": 9,
-                "Height": 18
-              },
-              "Position": {
-                "X": 390,
-                "Y": 420
-              },
-              "Scale": 6,
-            },
           ]
         },
         "getting_started-2": {
@@ -134,7 +153,17 @@
               "MarginLeft": 12,
             }
           ],
-          "Background": []
+          "Background": [
+            {
+              "Type": "Heading",
+              "FontType": "Small",
+              "Text": "3",
+              "Position": {
+                "X": 0,
+                "Y": 500
+              }
+            },
+          ]
         },
         "getting_started-3": {
           "Id": "getting_started-3",
@@ -149,6 +178,15 @@
             }
           ],
           "Background": [
+            {
+              "Type": "Heading",
+              "FontType": "Small",
+              "Text": "4",
+              "Position": {
+                "X": 440,
+                "Y": 500
+              }
+            },
             {
               "Type": "Image",
               "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookPictures",
@@ -265,6 +303,15 @@
           ],
           "Background": [
             {
+              "Type": "Heading",
+              "FontType": "Small",
+              "Text": "5",
+              "Position": {
+                "X": 0,
+                "Y": 500
+              }
+            },
+            {
               "Type": "Image",
               "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookPictures",
               "TextureSourceRectangle": {
@@ -365,6 +412,15 @@
           ],
           "Background": [
             {
+              "Type": "Heading",
+              "FontType": "Small",
+              "Text": "6",
+              "Position": {
+                "X": 440,
+                "Y": 500
+              }
+            },
+            {
               "Type": "Image",
               "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
               "TextureSourceRectangle": {
@@ -394,6 +450,15 @@
             }
           ],
           "Background": [
+            {
+              "Type": "Heading",
+              "FontType": "Small",
+              "Text": "7",
+              "Position": {
+                "X": 0,
+                "Y": 500
+              }
+            },
             {
               "Type": "Image",
               "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookPictures",

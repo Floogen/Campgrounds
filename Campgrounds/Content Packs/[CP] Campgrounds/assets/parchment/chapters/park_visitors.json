@@ -30,12 +30,22 @@
             {
               "Type": "Paragraph",
               "FontType": "Small",
-              "Text": "Not everyone at Cindersap Forest Park is someone you brought along! Visitors turn up on their own, dropping by to camp for the day without waiting for an invitation.\n\nThe park has three visitor sites: one south-west, one north-west, one south-east. Each starts overgrown and stays unusable until you clear and repair it. The more sites you fix up, the more visitors the park can host at once.",
+              "Text": "Not everyone at Cindersap Forest Park is someone you brought along! Visitors turn up on their own, dropping by to camp for the day without waiting for an invitation.\n\nThe park has three visitor sites: one south-west, one north-west, one south-east. Each starts overgrown and stays unusable until you clear and repair it.",
               "Alignment": "Left",
               "MarginLeft": 12,
             },
           ],
-          "Background": []
+          "Background": [
+            {
+              "Type": "Heading",
+              "FontType": "Small",
+              "Text": "1",
+              "Position": {
+                "X": 0,
+                "Y": 500
+              }
+            },
+          ]
         },
         "park_visitors-1": {
           "Id": "park_visitors-1",
@@ -44,12 +54,22 @@
             {
               "Type": "Paragraph",
               "FontType": "Small",
-              "Text": "Note that repair costs rise from the first site to the last, meaning you'll unlock them gradually as you can afford to.\n\nEach morning the park has a chance for visitors, with one visitor per repaired site. Every visitor keeps their own schedule. Some stop by any day, while others favor certain days of the week. Some may even only appear on specific dates!",
+              "Text": " The more sites you fix up, the more visitors the park can host at once. Note that repair costs rise from the first site to the last, meaning you'll unlock them gradually as you can afford to.\n\nEach morning the park has a chance for visitors, with one visitor per repaired site. Every visitor keeps their own schedule. Some stop by any day, while others favor certain days of the week. Some may even only appear on specific dates!",
               "Alignment": "Left",
               "MarginLeft": 12,
             },
           ],
-          "Background": []
+          "Background": [
+            {
+              "Type": "Heading",
+              "FontType": "Small",
+              "Text": "2",
+              "Position": {
+                "X": 440,
+                "Y": 500
+              }
+            },
+          ]
         },
         "park_visitors-2": {
           "Id": "park_visitors-2",
@@ -64,6 +84,15 @@
             },
           ],
           "Background": [
+            {
+              "Type": "Heading",
+              "FontType": "Small",
+              "Text": "3",
+              "Position": {
+                "X": 0,
+                "Y": 500
+              }
+            },
             {
               "Type": "Image",
               "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
@@ -117,6 +146,15 @@
             }
           ],
           "Background": [
+            {
+              "Type": "Heading",
+              "FontType": "Small",
+              "Text": "4",
+              "Position": {
+                "X": 440,
+                "Y": 500
+              }
+            },
             {
               "Type": "Image",
               "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/ItemHolder1",

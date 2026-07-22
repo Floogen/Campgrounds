@@ -35,7 +35,17 @@
               "MarginLeft": 12,
             },
           ],
-          "Background": []
+          "Background": [
+            {
+              "Type": "Heading",
+              "FontType": "Small",
+              "Text": "1",
+              "Position": {
+                "X": 0,
+                "Y": 500
+              }
+            },
+          ]
         },
         "invite_friends-1": {
           "Id": "invite_friends-1",
@@ -65,6 +75,15 @@
             },
           ],
           "Background": [
+            {
+              "Type": "Heading",
+              "FontType": "Small",
+              "Text": "2",
+              "Position": {
+                "X": 440,
+                "Y": 500
+              }
+            },
             {
               "Type": "Image",
               "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/ItemHolder1",
