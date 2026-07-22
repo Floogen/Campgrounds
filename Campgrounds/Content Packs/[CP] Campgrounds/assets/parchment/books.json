@@ -82,8 +82,8 @@
       "Action": "EditData",
       "Target": "Data/Objects",
       "Entries": {
-        "PeacefulEnd.Campgrounds.Items.CampingGuide.Id": {
-          "Name": "PeacefulEnd.Campgrounds.Items.CampingGuide.Id",
+        "PeacefulEnd.Campgrounds.Items.CampingGuide": {
+          "Name": "PeacefulEnd.Campgrounds.Items.CampingGuide",
           "DisplayName": "Camping Guide",
           "Description": "Clementine's personal camping guide. It's full of untidy scribbles and little sketches.",
           "Type": "Basic",

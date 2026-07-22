@@ -59,8 +59,8 @@
               "AvailableStockLimit": "Player"
             },
             {
-              "Id": "PeacefulEnd.Campgrounds.Items.CampingGuide.Id",
-              "ItemId": "(O)PeacefulEnd.Campgrounds.Items.CampingGuide.Id",
+              "Id": "PeacefulEnd.Campgrounds.Items.CampingGuide",
+              "ItemId": "(O)PeacefulEnd.Campgrounds.Items.CampingGuide",
               "Price": 1,
               "AvailableStock": 1,
               "AvailableStockLimit": "Player"
