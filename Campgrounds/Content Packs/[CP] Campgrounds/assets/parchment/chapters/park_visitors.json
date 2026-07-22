@@ -1,0 +1,179 @@
+{
+  "Changes": [
+    {
+      "Action": "EditData",
+      "Target": "Data/PeacefulEnd.Parchment/Books",
+      "TargetField": [ "PeacefulEnd.Campgrounds.Parchment_CampingGuide", "Pages" ],
+      "Entries": 
+      {
+        "park_visitors-0": {
+          "Id": "park_visitors-0",
+          "ChapterId": "park_visitors",
+          "Elements": [
+            {
+              "Type": "Banner",
+              "Text": "Park Visitors",
+              "TextOffset": {
+                "X": 0,
+                "Y": 0
+              },
+              "FontType": "Small",
+              "CapWidth": 4,
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/Banner3",
+              "Alignment": "Center",
+              "Sizing": "Fixed",
+              "Width": 50,
+              "Scale": 6,
+              "TextScale": 1,
+              "SpacingAfter": 4
+            },
+            {
+              "Type": "Paragraph",
+              "FontType": "Small",
+              "Text": "Not everyone at Cindersap Forest Park is someone you brought along! Visitors turn up on their own, dropping by to camp for the day without waiting for an invitation.\n\nThe park has three visitor sites: one south-west, one north-west, one south-east. Each starts overgrown and stays unusable until you clear and repair it. The more sites you fix up, the more visitors the park can host at once.",
+              "Alignment": "Left",
+              "MarginLeft": 12,
+            },
+          ],
+          "Background": []
+        },
+        "park_visitors-1": {
+          "Id": "park_visitors-1",
+          "ChapterId": "park_visitors",
+          "Elements": [
+            {
+              "Type": "Paragraph",
+              "FontType": "Small",
+              "Text": "Note that repair costs rise from the first site to the last, meaning you'll unlock them gradually as you can afford to.\n\nEach morning the park has a chance for visitors, with one visitor per repaired site. Every visitor keeps their own schedule. Some stop by any day, while others favor certain days of the week. Some may even only appear on specific dates!",
+              "Alignment": "Left",
+              "MarginLeft": 12,
+            },
+          ],
+          "Background": []
+        },
+        "park_visitors-2": {
+          "Id": "park_visitors-2",
+          "ChapterId": "park_visitors",
+          "Elements": [
+            {
+              "Type": "Paragraph",
+              "FontType": "Small",
+              "Text": "Once a visitor has stopped by, they will usually need about a week before returning. This can vary depending on the visitor, however.\n\nSome visitors are just there to chat and relax. Others, like a certain traveling merchant, have items for sale!",
+              "Alignment": "Left",
+              "MarginLeft": 12,
+            },
+          ],
+          "Background": [
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 96,
+                "Y": 0,
+                "Width": 32,
+                "Height": 32
+              },
+              "Position": {
+                "X": 90,
+                "Y": 350
+              },
+              "Scale": 4,
+            },
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 96,
+                "Y": 0,
+                "Width": 32,
+                "Height": 32
+              },
+              "Position": {
+                "X": 190,
+                "Y": 300
+              },
+              "Scale": 4,
+            },
+          ]
+        },
+        "park_visitors-3": {
+          "Id": "park_visitors-3",
+          "ChapterId": "park_visitors",
+          "Elements": [
+            {
+              "Type": "Paragraph",
+              "FontType": "Small",
+              "Text": "The Walkie Talkie is a handy way to see who's currently visiting Cindersap Forest Park. Buy one from Clem, then check in on the park whenever you like.",
+              "Alignment": "Left",
+              "MarginLeft": 12,
+              "SpacingAfter": 32,
+            },
+            {
+              "Type": "Image",
+              "ItemId": "(T)PeacefulEnd.Campgrounds.Tools.WalkieTalkie",
+              "SpacingAfter": 14,
+              "Scale": 4,
+              "Alignment": "Center"
+            }
+          ],
+          "Background": [
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/ItemHolder1",
+              "Position": {
+                "X": 160,
+                "Y": 175
+              },
+              "Scale": 4,
+            },
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 64,
+                "Y": 256,
+                "Width": 32,
+                "Height": 32
+              },
+              "Position": {
+                "X": 300,
+                "Y": 390
+              },
+              "Scale": 5,
+            },
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 64,
+                "Y": 288,
+                "Width": 32,
+                "Height": 32
+              },
+              "Position": {
+                "X": 150,
+                "Y": 390
+              },
+              "Scale": 5,
+            },
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 96,
+                "Y": 288,
+                "Width": 32,
+                "Height": 32
+              },
+              "Position": {
+                "X": 0,
+                "Y": 390
+              },
+              "Scale": 5,
+            },
+          ]
+        },
+      }
+    }
+  ]
+}

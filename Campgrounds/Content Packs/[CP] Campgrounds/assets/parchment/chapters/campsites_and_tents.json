@@ -1,0 +1,88 @@
+{
+  "Changes": [
+    {
+      "Action": "EditData",
+      "Target": "Data/PeacefulEnd.Parchment/Books",
+      "TargetField": [ "PeacefulEnd.Campgrounds.Parchment_CampingGuide", "Pages" ],
+      "Entries": 
+      {
+        "campsites_and_tents-0": {
+          "Id": "campsites_and_tents-0",
+          "ChapterId": "campsites_and_tents",
+          "Elements": [
+            {
+              "Type": "Banner",
+              "Text": "Campsites & Tents",
+              "TextOffset": {
+                "X": 0,
+                "Y": 0
+              },
+              "FontType": "Small",
+              "CapWidth": 4,
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/Banner3",
+              "Alignment": "Center",
+              "Sizing": "Fixed",
+              "Width": 50,
+              "Scale": 6,
+              "TextScale": 1,
+              "SpacingAfter": 4
+            },
+            {
+              "Type": "Paragraph",
+              "FontType": "Small",
+              "Text": "Not every campsite is available right away. Some require unlocking first (such as buying a map), while others can only be reached once you have a vehicle.\n\nIf you're bringing a guest, remember that they have preferences too. Some guests may love your campsite, while others feel indifferent, or even dislike the spot outright!",
+              "Alignment": "Left",
+              "MarginLeft": 12,
+            },
+          ],
+          "Background": []
+        },
+        "campsites_and_tents-1": {
+          "Id": "campsites_and_tents-1",
+          "ChapterId": "campsites_and_tents",
+          "Elements": [
+            {
+              "Type": "Paragraph",
+              "FontType": "Small",
+              "Text": "Like campsites, not all tents are available from the start. Their schematics can be purchased or unlocked in various ways.\n\nDifferent tents offer different benefits while camping, such as the number of meals you can cook. You can switch to any unlocked tents by talking to Clem at the Cindersap Forest Park shop.",
+              "Alignment": "Left",
+              "MarginLeft": 12,
+            }
+          ],
+          "Background": [
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 96,
+                "Y": 64,
+                "Width": 32,
+                "Height": 32
+              },
+              "Position": {
+                "X": 350,
+                "Y": 80
+              },
+              "Scale": 4,
+            },
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 96,
+                "Y": 256,
+                "Width": 32,
+                "Height": 32
+              },
+              "Position": {
+                "X": 300,
+                "Y": 380
+              },
+              "Scale": 5,
+            },
+          ]
+        },
+      }
+    }
+  ]
+}

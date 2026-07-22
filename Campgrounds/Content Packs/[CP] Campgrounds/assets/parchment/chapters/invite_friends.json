@@ -1,0 +1,82 @@
+{
+  "Changes": [
+    {
+      "Action": "EditData",
+      "Target": "Data/PeacefulEnd.Parchment/Books",
+      "TargetField": [ "PeacefulEnd.Campgrounds.Parchment_CampingGuide", "Pages" ],
+      "Entries": 
+      {
+        "invite_friends-0": {
+          "Id": "invite_friends-0",
+          "ChapterId": "invite_friends",
+          "Elements": [
+            {
+              "Type": "Banner",
+              "Text": "Inviting Friends",
+              "TextOffset": {
+                "X": 0,
+                "Y": 0
+              },
+              "FontType": "Small",
+              "CapWidth": 4,
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/Banner3",
+              "Alignment": "Center",
+              "Sizing": "Fixed",
+              "Width": 50,
+              "Scale": 6,
+              "TextScale": 1,
+              "SpacingAfter": 4
+            },
+            {
+              "Type": "Paragraph",
+              "FontType": "Small",
+              "Text": "Camping alone has its own quiet charm, but some trips are better shared. Bring a friend along and you might just get a little closer!\n\nJust how much closer depends on their feelings about the campsite. Love it, and they'll treat the trip as a loved gift. Neutral, as a liked gift. Dislike it and your friendship will remain unchanged.",
+              "Alignment": "Left",
+              "MarginLeft": 12,
+            },
+          ],
+          "Background": []
+        },
+        "invite_friends-1": {
+          "Id": "invite_friends-1",
+          "ChapterId": "invite_friends",
+          "Elements": [
+            {
+              "Type": "Paragraph",
+              "FontType": "Small",
+              "Text": "To invite someone, you will first need at least two hearts of friendship with them. Once you do, buy a Visitor Pass from Clem's shop in Cindersap Forest Park and gift it to them.",
+              "Alignment": "Left",
+              "MarginLeft": 12,
+              "SpacingAfter": 64,
+            },
+            {
+              "Type": "Image",
+              "ItemId": "(O)PeacefulEnd.Campgrounds.Items.VisitorPass",
+              "SpacingAfter": 14,
+              "Scale": 4,
+              "Alignment": "Center"
+            },
+            {
+              "Type": "Paragraph",
+              "FontType": "Small",
+              "Text": "Once invited, your guest will travel alongside you to your next campsite. After the trip, they will need at least a week's rest before they can tag along again.",
+              "Alignment": "Left",
+              "MarginLeft": 12
+            },
+          ],
+          "Background": [
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/ItemHolder1",
+              "Position": {
+                "X": 160,
+                "Y": 205
+              },
+              "Scale": 4,
+            },
+          ]
+        },
+      }
+    }
+  ]
+}

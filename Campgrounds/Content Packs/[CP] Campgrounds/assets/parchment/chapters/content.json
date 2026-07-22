@@ -1,0 +1,361 @@
+{
+  "Changes": [
+    {
+      "Action": "EditData",
+      "Target": "Data/PeacefulEnd.Parchment/Books",
+      "TargetField": [ "PeacefulEnd.Campgrounds.Parchment_CampingGuide", "Pages" ],
+      "Entries": 
+      {
+        "cover-0": {
+          "Id": "cover-0",
+          "ChapterId": "contents",
+          "Elements": [
+            {
+              "Type": "Banner",
+              "Text": "Camping Guide",
+              "TextOffset": {
+                "X": 0,
+                "Y": -2
+              },
+              "FontType": "Dialogue",
+              "CapWidth": 20,
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/ChapterTitle1",
+              "Alignment": "Center",
+              "Sizing": "ShrinkToFit",
+              "Scale": 5,
+              "SpacingAfter": 4
+            },
+            {
+              "Type": "Paragraph",
+              "FontType": "Small",
+              "Text": "Heya, {{PlayerName}}!\n\nI've bundled up my old notes into a little guide for ya. Much rather see 'em put to good use than gatherin' dust.\n\nDon't be shy about makin' it yer own!\n\nHappy campin'!",
+              "Alignment": "Left",
+              "MarginLeft": 12,
+            }
+          ],
+          "Background": [
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 0,
+                "Y": 0,
+                "Width": 23,
+                "Height": 6
+              },
+              "Position": {
+                "X": 45,
+                "Y": 450
+              },
+              "Scale": 3,
+            },
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 32,
+                "Y": 16,
+                "Width": 32,
+                "Height": 32
+              },
+              "Position": {
+                "X": 280,
+                "Y": 380
+              },
+              "Scale": 5,
+            },
+          ]
+        },
+        "cover-1": {
+          "Id": "cover-1",
+          "ChapterId": "contents",
+          "Background": [
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 64,
+                "Y": 16,
+                "Width": 32,
+                "Height": 32
+              },
+              "Position": {
+                "X": 5,
+                "Y": 390
+              },
+              "Scale": 5,
+            },
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 96,
+                "Y": 32,
+                "Width": 32,
+                "Height": 32
+              },
+              "Position": {
+                "X": 300,
+                "Y": 390
+              },
+              "Scale": 5,
+            },
+          ],
+          "Foreground": [
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 70,
+                "Y": 0,
+                "Width": 5,
+                "Height": 16
+              },
+              "Frames": [
+                { "Duration": 100, "SourceRectangle": { "X": 70, "Y": 0, "Width": 5, "Height": 16 } },
+                { "Duration": 100, "SourceRectangle": { "X": 75, "Y": 0, "Width": 5, "Height": 16 } },
+                { "Duration": 100, "SourceRectangle": { "X": 80, "Y": 0, "Width": 5, "Height": 16 } },
+                { "Duration": 100, "SourceRectangle": { "X": 85, "Y": 0, "Width": 5, "Height": 16 } },
+              ],
+              "Position": {
+                "X": 326,
+                "Y": 58
+              },
+              "Scale": 2,
+              "Condition": "!PeacefulEnd.Parchment_HasSeenChapterId PeacefulEnd.Campgrounds.Parchment_CampingGuide getting_started"
+            },
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 70,
+                "Y": 0,
+                "Width": 5,
+                "Height": 16
+              },
+              "Frames": [
+                { "Duration": 100, "SourceRectangle": { "X": 70, "Y": 0, "Width": 5, "Height": 16 } },
+                { "Duration": 100, "SourceRectangle": { "X": 75, "Y": 0, "Width": 5, "Height": 16 } },
+                { "Duration": 100, "SourceRectangle": { "X": 80, "Y": 0, "Width": 5, "Height": 16 } },
+                { "Duration": 100, "SourceRectangle": { "X": 85, "Y": 0, "Width": 5, "Height": 16 } },
+              ],
+              "Position": {
+                "X": 345,
+                "Y": 120
+              },
+              "Scale": 2,
+              "Condition": "!PeacefulEnd.Parchment_HasSeenChapterId PeacefulEnd.Campgrounds.Parchment_CampingGuide campsites_and_tents"
+            },
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 70,
+                "Y": 0,
+                "Width": 5,
+                "Height": 16
+              },
+              "Frames": [
+                { "Duration": 100, "SourceRectangle": { "X": 70, "Y": 0, "Width": 5, "Height": 16 } },
+                { "Duration": 100, "SourceRectangle": { "X": 75, "Y": 0, "Width": 5, "Height": 16 } },
+                { "Duration": 100, "SourceRectangle": { "X": 80, "Y": 0, "Width": 5, "Height": 16 } },
+                { "Duration": 100, "SourceRectangle": { "X": 85, "Y": 0, "Width": 5, "Height": 16 } },
+              ],
+              "Position": {
+                "X": 337,
+                "Y": 182
+              },
+              "Scale": 2,
+              "Condition": "!PeacefulEnd.Parchment_HasSeenChapterId PeacefulEnd.Campgrounds.Parchment_CampingGuide campfire_cooking"
+            },
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 70,
+                "Y": 0,
+                "Width": 5,
+                "Height": 16
+              },
+              "Frames": [
+                { "Duration": 100, "SourceRectangle": { "X": 70, "Y": 0, "Width": 5, "Height": 16 } },
+                { "Duration": 100, "SourceRectangle": { "X": 75, "Y": 0, "Width": 5, "Height": 16 } },
+                { "Duration": 100, "SourceRectangle": { "X": 80, "Y": 0, "Width": 5, "Height": 16 } },
+                { "Duration": 100, "SourceRectangle": { "X": 85, "Y": 0, "Width": 5, "Height": 16 } },
+              ],
+              "Position": {
+                "X": 335,
+                "Y": 244
+              },
+              "Scale": 2,
+              "Condition": "!PeacefulEnd.Parchment_HasSeenChapterId PeacefulEnd.Campgrounds.Parchment_CampingGuide invite_friends"
+            },
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 70,
+                "Y": 0,
+                "Width": 5,
+                "Height": 16
+              },
+              "Frames": [
+                { "Duration": 100, "SourceRectangle": { "X": 70, "Y": 0, "Width": 5, "Height": 16 } },
+                { "Duration": 100, "SourceRectangle": { "X": 75, "Y": 0, "Width": 5, "Height": 16 } },
+                { "Duration": 100, "SourceRectangle": { "X": 80, "Y": 0, "Width": 5, "Height": 16 } },
+                { "Duration": 100, "SourceRectangle": { "X": 85, "Y": 0, "Width": 5, "Height": 16 } },
+              ],
+              "Position": {
+                "X": 312,
+                "Y": 306
+              },
+              "Scale": 2,
+              "Condition": "!PeacefulEnd.Parchment_HasSeenChapterId PeacefulEnd.Campgrounds.Parchment_CampingGuide park_visitors"
+            },
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 70,
+                "Y": 0,
+                "Width": 5,
+                "Height": 16
+              },
+              "Frames": [
+                { "Duration": 100, "SourceRectangle": { "X": 70, "Y": 0, "Width": 5, "Height": 16 } },
+                { "Duration": 100, "SourceRectangle": { "X": 75, "Y": 0, "Width": 5, "Height": 16 } },
+                { "Duration": 100, "SourceRectangle": { "X": 80, "Y": 0, "Width": 5, "Height": 16 } },
+                { "Duration": 100, "SourceRectangle": { "X": 85, "Y": 0, "Width": 5, "Height": 16 } },
+              ],
+              "Position": {
+                "X": 312,
+                "Y": 368
+              },
+              "Scale": 2,
+              "Condition": "!PeacefulEnd.Parchment_HasSeenChapterId PeacefulEnd.Campgrounds.Parchment_CampingGuide camping_stats"
+            },
+          ],
+          "Elements": [
+            {
+              "Type": "Banner",
+              "Text": "Contents",
+              "TextOffset": {
+                "X": 0,
+                "Y": 0
+              },
+              "FontType": "Small",
+              "CapWidth": 19,
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/Banner5",
+              "Alignment": "Center",
+              "Sizing": "ShrinkToFit",
+              "Scale": 5,
+              "SpacingAfter": 4,
+            },
+            {
+              "Type": "Heading",
+              "FontType": "Small",
+              "Text": "Getting Started",
+              "Description": "Click to go to this chapter",
+              "Alignment": "Center",
+              "SpacingAfter": 12,
+              "Action": "PeacefulEnd.Parchment_JumpToChapter getting_started",
+            },
+            {
+              "Type": "Divider",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/Divider1",
+              "Sizing": "ShrinkToFit",
+              "Alignment": "Center",
+              "Scale": 2,
+              "SpacingAfter": 6
+            },
+            {
+              "Type": "Heading",
+              "FontType": "Small",
+              "Text": "Campsites & Tents",
+              "Description": "Click to go to this chapter",
+              "Alignment": "Center",
+              "SpacingAfter": 12,
+              "Action": "PeacefulEnd.Parchment_JumpToChapter campsites_and_tents",
+            },
+            {
+              "Type": "Divider",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/Divider1",
+              "Sizing": "ShrinkToFit",
+              "Alignment": "Center",
+              "Scale": 2,
+              "SpacingAfter": 6
+            },
+            {
+              "Type": "Heading",
+              "FontType": "Small",
+              "Text": "Cooking Outdoors",
+              "Description": "Click to go to this chapter",
+              "Alignment": "Center",
+              "SpacingAfter": 12,
+              "Action": "PeacefulEnd.Parchment_JumpToChapter campfire_cooking",
+            },
+            {
+              "Type": "Divider",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/Divider1",
+              "Sizing": "ShrinkToFit",
+              "Alignment": "Center",
+              "Scale": 2,
+              "SpacingAfter": 6
+            },
+            {
+              "Type": "Heading",
+              "FontType": "Small",
+              "Text": "Bringing a Friend",
+              "Description": "Click to go to this chapter",
+              "Alignment": "Center",
+              "SpacingAfter": 12,
+              "Action": "PeacefulEnd.Parchment_JumpToChapter invite_friends",
+            },
+            {
+              "Type": "Divider",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/Divider1",
+              "Sizing": "ShrinkToFit",
+              "Alignment": "Center",
+              "Scale": 2,
+              "SpacingAfter": 6
+            },
+            {
+              "Type": "Heading",
+              "FontType": "Small",
+              "Text": "Park Visitors",
+              "Description": "Click to go to this chapter",
+              "Alignment": "Center",
+              "SpacingAfter": 12,
+              "Action": "PeacefulEnd.Parchment_JumpToChapter park_visitors",
+            },
+            {
+              "Type": "Divider",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/Divider1",
+              "Sizing": "ShrinkToFit",
+              "Alignment": "Center",
+              "Scale": 2,
+              "SpacingAfter": 6
+            },
+            {
+              "Type": "Heading",
+              "FontType": "Small",
+              "Text": "Your Journey",
+              "Description": "Click to go to this chapter",
+              "Alignment": "Center",
+              "SpacingAfter": 12,
+              "Action": "PeacefulEnd.Parchment_JumpToChapter camping_stats",
+            },
+            {
+              "Type": "Divider",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/Divider1",
+              "Sizing": "ShrinkToFit",
+              "Alignment": "Center",
+              "Scale": 2,
+              "SpacingAfter": 6
+            },
+          ]
+        }
+      }
+    }
+  ]
+}

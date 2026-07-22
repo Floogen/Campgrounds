@@ -1,0 +1,535 @@
+{
+  "Changes": [
+    {
+      "Action": "EditData",
+      "Target": "Data/PeacefulEnd.Parchment/Books",
+      "TargetField": [ "PeacefulEnd.Campgrounds.Parchment_CampingGuide", "Pages" ],
+      "Entries": 
+      {
+        "getting_started-0": {
+          "Id": "getting_started-0",
+          "ChapterId": "getting_started",
+          "Elements": [
+            {
+              "Type": "Banner",
+              "Text": "Getting Started",
+              "TextOffset": {
+                "X": 0,
+                "Y": 0
+              },
+              "FontType": "Small",
+              "CapWidth": 4,
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/Banner3",
+              "Alignment": "Center",
+              "Sizing": "Fixed",
+              "Width": 50,
+              "Scale": 6,
+              "TextScale": 1,
+              "SpacingAfter": 4
+            },
+            {
+              "Type": "Paragraph",
+              "FontType": "Small",
+              "Text": "Camping is a fun way to enjoy the great outdoors and take a break away from everyday life!\n\nIt also comes with some benefits, such as helpful buffs from eating a hearty campfire meal and getting to know your friends better (if you invite them to tag along).",
+              "Alignment": "Left",
+              "MarginLeft": 12,
+            }
+          ],
+          "Background": []
+        },
+        "getting_started-1": {
+          "Id": "getting_started-1",
+          "ChapterId": "getting_started",
+          "Elements": [
+            {
+              "Type": "Paragraph",
+              "FontType": "Small",
+              "Text": "To start camping, head over to the Cindersap Forest Park and visit the campsite board just outside the shop.",
+              "Alignment": "Left",
+              "MarginLeft": 12,
+            }
+          ],
+          "Background": [
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookPictures",
+              "TextureSourceRectangle": {
+                "X": 0,
+                "Y": 0,
+                "Width": 72,
+                "Height": 72
+              },
+              "Position": {
+                "X": 75,
+                "Y": 175
+              },
+              "Scale": 4,
+            },
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 0,
+                "Y": 32,
+                "Width": 14,
+                "Height": 8
+              },
+              "Position": {
+                "X": 360,
+                "Y": 175
+              },
+              "Scale": 4,
+              "Rotation": 45,
+              "Origin": {
+                "X": 7,
+                "Y": 4
+              }
+            },
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 0,
+                "Y": 32,
+                "Width": 14,
+                "Height": 8
+              },
+              "Position": {
+                "X": 80,
+                "Y": 175
+              },
+              "Scale": 4,
+              "Rotation": -45,
+              "Origin": {
+                "X": 7,
+                "Y": 4
+              }
+            },
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 86,
+                "Y": 108,
+                "Width": 9,
+                "Height": 18
+              },
+              "Position": {
+                "X": 390,
+                "Y": 420
+              },
+              "Scale": 6,
+            },
+          ]
+        },
+        "getting_started-2": {
+          "Id": "getting_started-2",
+          "ChapterId": "getting_started",
+          "Elements": [
+            {
+              "Type": "Paragraph",
+              "FontType": "Small",
+              "Text": "On the campsite board, you will see a list of discovered campgrounds. Pick any site you'd like to visit, but keep in mind the following:\n    - Campsites take a while to reach, so plan your departure carefully.\n    - Some campsites require a vehicle to reach. Clem can lend you hers, but you'll need to fix it first!\n    - Bring some camping rations before heading out, which can be purchased from Clem.\n    - You can invite a friend by gifting them a Visitor Pass (also purchasable from Clem).",
+              "Alignment": "Left",
+              "MarginLeft": 12,
+            }
+          ],
+          "Background": []
+        },
+        "getting_started-3": {
+          "Id": "getting_started-3",
+          "ChapterId": "getting_started",
+          "Elements": [
+            {
+              "Type": "Paragraph",
+              "FontType": "Small",
+              "Text": "Once you arrive at your campsite, you are free to explore at your leisure! Some campgrounds have plenty to forage, while others have spots to fish or other resources.",
+              "Alignment": "Left",
+              "MarginLeft": 12,
+            }
+          ],
+          "Background": [
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookPictures",
+              "TextureSourceRectangle": {
+                "X": 112,
+                "Y": 0,
+                "Width": 48,
+                "Height": 49
+              },
+              "Position": {
+                "X": 195,
+                "Y": 250
+              },
+              "Scale": 4,
+            },
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 0,
+                "Y": 32,
+                "Width": 14,
+                "Height": 8
+              },
+              "Position": {
+                "X": 385,
+                "Y": 250
+              },
+              "Scale": 4,
+              "Rotation": 45,
+              "Origin": {
+                "X": 7,
+                "Y": 4
+              }
+            },
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 0,
+                "Y": 32,
+                "Width": 14,
+                "Height": 8
+              },
+              "Position": {
+                "X": 200,
+                "Y": 250
+              },
+              "Scale": 4,
+              "Rotation": -45,
+              "Origin": {
+                "X": 7,
+                "Y": 4
+              }
+            },
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 48,
+                "Y": 208,
+                "Width": 48,
+                "Height": 48
+              },
+              "Position": {
+                "X": 75,
+                "Y": 335
+              },
+              "Scale": 4
+            },
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 80,
+                "Y": 176,
+                "Width": 16,
+                "Height": 16
+              },
+              "Position": {
+                "X": 35,
+                "Y": 225
+              },
+              "Scale": 4
+            },
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 80,
+                "Y": 192,
+                "Width": 16,
+                "Height": 16
+              },
+              "Position": {
+                "X": 15,
+                "Y": 450
+              },
+              "Scale": 4
+            },
+          ]
+        },
+        "getting_started-4": {
+          "Id": "getting_started-4",
+          "ChapterId": "getting_started",
+          "Elements": [
+            {
+              "Type": "Paragraph",
+              "FontType": "Small",
+              "Text": "Ready to rest? Cook a meal at your campfire with some rations. Different recipes grant different buffs, which will appear after sleeping.\n\nThe amount of meals you can cook depends on your tent. With the Starter Tent, only one meal can be made per trip.",
+              "Alignment": "Left",
+              "MarginLeft": 12,
+            }
+          ],
+          "Background": [
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookPictures",
+              "TextureSourceRectangle": {
+                "X": 80,
+                "Y": 0,
+                "Width": 32,
+                "Height": 48
+              },
+              "Position": {
+                "X": 275,
+                "Y": 305
+              },
+              "Scale": 4,
+            },
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 0,
+                "Y": 32,
+                "Width": 14,
+                "Height": 8
+              },
+              "Position": {
+                "X": 400,
+                "Y": 500
+              },
+              "Scale": 4,
+              "Rotation": -45,
+              "Origin": {
+                "X": 7,
+                "Y": 4
+              }
+            },
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 0,
+                "Y": 32,
+                "Width": 14,
+                "Height": 8
+              },
+              "Position": {
+                "X": 275,
+                "Y": 305
+              },
+              "Scale": 4,
+              "Rotation": -45,
+              "Origin": {
+                "X": 7,
+                "Y": 4
+              }
+            },
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 48,
+                "Y": 176,
+                "Width": 32,
+                "Height": 32
+              },
+              "Position": {
+                "X": 35,
+                "Y": 300
+              },
+              "Scale": 5
+            },
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 96,
+                "Y": 208,
+                "Width": 16,
+                "Height": 16
+              },
+              "Position": {
+                "X": 88,
+                "Y": 425
+              },
+              "Scale": 4
+            },
+          ]
+        },
+        "getting_started-5": {
+          "Id": "getting_started-5",
+          "ChapterId": "getting_started",
+          "Elements": [
+            {
+              "Type": "Paragraph",
+              "FontType": "Small",
+              "Text": "After you have eaten your fill, head to your tent and tuck in for the night. When you awake, the buffs from your previous night's meal will take effect.\n\n\n\n\nYou are free to look around a while longer, but be sure to head back home before nightfall. To leave the campsite, follow the trail out or use your tent to pack up.",
+              "Alignment": "Left",
+              "MarginLeft": 12,
+            }
+          ],
+          "Background": [
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 48,
+                "Y": 48,
+                "Width": 32,
+                "Height": 32
+              },
+              "Position": {
+                "X": 125,
+                "Y": 125
+              },
+              "Scale": 6
+            },
+          ]
+        },
+        "getting_started-6": {
+          "Id": "getting_started-6",
+          "ChapterId": "getting_started",
+          "Elements": [
+            {
+              "Type": "Paragraph",
+              "FontType": "Small",              
+              "Text": "To leave the campsite, use your tent to pack up or follow the trail to head back.",
+              "Alignment": "Left",
+              "MarginLeft": 12,
+            }
+          ],
+          "Background": [
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookPictures",
+              "TextureSourceRectangle": {
+                "X": 0,
+                "Y": 80,
+                "Width": 64,
+                "Height": 81
+              },
+              "Position": {
+                "X": 115,
+                "Y": 125
+              },
+              "Scale": 4,
+            },
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 0,
+                "Y": 32,
+                "Width": 14,
+                "Height": 8
+              },
+              "Position": {
+                "X": 365,
+                "Y": 450
+              },
+              "Scale": 4,
+              "Rotation": -45,
+              "Origin": {
+                "X": 7,
+                "Y": 4
+              }
+            },
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 0,
+                "Y": 32,
+                "Width": 14,
+                "Height": 8
+              },
+              "Position": {
+                "X": 115,
+                "Y": 125
+              },
+              "Scale": 4,
+              "Rotation": -45,
+              "Origin": {
+                "X": 7,
+                "Y": 4
+              }
+            },
+          ]
+        },
+        "getting_started-7": {
+          "Id": "getting_started-7",
+          "ChapterId": "getting_started",
+          "Elements": [
+            {
+              "Type": "Paragraph",
+              "FontType": "Small",              
+              "Text": "Congratulations on your first camping trip! Head back out whenever you like, there's always more to explore.",
+              "Alignment": "Left",
+              "MarginLeft": 12,
+              "SpacingAfter": 360,
+            },
+            {
+              "Type": "Paragraph",
+              "FontType": "Small",              
+              "Text": "Happy camping!",
+              "Alignment": "Right",
+              "MarginLeft": 0,
+            }
+          ],
+          "Background": [
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookPictures",
+              "TextureSourceRectangle": {
+                "X": 80,
+                "Y": 64,
+                "Width": 84,
+                "Height": 80
+              },
+              "Position": {
+                "X": 70,
+                "Y": 150
+              },
+              "Scale": 4,
+            },
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 0,
+                "Y": 32,
+                "Width": 14,
+                "Height": 8
+              },
+              "Position": {
+                "X": 75,
+                "Y": 470
+              },
+              "Scale": 4,
+              "Rotation": 45,
+              "Origin": {
+                "X": 7,
+                "Y": 4
+              }
+            },
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 0,
+                "Y": 32,
+                "Width": 14,
+                "Height": 8
+              },
+              "Position": {
+                "X": 400,
+                "Y": 150
+              },
+              "Scale": 4,
+              "Rotation": 45,
+              "Origin": {
+                "X": 7,
+                "Y": 4
+              }
+            },
+          ]
+        },
+      }
+    }
+  ]
+}

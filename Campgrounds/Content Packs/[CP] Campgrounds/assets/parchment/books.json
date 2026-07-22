@@ -1,0 +1,186 @@
+{
+  "Changes": [
+    // Load the textures
+    {
+      "Action": "Load",
+      "Target": "Data/PeacefulEnd.Campgrounds/Textures/CampingBookItem",
+      "FromFile": "assets/parchment/textures/campingBookIcon2.png"
+    },
+    {
+      "Action": "Load",
+      "Target": "Data/PeacefulEnd.Campgrounds/Textures/CampingBookPages",
+      "FromFile": "assets/parchment/textures/campingBook.png"
+    },
+    {
+      "Action": "Load",
+      "Target": "Data/PeacefulEnd.Campgrounds/Textures/CampingBookGrayscale",
+      "FromFile": "assets/parchment/textures/campingBookGrayscale.png"
+    },
+    {
+      "Action": "Load",
+      "Target": "Data/PeacefulEnd.Campgrounds/Textures/ChapterTitle1",
+      "FromFile": "assets/parchment/textures/chapterTitle1.png"
+    },
+    {
+      "Action": "Load",
+      "Target": "Data/PeacefulEnd.Campgrounds/Textures/Banner1",
+      "FromFile": "assets/parchment/textures/banner1.png"
+    },
+    {
+      "Action": "Load",
+      "Target": "Data/PeacefulEnd.Campgrounds/Textures/Banner2",
+      "FromFile": "assets/parchment/textures/banner2.png"
+    },
+    {
+      "Action": "Load",
+      "Target": "Data/PeacefulEnd.Campgrounds/Textures/Banner3",
+      "FromFile": "assets/parchment/textures/banner3.png"
+    },
+    {
+      "Action": "Load",
+      "Target": "Data/PeacefulEnd.Campgrounds/Textures/Banner4",
+      "FromFile": "assets/parchment/textures/banner4.png"
+    },
+    {
+      "Action": "Load",
+      "Target": "Data/PeacefulEnd.Campgrounds/Textures/Banner5",
+      "FromFile": "assets/parchment/textures/banner5.png"
+    },
+    {
+      "Action": "Load",
+      "Target": "Data/PeacefulEnd.Campgrounds/Textures/Divider1",
+      "FromFile": "assets/parchment/textures/divider1.png"
+    },
+    {
+      "Action": "Load",
+      "Target": "Data/PeacefulEnd.Campgrounds/Textures/Bookmark1",
+      "FromFile": "assets/parchment/textures/bookmark1.png"
+    },
+    {
+      "Action": "Load",
+      "Target": "Data/PeacefulEnd.Campgrounds/Textures/Bookmark2",
+      "FromFile": "assets/parchment/textures/bookmark2.png"
+    },
+    {
+      "Action": "Load",
+      "Target": "Data/PeacefulEnd.Campgrounds/Textures/ItemHolder1",
+      "FromFile": "assets/parchment/textures/itemHolder1.png"
+    },
+    {
+      "Action": "Load",
+      "Target": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+      "FromFile": "assets/parchment/textures/bookDetails.png"
+    },
+    {
+      "Action": "Load",
+      "Target": "Data/PeacefulEnd.Campgrounds/Textures/BookPictures",
+      "FromFile": "assets/parchment/textures/bookPictures.png"
+    },
+
+    // Add the book item
+    {
+      "Action": "EditData",
+      "Target": "Data/Objects",
+      "Entries": {
+        "PeacefulEnd.Campgrounds_CampingGuide": {
+          "Name": "PeacefulEnd.Campgrounds_CampingGuide",
+          "DisplayName": "Camping Guide",
+          "Description": "Clementine's personal camping guide. It's full of untidy scribbles and little sketches.",
+          "Type": "Basic",
+          "Category": 0,
+          "Price": 0,
+
+          "Texture": "Data/PeacefulEnd.Campgrounds/Textures/CampingBookItem",
+          "SpriteIndex": 0,
+
+          "Edibility": -300,
+
+          "CanBeGivenAsGift": false,
+          "CanBeTrashed": true,
+          "ExcludeFromRandomSale": true,
+          "ExcludeFromShippingCollection": true,
+
+          "CustomFields": {
+            "PeacefulEnd.Parchment/CustomFields/BookId": "PeacefulEnd.Campgrounds.Parchment_CampingGuide"
+          }
+        }
+      }
+    },
+
+    // Start of Parchment book
+    {
+      "Action": "EditData",
+      "Target": "Data/PeacefulEnd.Parchment/Books",
+      "Entries": {
+        "PeacefulEnd.Campgrounds.Parchment_CampingGuide": {
+          "Format": "1.0.0",
+          "Id": "PeacefulEnd.Campgrounds.Parchment_CampingGuide",
+          "Appearance": {
+            "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/CampingBookPages",
+            "GrayscaleTexturePath": "Data/PeacefulEnd.Campgrounds/Textures/CampingBookGrayscale",
+            "TintColor": "#774d2d"
+          },
+          "Underlay": [],
+          "Overlay": [
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/Bookmark2",
+              "TextureSourceRectangle": {
+                "X": 0,
+                "Y": 0,
+                "Width": 24,
+                "Height": 17
+              },
+              "HoverTextureSourceRectangle": {
+                "X": 0,
+                "Y": 17,
+                "Width": 24,
+                "Height": 17
+              },
+              "SpriteEffects": "FlipHorizontally",
+              "Position": {
+                "X": -65,
+                "Y": 164
+              },
+              "Scale": 4,
+              "Action": "PeacefulEnd.Parchment_GoToStart",
+              "Description": "Go back to the home page"
+            },
+          ],
+          "Pages": []
+          // Pages are filled in from includes
+        }
+      }
+    },
+
+    // Load in chapters
+    {
+        "Action": "Include",
+        "FromFile": "assets/parchment/chapters/content.json"
+    },
+    {
+        "Action": "Include",
+        "FromFile": "assets/parchment/chapters/getting_started.json"
+    },
+    {
+        "Action": "Include",
+        "FromFile": "assets/parchment/chapters/campsites_and_tents.json"
+    },
+    {
+        "Action": "Include",
+        "FromFile": "assets/parchment/chapters/campfire_cooking.json"
+    },
+    {
+        "Action": "Include",
+        "FromFile": "assets/parchment/chapters/invite_friends.json"
+    },
+    {
+        "Action": "Include",
+        "FromFile": "assets/parchment/chapters/park_visitors.json"
+    },
+    {
+        "Action": "Include",
+        "FromFile": "assets/parchment/chapters/camping_stats.json"
+    }
+  ]
+}

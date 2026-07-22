@@ -1,0 +1,73 @@
+{
+  "Changes": [
+    {
+      "Action": "EditData",
+      "Target": "Data/PeacefulEnd.Parchment/Books",
+      "TargetField": [ "PeacefulEnd.Campgrounds.Parchment_CampingGuide", "Pages" ],
+      "Entries": 
+      {
+        "campfire_cooking-0": {
+          "Id": "campfire_cooking-0",
+          "ChapterId": "campfire_cooking",
+          "Elements": [
+            {
+              "Type": "Banner",
+              "Text": "Cooking Outdoors",
+              "TextOffset": {
+                "X": 0,
+                "Y": 0
+              },
+              "FontType": "Small",
+              "CapWidth": 4,
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/Banner3",
+              "Alignment": "Center",
+              "Sizing": "Fixed",
+              "Width": 50,
+              "Scale": 6,
+              "TextScale": 1,
+              "SpacingAfter": 4
+            },
+            {
+              "Type": "Paragraph",
+              "FontType": "Small",
+              "Text": "Out in the great wilderness, you'll likely get hungry. That's what camping rations are for! You can buy them from Clem's shop in Cindersap Forest Park.\n\nWith rations, you can cook up to 5 meals, depending on your tent. Each meal takes a different count of rations and grants its own buff.",
+              "Alignment": "Left",
+              "MarginLeft": 12,
+            },
+          ],
+          "Background": []
+        },
+        "campfire_cooking-1": {
+          "Id": "campfire_cooking-1",
+          "ChapterId": "campfire_cooking",
+          "Elements": [
+            {
+              "Type": "Paragraph",
+              "FontType": "Small",
+              "Text": "Just remember, buffs don't take effect until you sleep in your tent! Leaving early costs you both the benefits and the rations you used.\n\nAs with campsites and tents, campfire recipes can be unlocked in various ways. While cooking, you can hover over a locked recipe to see hints on how to unlock it.",
+              "Alignment": "Left",
+              "MarginLeft": 12,
+            },
+          ],
+          "Background": [
+            {
+              "Type": "Image",
+              "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/BookDetails",
+              "TextureSourceRectangle": {
+                "X": 96,
+                "Y": 224,
+                "Width": 32,
+                "Height": 32
+              },
+              "Position": {
+                "X": 150,
+                "Y": 380
+              },
+              "Scale": 5,
+            },
+          ]
+        },
+      }
+    }
+  ]
+}

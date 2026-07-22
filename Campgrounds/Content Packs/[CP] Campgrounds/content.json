@@ -195,6 +195,12 @@
     {
       "Action": "Include",
       "FromFile": "assets/events/events.json"
+    },
+
+    // Add Parchment data
+    {
+      "Action": "Include",
+      "FromFile": "assets/parchment/books.json"
     }
   ]
 }
