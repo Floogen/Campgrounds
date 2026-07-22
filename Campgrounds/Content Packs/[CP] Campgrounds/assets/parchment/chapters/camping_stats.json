@@ -1,11 +1,11 @@
 {
   "Changes": [
     {
+      "Update": "OnDayStart, OnLocationChange, OnTimeChange",
       "Action": "EditData",
       "Target": "Data/PeacefulEnd.Parchment/Books",
       "TargetField": [ "PeacefulEnd.Campgrounds.Parchment_CampingGuide", "Pages" ],
-      "Entries": 
-      {
+      "Entries": {
         "camping_stats-0": {
           "Id": "camping_stats-0",
           "ChapterId": "camping_stats",
@@ -68,7 +68,7 @@
               "Text": "{{PeacefulEnd.Campgrounds.Core/TotalCampMealsMade}}",
               "Alignment": "Center",
               "SpacingAfter": 32
-            },
+            }
           ],
           "Background": [
             {
@@ -79,7 +79,7 @@
                 "X": 0,
                 "Y": 500
               }
-            },
+            }
           ]
         },
         "camping_stats-1": {
@@ -127,7 +127,7 @@
               "Text": "{{PeacefulEnd.Campgrounds.Core/TotalRecipesUnlocked}}",
               "Alignment": "Center",
               "SpacingAfter": 32
-            },
+            }
           ],
           "Background": [
             {
@@ -159,7 +159,7 @@
                 "X": 160,
                 "Y": 380
               },
-              "Scale": 5,
+              "Scale": 5
             },
             {
               "Type": "Image",
@@ -174,7 +174,7 @@
                 "X": 280,
                 "Y": 390
               },
-              "Scale": 5,
+              "Scale": 5
             },
             {
               "Type": "Heading",
@@ -184,9 +184,9 @@
                 "X": 440,
                 "Y": 500
               }
-            },
+            }
           ]
-        },
+        }
       }
     }
   ]
