@@ -139,6 +139,8 @@ namespace Campgrounds.Framework.UI
 
             _cookedFood = true;
 
+            Game1.stats.Increment(Campgrounds.TOTAL_CAMP_MEALS_MADE_STAT_ID, selectedCampfireFoods.Count);
+
             this.exitThisMenu(playSound: false);
         }
 

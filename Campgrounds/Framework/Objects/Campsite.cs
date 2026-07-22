@@ -128,12 +128,14 @@ namespace Campgrounds.Framework.Objects
             CookingSpot.HasCookedToday = false;
             if (location.farmers.Any(c => c == Camper) || location.characters.Any(c => c == Guest))
             {
-                Game1.stats.Increment(CampingManager.TOTAL_NIGHTS_GONE_CAMPING_STAT_ID, 1);
+                Game1.stats.Increment(Campgrounds.TOTAL_NIGHTS_GONE_CAMPING_STAT_ID, 1);
                 CookingSpot.CanCook = false;
 
                 // Give the invited villager friendship for the night spent camping
                 if (Guest is NPC guestNPC && guestNPC is not null)
                 {
+                    Game1.stats.Increment(Campgrounds.TOTAL_GUESTS_INVITED_STAT_ID, 1);
+
                     int friendshipPoints = GetCampgroundFriendshipPoints(Campgrounds.villagerManager.GetVillagerData(guestNPC));
                     if (friendshipPoints > 0)
                     {

@@ -47,7 +47,7 @@ namespace Campgrounds.Framework.Utilities
                 return;
             }
 
-            Game1.stats.Set(CampingManager.TOTAL_NIGHTS_GONE_CAMPING_STAT_ID, totalNights);
+            Game1.stats.Set(Campgrounds.TOTAL_NIGHTS_GONE_CAMPING_STAT_ID, totalNights);
         }
 
         public static CampgroundMapDetails GetCampgroundMapDetails(GameLocation location)

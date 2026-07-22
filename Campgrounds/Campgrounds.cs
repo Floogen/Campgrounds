@@ -39,6 +39,12 @@ namespace Campgrounds
         internal static VillagerManager villagerManager;
         internal static VisitorManager visitorManager;
 
+        // Stats
+        public static string TOTAL_NIGHTS_GONE_CAMPING_STAT_ID = "PeacefulEnd.Campgrounds_TotalNightsGoneCamping";
+        public static string TOTAL_GUESTS_INVITED_STAT_ID = "PeacefulEnd.Campgrounds_TotalGuestInvited";
+        public static string TOTAL_CAMP_MEALS_MADE_STAT_ID = "PeacefulEnd.Campgrounds_TotalCampMealsMade";
+
+        // Paths
         public const string CAMPGROUND_DATA_PATH = "Data/PeacefulEnd_Campgrounds/Campgrounds";
         public const string CAMPING_TENTS_DATA_PATH = "Data/PeacefulEnd_Campgrounds/CampingTents";
         public const string CAMPFIRE_FOODS_DATA_PATH = "Data/PeacefulEnd_Campgrounds/CampfireFoods";
