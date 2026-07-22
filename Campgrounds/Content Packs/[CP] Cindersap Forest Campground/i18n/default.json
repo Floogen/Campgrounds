@@ -22,6 +22,8 @@
 
   // Map
   "map.cindersapForestCampground.name": "Cindersap Forest Campground",
+  "map.cindersapForestCampground.description": "A peaceful camping spot in Cindersap Forest.",
+  "map.cindersapForestCampground.hint": "Unlocked after talking with the Cindersap Park Ranger.",
 
   // Villager camping dialogue - Abigail
   "villagers.abigail.inviteAccepted1": "Camping? Count me in!$h",

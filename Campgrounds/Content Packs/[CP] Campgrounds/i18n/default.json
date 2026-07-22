@@ -14,7 +14,11 @@
 
   // Campgrounds
   "map.minesCampground.name": "Mines Campsite",
+  "map.minesCampground.description": "For the type of camper that prefers to stare at stalactites instead of stars.",
+  "map.minesCampground.hint": "Purchase the map from Clem after reaching the 20th floor in the mines.",
   "map.beachCampground.name": "Beach Campsite",
+  "map.beachCampground.description": "Enjoy an oceanside view from right outside your tent.",
+  "map.beachCampground.hint": "Purchase the map from Clem after camping at least ten times.",
 
   // Camping dialogues (generic villagers)
   "villagers.generic.inviteAccepted1": "Camping? That sounds like a great time, count me in!$h",

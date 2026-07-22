@@ -444,12 +444,12 @@
             "Width": 5,
             "Height": 5
           },
-          "Description": "A peaceful camping spot in Cindersap Forest.",
+          "Description": "{{i18n:map.cindersapForestCampground.description}}",
           "RequireVehicle": false,
           "TravelTimeInHours": 0,
 
           "UnlockCondition": "WORLD_STATE_ID MAP_UNLOCKED_CAMPGROUND:PeacefulEnd.Campgrounds.CindersapForestCampground",
-          "UnlockHint": "Unlocked after talking with the Cindersap Park Ranger."
+          "UnlockHint": "{{i18n:map.cindersapForestCampground.hint}}"
         }
       }
     },

@@ -166,12 +166,12 @@
             "Width": 5,
             "Height": 5
           },
-          "Description": "For the type of camper that prefers to stare at stalactites instead of stars.",
+          "Description": "{{i18n:map.minesCampground.description}}",
           "RequireVehicle": false,
           "TravelTimeInHours": 1,
 
           "UnlockCondition": "WORLD_STATE_ID MAP_UNLOCKED_CAMPGROUND:{{ModId}}_MinesCampground",
-          "UnlockHint": "Purchase the map from Clem after reaching the 20th floor in the mines."
+          "UnlockHint": "{{i18n:map.minesCampground.hint}}"
         }
       }
     },
@@ -387,12 +387,12 @@
             "Width": 7,
             "Height": 7
           },
-          "Description": "Enjoy an oceanside view from right outside your tent.",
+          "Description": "{{i18n:map.beachCampground.description}}",
           "RequireVehicle": false,
           "TravelTimeInHours": 1,
 
           "UnlockCondition": "WORLD_STATE_ID MAP_UNLOCKED_CAMPGROUND:{{ModId}}_BeachCampground",
-          "UnlockHint": "Purchase the map from Clem after camping at least ten times."
+          "UnlockHint": "{{i18n:map.beachCampground.hint}}"
         }
       }
     },
