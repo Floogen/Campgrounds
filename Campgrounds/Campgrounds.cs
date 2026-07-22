@@ -43,8 +43,11 @@ namespace Campgrounds
 
         // Stats
         public static string TOTAL_NIGHTS_GONE_CAMPING_STAT_ID = "PeacefulEnd.Campgrounds_TotalNightsGoneCamping";
-        public static string TOTAL_GUESTS_INVITED_STAT_ID = "PeacefulEnd.Campgrounds_TotalGuestInvited";
+        public static string TOTAL_GUESTS_INVITED_STAT_ID = "PeacefulEnd.Campgrounds_TotalGuestsInvited";
         public static string TOTAL_CAMP_MEALS_MADE_STAT_ID = "PeacefulEnd.Campgrounds_TotalCampMealsMade";
+        public static string TOTAL_CAMPSITES_UNLOCKED_STAT_ID = "PeacefulEnd.Campgrounds_TotalCampsitesUnlocked";
+        public static string TOTAL_TENTS_UNLOCKED_STAT_ID = "PeacefulEnd.Campgrounds_TotalTentsUnlocked";
+        public static string TOTAL_RECIPES_UNLOCKED_STAT_ID = "PeacefulEnd.Campgrounds_TotalRecipesUnlocked";
 
         // Paths
         public const string CAMPGROUND_DATA_PATH = "Data/PeacefulEnd_Campgrounds/Campgrounds";
@@ -101,6 +104,7 @@ namespace Campgrounds
             // Hook into the required events
             helper.Events.GameLoop.GameLaunched += OnGameLaunched;
             helper.Events.GameLoop.UpdateTicked += OnUpdateTicked;
+            helper.Events.GameLoop.OneSecondUpdateTicked += OneSecondUpdateTicked;
             helper.Events.GameLoop.SaveLoaded += OnSaveLoaded;
             helper.Events.Input.ButtonPressed += OnButtonPressed;
             helper.Events.Display.Rendered += OnRendered;
@@ -212,6 +216,14 @@ namespace Campgrounds
         private void OnUpdateTicked(object sender, UpdateTickedEventArgs e)
         {
             FadeScreenHelper.Update();
+        }
+
+        private void OneSecondUpdateTicked(object sender, OneSecondUpdateTickedEventArgs e)
+        {
+            // Update various stats that don't trigger counts on their own
+            Game1.stats.Set(TOTAL_CAMPSITES_UNLOCKED_STAT_ID, campManager.CampgroundData.Count(c => c.IsUnlocked()));
+            Game1.stats.Set(TOTAL_TENTS_UNLOCKED_STAT_ID, tentManager.CampingTentData.Count(c => c.IsUnlocked()));
+            Game1.stats.Set(TOTAL_RECIPES_UNLOCKED_STAT_ID, campManager.CampfireFoodData.Count(c => c.IsUnlocked()));
         }
 
         private void OnSaveLoaded(object sender, SaveLoadedEventArgs e)

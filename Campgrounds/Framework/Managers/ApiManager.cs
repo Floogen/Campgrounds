@@ -71,6 +71,51 @@ namespace Campgrounds.Framework.Managers
 
                 return null;
             });
+
+            api.RegisterToken(Campgrounds.manifest, "TotalCampsitesUnlocked", () =>
+            {
+                if (Context.IsWorldReady)
+                {
+                    return new[] { Game1.stats.Get(Campgrounds.TOTAL_CAMPSITES_UNLOCKED_STAT_ID).ToString() };
+                }
+
+                if (SaveGame.loaded?.player is not null)
+                {
+                    return new[] { SaveGame.loaded.player.stats.Get(Campgrounds.TOTAL_CAMPSITES_UNLOCKED_STAT_ID).ToString() };
+                }
+
+                return null;
+            });
+
+            api.RegisterToken(Campgrounds.manifest, "TotalTentsUnlocked", () =>
+            {
+                if (Context.IsWorldReady)
+                {
+                    return new[] { Game1.stats.Get(Campgrounds.TOTAL_TENTS_UNLOCKED_STAT_ID).ToString() };
+                }
+
+                if (SaveGame.loaded?.player is not null)
+                {
+                    return new[] { SaveGame.loaded.player.stats.Get(Campgrounds.TOTAL_TENTS_UNLOCKED_STAT_ID).ToString() };
+                }
+
+                return null;
+            });
+
+            api.RegisterToken(Campgrounds.manifest, "TotalRecipesUnlocked", () =>
+            {
+                if (Context.IsWorldReady)
+                {
+                    return new[] { Game1.stats.Get(Campgrounds.TOTAL_RECIPES_UNLOCKED_STAT_ID).ToString() };
+                }
+
+                if (SaveGame.loaded?.player is not null)
+                {
+                    return new[] { SaveGame.loaded.player.stats.Get(Campgrounds.TOTAL_RECIPES_UNLOCKED_STAT_ID).ToString() };
+                }
+
+                return null;
+            });
         }
     }
 }

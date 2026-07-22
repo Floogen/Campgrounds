@@ -28,11 +28,95 @@
               "SpacingAfter": 4
             },
             {
-              "Type": "Paragraph",
+              "Type": "Heading",
               "FontType": "Small",
-              "Text": "",
-              "Alignment": "Left",
-              "MarginLeft": 12,
+              "Text": "Total Nights Spent Camping",
+              "Alignment": "Center",
+              "SpacingAfter": 4
+            },
+            {
+              "Type": "Heading",
+              "FontType": "Small",
+              "Text": "{{PeacefulEnd.Campgrounds.Core/TotalNightsGoneCamping}}",
+              "Alignment": "Center",
+              "SpacingAfter": 32
+            },
+            {
+              "Type": "Heading",
+              "FontType": "Small",
+              "Text": "Total Guests Invited",
+              "Alignment": "Center",
+              "SpacingAfter": 4
+            },
+            {
+              "Type": "Heading",
+              "FontType": "Small",
+              "Text": "{{PeacefulEnd.Campgrounds.Core/TotalGuestsInvited}}",
+              "Alignment": "Center",
+              "SpacingAfter": 32
+            },
+            {
+              "Type": "Heading",
+              "FontType": "Small",
+              "Text": "Total Meals Made",
+              "Alignment": "Center",
+              "SpacingAfter": 4
+            },
+            {
+              "Type": "Heading",
+              "FontType": "Small",
+              "Text": "{{PeacefulEnd.Campgrounds.Core/TotalCampMealsMade}}",
+              "Alignment": "Center",
+              "SpacingAfter": 32
+            },
+          ],
+          "Background": []
+        },
+        "camping_stats-1": {
+          "Id": "camping_stats-1",
+          "ChapterId": "camping_stats",
+          "Elements": [
+            {
+              "Type": "Heading",
+              "FontType": "Small",
+              "Text": "Total Campsites Unlocked",
+              "Alignment": "Center",
+              "SpacingAfter": 4
+            },
+            {
+              "Type": "Heading",
+              "FontType": "Small",
+              "Text": "{{PeacefulEnd.Campgrounds.Core/TotalCampsitesUnlocked}}",
+              "Alignment": "Center",
+              "SpacingAfter": 32
+            },
+            {
+              "Type": "Heading",
+              "FontType": "Small",
+              "Text": "Total Tents Unlocked",
+              "Alignment": "Center",
+              "SpacingAfter": 4
+            },
+            {
+              "Type": "Heading",
+              "FontType": "Small",
+              "Text": "{{PeacefulEnd.Campgrounds.Core/TotalTentsUnlocked}}",
+              "Alignment": "Center",
+              "SpacingAfter": 32
+            },
+            {
+              "Type": "Heading",
+              "FontType": "Small",
+              "Text": "Total Recipes Unlocked",
+              "Alignment": "Center",
+              "SpacingAfter": 4
+            },
+            {
+              "Type": "Heading",
+              "FontType": "Small",
+              "Text": "{{PeacefulEnd.Campgrounds.Core/TotalRecipesUnlocked}}",
+              "Alignment": "Center",
+              "SpacingAfter": 32
             },
           ],
           "Background": []
