@@ -1,6 +1,6 @@
 # Framework Reference
 
-Everything the framework registers with SMAPI and the game: console commands for testing, item queries for shops, unlock keys for progression, tile actions for mappers and the maps it adds.
+Everything the framework registers with SMAPI and the game: console commands for testing, item queries for shops, unlock keys for progression, Content Patcher tokens for pack authors, tile actions for mappers and the maps it adds.
 
 All strings on this page are exact unless marked otherwise.
 
@@ -186,16 +186,56 @@ PLAYER_MOD_DATA Current PeacefulEnd.Campgrounds.Currency.CampRations.Balance 25
 
 ## Stats
 
+The framework records several stats in the game's vanilla stats system. Each is a plain integer you can read from a Game State Query or display through a [Content Patcher token](#content-patcher-tokens). The first three are cumulative tallies. The last three are live counts of how much content is currently unlocked.
+
 | Stat ID | Meaning |
 | --- | --- |
 | `PeacefulEnd.Campgrounds_TotalNightsGoneCamping` | Total nights the player has spent camping. |
+| `PeacefulEnd.Campgrounds_TotalGuestsInvited` | Total guests brought on overnight trips. Counted per guest when a trip is completed, so re-inviting the same guest on a later trip adds to it again. Inviting a guest without camping overnight doesn't count. |
+| `PeacefulEnd.Campgrounds_TotalCampMealsMade` | Total meals cooked at the campfire across all trips. Cooking happens once per trip but a single session can produce several meals at once. Each meal made adds to the total. |
+| `PeacefulEnd.Campgrounds_TotalCampsitesUnlocked` | How many campgrounds are currently unlocked. |
+| `PeacefulEnd.Campgrounds_TotalTentsUnlocked` | How many tent schematics are currently unlocked. |
+| `PeacefulEnd.Campgrounds_TotalRecipesUnlocked` | How many campfire recipes are currently unlocked. |
 
-Because it's a vanilla stat, you can gate content on it from a Game State Query with
+Because these are vanilla stats, you can gate content on them from a Game State Query with
 [`PLAYER_STAT`](https://stardewvalleywiki.com/Modding:Game_state_queries), for example unlocking a campground only after the player has camped a few times:
 
 ```json
 { "UnlockCondition": "PLAYER_STAT Current PeacefulEnd.Campgrounds_TotalNightsGoneCamping 5" }
 ```
+
+---
+
+## Content Patcher tokens
+
+The framework registers six [custom Content Patcher tokens](https://github.com/Pathoschild/StardewMods/blob/stable/ContentPatcher/docs/extensibility.md), one for each [stat](#stats) above. Use them to drop the current value straight into any text field.
+
+| Token | Value |
+| --- | --- |
+| `PeacefulEnd.Campgrounds/TotalNightsGoneCamping` | Nights the player has spent camping. |
+| `PeacefulEnd.Campgrounds/TotalGuestsInvited` | Guests brought on completed overnight trips (repeat invites count). |
+| `PeacefulEnd.Campgrounds/TotalCampMealsMade` | Meals cooked at the campfire across all trips. |
+| `PeacefulEnd.Campgrounds/TotalCampsitesUnlocked` | Campgrounds currently unlocked. |
+| `PeacefulEnd.Campgrounds/TotalTentsUnlocked` | Tent schematics currently unlocked. |
+| `PeacefulEnd.Campgrounds/TotalRecipesUnlocked` | Campfire recipes currently unlocked. |
+
+Each token is prefixed with the framework's mod ID (`PeacefulEnd.Campgrounds/`) and resolves to the stat's current value as a number. Any pack that already lists Campgrounds as a dependency can use them with no extra setup:
+
+```json
+{
+  "Action": "EditData",
+  "Target": "Characters/Dialogue/Robin",
+  "Entries": {
+    "Mon": "You've camped {{PeacefulEnd.Campgrounds/TotalNightsGoneCamping}} nights now? Sounds like you've earned a rest."
+  }
+}
+```
+
+!!! tip "Token to display, `PLAYER_STAT` to gate"
+    These tokens are for *showing* a number in text. To gate content on a threshold (such as only after ten nights), use the [`PLAYER_STAT`](#stats) Game State Query instead.
+
+!!! note "Availability and freshness"
+    The tokens return nothing on the title screen (before a save loads), so any patch relying on them is inactive there. Their value refreshes on Content Patcher's context updates, not continuously. For nights, guests and meals that makes no difference, since those only change on a day change. The three unlock counts are the exception: the framework recomputes them about once a second, so their real value can change mid-day the moment the player unlocks something, but a token displaying one won't catch up until the next context update. If you need an unlock count the instant it changes, read the stat via C#.
 
 ---
 
