@@ -9,7 +9,7 @@
           "Id": "Abigail",
           //"TentId": "PeacefulEnd.Campgrounds.Tents.AbigailTent",
 
-          "LikedCampgrounds": [],
+          "LikedCampgrounds": [ "PeacefulEnd.Campgrounds.ContentPatcher_MinesCampground" ],
           "DislikedCampgrounds": [],
 
           "InviteDialogueAccepted": [
@@ -291,6 +291,8 @@
         "Harvey": {
           "Id": "Harvey",
           //"TentId": "PeacefulEnd.Campgrounds.Tents.HarveyTent",
+
+          "DislikedCampgrounds": [ "PeacefulEnd.Campgrounds.ContentPatcher_MinesCampground" ],
           "InviteDialogueAccepted": [
             "{{i18n:villagers.harvey.inviteAccepted1}}"
           ],
