@@ -29,8 +29,10 @@ namespace Campgrounds
         // Shared static helpers
         internal static IMonitor monitor;
         internal static IModHelper modHelper;
+        internal static IManifest manifest;
         internal static Multiplayer multiplayer;
 
+        internal static ApiManager apiManager;
         internal static CampingManager campManager;
         internal static CurrencyManager currencyManager;
         internal static ItemManager itemManager;
@@ -62,9 +64,11 @@ namespace Campgrounds
             // Set up the monitor, helper and multiplayer
             monitor = Monitor;
             modHelper = helper;
+            manifest = ModManifest;
             multiplayer = helper.Reflection.GetField<Multiplayer>(typeof(Game1), "multiplayer").GetValue();
 
             // Create managers
+            apiManager = new ApiManager(monitor, modHelper);
             campManager = new CampingManager(monitor, helper);
             currencyManager = new CurrencyManager(monitor, helper);
             itemManager = new ItemManager(monitor, helper);
@@ -75,7 +79,7 @@ namespace Campgrounds
 
             try
             {
-                var harmony = new Harmony(this.ModManifest.UniqueID);
+                var harmony = new Harmony(ModManifest.UniqueID);
 
                 // Apply Character patches
                 new FarmerPatch(monitor, modHelper).Apply(harmony);
