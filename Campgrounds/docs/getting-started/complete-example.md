@@ -204,27 +204,32 @@ free from the start (`"UnlockCondition": ""`) while one is bought as a recipe:
 
 ### Villagers
 
-The pack writes an entry for **every vanilla marriage candidate**. Each with the full
-[dialogue setup](../content-packs/villagers.md#which-line-gets-used) and a friendship requirement:
+The pack writes an entry for Abigail and Harvey, specifically to set their liked / disliked campgrounds:
 
 ```json
 {
-  "Id": "Abigail",
-  "LikedCampgrounds": [],
-  "DislikedCampgrounds": [],
-  "InviteDialogueAccepted": [ "{{i18n:villagers.abigail.inviteAccepted1}}" ],
-  "LikedDialogueDayOf": [ "{{i18n:villagers.abigail.likedDayOf1}}", "{{i18n:villagers.abigail.likedDayOf2}}" ],
-  "...": "...",
-  "RequirementsCondition": "PLAYER_FRIENDSHIP_POINTS Current Abigail 500"
+  "Changes": [
+    {
+      "Action": "EditData",
+      "Target": "Data/PeacefulEnd.Campgrounds/Villagers",
+      "TargetField": [ "Abigail", "LikedCampgrounds" ],
+      "Entries": {
+        "PeacefulEnd.Campgrounds.ContentPatcher_MinesCampground": "PeacefulEnd.Campgrounds.ContentPatcher_MinesCampground"
+      }
+    },
+    {
+      "Action": "EditData",
+      "Target": "Data/PeacefulEnd.Campgrounds/Villagers",
+      "TargetField": [ "Harvey", "DislikedCampgrounds" ],
+      "Entries": {
+        "PeacefulEnd.Campgrounds.ContentPatcher_MinesCampground": "PeacefulEnd.Campgrounds.ContentPatcher_MinesCampground"
+      }
+    }
+  ]
 }
 ```
 
-Things to note:
-
-- **`RequirementsCondition` gates who can be invited.** Every villager here needs 500 friendship
-  first (two hearts).
-- **Dialogue lists hold multiple lines** because [each line is a sequential dialogue box](../content-packs/villagers.md#trip-dialogue),
-  not a random pick.
+Note: `TargetField` should be used to append the lists (`LikedCampgrounds` and `DislikedCampgrounds`).
 
 ### Visitors
 
