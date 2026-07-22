@@ -112,6 +112,18 @@ namespace Campgrounds.Framework.Utilities
             }
         }
 
+        public static void OnTentAfterSleepResponse(Farmer who, string answer)
+        {
+            switch (answer)
+            {
+                case "Yes":
+                    MapActionHelper.HandleCampingExit(who.currentLocation, null, who, who.Tile, skipLeaveEarlyCheck: true);
+                    break;
+                case "No":
+                    break;
+            }
+        }
+
         public static void OnRepairVisitorSiteResponse(Farmer who, string answer, int siteId)
         {
             if  (answer != "Yes")

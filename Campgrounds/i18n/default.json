@@ -20,7 +20,7 @@
   "events.walkieTalkie.site3": "\"Site 3\"",
 
   // General dialogues
-  "dialogues.general.tentClickAfterSleep": "Time to head back.",
+  "dialogues.general.tentClickAfterSleep": "Ready to pack up and head back?",
   "dialogues.general.cookingSpotAfterCooking": "You already cooked enough for today.",
   "dialogues.general.cookingSpotAfterSleep": "Yesterday's campfire, now just a pile of ashes.",
 
