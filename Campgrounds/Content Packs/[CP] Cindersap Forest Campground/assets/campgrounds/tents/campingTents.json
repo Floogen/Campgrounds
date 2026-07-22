@@ -368,7 +368,7 @@
           "WestSprite": {
             "EntranceTile": {
               "X": 0,
-              "Y": 48
+              "Y": 32
             },
             "TileOffset": {
               "X": 0,
@@ -401,8 +401,8 @@
           "EastSprite": {
             "FlipHorizontally": true,
             "EntranceTile": {
-              "X": 0,
-              "Y": 48
+              "X": 64,
+              "Y": 32
             },
             "TileOffset": {
               "X": 0,
