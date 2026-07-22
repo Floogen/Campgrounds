@@ -11,6 +11,11 @@
     {
       "UniqueID": "Pathoschild.ContentPatcher",
       "IsRequired": true
+    },
+    {
+      "UniqueID": "PeacefulEnd.Parchment.Core",
+      "IsRequired": true,
+      "MinimumVersion": "1.0.0"
     }
   ]
 }

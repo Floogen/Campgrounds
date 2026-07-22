@@ -14,6 +14,8 @@ namespace Campgrounds.Framework.Managers
 {
     public class ApiManager : BaseManager
     {
+        public IParchmentApi parchmentApi;
+
         public ApiManager(IMonitor monitor, IModHelper helper) : base(monitor, helper)
         {
             helper.Events.GameLoop.GameLaunched += OnGameLaunched;
@@ -21,7 +23,35 @@ namespace Campgrounds.Framework.Managers
 
         private void OnGameLaunched(object sender, GameLaunchedEventArgs e)
         {
-            var api = helper.ModRegistry.GetApi<IContentPatcherAPI>("Pathoschild.ContentPatcher");
+            parchmentApi = helper.ModRegistry.GetApi<IParchmentApi>("PeacefulEnd.Parchment.Core");
+
+            HandleGMCMApi(helper.ModRegistry.GetApi<IGenericModConfigMenuApi>("spacechase0.GenericModConfigMenu"));
+            HandleContentPatcherApi(helper.ModRegistry.GetApi<IContentPatcherAPI>("Pathoschild.ContentPatcher"));
+        }
+
+        private void HandleGMCMApi(IGenericModConfigMenuApi api)
+        {
+            if (api is null)
+            {
+                return;
+            }
+
+            api.Register(
+                mod: Campgrounds.manifest,
+                reset: () => Campgrounds.config = new Config(),
+                save: () => helper.WriteConfig(Campgrounds.config)
+            );
+
+            api.AddKeybindList(
+                mod: Campgrounds.manifest,
+                name: () => "Open Camping Guide Shortcut",
+                getValue: () => Campgrounds.config.GuideShortcut,
+                setValue: value => Campgrounds.config.GuideShortcut = value
+            );
+        }
+
+        private void HandleContentPatcherApi(IContentPatcherAPI api)
+        {
             if (api is null)
             {
                 return;

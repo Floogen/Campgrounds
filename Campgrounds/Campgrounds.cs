@@ -1,4 +1,5 @@
-﻿using Campgrounds.Framework.Managers;
+﻿using Campgrounds.Framework;
+using Campgrounds.Framework.Managers;
 using Campgrounds.Framework.Models.Data;
 using Campgrounds.Framework.Models.Data.Visitors;
 using Campgrounds.Framework.Objects;
@@ -31,6 +32,7 @@ namespace Campgrounds
         internal static IModHelper modHelper;
         internal static IManifest manifest;
         internal static Multiplayer multiplayer;
+        internal static Config config;
 
         internal static ApiManager apiManager;
         internal static CampingManager campManager;
@@ -69,6 +71,7 @@ namespace Campgrounds
             modHelper = helper;
             manifest = ModManifest;
             multiplayer = helper.Reflection.GetField<Multiplayer>(typeof(Game1), "multiplayer").GetValue();
+            config = helper.ReadConfig<Config>();
 
             // Create managers
             apiManager = new ApiManager(monitor, modHelper);
@@ -259,6 +262,11 @@ namespace Campgrounds
                 // Ask if they want to start the cutscene (to show who is at park)
                 string text = Helper.Translation.Get(Game1.timeOfDay >= 1200 ? "questions.tools.walkieTalkie.afternoon" : "questions.tools.walkieTalkie.morning", new { playerName = Game1.player.displayName });
                 Game1.currentLocation.createQuestionDialogue(text, Game1.currentLocation.createYesNoResponses(), CampingHelper.OnWalkieTalkieCheckParkResponse, null);
+            }
+
+            if (config.GuideShortcut is not null && config.GuideShortcut.IsDown() && apiManager.parchmentApi is not null && Context.IsPlayerFree && Game1.activeClickableMenu is null)
+            {
+                apiManager.parchmentApi.TryOpenBook("PeacefulEnd.Campgrounds.Parchment_CampingGuide");
             }
         }
 
