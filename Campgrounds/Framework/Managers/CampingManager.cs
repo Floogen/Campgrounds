@@ -163,6 +163,12 @@ namespace Campgrounds.Framework.Managers
                 who.modDataForSerialization[CampingManager.LAST_CAMPSITE_SLEPT_MOD_DATA_ID] = string.Empty;
             }
 
+            // Put the invited villager on cooldown now that the trip is happening
+            if (guest is NPC)
+            {
+                Campgrounds.villagerManager.RecordInvite(who, guest);
+            }
+
             Campgrounds.messageManager.Messages.Add(new TravelMessage(campgroundData));
             if (guest is Farmer guestFarmer && guestFarmer is not null)
             {

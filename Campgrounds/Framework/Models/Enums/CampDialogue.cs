@@ -10,6 +10,7 @@ namespace Campgrounds.Framework.Models.Enums
     {
         InviteAccepted,
         InviteRejected,
+        InviteCooldown,
         LikedDayOf,
         NeutralDayOf,
         DislikedDayOf,

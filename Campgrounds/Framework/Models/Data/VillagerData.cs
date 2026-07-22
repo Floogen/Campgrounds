@@ -19,6 +19,7 @@ namespace Campgrounds.Framework.Models.Data
 
         public List<string> InviteDialogueAccepted { get; set; } = new List<string>();
         public List<string> InviteDialogueRejected { get; set; } = new List<string>();
+        public List<string> InviteDialogueCooldown { get; set; } = new List<string>();
 
         public List<string> LikedDialogueDayOf { get; set; } = new List<string>();
         public List<string> NeutralDialogueDayOf { get; set; } = new List<string>();

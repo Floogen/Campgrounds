@@ -27,6 +27,7 @@
   "dialogues.general.repeatInvited": "You already invited {{npcName}} to go camping.",
   "dialogues.general.alreadyInvitedButInviteOther": "You already invited {{currentNpcName}} to go camping. Invite {{newNpcName}} instead?",
   "dialogues.general.defaultReject": "Sorry, I don't really feel like camping right now.",
+  "dialogues.general.defaultInviteOnCooldown": "Thanks, but I just went camping recently. Maybe later?",
 
   "dialogues.shop.greeting": "Heya neighbor! What can I getcha?",
   "dialogues.shop.browseSupplies": "Browse Supplies",

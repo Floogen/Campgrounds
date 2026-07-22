@@ -19,6 +19,8 @@ namespace Campgrounds.Framework.Managers
     {
         public const string GENERIC_VILLAGER_ID = "PeacefulEnd.Campgrounds.Villagers.Generic";
         public const string INVITED_CAMPSITE_INVITE_MOD_DATA_ID = "Campgrounds.Campsite.Invite.Id";
+        public const string NEXT_INVITE_COOLDOWN_MOD_DATA_PREFIX = "Campgrounds.NextInvite.Cooldown";
+        public const int REQUIRED_DAYS_BETWEEN_INVITE = 7;
 
         public List<VillagerData> VillagerData { get { return _villagerData; } set { FilterVillageData(value); } }
         private List<VillagerData> _villagerData = new List<VillagerData>();
@@ -75,6 +77,8 @@ namespace Campgrounds.Framework.Managers
                     return villagerData.InviteDialogueAccepted;
                 case CampDialogue.InviteRejected:
                     return villagerData.InviteDialogueRejected;
+                case CampDialogue.InviteCooldown:
+                    return villagerData.InviteDialogueCooldown;
                 case CampDialogue.LikedDayOf:
                     return villagerData.LikedDialogueDayOf;
                 case CampDialogue.NeutralDayOf:
@@ -158,6 +162,23 @@ namespace Campgrounds.Framework.Managers
             {
                 who.modData[INVITED_CAMPSITE_INVITE_MOD_DATA_ID] = character.Name;
             }
+        }
+
+        public bool CanBeInvited(Farmer who, Character character)
+        {
+            string cooldownKey = $"{NEXT_INVITE_COOLDOWN_MOD_DATA_PREFIX}.{character.Name}";
+            if (who.modData.TryGetValue(cooldownKey, out string availableDay) is false)
+            {
+                return true;
+            }
+
+            return int.TryParse(availableDay, out int totalDays) is false || Game1.Date.TotalDays >= totalDays;
+        }
+
+        public void RecordInvite(Farmer who, Character character)
+        {
+            string cooldownKey = $"{NEXT_INVITE_COOLDOWN_MOD_DATA_PREFIX}.{character.Name}";
+            who.modData[cooldownKey] = (Game1.Date.TotalDays + REQUIRED_DAYS_BETWEEN_INVITE).ToString();
         }
     }
 }
