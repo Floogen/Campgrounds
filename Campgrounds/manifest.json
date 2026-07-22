@@ -7,5 +7,10 @@
   "EntryDll": "Campgrounds.dll",
   "MinimumApiVersion": "4.1.10",
   "UpdateKeys": [ "Nexus:????" ],
-  "Dependencies": []
+  "Dependencies": [
+    {
+      "UniqueID": "Pathoschild.ContentPatcher",
+      "IsRequired": true
+    }
+  ]
 }
