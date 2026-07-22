@@ -66,6 +66,14 @@
               "AvailableStockLimit": "Player"
             },
             {
+              "Id": "PeacefulEnd.Campgrounds.Items.CampsiteMap.DefaultSite",
+              "ItemId": "(O)PeacefulEnd.Campgrounds.Items.CampsiteMap PeacefulEnd.Campgrounds.ContentPatcher_MinesCampground",
+              "Price": 2500,
+              "AvailableStock": 1,
+              "AvailableStockLimit": "Player",
+              "Condition": "!WORLD_STATE_ID MAP_UNLOCKED_CAMPGROUND:PeacefulEnd.Campgrounds.ContentPatcher_MinesCampground, MINE_LOWEST_LEVEL_REACHED 20"
+            },
+            {
               "Id": "PeacefulEnd.Campgrounds.Shops.CampShop.Wood.Discounted",
               "Condition": "YEAR 1 1",
               "ItemId": "(O)388",

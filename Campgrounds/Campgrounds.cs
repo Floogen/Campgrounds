@@ -37,6 +37,7 @@ namespace Campgrounds
         internal static ApiManager apiManager;
         internal static CampingManager campManager;
         internal static CurrencyManager currencyManager;
+        internal static ImmersionManager immersionManager;
         internal static ItemManager itemManager;
         internal static MessageManager messageManager;
         internal static TentManager tentManager;
@@ -77,6 +78,7 @@ namespace Campgrounds
             apiManager = new ApiManager(monitor, modHelper);
             campManager = new CampingManager(monitor, helper);
             currencyManager = new CurrencyManager(monitor, helper);
+            immersionManager = new ImmersionManager(monitor, helper);
             itemManager = new ItemManager(monitor, helper);
             messageManager = new MessageManager(monitor, helper);
             tentManager = new TentManager(monitor, helper);

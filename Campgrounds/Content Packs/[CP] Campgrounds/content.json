@@ -2,7 +2,7 @@
   "Format": "2.9.0",
   "Changes": [
     {
-      // Add maps
+      // Add park maps
       "Action": "EditData",
       "Target": "Data/Locations",
       "Entries": {
@@ -142,6 +142,222 @@
         "HasSeenEvent": "PeacefulEnd.Campgrounds.Events.CaretakerIntro"
       },
       "Update": "OnDayStart, OnLocationChange"
+    },
+
+    // Add the Mines campgrounds
+    {
+      "Action": "EditData",
+      "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds",
+      "Entries": {
+        "{{ModId}}_MinesCampground": {
+          "Id": "{{ModId}}_MinesCampground",
+          "ForceForageRefreshOnVisit": true,
+          "PreviewTexturePath": "",
+          "PreviewTextureScale": 4.0,
+          "PlayerSpawnTile": {
+            "X": 12,
+            "Y": 11
+          },
+          "GuestSpawnTile": {
+            "X": 24,
+            "Y": 13
+          },
+          "MaxTentTileSize": {
+            "Width": 5,
+            "Height": 5
+          },
+          "Description": "For the type of camper that prefers to stare at stalactites instead of stars.",
+          "RequireVehicle": false,
+          "TravelTimeInHours": 1,
+
+          "UnlockCondition": "WORLD_STATE_ID MAP_UNLOCKED_CAMPGROUND:{{ModId}}_MinesCampground",
+          "UnlockHint": "Purchase the map from Clem after reaching the 20th floor in the mines."
+        }
+      }
+    },
+    {
+      "Action": "EditData",
+      "Target": "Data/Locations",
+      "Entries": {
+        "{{ModId}}_MinesCampground": {
+          "DisplayName": "{{i18n:map.minesCampground.name}}",
+          "CreateOnLoad": {
+            "MapPath": "Maps/{{ModId}}_MinesCampground"
+          },
+          "MusicDefault": "EarthMine",
+          "CustomFields": {
+            "CAVE_DRIP_EFFECT_FIELD_ID": "0.12"
+          },
+          "ExcludeFromNpcPathfinding": true,
+          "Fish": [
+            {
+              "Chance": 1.0,
+              "Season": null,
+              "FishAreaId": null,
+              "BobberPosition": null,
+              "PlayerPosition": null,
+              "MinFishingLevel": 0,
+              "MinDistanceFromShore": 0,
+              "MaxDistanceFromShore": -1,
+              "ApplyDailyLuck": false,
+              "CuriosityLureBuff": -1.0,
+              "CatchLimit": -1,
+              "IsBossFish": false,
+              "SetFlagOnCatch": null,
+              "RequireMagicBait": false,
+              "Precedence": 0,
+              "IgnoreFishDataRequirements": false,
+              "CanBeInherited": true,
+              "ChanceModifiers": null,
+              "ChanceModifierMode": "Stack",
+              "ChanceBoostPerLuckLevel": 0.0,
+              "UseFishCaughtSeededRandom": false,
+              "Condition": null,
+              "Id": "(O)153",
+              "ItemId": "(O)153",
+              "RandomItemId": null,
+              "MaxItems": null,
+              "MinStack": -1,
+              "MaxStack": -1,
+              "Quality": -1,
+              "ObjectInternalName": null,
+              "ObjectDisplayName": null,
+              "ToolUpgradeLevel": -1,
+              "IsRecipe": false,
+              "StackModifiers": null,
+              "StackModifierMode": "Stack",
+              "QualityModifiers": null,
+              "QualityModifierMode": "Stack",
+              "PerItemCondition": null
+            },
+            {
+              "Chance": 1.0,
+              "Season": null,
+              "FishAreaId": null,
+              "BobberPosition": null,
+              "PlayerPosition": null,
+              "MinFishingLevel": 0,
+              "MinDistanceFromShore": 0,
+              "MaxDistanceFromShore": -1,
+              "ApplyDailyLuck": false,
+              "CuriosityLureBuff": -1.0,
+              "CatchLimit": -1,
+              "IsBossFish": false,
+              "SetFlagOnCatch": null,
+              "RequireMagicBait": false,
+              "Precedence": 0,
+              "IgnoreFishDataRequirements": false,
+              "CanBeInherited": true,
+              "ChanceModifiers": null,
+              "ChanceModifierMode": "Stack",
+              "ChanceBoostPerLuckLevel": 0.0,
+              "UseFishCaughtSeededRandom": false,
+              "Condition": null,
+              "Id": "(O)156",
+              "ItemId": "(O)156",
+              "RandomItemId": null,
+              "MaxItems": null,
+              "MinStack": -1,
+              "MaxStack": -1,
+              "Quality": -1,
+              "ObjectInternalName": null,
+              "ObjectDisplayName": null,
+              "ToolUpgradeLevel": -1,
+              "IsRecipe": false,
+              "StackModifiers": null,
+              "StackModifierMode": "Stack",
+              "QualityModifiers": null,
+              "QualityModifierMode": "Stack",
+              "PerItemCondition": null
+            },
+            {
+              "Chance": 1.0,
+              "Season": null,
+              "FishAreaId": null,
+              "BobberPosition": null,
+              "PlayerPosition": null,
+              "MinFishingLevel": 0,
+              "MinDistanceFromShore": 0,
+              "MaxDistanceFromShore": -1,
+              "ApplyDailyLuck": false,
+              "CuriosityLureBuff": -1.0,
+              "CatchLimit": -1,
+              "IsBossFish": false,
+              "SetFlagOnCatch": null,
+              "RequireMagicBait": false,
+              "Precedence": 0,
+              "IgnoreFishDataRequirements": false,
+              "CanBeInherited": true,
+              "ChanceModifiers": null,
+              "ChanceModifierMode": "Stack",
+              "ChanceBoostPerLuckLevel": 0.0,
+              "UseFishCaughtSeededRandom": false,
+              "Condition": null,
+              "Id": "(O)157",
+              "ItemId": "(O)157",
+              "RandomItemId": null,
+              "MaxItems": null,
+              "MinStack": -1,
+              "MaxStack": -1,
+              "Quality": -1,
+              "ObjectInternalName": null,
+              "ObjectDisplayName": null,
+              "ToolUpgradeLevel": -1,
+              "IsRecipe": false,
+              "StackModifiers": null,
+              "StackModifierMode": "Stack",
+              "QualityModifiers": null,
+              "QualityModifierMode": "Stack",
+              "PerItemCondition": null
+            },
+            {
+              "Chance": 0.1,
+              "Season": null,
+              "FishAreaId": null,
+              "BobberPosition": null,
+              "PlayerPosition": null,
+              "MinFishingLevel": 0,
+              "MinDistanceFromShore": 0,
+              "MaxDistanceFromShore": -1,
+              "ApplyDailyLuck": false,
+              "CuriosityLureBuff": -1.0,
+              "CatchLimit": -1,
+              "IsBossFish": false,
+              "SetFlagOnCatch": null,
+              "RequireMagicBait": false,
+              "Precedence": 0,
+              "IgnoreFishDataRequirements": true,
+              "CanBeInherited": true,
+              "ChanceModifiers": null,
+              "ChanceModifierMode": "Stack",
+              "ChanceBoostPerLuckLevel": 0.05,
+              "UseFishCaughtSeededRandom": true,
+              "Condition": null,
+              "Id": "(O)CaveJelly",
+              "ItemId": "(O)CaveJelly",
+              "RandomItemId": null,
+              "MaxItems": null,
+              "MinStack": -1,
+              "MaxStack": -1,
+              "Quality": -1,
+              "ObjectInternalName": null,
+              "ObjectDisplayName": null,
+              "ToolUpgradeLevel": -1,
+              "IsRecipe": false,
+              "StackModifiers": null,
+              "StackModifierMode": "Stack",
+              "QualityModifiers": null,
+              "QualityModifierMode": "Stack",
+              "PerItemCondition": null
+            }
+          ]
+        }
+      }
+    },
+    {
+      "Action": "Load",
+      "Target": "Maps/{{ModId}}_MinesCampground",
+      "FromFile": "assets/maps/MinesCampground.tmx"
     },
 
     // Add various buffs

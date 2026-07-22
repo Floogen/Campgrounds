@@ -12,6 +12,9 @@
   "buffs.speed.name": "Speed Boost (+{{amount}})",
   "buffs.speed.description": "Your speed is increased from camping!",
 
+  // Campgrounds
+  "map.minesCampground.name": "Mines",
+
   // Camping dialogues (generic villagers)
   "villagers.generic.inviteAccepted1": "Camping? That sounds like a great time, count me in!$h",
   "villagers.generic.inviteRejected1": "I am not interested, sorry.$s",
