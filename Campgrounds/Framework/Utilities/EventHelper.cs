@@ -54,5 +54,55 @@ namespace Campgrounds.Framework.Utilities
             // Tell the event to advance to the next command
             @event.CurrentCommand++;
         }
+
+        public static void GiveCampfireRecipeCommand(Event @event, string[] args, EventContext context)
+        {
+            if (!ArgUtility.TryGet(args, 1, out string campfireFoodDataId, out string error))
+            {
+                context.LogErrorAndSkip(error);
+                return;
+            }
+
+            var campfireFoodData = Campgrounds.campManager.GetCampfireFoodDataById(campfireFoodDataId);
+            if (campfireFoodData is null)
+            {
+                context.LogErrorAndSkip($"No campfire recipe found with the ID \"{campfireFoodDataId}\".");
+                return;
+            }
+
+            // Give recipe
+            Campgrounds.itemManager.UnlockSpecialAndHoldAboveHead(Campgrounds.itemManager.GetCampfireRecipeUnlockKey(campfireFoodDataId), ItemManager.CAMPFIRE_RECIPE_ID, Campgrounds.modHelper.Translation.Get("messages.discovered.campfireRecipe", new
+            {
+                recipeName = campfireFoodData.DisplayName
+            }));
+
+            // Tell the event to advance to the next command
+            @event.CurrentCommand++;
+        }
+
+        public static void GiveTentSchematicCommand(Event @event, string[] args, EventContext context)
+        {
+            if (!ArgUtility.TryGet(args, 1, out string tentDataId, out string error))
+            {
+                context.LogErrorAndSkip(error);
+                return;
+            }
+
+            var campingTentData = Campgrounds.tentManager.GetTentDataById(tentDataId);
+            if (campingTentData is null)
+            {
+                context.LogErrorAndSkip($"No tent schematic found with the ID \"{tentDataId}\".");
+                return;
+            }
+
+            // Give schematic
+            Campgrounds.itemManager.UnlockSpecialAndHoldAboveHead(Campgrounds.itemManager.GetTentSchematicUnlockKey(tentDataId), ItemManager.TENT_SCHEMATIC_ID, Campgrounds.modHelper.Translation.Get("messages.discovered.tentSchematic", new
+            {
+                tentName = campingTentData.DisplayName
+            }));
+
+            // Tell the event to advance to the next command
+            @event.CurrentCommand++;
+        }
     }
 }

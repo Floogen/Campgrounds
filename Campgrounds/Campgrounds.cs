@@ -114,6 +114,8 @@ namespace Campgrounds
             // Register event command
             Event.RegisterCommand("PeacefulEnd.Campgrounds_GiveRations", EventHelper.GiveRationsCommand);
             Event.RegisterCommand("PeacefulEnd.Campgrounds_GiveCampsiteMap", EventHelper.GiveCampsiteMapCommand);
+            Event.RegisterCommand("PeacefulEnd.Campgrounds_GiveCampfireRecipe", EventHelper.GiveCampfireRecipeCommand);
+            Event.RegisterCommand("PeacefulEnd.Campgrounds_GiveTentSchematic", EventHelper.GiveTentSchematicCommand);
         }
 
         private void OnGameLaunched(object sender, GameLaunchedEventArgs e)
