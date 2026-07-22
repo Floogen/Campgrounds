@@ -152,7 +152,7 @@ The balance is clamped at a minimum of 0. Spending more than the player has fail
 The Camp Rations icon is drawn from a patchable asset:
 
 ```
-Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/CurrencyIcons
+Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/CurrencyIcons
 ```
 
 Camp Rations use the `16×16` sprite at `(0, 0)`. You can retexture it with an `EditImage` patch:
@@ -160,7 +160,7 @@ Camp Rations use the `16×16` sprite at `(0, 0)`. You can retexture it with an `
 ```json
 {
   "Action": "EditImage",
-  "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/CurrencyIcons",
+  "Target": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/CurrencyIcons",
   "FromFile": "assets/rations_icon.png",
   "ToArea": { "X": 0, "Y": 0, "Width": 16, "Height": 16 }
 }

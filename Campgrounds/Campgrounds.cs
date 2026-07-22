@@ -53,13 +53,13 @@ namespace Campgrounds
         public static string TOTAL_RECIPES_UNLOCKED_STAT_ID = "PeacefulEnd.Campgrounds_TotalRecipesUnlocked";
 
         // Paths
-        public const string CAMPGROUND_DATA_PATH = "Data/PeacefulEnd_Campgrounds/Campgrounds";
-        public const string CAMPING_TENTS_DATA_PATH = "Data/PeacefulEnd_Campgrounds/CampingTents";
-        public const string CAMPFIRE_FOODS_DATA_PATH = "Data/PeacefulEnd_Campgrounds/CampfireFoods";
-        public const string PARK_VISITORS_DATA_PATH = "Data/PeacefulEnd_Campgrounds/ParkVisitors";
-        public const string VILLAGER_DATA_PATH = "Data/PeacefulEnd_Campgrounds/Villagers";
+        public const string CAMPGROUND_DATA_PATH = "Data/PeacefulEnd.Campgrounds/Campgrounds";
+        public const string CAMPING_TENTS_DATA_PATH = "Data/PeacefulEnd.Campgrounds/CampingTents";
+        public const string CAMPFIRE_FOODS_DATA_PATH = "Data/PeacefulEnd.Campgrounds/CampfireFoods";
+        public const string PARK_VISITORS_DATA_PATH = "Data/PeacefulEnd.Campgrounds/ParkVisitors";
+        public const string VILLAGER_DATA_PATH = "Data/PeacefulEnd.Campgrounds/Villagers";
 
-        public const string CAMPGROUND_DEFAULT_PREVIEW_TEXTURE_PATH = "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/Default_Preview";
+        public const string CAMPGROUND_DEFAULT_PREVIEW_TEXTURE_PATH = "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/Default_Preview";
 
         public const string CINDERSAP_PARK_MAP_PATH = "Maps/PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark";
         public const string CINDERSAP_PARK_OVERGROWN_MAP_PATH = "Maps/PeacefulEnd.Campgrounds.ContentPatcher_CindersapParkOvergrown";

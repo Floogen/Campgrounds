@@ -66,7 +66,7 @@ Your pack is `ContentPackFor` **Content Patcher** and takes Campgrounds as a **d
   "Changes": [
     {
       "Action": "EditData",
-      "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds",
+      "Target": "Data/PeacefulEnd.Campgrounds/Campgrounds",
       "Entries": {
         "{{ModId}}_RiverClearing": {
           "Id": "{{ModId}}_RiverClearing",

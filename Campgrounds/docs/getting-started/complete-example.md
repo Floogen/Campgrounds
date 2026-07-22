@@ -103,7 +103,7 @@ The `CampgroundData` entry appears and points back at that same location Id:
 ```json
 {
   "Action": "EditData",
-  "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds",
+  "Target": "Data/PeacefulEnd.Campgrounds/Campgrounds",
   "Entries": {
     "{{ModId}}_CindersapForestCampground": {
       "Id": "{{ModId}}_CindersapForestCampground",

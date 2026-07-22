@@ -3,7 +3,7 @@
     // Add generic dialogue (used by marriage candidates if not manually overwritten)
     {
       "Action": "EditData",
-      "Target": "Data/PeacefulEnd_Campgrounds/Villagers",
+      "Target": "Data/PeacefulEnd.Campgrounds/Villagers",
       "Entries": {
         "PeacefulEnd.Campgrounds.Villagers.Generic": {
           "Id": "PeacefulEnd.Campgrounds.Villagers.Generic",

@@ -36,7 +36,7 @@ menu.
 | --- | --- | --- | --- |
 | `Id` <span class="req">required</span> | `string` | — | Unique identifier. **Must be the name of a game location you register** (see below). Doubles as the Content Patcher entry key and is what `campgrounds_startcamp` and `VillagerData.LikedCampgrounds` take. Matched **case-insensitively**. |
 | `Description` <span class="opt">optional</span> | `string` | — | Flavour text describing the site, shown in the camp list menu. |
-| `PreviewTexturePath` <span class="opt">optional</span> | `string` | *(default preview)* | **Asset name** of the preview image shown when browsing campgrounds. If omitted, the framework's `Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/Default_Preview` is used. |
+| `PreviewTexturePath` <span class="opt">optional</span> | `string` | *(default preview)* | **Asset name** of the preview image shown when browsing campgrounds. If omitted, the framework's `Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/Default_Preview` is used. |
 | `PreviewTextureScale` <span class="opt">optional</span> | `float` | `4.0` | Scale the preview is drawn at. `4.0` matches the game's usual pixel scale. Use `2.0` for a preview drawn at double resolution. |
 
 !!! danger "A campground's `Id` is a location name: you must add the location yourself"

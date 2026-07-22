@@ -3,7 +3,7 @@
     // Add villager marriage candidates
     {
       "Action": "EditData",
-      "Target": "Data/PeacefulEnd_Campgrounds/Villagers",
+      "Target": "Data/PeacefulEnd.Campgrounds/Villagers",
       "Entries": {
         "Abigail": {
           "Id": "Abigail",

@@ -10,7 +10,7 @@
           "DisplayName": "{{i18n:buffs.stamina.name |amount=25}}",
           "Description": "{{i18n:buffs.stamina.description}}",
           "Duration": 420000,
-          "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+          "IconTexture": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 1,
           "Effects": {
             "MaxStamina": 25
@@ -20,7 +20,7 @@
           "DisplayName": "{{i18n:buffs.stamina.name |amount=50}}",
           "Description": "{{i18n:buffs.stamina.description}}",
           "Duration": 420000,
-          "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+          "IconTexture": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 1,
           "Effects": {
             "MaxStamina": 50
@@ -30,7 +30,7 @@
           "DisplayName": "{{i18n:buffs.stamina.name |amount=75}}",
           "Description": "{{i18n:buffs.stamina.description}}",
           "Duration": 420000,
-          "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+          "IconTexture": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 1,
           "Effects": {
             "MaxStamina": 75
@@ -40,7 +40,7 @@
           "DisplayName": "{{i18n:buffs.stamina.name |amount=100}}",
           "Description": "{{i18n:buffs.stamina.description}}",
           "Duration": 420000,
-          "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+          "IconTexture": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 1,
           "Effects": {
             "MaxStamina": 100
@@ -54,28 +54,28 @@
           "DisplayName": "{{i18n:buffs.xp.name |multiplier=1.25}}",
           "Description": "{{i18n:buffs.xp.description}}",
           "Duration": 420000,
-          "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+          "IconTexture": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 3
         },
         "PeacefulEnd.Campgrounds.Buffs.MedXPBuff": {
           "DisplayName": "{{i18n:buffs.xp.name |multiplier=1.5}}",
           "Description": "{{i18n:buffs.xp.description}}",
           "Duration": 420000,
-          "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+          "IconTexture": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 3
         },
         "PeacefulEnd.Campgrounds.Buffs.HighXPBuff": {
           "DisplayName": "{{i18n:buffs.xp.name |multiplier=1.75}}",
           "Description": "{{i18n:buffs.xp.description}}",
           "Duration": 420000,
-          "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+          "IconTexture": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 3
         },
         "PeacefulEnd.Campgrounds.Buffs.MaxXPBuff": {
           "DisplayName": "{{i18n:buffs.xp.name |multiplier=2}}",
           "Description": "{{i18n:buffs.xp.description}}",
           "Duration": 420000,
-          "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+          "IconTexture": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 3
         },
 
@@ -84,7 +84,7 @@
           "DisplayName": "{{i18n:buffs.luck.name |amount=1}}",
           "Description": "{{i18n:buffs.luck.description}}",
           "Duration": 420000,
-          "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+          "IconTexture": "Data/ and/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 4,
           "Effects": {
             "LuckLevel": 1
@@ -94,7 +94,7 @@
           "DisplayName": "{{i18n:buffs.luck.name |amount=2}}",
           "Description": "{{i18n:buffs.luck.description}}",
           "Duration": 420000,
-          "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+          "IconTexture": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 4,
           "Effects": {
             "LuckLevel": 2
@@ -104,7 +104,7 @@
           "DisplayName": "{{i18n:buffs.luck.name |amount=3}}",
           "Description": "{{i18n:buffs.luck.description}}",
           "Duration": 420000,
-          "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+          "IconTexture": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 4,
           "Effects": {
             "LuckLevel": 3
@@ -114,7 +114,7 @@
           "DisplayName": "{{i18n:buffs.luck.name |amount=4}}",
           "Description": "{{i18n:buffs.luck.description}}",
           "Duration": 420000,
-          "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+          "IconTexture": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 4,
           "Effects": {
             "LuckLevel": 4
@@ -126,7 +126,7 @@
           "DisplayName": "{{i18n:buffs.speed.name |amount=1}}",
           "Description": "{{i18n:buffs.speed.description}}",
           "Duration": 420000,
-          "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+          "IconTexture": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 5,
           "Effects": {
             "Speed": 1
@@ -136,7 +136,7 @@
           "DisplayName": "{{i18n:buffs.speed.name |amount=2}}",
           "Description": "{{i18n:buffs.speed.description}}",
           "Duration": 420000,
-          "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+          "IconTexture": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 5,
           "Effects": {
             "Speed": 2
@@ -146,7 +146,7 @@
           "DisplayName": "{{i18n:buffs.speed.name |amount=3}}",
           "Description": "{{i18n:buffs.speed.description}}",
           "Duration": 420000,
-          "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+          "IconTexture": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 5,
           "Effects": {
             "Speed": 3
@@ -156,7 +156,7 @@
           "DisplayName": "{{i18n:buffs.speed.name |amount=4}}",
           "Description": "{{i18n:buffs.speed.description}}",
           "Duration": 420000,
-          "IconTexture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+          "IconTexture": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 5,
           "Effects": {
             "Speed": 4
@@ -166,7 +166,7 @@
     },
     {
       "Action": "Load",
-      "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BuffIcons",
+      "Target": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/BuffIcons",
       "FromFile": "assets/buffs/buffIcons.png"
     }
   ]

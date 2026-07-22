@@ -12,7 +12,7 @@
           "Category": 0,
           "Price": 500,
 
-          "Texture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/Items",
+          "Texture": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/Items",
           "SpriteIndex": 0,
 
           "Edibility": -300,
@@ -30,7 +30,7 @@
           "Category": 0,
           "Price": 1000,
 
-          "Texture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/Items",
+          "Texture": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/Items",
           "SpriteIndex": 1,
 
           "Edibility": -300,
@@ -48,7 +48,7 @@
           "Category": 0,
           "Price": 1000,
 
-          "Texture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/Items",
+          "Texture": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/Items",
           "SpriteIndex": 2,
 
           "Edibility": -300,
@@ -66,7 +66,7 @@
           "Category": 0,
           "Price": 1000,
 
-          "Texture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/Items",
+          "Texture": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/Items",
           "SpriteIndex": 3,
 
           "Edibility": -300,
@@ -81,7 +81,7 @@
 
     {
       "Action": "Load",
-      "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/Items",
+      "Target": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/Items",
       "FromFile": "assets/items/items.png"
     }
   ]

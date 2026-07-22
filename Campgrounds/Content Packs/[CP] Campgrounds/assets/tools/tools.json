@@ -12,7 +12,7 @@
           "SalePrice": 5000,
           "CanBeLostOnDeath": false,
 
-          "Texture": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/Tools",
+          "Texture": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/Tools",
           "SpriteIndex": 0
         }
       }
@@ -20,7 +20,7 @@
 
     {
       "Action": "Load",
-      "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/Tools",
+      "Target": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/Tools",
       "FromFile": "assets/tools/tools.png"
     }
   ]

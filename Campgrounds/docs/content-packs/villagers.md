@@ -215,7 +215,7 @@ clobber it, use `Fields` and gate it on the other pack being present:
 ```json
 {
   "Action": "EditData",
-  "Target": "Data/PeacefulEnd_Campgrounds/Villagers",
+  "Target": "Data/PeacefulEnd.Campgrounds/Villagers",
   "Fields": {
     "Abigail": {
       "TentId": "{{ModId}}_PurpleTent"
@@ -234,7 +234,7 @@ clobber it, use `Fields` and gate it on the other pack being present:
     ```json
     {
       "Action": "EditData",
-      "Target": "Data/PeacefulEnd_Campgrounds/Villagers",
+      "Target": "Data/PeacefulEnd.Campgrounds/Villagers",
       "TargetField": [ "Abigail", "LikedCampgrounds" ],
       "Entries": {
         "{{ModId}}_RiverClearing": "{{ModId}}_RiverClearing"

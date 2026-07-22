@@ -3,7 +3,7 @@
     // Add default camping tent
     {
       "Action": "EditData",
-      "Target": "Data/PeacefulEnd_Campgrounds/CampingTents",
+      "Target": "Data/PeacefulEnd.Campgrounds/CampingTents",
       "Entries": {
         "PeacefulEnd.Campgrounds.Tents.StarterTent": {
           "Id": "PeacefulEnd.Campgrounds.Tents.StarterTent",
@@ -12,8 +12,8 @@
 
           "NumberOfAllowedCampfireMeals": 1,
           "RestingBuffIds": [],
-          "TexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/StarterTent",
-          "GrayscaleTexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/StarterTentGrayscale",
+          "TexturePath": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/StarterTent",
+          "GrayscaleTexturePath": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/StarterTentGrayscale",
           "SouthSprite": {
             "EntranceTile": {
               "X": 16,
@@ -143,19 +143,19 @@
     },
     {
       "Action": "Load",
-      "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/StarterTent",
+      "Target": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/StarterTent",
       "FromFile": "assets/campgrounds/tents/starterTent.png"
     },
     {
       "Action": "Load",
-      "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/StarterTentGrayscale",
+      "Target": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/StarterTentGrayscale",
       "FromFile": "assets/campgrounds/tents/starterTentGrayscale.png"
     },
 
     // Add standard camping tent
     {
       "Action": "EditData",
-      "Target": "Data/PeacefulEnd_Campgrounds/CampingTents",
+      "Target": "Data/PeacefulEnd.Campgrounds/CampingTents",
       "Entries": {
         "PeacefulEnd.Campgrounds.Tents.StandardTent": {
           "Id": "PeacefulEnd.Campgrounds.Tents.StandardTent",
@@ -170,8 +170,8 @@
           "UnlockCondition": "WORLD_STATE_ID SCHEMATIC_UNLOCKED_TENT:PeacefulEnd.Campgrounds.Tents.StandardTent",
           "UnlockHint": "Purchase the schematic from the Cindersap Forest Park shop.",
 
-          "TexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/StandardTent",
-          "GrayscaleTexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/StandardTentGrayscale",
+          "TexturePath": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/StandardTent",
+          "GrayscaleTexturePath": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/StandardTentGrayscale",
           "PreviewOffset": {
             "X": 0,
             "Y": -20
@@ -305,18 +305,18 @@
     },
     {
       "Action": "Load",
-      "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/StandardTent",
+      "Target": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/StandardTent",
       "FromFile": "assets/campgrounds/tents/standardTent.png"
     },
     {
       "Action": "Load",
-      "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/StandardTentGrayscale",
+      "Target": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/StandardTentGrayscale",
       "FromFile": "assets/campgrounds/tents/standardTentGrayscale.png"
     },
 
     {
       "Action": "EditData",
-      "Target": "Data/PeacefulEnd_Campgrounds/CampingTents",
+      "Target": "Data/PeacefulEnd.Campgrounds/CampingTents",
       "Entries": {
         "PeacefulEnd.Campgrounds.Tents.SturdyTent": {
           "Id": "PeacefulEnd.Campgrounds.Tents.SturdyTent",
@@ -331,7 +331,7 @@
           "UnlockCondition": "WORLD_STATE_ID SCHEMATIC_UNLOCKED_TENT:PeacefulEnd.Campgrounds.Tents.SturdyTent",
           "UnlockHint": "Purchase the schematic from the Cindersap Forest Park shop after camping 10 times.",
 
-          "TexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/SturdyTent",
+          "TexturePath": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/SturdyTent",
           "PreviewOffset": {
             "X": 0,
             "Y": -20
@@ -466,7 +466,7 @@
     },
     {
       "Action": "Load",
-      "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/SturdyTent",
+      "Target": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/SturdyTent",
       "FromFile": "assets/campgrounds/tents/sturdyTent.png"
     }
   ]

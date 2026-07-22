@@ -425,12 +425,12 @@
     // Add the campground to the list
     {
       "Action": "EditData",
-      "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds",
+      "Target": "Data/PeacefulEnd.Campgrounds/Campgrounds",
       "Entries": {
         "PeacefulEnd.Campgrounds.CindersapForestCampground": {
           "Id": "PeacefulEnd.Campgrounds.CindersapForestCampground",
           "ForceForageRefreshOnVisit": true,
-          "PreviewTexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/CindersapForestCampgroundPreview",
+          "PreviewTexturePath": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/CindersapForestCampgroundPreview",
           "PreviewTextureScale": 4.0,
           "PlayerSpawnTile": {
             "X": 25,
@@ -455,7 +455,7 @@
     },
     {
       "Action": "Load",
-      "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/CindersapForestCampgroundPreview",
+      "Target": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/CindersapForestCampgroundPreview",
       "FromFile": "assets/campgrounds/campgroundPreview.png"
     },
 

@@ -3,7 +3,7 @@
     // Add standard park visitors via StandardVisitorSettings
     {
       "Action": "EditData",
-      "Target": "Data/PeacefulEnd_Campgrounds/ParkVisitors",
+      "Target": "Data/PeacefulEnd.Campgrounds/ParkVisitors",
       "Entries": {
         "PeacefulEnd.Campgrounds.Visitors.Willy": {
           "Id": "PeacefulEnd.Campgrounds.Visitors.Willy",
@@ -26,7 +26,7 @@
     // Add standard park visitors via AdvancedVisitorSettings
     {
       "Action": "EditData",
-      "Target": "Data/PeacefulEnd_Campgrounds/ParkVisitors",
+      "Target": "Data/PeacefulEnd.Campgrounds/ParkVisitors",
       "Entries": {
         "PeacefulEnd.Campgrounds.Visitors.TravelingMerchant": {
           "Id": "PeacefulEnd.Campgrounds.Visitors.TravelingMerchant",
@@ -62,7 +62,7 @@
     },
     {
       "Action": "EditData",
-      "Target": "Data/PeacefulEnd_Campgrounds/ParkVisitors",
+      "Target": "Data/PeacefulEnd.Campgrounds/ParkVisitors",
       "Entries": {
         "PeacefulEnd.Campgrounds.Visitors.AbiEmiMaru": {
           "Id": "PeacefulEnd.Campgrounds.Visitors.AbiEmiMaru",
@@ -98,7 +98,7 @@
     },
     {
       "Action": "EditData",
-      "Target": "Data/PeacefulEnd_Campgrounds/ParkVisitors",
+      "Target": "Data/PeacefulEnd.Campgrounds/ParkVisitors",
       "Entries": {
         "PeacefulEnd.Campgrounds.Visitors.RecipeMerchant": {
           "Id": "PeacefulEnd.Campgrounds.Visitors.RecipeMerchant",

@@ -5,11 +5,11 @@ an `EditData` patch in your `content.json`.
 
 | Asset | Contains | Documentation |
 | --- | --- | --- |
-| `Data/PeacefulEnd_Campgrounds/Campgrounds` | `List<CampgroundData>` | [Campgrounds](../content-packs/campgrounds.md) |
-| `Data/PeacefulEnd_Campgrounds/CampingTents` | `List<CampingTentData>` | [Tents](../content-packs/tents.md) |
-| `Data/PeacefulEnd_Campgrounds/CampfireFoods` | `List<CampfireFoodData>` | [Campfire Foods](../content-packs/campfire-foods.md) |
-| `Data/PeacefulEnd_Campgrounds/Villagers` | `List<VillagerData>` | [Villagers](../content-packs/villagers.md) |
-| `Data/PeacefulEnd_Campgrounds/ParkVisitors` | `List<VisitorData>` | [Visitors](../content-packs/visitors.md) |
+| `Data/PeacefulEnd.Campgrounds/Campgrounds` | `List<CampgroundData>` | [Campgrounds](../content-packs/campgrounds.md) |
+| `Data/PeacefulEnd.Campgrounds/CampingTents` | `List<CampingTentData>` | [Tents](../content-packs/tents.md) |
+| `Data/PeacefulEnd.Campgrounds/CampfireFoods` | `List<CampfireFoodData>` | [Campfire Foods](../content-packs/campfire-foods.md) |
+| `Data/PeacefulEnd.Campgrounds/Villagers` | `List<VillagerData>` | [Villagers](../content-packs/villagers.md) |
+| `Data/PeacefulEnd.Campgrounds/ParkVisitors` | `List<VisitorData>` | [Visitors](../content-packs/visitors.md) |
 
 ## Ids and keys
 
@@ -21,7 +21,7 @@ That means the `Entries` key and the `Id` inside the entry must be the same stri
 ```json
 {
   "Action": "EditData",
-  "Target": "Data/PeacefulEnd_Campgrounds/CampingTents",
+  "Target": "Data/PeacefulEnd.Campgrounds/CampingTents",
   "Entries": {
     "{{ModId}}_CanvasTent": {        // ← the key
       "Id": "{{ModId}}_CanvasTent",  // ← must match the key
@@ -78,7 +78,7 @@ Each included file looks like a `content.json` in miniature:
 ```json title="assets/campgrounds/tents/campingTents.json"
 {
   "Changes": [
-    { "Action": "EditData", "Target": "Data/PeacefulEnd_Campgrounds/CampingTents", "Entries": { "...": "..." } },
+    { "Action": "EditData", "Target": "Data/PeacefulEnd.Campgrounds/CampingTents", "Entries": { "...": "..." } },
     { "Action": "Load", "Target": "...", "FromFile": "..." }
   ]
 }
@@ -105,7 +105,7 @@ other packs' edits:
 ```json
 {
   "Action": "EditData",
-  "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds",
+  "Target": "Data/PeacefulEnd.Campgrounds/Campgrounds",
   "Fields": {
     "PeacefulEnd.Campgrounds_SomeExistingSite": {
       "TravelTimeInHours": 2
@@ -122,7 +122,7 @@ the framework's own [`UnlockCondition`](../content-packs/index.md#unlockable-con
 ```json
 {
   "Action": "EditData",
-  "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds",
+  "Target": "Data/PeacefulEnd.Campgrounds/Campgrounds",
   "Entries": { "{{ModId}}_WinterCamp": { "Id": "{{ModId}}_WinterCamp", "...": "..." } },
   "When": { "HasMod": "SomeoneElse.SnowPack" }
 }
@@ -158,7 +158,7 @@ paths into your content pack folder.
     },
     {
       "Action": "EditData",
-      "Target": "Data/PeacefulEnd_Campgrounds/CampingTents",
+      "Target": "Data/PeacefulEnd.Campgrounds/CampingTents",
       "Entries": {
         "{{ModId}}_CanvasTent": {
           "Id": "{{ModId}}_CanvasTent",
@@ -185,7 +185,7 @@ paths into your content pack folder.
 fallback at:
 
 ```
-Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/Default_Preview
+Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/Default_Preview
 ```
 
 You can omit `PreviewTexturePath` and your campground will show the default preview instead. Specifying it will override the default preview.

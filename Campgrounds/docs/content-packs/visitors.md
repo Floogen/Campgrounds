@@ -5,7 +5,7 @@
 A visitor is someone who turns up at **Cindersap Park** (the campground hub the framework adds) on their own schedule. Unlike a [villager](villagers.md), who the player invites along on a trip, a
 visitor shows up by themselves.
 
-The data asset is `Data/PeacefulEnd_Campgrounds/ParkVisitors`.
+The data asset is `Data/PeacefulEnd.Campgrounds/ParkVisitors`.
 
 Visitors come in two flavours:
 

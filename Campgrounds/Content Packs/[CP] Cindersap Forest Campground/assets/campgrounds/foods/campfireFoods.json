@@ -3,7 +3,7 @@
     // Add default campfire foods
     {
       "Action": "EditData",
-      "Target": "Data/PeacefulEnd_Campgrounds/CampfireFoods",
+      "Target": "Data/PeacefulEnd.Campgrounds/CampfireFoods",
       "Entries": {
         "PeacefulEnd.Campgrounds.Foods.MarshmallowOnAStick": {
           "Id": "PeacefulEnd.Campgrounds.Foods.MarshmallowOnAStick",
@@ -12,7 +12,7 @@
 
           "RationCost": 1,
 
-          "TexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/DefaultCampfireFoods",
+          "TexturePath": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/DefaultCampfireFoods",
           "SourceRectangle": {
             "X": 0,
             "Y": 0,
@@ -31,7 +31,7 @@
 
           "RationCost": 1,
 
-          "TexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/DefaultCampfireFoods",
+          "TexturePath": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/DefaultCampfireFoods",
           "SourceRectangle": {
             "X": 16,
             "Y": 0,
@@ -50,7 +50,7 @@
 
           "RationCost": 1,
 
-          "TexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/DefaultCampfireFoods",
+          "TexturePath": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/DefaultCampfireFoods",
           "SourceRectangle": {
             "X": 32,
             "Y": 0,
@@ -67,7 +67,7 @@
     },
     {
       "Action": "Load",
-      "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/DefaultCampfireFoods",
+      "Target": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/DefaultCampfireFoods",
       "FromFile": "assets/campgrounds/foods/defaultCampfireFoods.png"
     }
   ]

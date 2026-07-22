@@ -126,7 +126,7 @@ namespace Campgrounds.Framework.Managers
 
         public Texture2D GetTexture()
         {
-            return helper.GameContent.Load<Texture2D>("Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/CurrencyIcons");
+            return helper.GameContent.Load<Texture2D>("Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/CurrencyIcons");
         }
 
         public Rectangle GetSourceRectangle(Currency currency)

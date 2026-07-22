@@ -147,12 +147,12 @@
     // Add the Mines campgrounds
     {
       "Action": "EditData",
-      "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds",
+      "Target": "Data/PeacefulEnd.Campgrounds/Campgrounds",
       "Entries": {
         "{{ModId}}_MinesCampground": {
           "Id": "{{ModId}}_MinesCampground",
           "ForceForageRefreshOnVisit": true,
-          "PreviewTexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/MineCampgroundPreview",
+          "PreviewTexturePath": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/MineCampgroundPreview",
           "PreviewTextureScale": 4.0,
           "PlayerSpawnTile": {
             "X": 12,
@@ -356,7 +356,7 @@
     },
     {
       "Action": "Load",
-      "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/MineCampgroundPreview",
+      "Target": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/MineCampgroundPreview",
       "FromFile": "assets/maps/previewMines.png"
     },
     {
@@ -368,12 +368,12 @@
     // Add the Beach campgrounds
     {
       "Action": "EditData",
-      "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds",
+      "Target": "Data/PeacefulEnd.Campgrounds/Campgrounds",
       "Entries": {
         "{{ModId}}_BeachCampground": {
           "Id": "{{ModId}}_BeachCampground",
           "ForceForageRefreshOnVisit": true,
-          "PreviewTexturePath": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BeachCampgroundPreview",
+          "PreviewTexturePath": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/BeachCampgroundPreview",
           "PreviewTextureScale": 4.0,
           "PlayerSpawnTile": {
             "X": 25,
@@ -1352,7 +1352,7 @@
     },
     {
       "Action": "Load",
-      "Target": "Data/PeacefulEnd_Campgrounds/Campgrounds/Textures/BeachCampgroundPreview",
+      "Target": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/BeachCampgroundPreview",
       "FromFile": "assets/maps/previewBeach.png"
     },
     {
