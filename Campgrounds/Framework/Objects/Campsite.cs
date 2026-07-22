@@ -5,6 +5,7 @@ using Campgrounds.Framework.Utilities;
 using Microsoft.Xna.Framework;
 using StardewModdingAPI;
 using StardewValley;
+using StardewValley.Extensions;
 using StardewValley.Pathfinding;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,9 @@ namespace Campgrounds.Framework.Objects
 {
     public class Campsite
     {
+        public const int LIKED_CAMPGROUND_FRIENDSHIP_POINTS = 80;
+        public const int NEUTRAL_CAMPGROUND_FRIENDSHIP_POINTS = 45;
+
         public Farmer Camper { get; }
         public Character Guest { get; }
 
@@ -125,9 +129,33 @@ namespace Campgrounds.Framework.Objects
             {
                 Game1.stats.Increment(CampingManager.TOTAL_NIGHTS_GONE_CAMPING_STAT_ID, 1);
                 CookingSpot.CanCook = false;
+
+                // Give the invited villager friendship for the night spent camping
+                if (Guest is NPC guestNPC && guestNPC is not null)
+                {
+                    int friendshipPoints = GetCampgroundFriendshipPoints(Campgrounds.villagerManager.GetVillagerData(guestNPC));
+                    if (friendshipPoints > 0)
+                    {
+                        Camper.changeFriendship(friendshipPoints, guestNPC);
+                    }
+                }
             }
 
             ApplyCachedBuffs();
+        }
+
+        public int GetCampgroundFriendshipPoints(VillagerData villagerData)
+        {
+            if (villagerData?.LikedCampgrounds.Any(c => c.EqualsIgnoreCase(Data.Id)) is true)
+            {
+                return LIKED_CAMPGROUND_FRIENDSHIP_POINTS;
+            }
+            if (villagerData?.DislikedCampgrounds.Any(c => c.EqualsIgnoreCase(Data.Id)) is true)
+            {
+                return 0;
+            }
+
+            return NEUTRAL_CAMPGROUND_FRIENDSHIP_POINTS;
         }
 
         public void Sanitize()
