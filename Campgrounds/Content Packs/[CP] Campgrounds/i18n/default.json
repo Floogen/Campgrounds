@@ -13,7 +13,8 @@
   "buffs.speed.description": "Your speed is increased from camping!",
 
   // Campgrounds
-  "map.minesCampground.name": "Mines Campground",
+  "map.minesCampground.name": "Mines Campsite",
+  "map.beachCampground.name": "Beach Campsite",
 
   // Camping dialogues (generic villagers)
   "villagers.generic.inviteAccepted1": "Camping? That sounds like a great time, count me in!$h",
