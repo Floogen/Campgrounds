@@ -4,6 +4,7 @@ using StardewValley;
 using StardewValley.Extensions;
 using StardewValley.GameData.Shops;
 using StardewValley.Internal;
+using StardewValley.Menus;
 using System;
 using System.Linq;
 using xTile.Tiles;
@@ -131,7 +132,7 @@ namespace Campgrounds.Framework.Utilities
                 new Response("CancelCampingExit", Campgrounds.modHelper.Translation.Get("messages.camping.cancel")),
             ];
 
-            Game1.player.currentLocation.createQuestionDialogue(Campgrounds.modHelper.Translation.Get("messages.camping.leave"), answers, CampingHelper.OnPlayerResponse, null);
+            DelayedAction.functionAfterDelay(() => Game1.player.currentLocation.createQuestionDialogue(Campgrounds.modHelper.Translation.Get("messages.camping.leave"), answers, CampingHelper.OnPlayerResponse, null), 10);
         }
     }
 }
