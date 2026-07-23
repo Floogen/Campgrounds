@@ -10,5 +10,6 @@ namespace Campgrounds.Framework
     public sealed class Config
     {
         public KeybindList GuideShortcut { get; set; }
+        public bool SkipCampgroundsIntroRequirement { get; set; }
     }
 }

@@ -135,6 +135,9 @@ namespace Campgrounds
             Event.RegisterCommand("PeacefulEnd.Campgrounds_GiveCampsiteMap", EventHelper.GiveCampsiteMapCommand);
             Event.RegisterCommand("PeacefulEnd.Campgrounds_GiveCampfireRecipe", EventHelper.GiveCampfireRecipeCommand);
             Event.RegisterCommand("PeacefulEnd.Campgrounds_GiveTentSchematic", EventHelper.GiveTentSchematicCommand);
+
+            // Register Game State Queries
+            GameStateQuery.Register("PeacefulEnd.Campgrounds_CampingIntroReady", (query, context) => config.SkipCampgroundsIntroRequirement || Game1.stats.DaysPlayed >= 14);
         }
 
         private void OnGameLaunched(object sender, GameLaunchedEventArgs e)

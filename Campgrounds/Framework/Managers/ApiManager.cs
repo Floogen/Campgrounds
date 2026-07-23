@@ -48,6 +48,14 @@ namespace Campgrounds.Framework.Managers
                 getValue: () => Campgrounds.config.GuideShortcut,
                 setValue: value => Campgrounds.config.GuideShortcut = value
             );
+
+            api.AddBoolOption(
+                mod: Campgrounds.manifest,
+                name: () => "Start Campgrounds Intro Immediately",
+                tooltip: () => "Skips having to wait until at least Spring 14 to start Campgrounds. To start, go outside farmhouse to trigger the event.",
+                getValue: () => Campgrounds.config.SkipCampgroundsIntroRequirement,
+                setValue: value => Campgrounds.config.SkipCampgroundsIntroRequirement = value
+            );
         }
 
         private void HandleContentPatcherApi(IContentPatcherAPI api)
