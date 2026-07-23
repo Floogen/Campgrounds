@@ -2,11 +2,11 @@
   "Name": "Campgrounds",
   "Author": "PeacefulEnd",
   "Version": "%ProjectVersion%",
-  "Description": "REPLACE_ME_WITH_DESCRIPTION",
+  "Description": "A mod that adds the Cindersap Forest Park, many camping related mechanics and support for other mods adding their own campsites.",
   "UniqueID": "PeacefulEnd.Campgrounds.Core",
   "EntryDll": "Campgrounds.dll",
   "MinimumApiVersion": "4.1.10",
-  "UpdateKeys": [ "Nexus:????" ],
+  "UpdateKeys": [ "Nexus:49526" ],
   "Dependencies": [
     {
       "UniqueID": "Pathoschild.ContentPatcher",
