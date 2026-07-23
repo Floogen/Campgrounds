@@ -84,7 +84,7 @@
           "DisplayName": "{{i18n:buffs.luck.name |amount=1}}",
           "Description": "{{i18n:buffs.luck.description}}",
           "Duration": 420000,
-          "IconTexture": "Data/ and/Campgrounds/Textures/BuffIcons",
+          "IconTexture": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/BuffIcons",
           "IconSpriteIndex": 4,
           "Effects": {
             "LuckLevel": 1

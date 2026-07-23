@@ -19,8 +19,10 @@
             "Width": 16,
             "Height": 16
           },
-          "BuffIds": [
-            "PeacefulEnd.Campgrounds.Buffs.LowLuckBuff"
+          "Buffs": [
+            {
+              "Id": "PeacefulEnd.Campgrounds.Buffs.LowLuckBuff"
+            }
           ],
           "UnlockCondition": ""
         },
@@ -38,8 +40,10 @@
             "Width": 16,
             "Height": 16
           },
-          "BuffIds": [
-            "PeacefulEnd.Campgrounds.Buffs.LowSpeedBuff"
+          "Buffs": [
+            {
+              "Id": "PeacefulEnd.Campgrounds.Buffs.LowSpeedBuff"
+            }
           ],
           "UnlockCondition": ""
         },
@@ -57,8 +61,10 @@
             "Width": 16,
             "Height": 16
           },
-          "BuffIds": [
-            "PeacefulEnd.Campgrounds.Buffs.LowStaminaBuff"
+          "Buffs": [
+            {
+              "Id": "PeacefulEnd.Campgrounds.Buffs.LowStaminaBuff"
+            }
           ],
           "UnlockCondition": "WORLD_STATE_ID RECIPE_UNLOCKED_CAMPFIRE_FOOD:PeacefulEnd.Campgrounds.Foods.SausageOnAStick",
           "UnlockHint": "{{i18n:foods.sausageOnAStick.unlockHint}}"

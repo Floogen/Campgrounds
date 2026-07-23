@@ -11,7 +11,7 @@
           "Description": "{{i18n:campingTents.starterTent.description}}",
 
           "NumberOfAllowedCampfireMeals": 1,
-          "RestingBuffIds": [],
+          "RestingBuffs": [],
           "TexturePath": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/StarterTent",
           "GrayscaleTexturePath": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/StarterTentGrayscale",
           "SouthSprite": {
@@ -163,8 +163,10 @@
           "Description": "{{i18n:campingTents.standardTent.description}}",
 
           "NumberOfAllowedCampfireMeals": 1,
-          "RestingBuffIds": [
-            "PeacefulEnd.Campgrounds.Buffs.LowXPBuff"
+          "RestingBuffs": [
+            {
+              "Id": "PeacefulEnd.Campgrounds.Buffs.LowXPBuff"
+            }
           ],
 
           "UnlockCondition": "WORLD_STATE_ID SCHEMATIC_UNLOCKED_TENT:PeacefulEnd.Campgrounds.Tents.StandardTent",
@@ -324,8 +326,10 @@
           "Description": "{{i18n:campingTents.sturdyTent.description}}",
 
           "NumberOfAllowedCampfireMeals": 2,
-          "RestingBuffIds": [
-            "PeacefulEnd.Campgrounds.Buffs.LowXPBuff"
+          "RestingBuffs": [
+            {
+              "Id": "PeacefulEnd.Campgrounds.Buffs.LowXPBuff"
+            }
           ],
 
           "UnlockCondition": "WORLD_STATE_ID SCHEMATIC_UNLOCKED_TENT:PeacefulEnd.Campgrounds.Tents.SturdyTent",
