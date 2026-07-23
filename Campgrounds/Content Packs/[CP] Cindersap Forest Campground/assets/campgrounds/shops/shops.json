@@ -38,11 +38,23 @@
           "AvailableStock": 1,
           "AvailableStockLimit": "Player",
           "Condition": "!WORLD_STATE_ID SCHEMATIC_UNLOCKED_TENT:PeacefulEnd.Campgrounds.Tents.SturdyTent, PLAYER_STAT Current PeacefulEnd.Campgrounds_TotalNightsGoneCamping 10"
+        },
+        "PeacefulEnd.Campgrounds.Items.TentSchematic.DeluxeTent": {
+          "Id": "PeacefulEnd.Campgrounds.Items.TentSchematic.DeluxeTent",
+          "ItemId": "(O)PeacefulEnd.Campgrounds.Items.TentSchematic PeacefulEnd.Campgrounds.Tents.DeluxeTent",
+          "Price": 15000,
+          "AvailableStock": 1,
+          "AvailableStockLimit": "Player",
+          "Condition": "!WORLD_STATE_ID SCHEMATIC_UNLOCKED_TENT:PeacefulEnd.Campgrounds.Tents.DeluxeTent, PLAYER_STAT Current PeacefulEnd.Campgrounds_TotalNightsGoneCamping 25"
         }
       },
       "MoveEntries": [
         {
           "ID": "PeacefulEnd.Campgrounds.Items.CampfireRecipe.SausageOnAStick",
+          "AfterID": "PeacefulEnd.Campgrounds.Tools.WalkieTalkie"
+        },
+        {
+          "ID": "PeacefulEnd.Campgrounds.Items.TentSchematic.DeluxeTent",
           "AfterID": "PeacefulEnd.Campgrounds.Tools.WalkieTalkie"
         },
         {

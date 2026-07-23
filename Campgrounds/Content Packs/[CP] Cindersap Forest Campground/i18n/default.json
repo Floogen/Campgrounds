@@ -20,6 +20,9 @@
   "campingTents.sturdyTent.name": "Sturdy Tent",
   "campingTents.sturdyTent.description": "Sturdy and dependable. Stands firm through wind, rain, and restless nights.",
 
+  "campingTents.deluxeTent.name": "Deluxe Tent",
+  "campingTents.deluxeTent.description": "Premium canvas with proper windows. Room to stand, stretch out or watch the weather from indoors.\n\nIncreases the default buff duration of campfire foods to 10 minutes.",
+
   // Map
   "map.cindersapForestCampground.name": "Cindersap Forest Campground",
   "map.cindersapForestCampground.description": "A peaceful camping spot in Cindersap Forest.",

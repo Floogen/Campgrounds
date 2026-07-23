@@ -326,11 +326,7 @@
           "Description": "{{i18n:campingTents.sturdyTent.description}}",
 
           "NumberOfAllowedCampfireMeals": 2,
-          "RestingBuffs": [
-            {
-              "Id": "PeacefulEnd.Campgrounds.Buffs.LowXPBuff"
-            }
-          ],
+          "RestingBuffs": [],
 
           "UnlockCondition": "WORLD_STATE_ID SCHEMATIC_UNLOCKED_TENT:PeacefulEnd.Campgrounds.Tents.SturdyTent",
           "UnlockHint": "Purchase the schematic from the Cindersap Forest Park shop after camping 10 times.",
@@ -472,6 +468,161 @@
       "Action": "Load",
       "Target": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/SturdyTent",
       "FromFile": "assets/campgrounds/tents/sturdyTent.png"
+    },
+
+    {
+      "Action": "EditData",
+      "Target": "Data/PeacefulEnd.Campgrounds/CampingTents",
+      "Entries": {
+        "PeacefulEnd.Campgrounds.Tents.DeluxeTent": {
+          "Id": "PeacefulEnd.Campgrounds.Tents.DeluxeTent",
+          "DisplayName": "{{i18n:campingTents.deluxeTent.name}}",
+          "Description": "{{i18n:campingTents.deluxeTent.description}}",
+
+          "NumberOfAllowedCampfireMeals": 2,
+          "RestingBuffs": [],
+          "FoodBuffDuration": 600000, // Increases default duration of buffs to 10 minutes
+
+          "UnlockCondition": "WORLD_STATE_ID SCHEMATIC_UNLOCKED_TENT:PeacefulEnd.Campgrounds.Tents.DeluxeTent",
+          "UnlockHint": "Purchase the schematic from the Cindersap Forest Park shop after camping 25 times.",
+
+          "TexturePath": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/DeluxeTent",
+          "PreviewOffset": {
+            "X": 0,
+            "Y": -20
+          },
+          "SouthSprite": {
+            "EntranceTile": {
+              "X": 32,
+              "Y": 64
+            },
+            "DisplayRectangle": {
+              "X": 0,
+              "Y": 0,
+              "Width": 80,
+              "Height": 80
+            },
+            "BoundaryRectangle": {
+              "X": 0,
+              "Y": 16,
+              "Width": 80,
+              "Height": 64
+            },
+
+            "ShadowRectangle": {
+              "X": 80,
+              "Y": 96,
+              "Width": 64,
+              "Height": 64
+            },
+            "ShadowOffset": {
+              "X": 5,
+              "Y": 20
+            }
+          },
+          "WestSprite": {
+            "EntranceTile": {
+              "X": 0,
+              "Y": 32
+            },
+            "TileOffset": {
+              "X": 0,
+              "Y": -8
+            },
+            "DisplayRectangle": {
+              "X": 80,
+              "Y": 0,
+              "Width": 80,
+              "Height": 80
+            },
+            "BoundaryRectangle": {
+              "X": 0,
+              "Y": 32,
+              "Width": 80,
+              "Height": 48
+            },
+
+            "ShadowRectangle": {
+              "X": 0,
+              "Y": 96,
+              "Width": 80,
+              "Height": 64
+            },
+            "ShadowOffset": {
+              "X": 0,
+              "Y": 12
+            }
+          },
+          "EastSprite": {
+            "FlipHorizontally": true,
+            "EntranceTile": {
+              "X": 64,
+              "Y": 32
+            },
+            "TileOffset": {
+              "X": 0,
+              "Y": -8
+            },
+            "DisplayRectangle": {
+              "X": 80,
+              "Y": 0,
+              "Width": 80,
+              "Height": 80
+            },
+            "BoundaryRectangle": {
+              "X": 0,
+              "Y": 32,
+              "Width": 80,
+              "Height": 48
+            },
+
+            "ShadowRectangle": {
+              "X": 0,
+              "Y": 96,
+              "Width": 80,
+              "Height": 64
+            },
+            "ShadowOffset": {
+              "X": 0,
+              "Y": 12
+            }
+          },
+          "NorthSprite": {
+            "EntranceTile": {
+              "X": 32,
+              "Y": 16
+            },
+            "DisplayRectangle": {
+              "X": 160,
+              "Y": 0,
+              "Width": 80,
+              "Height": 80
+            },
+            "BoundaryRectangle": {
+              "X": 0,
+              "Y": 16,
+              "Width": 80,
+              "Height": 64
+            },
+
+            "ShadowRectangle": {
+              "X": 80,
+              "Y": 96,
+              "Width": 64,
+              "Height": 64
+            },
+            "ShadowOffset": {
+              "X": 5,
+              "Y": 20
+            }
+          }
+        }
+      }
+    },
+    {
+      "Action": "Load",
+      "Target": "Data/PeacefulEnd.Campgrounds/Campgrounds/Textures/DeluxeTent",
+      "FromFile": "assets/campgrounds/tents/deluxeTent.png"
     }
   ]
 }
