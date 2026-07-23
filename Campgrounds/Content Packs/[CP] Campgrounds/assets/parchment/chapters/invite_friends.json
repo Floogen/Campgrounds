@@ -57,12 +57,12 @@
               "Text": "To invite someone, you will first need at least two hearts of friendship with them. Once you do, buy a Visitor Pass from Clem's shop in Cindersap Forest Park and gift it to them.",
               "Alignment": "Left",
               "MarginLeft": 12,
-              "SpacingAfter": 64,
+              "SpacingAfter": 50,
             },
             {
               "Type": "Image",
               "ItemId": "(O)PeacefulEnd.Campgrounds.Items.VisitorPass",
-              "SpacingAfter": 14,
+              "SpacingAfter": 10,
               "Scale": 4,
               "Alignment": "Center"
             },
@@ -81,7 +81,7 @@
               "Text": "2",
               "Position": {
                 "X": 440,
-                "Y": 500
+                "Y": 480
               }
             },
             {
@@ -89,7 +89,7 @@
               "TexturePath": "Data/PeacefulEnd.Campgrounds/Textures/ItemHolder1",
               "Position": {
                 "X": 160,
-                "Y": 205
+                "Y": 185
               },
               "Scale": 4,
             },
