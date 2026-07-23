@@ -2,7 +2,7 @@
   "Name": "[CP] Campgrounds",
   "Author": "PeacefulEnd",
   "Version": "%ProjectVersion%",
-  "Description": "...",
+  "Description": "Content Patcher pack of the required Campgrounds assets and data.",
   "UniqueID": "PeacefulEnd.Campgrounds.ContentPatcher",
   "MinimumApiVersion": "4.1.10",
   "UpdateKeys": [ "Nexus:????" ],

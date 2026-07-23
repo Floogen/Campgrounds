@@ -2,7 +2,7 @@
   "Name": "[CP] Cindersap Forest Campground",
   "Author": "PeacefulEnd",
   "Version": "%ProjectVersion%",
-  "Description": "...",
+  "Description": "Serves as a working example pack for Campgrounds. Adds a campsite, campfire foods, visitors and tents.",
   "UniqueID": "PeacefulEnd.Campgrounds.CindersapForestCampground",
   "MinimumApiVersion": "4.1.10",
   "UpdateKeys": [ "Nexus:????" ],
