@@ -30,13 +30,13 @@ The building blocks used across multiple content types.
 | `StandardVisitorSettings` | `Models.Data.Visitors` | `VisitorData` |
 | `MapVisitorSettings` | `Models.Data.Visitors` | `VisitorData` |
 | `VisitorDialogueOverride` | `Models.Data.Visitors` | `CampgroundData` |
-| `VisitorTile` | `Models.Data.Visitors` | *(see [note](../content-packs/visitors.md#visitortile))* |
+| `VisitorTile` | `Models.Data.Visitors` | *(see [note](../content-packs/visitors.md#spawning-npcs))* |
 | `DateModel` | `Models.Common` | `VisitorData` |
 | `NumberRange` | `Models.Common` | `DateModel` |
 | `SizeModel` | `Models.Common` | `CampgroundData`, `CampingTentData` |
 | `DirectionalSpriteModel` | `Models.Common` | `CampingTentData` |
 | `MapPatchModel` | `Models.Common` | `MapVisitorSettings` |
-| `CampgroundMapDetails` | `Models.Game` | *(runtime, see [note](#campgroundmapdetails))* |
+| `CampgroundMapDetails` | `Models.Game` | *(runtime, see [note](framework.md#campground-maps))* |
 
 All models live under `Campgrounds.Framework.Models`.
 

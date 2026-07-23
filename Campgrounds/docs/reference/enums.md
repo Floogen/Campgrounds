@@ -16,12 +16,12 @@ Which way a tent or visitor faces.
 
 | Value | Notes |
 | --- | --- |
-| `North` | The default for [`VisitorTile.Direction`](../content-packs/visitors.md#visitortile) and the `VisitorFacingDirection` tile property. |
+| `North` | The default for [`VisitorTile.Direction`](../content-packs/visitors.md#spawning-npcs) and the `VisitorFacingDirection` tile property. |
 | `East` | |
 | `South` | The default for `CampgroundMapDetails`. |
 | `West` | |
 
-**Used by:** [`VisitorTile.Direction`](../content-packs/visitors.md#visitortile),
+**Used by:** [`VisitorTile.Direction`](../content-packs/visitors.md#spawning-npcs),
 the `VisitorFacingDirection` [map tile property](framework.md#back-layer),
 `CampgroundMapDetails.PlayerTentDirection`, `CampgroundMapDetails.GuestTentDirection` and `CampingTentData.GetTileSize(direction)`.
 

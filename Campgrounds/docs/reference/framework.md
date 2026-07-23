@@ -395,7 +395,7 @@ So a campground map needs **three** tagged tiles: a player `IsCampingSpot`, a gu
     If a campground silently refuses to load, check the SMAPI log for one of these three.
 
 !!! note "This is what `CampgroundMapDetails` is"
-    The framework reads these tiles into a `CampgroundMapDetails` object at runtime. That model isn't something you write in JSON. See [the reference note](index.md#campgroundmapdetails).
+    The framework reads these tiles into a `CampgroundMapDetails` object at runtime. That model isn't something you write in JSON. See the [model index](index.md#model-index).
 
 ### Buildings layer
 
