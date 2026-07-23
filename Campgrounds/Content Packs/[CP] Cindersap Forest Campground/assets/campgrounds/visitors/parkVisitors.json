@@ -16,9 +16,12 @@
 
           "StandardVisitorSettings": {
             "Visitors": [
-              "Willy"
+              "Linus"
             ]
-          }
+          },
+
+          // Skip camping if raining, storming or if it is a festival / wedding day
+          "RequirementsCondition": "!WEATHER PeacefulEnd.Campgrounds.ContentPatcher_CindersapPark Rain Storm GreenRain Festival Wedding"
         }
       }
     },
