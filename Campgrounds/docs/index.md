@@ -1,6 +1,6 @@
 # Campgrounds
 
-Campgrounds is a mod framework for Stardew Valley that lets content pack authors add the following:
+Campgrounds is a Stardew Valley framework that lets mod authors add the following:
 
 - **Campgrounds** the player (and invited NPCs) can travel to
 - **Tents** that give buffs or allow players to eat additional meals
@@ -9,8 +9,7 @@ Campgrounds is a mod framework for Stardew Valley that lets content pack authors
 - **Custom villager responses** when camping, with custom dialogue for specific campsites 
 
 Everything in this documentation describes the *content pack* side of the framework: the JSON
-files you write, the properties they accept and the rules the framework enforces when it loads
-them.
+files you write, the properties they accept and the rules the framework enforces.
 
 ---
 
