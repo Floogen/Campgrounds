@@ -9,7 +9,7 @@ namespace Campgrounds.Framework
 {
     public sealed class Config
     {
-        public KeybindList GuideShortcut { get; set; }
+        public KeybindList GuideShortcut { get; set; } = new KeybindList();
         public bool SkipCampgroundsIntroRequirement { get; set; }
     }
 }
