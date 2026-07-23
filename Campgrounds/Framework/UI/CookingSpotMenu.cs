@@ -440,15 +440,37 @@ namespace Campgrounds.Framework.UI
             SpriteText.drawStringWithScrollCenteredAt(b, Campgrounds.modHelper.Translation.Get("ui.text.summary"), xPositionOnScreen + width / 2, horizontalPartitionY + 4);
 
             var buffs = _campsite.CurrentCampTent.GetBuffs();
-            var tentBuffs = $"\n - {string.Join("\n - ", buffs.Select(b => b.displayName))}";
+            var tentBuffs = string.Empty; 
+
             if (_campsite.CurrentCampTent.NumberOfAllowedCampfireMeals > 1)
             {
-                tentBuffs += $"\n - {Campgrounds.modHelper.Translation.Get("ui.text.bonusMeals", new
+                tentBuffs += $"\n + {Campgrounds.modHelper.Translation.Get("ui.text.bonusMeals", new
                 {
                     count = _campsite.CurrentCampTent.NumberOfAllowedCampfireMeals - 1
                 })}";
             }
-            else if (buffs.Count == 0)
+
+            if (_campsite.CurrentCampTent.FoodBuffDuration > BuffData.DEFAULT_DURATION)
+            {
+                tentBuffs += $"\n + {Campgrounds.modHelper.Translation.Get("ui.text.foodDuration", new
+                {
+                    duration = Math.Floor(_campsite.CurrentCampTent.FoodBuffDuration / 60000.0 * 100) / 100
+                })}";
+            }
+            else if (_campsite.CurrentCampTent.FoodBuffDuration < BuffData.DEFAULT_DURATION)
+            {
+                tentBuffs += $"\n - {Campgrounds.modHelper.Translation.Get("ui.text.foodDuration", new
+                {
+                    duration = Math.Floor(_campsite.CurrentCampTent.FoodBuffDuration / 60000.0 * 100) / 100
+                })}";
+            }
+
+            if (buffs.Count > 0)
+            {
+                tentBuffs += $"\n + {string.Join("\n - ", buffs.Select(b => b.displayName))}";
+            }
+            
+            if (string.IsNullOrEmpty(tentBuffs))
             {
                 tentBuffs = $"\n - {Campgrounds.modHelper.Translation.Get("ui.text.none")}";
             }

@@ -109,6 +109,7 @@
   "ui.text.campfireCooking": "Campfire Cooking",
   "ui.text.summary": "Summary",
 
+  "ui.text.foodDuration": "Food buff duration {{duration}} minute(s)",
   "ui.text.bonusMeals": "{{count}} bonus meal(s)",
   "ui.text.none": "None",
 

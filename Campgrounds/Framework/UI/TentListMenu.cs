@@ -168,18 +168,38 @@ namespace Campgrounds.Framework.UI
                     }
                     else
                     {
-                        var tentBuffs = "";
-
                         var buffs = _pages[_currentPage][i].GetBuffs();
-                        tentBuffs = $"\n - {string.Join("\n - ", buffs.Select(b => b.displayName))}";
+                        var tentBuffs = string.Empty;
+
                         if (_pages[_currentPage][i].NumberOfAllowedCampfireMeals > 1)
                         {
-                            tentBuffs += $"\n - {Campgrounds.modHelper.Translation.Get("ui.text.bonusMeals", new
+                            tentBuffs += $"\n + {Campgrounds.modHelper.Translation.Get("ui.text.bonusMeals", new
                             {
                                 count = _pages[_currentPage][i].NumberOfAllowedCampfireMeals - 1
                             })}";
                         }
-                        else if (buffs.Count == 0)
+
+                        if (_pages[_currentPage][i].FoodBuffDuration > BuffData.DEFAULT_DURATION)
+                        {
+                            tentBuffs += $"\n + {Campgrounds.modHelper.Translation.Get("ui.text.foodDuration", new
+                            {
+                                duration = Math.Floor(_pages[_currentPage][i].FoodBuffDuration / 60000.0 * 100) / 100
+                            })}";
+                        }
+                        else if (_pages[_currentPage][i].FoodBuffDuration < BuffData.DEFAULT_DURATION)
+                        {
+                            tentBuffs += $"\n - {Campgrounds.modHelper.Translation.Get("ui.text.foodDuration", new
+                            {
+                                duration = Math.Floor(_pages[_currentPage][i].FoodBuffDuration / 60000.0 * 100) / 100
+                            })}";
+                        }
+
+                        if (buffs.Count > 0)
+                        {
+                            tentBuffs += $"\n + {string.Join("\n - ", buffs.Select(b => b.displayName))}";
+                        }
+
+                        if (string.IsNullOrEmpty(tentBuffs))
                         {
                             tentBuffs = Campgrounds.modHelper.Translation.Get("ui.text.none");
                         }
@@ -255,7 +275,7 @@ namespace Campgrounds.Framework.UI
             int buttonHeight = (int)textSize.Y + 24;
 
             _activateButton = new OptionsButton(_activateButtonText, () => SetTentAsActive());
-            _activateButton.bounds = new Rectangle((_tentInfoDisplayBox.Width - buttonWidth), _tentInfoDisplayBox.Y + _tentInfoDisplayBox.Height - 96, buttonWidth, buttonHeight);
+            _activateButton.bounds = new Rectangle((_tentInfoDisplayBox.Width - buttonWidth), _tentInfoDisplayBox.Y + _tentInfoDisplayBox.Height - 96 + 16, buttonWidth, buttonHeight);
 
             PaginatePacks(Campgrounds.tentManager.CampingTentData.Where(c => c.HideUntilUnlocked is false).ToList());
         }
