@@ -1,0 +1,119 @@
+{
+  // 自定义物品
+  "customItems.campRations.name": "露营口粮",
+  "customItems.campRations.description": "各种烹饪食材。在野外露营时很有用。",
+
+  // 自定义配方物品
+  "customItems.campsiteMap.name": "露营地地图 ({{campsiteName}})",
+  "customItems.campsiteMap.description": "通往{{description}}的地图。",
+
+  "customItems.campfireRecipe.name": "篝火食谱 ({{campfireRecipeName}})",
+  "customItems.campfireRecipe.description": "一份在篝火上烹饪{{description}}的食谱。",
+
+  "customItems.tentSchematic.name": "帐篷图纸 ({{tentSchematicName}})",
+  "customItems.tentSchematic.description": "一本包含{{description}}设计图的书。",
+
+  // 事件
+  "events.walkieTalkie.seeWhoHere": "\"让我们看看谁在这里...\"",
+  "events.walkieTalkie.site1": "\"1号营地\"",
+  "events.walkieTalkie.site2": "\"2号营地\"",
+  "events.walkieTalkie.site3": "\"3号营地\"",
+
+  // 一般对话
+  "dialogues.general.tentClickAfterSleep": "准备好收拾东西回去了吗?",
+  "dialogues.general.cookingSpotAfterCooking": "你今天已经做够了。",
+  "dialogues.general.cookingSpotAfterSleep": "昨天的篝火, 现在只剩一堆灰烬。",
+
+  "dialogues.general.repeatInvited": "你已经邀请了 {{npcName}} 去露营。",
+  "dialogues.general.alreadyInvitedButInviteOther": "你已经邀请了 {{currentNpcName}} 去露营。要改为邀请 {{newNpcName}} 吗?",
+  "dialogues.general.defaultReject": "抱歉, 我现在不太想去露营。",
+  "dialogues.general.defaultInviteOnCooldown": "谢谢, 不过我最近刚去过露营。也许下次吧?",
+
+  "dialogues.shop.greeting": "嘿, 邻居! 想要点什么?",
+  "dialogues.shop.browseSupplies": "浏览补给品",
+  "dialogues.shop.tentCatalogue": "帐篷目录",
+  "dialogues.shop.leave": "离开",
+
+  "dialogues.traveling.campingWithoutRations": "你确定要在没有口粮的情况下旅行吗? 你将无法在篝火上制作食物。",
+  "dialogues.traveling.tentTooBig": "你的帐篷对这个露营地来说太大了。使用更小的帐篷或尝试不同的露营地。",
+  "dialogues.traveling.notEnoughTime": "午夜前没有足够的时间到达那个露营地...",
+  "dialogues.traveling.vehicleRequired": "这个露营地需要车辆才能到达。你看到地图上附着一张纸条...",
+  "dialogues.traveling.vehicleRequiredNote": "\"你可以用我奶奶放在车库里的旧车! 不过得先修理一下才能开。\" - 克莱姆",
+
+  // 消息
+  "messages.garage.repairCar": "修理汽车?",
+  "messages.garage.repairCarMissingItems": "汽车状况不佳。你可以用5个电池组、10个铁锭和100个木材让它重新运转起来。",
+
+  "messages.site1.repair": "清理露营地?",
+  "messages.site1.repairMissingItems": "这个露营地年久失修。你可以用2个铁锭和100个木材来清理它。",
+
+  "messages.site2.repair": "修缮露营地?",
+  "messages.site2.repairMissingItems": "这个露营地需要大量修缮。你可以用5个铁锭、25个硬木和200个木材来修复它。",
+
+  "messages.site3.repair": "重建露营地?",
+  "messages.site3.repairMissingItems": "这个露营地已经被大自然完全回收了。你可以用5个松焦油、15个铁锭、50个硬木和200个石头来重建它。",
+
+  "messages.parkPathwayClosed": "小路被倒下的树木和过度生长的灌木丛挡住了。看起来好多年没人从这里经过了。",
+
+  "messages.camping.talkToClem": "在使用露营公告板之前, 你应该先和克莱门汀谈谈。",
+  "messages.camping.talkToClemGeneric": "你应该先和克莱门汀谈谈。",
+  "messages.camping.leaveWithoutCamping": "不露营就离开? 你将不会获得任何增益效果。",
+  "messages.camping.headBackToPark": "返回公园",
+  "messages.camping.returnHome": "回家",
+  "messages.camping.cancel": "取消",
+  "messages.camping.leave": "离开露营地?",
+
+  // 消息 (发现)
+  "messages.discovered.campsite": "你发现了露营地: {{campsiteName}}!",
+  "messages.discovered.campfireRecipe": "你发现了篝火烹饪食谱: {{recipeName}}!",
+  "messages.discovered.tentSchematic": "你发现了帐篷图纸: {{tentName}}!",
+
+  // 消息 (烹饪)
+  "messages.cooking.fluff1": "火焰噼啪作响, 你将露营口粮煮成了一顿热饭。",
+  "messages.cooking.fluff2": "吃饱喝足, 你一定能睡个好觉。",
+
+  // 消息 (旅行)
+  "travel.arrival.hike.quick": "经过一段短途徒步, 你到达了露营地...",
+  "travel.arrival.hike.short": "经过一段短途徒步, 你到达了露营地...",
+  "travel.arrival.hike.long": "经过一段长途徒步, 你到达了露营地...",
+  "travel.arrival.drive.quick": "经过一段短途驾车, 你到达了露营地...",
+  "travel.arrival.drive.short": "经过一段短途驾车, 你到达了露营地...",
+  "travel.arrival.drive.long": "经过一段长途驾车, 你到达了露营地...",
+
+  "travel.arrivalWithFriend.hike.quick": "经过一段短途徒步, 你和你的朋友到达了露营地...",
+  "travel.arrivalWithFriend.hike.short": "经过一段短途徒步, 你和你的朋友到达了露营地...",
+  "travel.arrivalWithFriend.hike.long": "经过一段长途徒步, 你和你的朋友到达了露营地...",
+  "travel.arrivalWithFriend.drive.quick": "经过一段短途驾车, 你和你的朋友到达了露营地...",
+  "travel.arrivalWithFriend.drive.short": "经过一段短途驾车, 你和你的朋友到达了露营地...",
+  "travel.arrivalWithFriend.drive.long": "经过一段长途驾车, 你和你的朋友到达了露营地...",
+
+  // 问答对话
+  "questions.tools.walkieTalkie.morning": "*沙沙声*^早上好, {{playerName}}! 想看看谁在公园那边吗?",
+  "questions.tools.walkieTalkie.afternoon": "*沙沙声*^下午好, {{playerName}}! 想看看谁在公园那边吗?",
+
+  // 界面
+  "ui.buttons.travel.name": "旅行",
+  "ui.buttons.cooking.name": "开始烹饪",
+  "ui.buttons.setTent.name": "设为帐篷",
+
+  "ui.text.selectPrompt": "选择一个露营地",
+  "ui.text.selectPromptTent": "选择一顶帐篷",
+
+  "ui.text.travelTime": "旅行时间: {{hours}} 小时",
+  "ui.text.requiresVehicle.yes": "需要车辆: 是",
+  "ui.text.requiresVehicle.no": "需要车辆: 否",
+  "ui.text.info": "信息",
+  "ui.text.tents": "帐篷",
+  "ui.text.currentTent": "当前帐篷",
+  "ui.text.campsites": "露营地",
+  "ui.text.campfireCooking": "篝火烹饪",
+  "ui.text.summary": "摘要",
+
+  "ui.text.foodDuration": "食物增益持续时间 {{duration}} 分钟",
+  "ui.text.bonusMeals": "{{count}} 份额外餐食",
+  "ui.text.none": "无",
+
+  "ui.text.buffs": "增益:{{buffs}}",
+  "ui.text.tentBuffs": "帐篷增益:{{buffs}}",
+  "ui.text.meals": "餐食: {{selectedMeals}}/{{totalMeals}}"
+}
