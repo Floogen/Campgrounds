@@ -1,0 +1,30 @@
+{
+  // 篝火美食
+  "foods.marshmallowOnAStick.name": "棒烤棉花糖",
+  "foods.marshmallowOnAStick.description": "真正的篝火经典。",
+
+  "foods.coffeeInATin.name": "罐装篝火咖啡",
+  "foods.coffeeInATin.description": "一些用篝火煮的咖啡。",
+
+  "foods.sausageOnAStick.name": "棒烤香肠",
+  "foods.sausageOnAStick.description": "串在棍子上的香肠。",
+  "foods.sausageOnAStick.unlockHint": "从灰烬森林公园商店购买食谱。",
+
+  // 露营帐篷
+  "campingTents.starterTent.name": "入门帐篷",
+  "campingTents.starterTent.description": "轻便且易于搭建。对于有抱负的露营者来说, 是一个很好的第一庇护所。",
+
+  "campingTents.standardTent.name": "标准帐篷",
+  "campingTents.standardTent.description": "坚固防雨的帐篷。空间宽敞, 可以舒适地睡觉。",
+
+  "campingTents.sturdyTent.name": "坚固帐篷",
+  "campingTents.sturdyTent.description": "坚固可靠。在风雨和难眠的夜晚中屹立不倒。",
+
+  "campingTents.deluxeTent.name": "豪华帐篷",
+  "campingTents.deluxeTent.description": "带有合适窗户的高级帆布帐篷。可以站立、舒展或在室内观赏天气。\n\n将篝火食物的默认增益持续时间延长至10分钟。",
+
+  // 地图
+  "map.cindersapForestCampground.name": "灰烬森林露营地",
+  "map.cindersapForestCampground.description": "灰烬森林中一处宁静的露营地点。",
+  "map.cindersapForestCampground.hint": "与灰烬森林公园管理员交谈后解锁。"
+}
