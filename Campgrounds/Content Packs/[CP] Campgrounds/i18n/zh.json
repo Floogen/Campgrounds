@@ -1,0 +1,268 @@
+{
+  // 增益
+  "buffs.stamina.name": "体力提升 (+{{amount}})",
+  "buffs.stamina.description": "露营使你的体力提升了!",
+
+  "buffs.xp.name": "经验提升 (x{{multiplier}})",
+  "buffs.xp.description": "露营使你的经验获取提升了!",
+
+  "buffs.luck.name": "运气提升 (+{{amount}})",
+  "buffs.luck.description": "露营使你的运气提升了!",
+
+  "buffs.speed.name": "速度提升 (+{{amount}})",
+  "buffs.speed.description": "露营使你的速度提升了!",
+
+  // 露营地
+  "map.minesCampground.name": "矿井露营地",
+  "map.minesCampground.description": "适合喜欢凝视钟乳石而非星星的露营者。",
+  "map.minesCampground.hint": "在到达矿井第20层后，从克莱姆处购买地图。",
+  "map.beachCampground.name": "海滩露营地",
+  "map.beachCampground.description": "在帐篷外即可享受海滨美景。",
+  "map.beachCampground.hint": "至少露营十次后，从克莱姆处购买地图。",
+
+  // 露营对话(普通村民)
+  "villagers.generic.inviteAccepted1": "露营? 听起来很棒, 算我一个!$h",
+  "villagers.generic.inviteRejected1": "我没兴趣, 抱歉.$s",
+
+  "villagers.generic.likedDayOf1": "这真是个绝佳的露营地!$h",
+  "villagers.generic.likedDayOf2": "谢谢你邀请我!",
+  "villagers.generic.neutralDayOf1": "你找到的这个地方还不错。",
+  "villagers.generic.neutralDayOf2": "谢谢你邀请我来这里。",
+  "villagers.generic.dislikedDayOf1": "我不太喜欢你选的这个露营地...$a",
+  "villagers.generic.dislikedDayOf2": "好吧, 至少我会尽力享受在这里的时光。",
+
+  "villagers.generic.likedDayAfter1": "我迫不及待想再来这里。我玩得很开心!$h",
+  "villagers.generic.likedDayAfter2": "再次感谢你带我一起来!",
+  "villagers.generic.neutralDayAfter1": "在篝火旁共进晚餐很不错。",
+  "villagers.generic.neutralDayAfter2": "想起昨晚的食物, 我又饿了!",
+  "villagers.generic.dislikedDayAfter1": "我迫不及待想回家...$s",
+
+  // 角色
+  "characters.clementine.displayName": "克莱门汀",
+
+  // 事件对话(角色介绍)
+  "events.caretakerIntro.greeting": "嘿, 邻居! 希望我没吓到你.$h",
+  "events.caretakerIntro.introduction": "我叫克莱门汀, 不过大家都叫我克莱姆。我是你的新邻居, 住在南边那个老露营地。#$b#嗯, '邻居'是乡下人的说法。近到可以借糖, 远到真想要还得走一趟!$h",
+  "events.caretakerIntro.backstory": "你可能好奇我为什么来这儿。那都是我奶奶的主意...#$b#那个老露营地以前是她的。她写信让我来照看这个地方。#$b#我想, 她是想告诉我该在某个地方扎根了。$h",
+  "events.caretakerIntro.parkOpen": "总之, 我来是想告诉你露营地开放了! 还有些地方要修补, 但如果你喜欢露营, 随时可以过来。",
+  "events.caretakerIntro.grandpa": "你知道吗, 奶奶偶尔会提起你爷爷。总说他是个善良又勤劳的人。#$b#挺不错的, 对吧? 他们当年认识, 而现在我们是邻居。",
+  "events.caretakerIntro.farewell": "很高兴认识你, @! 回头见。$h",
+
+  // 事件对话(露营介绍)
+  "events.campingIntro.greeting": "嘿, @! 欢迎来到灰烬森林公园。$h",
+  "events.campingIntro.campsites": "那么, 准备好开始露营了吗?#$b#首先, 你得选一个露营地。你看到前面那块带小旗子的牌子了吗?#$b#上面有所有可用营地, 包括到达所需的时间。#$b#不过, 提醒一下: 不是每个营地都能步行到达。奶奶那辆旧车停在车库里供你使用... 等她修好一些地方才行。$s#$b#既然你刚开始, 让我给你拿些东西。",
+  "events.campingIntro.searching": "我把它放哪儿了...",
+  "events.campingIntro.starterKit": "给你, 一个入门套件! 可不能让你在外面挨饿或睡在灌木丛下。$h",
+  "events.campingIntro.starterKitMessage": "克莱门汀递给你一个小帐篷和一些口粮。",
+  "events.campingIntro.rations": "说到露营口粮。在营地, 你没法在饿的时候跑回厨房。这就是口粮的用处!#$b#我就在店里卖, 还有其他补给。在篝火旁用它们给自己做点热乎的。$h",
+  "events.campingIntro.map": "让我指给你看你的第一个露营地。拿着这张地图...",
+  "events.campingIntro.campsite": "那里没什么花哨的, 但很安静, 有能用的火坑, 星星多得数不清。我觉得这就足够了。$h#$b#如果你想带个朋友一起去, 从我店里买张访客通行证吧。",
+  "events.campingIntro.campingNotes": "哦, 在我忘记之前!#$b#我把一些笔记整理成了一份小指南给你。希望它能派上用场!$h",
+  "events.campingIntro.farewell": "好了, 差不多就这些! 感谢你过来, @。#$b#露营愉快!$h",
+
+  // 物品
+  "items.visitorPass.name": "访客通行证",
+  "items.visitorPass.description": "一张访客通行证。把它送给朋友, 可以邀请他们一起去露营。",
+
+  "items.campsiteMap.name": "露营地地图",
+  "items.campsiteMap.description": "通往露营地的一张地图。",
+
+  "items.campfireRecipe.name": "篝火食谱",
+  "items.campfireRecipe.description": "一份在篝火上烹饪的食谱。",
+
+  "items.tentSchematic.name": "帐篷图纸",
+  "items.tentSchematic.description": "一本包含露营帐篷设计图的书。",
+
+  // 购物对话
+  "dialogue.campshop.random1": "嘿, @!",
+  "dialogue.campshop.random2": "有一些露营口粮出售。",
+  "dialogue.campshop.random3": "欢迎光临灰烬森林公园商店!",
+  "dialogue.campshop.random4": "打算和朋友去露营? 有一些访客通行证出售。",
+
+  "dialogue.campshop.rain": "在烘干之前随便看看。",
+
+  // 查看对话(辛德萨普公园)
+  "examine.text.parkSign": "访客露营地:^1号营地 (西南)^2号营地 (西北)^3号营地 (东南)",
+  "examine.text.parkBoard1": "这里张贴着各种关于当地活动的传单。",
+  "examine.text.parkBoard2": "一些关于公园和当地野生动物的信息海报。",
+  "examine.text.parkTrashCan": "一个几乎空的垃圾桶。",
+  "examine.text.parkVending1": "自动售货机里有各种饮料。",
+  "examine.text.parkVending2": "自动售货机里有各种零食。",
+
+  // 查看对话(辛德萨普公园商店)
+  "examine.text.shopPhoneNotes": "这里放着一些写得整整齐齐的笔记。",
+  "examine.text.shopStickyNotes": "公告板上贴满了各种便利贴。",
+  "examine.text.shopBoxes": "一些商店用品, 还在箱子里。",
+  "examine.text.shopShelf1": "架子上摆满了各种露营用品。",
+  "examine.text.shopShelf2": "架子上摆满了各种日常用品。",
+  "examine.text.shopBrochures": "架子上摆满了关于露营、野生动物和公园历史的小册子。",
+  "examine.text.shopFeedbackBox": "一个带纸条的箱子: \"告诉我们你的住宿体验\"。#看起来积了不少灰。",
+
+  // 工具
+  "tools.walkieTalkie.name": "对讲机",
+  "tools.walkieTalkie.description": "一部对讲机。让你能看到谁正在公园露营地参观。",
+
+  // 婚姻候选人默认对话
+  // 村民露营对话 - 阿比盖尔
+  "villagers.abigail.inviteAccepted1": "露营? 算我一个!$h",
+  "villagers.abigail.inviteRejected1": "露营? 和你? 呃... 不了谢谢。$s",
+  "villagers.abigail.likedDayOf1": "这地方太棒了! 感觉像一场冒险的开始。$h",
+  "villagers.abigail.likedDayOf2": "谢谢你邀请我!$h",
+  "villagers.abigail.neutralDayOf1": "地方不错。告诉我哪里需要帮忙!",
+  "villagers.abigail.dislikedDayOf1": "你选的就是这地方? 嗯... 总比整天闷在房间里好。$s",
+  "villagers.abigail.likedDayAfter1": "我得告诉塞巴斯蒂安和山姆这有多好玩。他们下次一定要来。$h",
+  "villagers.abigail.likedDayAfter2": "再次感谢你带我一起来!",
+  "villagers.abigail.neutralDayAfter1": "昨晚的食物其实还挺好吃的。",
+  "villagers.abigail.neutralDayAfter2": "早餐想吃烤棉花糖是不是很奇怪?$h",
+  "villagers.abigail.dislikedDayAfter1": "下次我们去个更有... 氛围的地方露营吧。$s",
+
+  // 村民露营对话 - 艾米丽
+  "villagers.emily.inviteAccepted1": "露营? 哦, 我很乐意! 在露天睡觉对你的能量很有好处...$h",
+  "villagers.emily.inviteRejected1": "哦, 我希望我能去! 但我今晚要在沙龙上班。下次吧?$s",
+  "villagers.emily.likedDayOf1": "哇, 这里的能量太棒了!$h",
+  "villagers.emily.likedDayOf2": "你能感觉到吗? 整个林间空地都在发光。",
+  "villagers.emily.neutralDayOf1": "这是个宁静的小地方!$h",
+  "villagers.emily.neutralDayOf2": "我可能会在晚餐前冥想一会儿。你想一起吗?$h",
+  "villagers.emily.dislikedDayOf1": "嗯... 这里的能量感觉有点停滞。$s",
+  "villagers.emily.dislikedDayOf2": "不过没关系! 围着篝火跳个舞就能解决。$h",
+  "villagers.emily.likedDayAfter1": "在星空下围着火跳舞... 我感觉好自由!$h",
+  "villagers.emily.likedDayAfter2": "我们真的得再这么做一次。",
+  "villagers.emily.neutralDayAfter1": "在明火上做的饭就是不一样。味道更好, 你懂的。",
+  "villagers.emily.dislikedDayAfter1": "我们应该找个能量流动更好的地方。",
+
+  // 村民露营对话 - 海莉
+  "villagers.haley.inviteAccepted1": "露营? 就像... 在外面, 在泥巴里?$a",
+  "villagers.haley.inviteAccepted2": "好吧, 但只是因为那里的光线据说非常适合拍照。$h",
+  "villagers.haley.inviteRejected1": "呃... 不。$s",
+  "villagers.haley.likedDayOf1": "这其实... 还挺漂亮的?$h",
+  "villagers.haley.likedDayOf2": "别告诉别人我这么说过。$neutral",
+  "villagers.haley.neutralDayOf1": "外面比我想象的要好。$neutral",
+  "villagers.haley.neutralDayOf2": "不过我还是不会碰任何虫子。那是你的活。$h",
+  "villagers.haley.dislikedDayOf1": "呃... 到处都是泥巴。最好值得。$s",
+  "villagers.haley.likedDayAfter1": "好吧, 我承认! 和你一起露营很开心。$h",
+  "villagers.haley.likedDayAfter2": "我们应该再去一次... 等我洗三遍头发之后。$neutral",
+  "villagers.haley.neutralDayAfter1": "烤棉花糖是这次旅行最棒的部分。$h",
+  "villagers.haley.neutralDayAfter2": "我想知道出发前还有没有时间再做点?$neutral",
+  "villagers.haley.dislikedDayAfter1": "我昨晚根本没睡好。$s",
+  "villagers.haley.dislikedDayAfter2": "下次我们去有... 墙的地方。",
+
+  // 村民露营对话 - 莉亚
+  "villagers.leah.inviteAccepted1": "露营? 我很乐意去! 我会带上写生本... 黄昏时的大自然看起来总是很不一样。$h",
+  "villagers.leah.inviteRejected1": "哦... 谢谢你的好意。也许下次吧?$s",
+  "villagers.leah.likedDayOf1": "这地方真美! 看树缝里透进来的光... 我得在它变化之前画下来。$h",
+  "villagers.leah.likedDayOf2": "来到这里让我想起了我离开城市的原因。谢谢你邀请我。$h",
+  "villagers.leah.neutralDayOf1": "这里不错。我想我在来的路上看到了一些野生植物...",
+  "villagers.leah.neutralDayOf2": "要不要我去采点东西做晚餐?$h",
+  "villagers.leah.dislikedDayOf1": "嗯... 说实话, 这里有点空旷。$s",
+  "villagers.leah.dislikedDayOf2": "但每个景色都有值得画的地方, 只要你看得够久。$neutral",
+  "villagers.leah.likedDayAfter1": "我昨晚画了些不错的速写! 我可能会把其中一幅画成油画。$h",
+  "villagers.leah.likedDayAfter2": "火光总是有种特别的感觉... 我们一定得再找机会去。$h",
+  "villagers.leah.neutralDayAfter1": "篝火旁的晚餐很愉快。户外的食物总是更好吃, 你不觉得吗?",
+  "villagers.leah.dislikedDayAfter1": "我迫不及待想回家了...$s",
+  "villagers.leah.dislikedDayAfter2": "下次, 我们找个更有生机的地方。",
+
+  // 村民露营对话 - 玛鲁
+  "villagers.maru.inviteAccepted1": "露营? 太好了! 远离城镇的能见度一定很棒... 我会带上望远镜。$h",
+  "villagers.maru.inviteRejected1": "哦, 听起来很有趣... 但我今天在诊所值班。$s",
+  "villagers.maru.likedDayOf1": "这个营地太完美了!$h",
+  "villagers.maru.likedDayOf2": "我有种预感, 今晚的天空会非常壮观。",
+  "villagers.maru.neutralDayOf1": "这是个好地方。",
+  "villagers.maru.neutralDayOf2": "需要帮忙搭营吗? 让我看看能不能把帐篷整理好。$h",
+  "villagers.maru.dislikedDayOf1": "嗯, 这不太像我心目中的露营地。$s",
+  "villagers.maru.dislikedDayOf2": "好吧, 最好还是因地制宜!",
+  "villagers.maru.likedDayAfter1": "我日出就起来做笔记了。这里值得观察的东西太多了...",
+  "villagers.maru.likedDayAfter2": "我们能多待一晚吗? ...开个玩笑! 基本上是的。$h",
+  "villagers.maru.neutralDayAfter1": "我睡得比想象中好!$h",
+  "villagers.maru.neutralDayAfter2": "在户外睡觉真的很提神。",
+  "villagers.maru.dislikedDayAfter1": "昨晚的云层影响了我观测。$s",
+  "villagers.maru.dislikedDayAfter2": "还有东西咬了我的装备包...$s",
+
+  // 村民露营对话 - 潘妮
+  "villagers.penny.inviteAccepted1": "露营? 哦... 我真的很想去。",
+  "villagers.penny.inviteAccepted2": "出去住一晚应该不错!$h",
+  "villagers.penny.inviteRejected1": "哦, 对不起... 我答应了贾斯和文森特今天要帮他们上课。$s",
+  "villagers.penny.likedDayOf1": "这里太美了... 这正是我梦想中的地方。$h",
+  "villagers.penny.likedDayOf2": "谢谢你想到我。我... 很少被邀请去冒险。",
+  "villagers.penny.neutralDayOf1": "这个小地方不错。让我看看能不能找些柴火。$h",
+  "villagers.penny.dislikedDayOf1": "哦... 这里有点简陋, 对吧?",
+  "villagers.penny.dislikedDayOf2": "抱歉, 我不是故意抱怨...$s",
+  "villagers.penny.likedDayAfter1": "我在火光下读到睁不开眼... 我不记得上次感到这么平静是什么时候了。$h",
+  "villagers.penny.likedDayAfter2": "我应该考虑带孩子们来这里。我相信他们会喜欢的!$h",
+  "villagers.penny.neutralDayAfter1": "希望你睡得好。我想在早餐前把帐篷周围收拾一下。",
+  "villagers.penny.neutralDayAfter2": "昨晚在篝火上做的汤让我想起在家做饭... 只是这次做得不错。$h",
+  "villagers.penny.dislikedDayAfter1": "我没睡好... 地面比我想象的要硬。$s",
+  "villagers.penny.dislikedDayAfter2": "但请不要难过。我还是很高兴你邀请了我。$neutral",
+
+  // 村民露营对话 - 亚历克斯
+  "villagers.alex.inviteAccepted1": "露营? 当然, 我参加! 新鲜空气, 搬运装备... 还需要什么?$h",
+  "villagers.alex.inviteRejected1": "不, 抱歉。下次吧!$s",
+  "villagers.alex.likedDayOf1": "叫我一起来是明智的选择。总得有人搬重东西, 对吧?$h",
+  "villagers.alex.neutralDayOf1": "地方不错。还有别的东西要布置吗?",
+  "villagers.alex.dislikedDayOf1": "这地方有点简陋。没什么地方可以跑动什么的...",
+  "villagers.alex.dislikedDayOf2": "无所谓, 我就做俯卧撑做到吃晚饭。$s",
+  "villagers.alex.likedDayAfter1": "哇, 我睡得像块石头! 在外面待一整天就是让人筋疲力尽。$h",
+  "villagers.alex.likedDayAfter2": "你还在睡觉的时候, 我已经在营地周围跑了一圈!$h",
+  "villagers.alex.neutralDayAfter1": "早上好! 请告诉我很快就有吃的。户外烹饪是很好, 但我的肚子从日出就开始叫了。",
+  "villagers.alex.dislikedDayAfter1": "呃, 我的背被地面弄得疼死了。下次我们得找个好点的地方。$s",
+
+  // 村民露营对话 - 艾利欧特
+  "villagers.elliott.inviteAccepted1": "在星空下过夜? 我怎能拒绝? 大自然向来是最好的缪斯。$h",
+  "villagers.elliott.inviteRejected1": "恐怕我只能婉拒了... 也许下次吧, 我的朋友。$s",
+  "villagers.elliott.likedDayOf1": "你有一双诗人的眼睛, 我的朋友。这个地方在歌唱!$h",
+  "villagers.elliott.neutralDayOf1": "我想这地方还可以。我带了日记本, 以备灵感乍现。",
+  "villagers.elliott.dislikedDayOf1": "我必须承认, 这个地方... 还有很多不足之处。$s",
+  "villagers.elliott.likedDayAfter1": "你知道吗, 我来这里只期望一次简单的消遣。没想到竟能找到真正的灵感!$h",
+  "villagers.elliott.neutralDayAfter1": "早上好。我希望有咖啡在煮...",
+  "villagers.elliott.dislikedDayAfter1": "我几乎没合眼, 头发也一团糟...$s",
+
+  // 村民露营对话 - 哈维
+  "villagers.harvey.inviteAccepted1": "露营? 哦! 嗯... 是的, 我很乐意一起去。新鲜空气对健康非常有益, 你知道的。$h",
+  "villagers.harvey.inviteRejected1": "哦, 对不起... 我真的不该让诊所无人看管。$s",
+  "villagers.harvey.likedDayOf1": "这是个可爱的地方! 别担心, 我带了储备充足的急救箱。$h",
+  "villagers.harvey.neutralDayOf1": "不错的地方。记得保持水分, 好吗? 人们总是低估自己需要多少水。",
+  "villagers.harvey.dislikedDayOf1": "嗯... 那边是毒橡树吗? 地面看起来也高低不平。有人可能会扭伤脚踝...",
+  "villagers.harvey.dislikedDayOf2": "抱歉, 我不是故意担心的。我还是... 再检查一下急救用品吧。$s",
+  "villagers.harvey.likedDayAfter1": "我睡得出奇的好! 你知道, 研究表明在自然环境中确实能降低压力水平。$h",
+  "villagers.harvey.likedDayAfter2": "我已经能感觉到效果了!",
+  "villagers.harvey.neutralDayAfter1": "早上好。希望你起床前做了拉伸。睡在地上对脊椎不好。",
+  "villagers.harvey.dislikedDayAfter1": "我几乎没睡... 灌木丛里的每一声响动都让我想象最坏的情况。$s",
+  "villagers.harvey.dislikedDayAfter2": "我想我需要喝点咖啡...",
+
+  // 村民露营对话 - 山姆
+  "villagers.sam.inviteAccepted1": "嘿, 嘿, 嘿! 露营旅行? 这才像话!$h",
+  "villagers.sam.inviteRejected1": "啊, 我今天不行... 我答应了我弟弟要陪他玩。$s",
+  "villagers.sam.likedDayOf1": "这地方太酷了!$h",
+  "villagers.sam.likedDayOf2": "我要在手腕上记一笔, 提醒自己哪天带文森特来这儿。他会喜欢的。",
+  "villagers.sam.neutralDayOf1": "还不错, 还不错。",
+  "villagers.sam.neutralDayOf2": "嘿... 是我一个人这样, 还是新鲜空气让你饿了? 我已经饿坏了。",
+  "villagers.sam.dislikedDayOf1": "呃, 我鼻子已经开始流鼻涕了。为什么我们非要选个这么多... 大自然的地方露营?$s",
+  "villagers.sam.likedDayAfter1": "我熬夜在火边弹吉他, 没人叫我小声点。最棒的夜晚。$h",
+  "villagers.sam.likedDayAfter2": "我现在有了一首新歌的灵感。塞巴斯蒂安肯定会嫉妒他错过了这个。$h",
+  "villagers.sam.neutralDayAfter1": "那么今天的计划是什么? 收拾东西? 还是继续玩? 老实说, 我都行。",
+  "villagers.sam.dislikedDayAfter1": "我几乎没睡, 哥们。我一直觉得会有蜘蛛爬进我嘴里什么的。$s",
+  "villagers.sam.dislikedDayAfter2": "别笑! 有可能的!$a",
+
+  // 村民露营对话 - 塞巴斯蒂安
+  "villagers.sebastian.inviteAccepted1": "露营? 好啊, 为什么不呢。这样德米特里厄斯就不会再烦我说我老待在房间里了。$h",
+  "villagers.sebastian.inviteRejected1": "露营? 那... 太户外了。也许下次吧。",
+  "villagers.sebastian.likedDayOf1": "你知道吗, 这种地方我通常会骑自行车来独处。不过有个伴也不错。$h",
+  "villagers.sebastian.neutralDayOf1": "还行吧。我带了本书, 所以怎样都好。",
+  "villagers.sebastian.dislikedDayOf1": "我检查了营地四周。一只青蛙都没有。这是什么地方?$s",
+  "villagers.sebastian.likedDayAfter1": "我大半宿没睡, 只是看着天空。这里的星星太不真实了...$h",
+  "villagers.sebastian.neutralDayAfter1": "早上好。请告诉我有人带了咖啡。没咖啡我活不了。",
+  "villagers.sebastian.neutralDayAfter2": "*哈欠*... 我习惯熬夜, 只是... 不是在地上。",
+  "villagers.sebastian.dislikedDayAfter1": "我几乎没睡。拿我那个没窗户的房间来换这个, 我宁可待屋里。$s",
+
+  // 村民露营对话 - 谢恩
+  "villagers.shane.inviteAccepted1": "露营? 和我? ...你是认真的。哈。$s",
+  "villagers.shane.inviteAccepted2": "好吧... 总比又一个吃冷冻披萨和看电视的晚上强。$h",
+  "villagers.shane.inviteRejected1": "露营? 在树林里? 在地上? ...我敬谢不敏。$s",
+  "villagers.shane.likedDayOf1": "外面很安静。不是那种孤独的安静。是好的那种。",
+  "villagers.shane.likedDayOf2": "这两者有区别, 相信我。$h",
+  "villagers.shane.neutralDayOf1": "这就是露营, 嗯? ...我觉得还行吧。",
+  "villagers.shane.neutralDayOf2": "我们现在做什么, 就... 坐在这里?",
+  "villagers.shane.dislikedDayOf1": "地面坑坑洼洼, 到处都是虫子... 我开始觉得我的霉运走到哪跟到哪。$s",
+  "villagers.shane.likedDayAfter1": "早上好。别告诉任何人我说过这话... 但我很高兴你拽我来了这里。$h",
+  "villagers.shane.neutralDayAfter1": "那么... 我们是做早餐... 还是迷迷糊糊站着发呆也是露营体验的一部分?",
+  "villagers.shane.dislikedDayAfter1": "那是我好久以来睡得最差的一晚... 而且这已经很说明问题了。$s"
+}
