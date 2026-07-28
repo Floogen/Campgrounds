@@ -12,7 +12,7 @@
  <tileset firstgid="1" name="Paths" tilewidth="16" tileheight="16" tilecount="64" columns="4">
   <image source="paths.png" width="64" height="256"/>
  </tileset>
- <tileset firstgid="65" name="untitled tile sheet" tilewidth="16" tileheight="16" tilecount="1975" columns="25">
+ <tileset firstgid="65" name="untitled tile sheet_1" tilewidth="16" tileheight="16" tilecount="1975" columns="25">
   <image source="spring_outdoorsTileSheet.png" width="400" height="1264"/>
   <tile id="150">
    <properties>
@@ -1639,7 +1639,7 @@
    </animation>
   </tile>
  </tileset>
- <tileset firstgid="5172" name="untitled tile sheet" tilewidth="16" tileheight="16" tilecount="2080" columns="32">
+ <tileset firstgid="5172" name="untitled tile sheet_0" tilewidth="16" tileheight="16" tilecount="2080" columns="32">
   <image source="island_tilesheet_1.png" width="512" height="1040"/>
   <tile id="7">
    <properties>
