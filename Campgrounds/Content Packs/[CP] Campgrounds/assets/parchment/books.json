@@ -144,7 +144,8 @@
               },
               "Scale": 4,
               "Action": "PeacefulEnd.Parchment_GoToStart",
-              "Description": "Go back to the home page"
+              "Description": "Go back to the home page",
+              "Condition": "PeacefulEnd.Parchment_CurrentBookState Ready"
             },
           ],
           "Pages": []
