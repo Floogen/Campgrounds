@@ -50,13 +50,13 @@
     },
     {
       "Action": "Load",
-      "Target": "Maps/spring_cindersap",
-      "FromFile": "assets/maps/spring_cindersap.png"
+      "Target": "Maps/zspring_cindersap",
+      "FromFile": "assets/tilesheets/spring_zcindersap.png"
     },
     {
       "Action": "Load",
-      "Target": "Maps/cindersap_interior",
-      "FromFile": "assets/maps/cindersap_interior.png"
+      "Target": "Maps/zcindersap_interior",
+      "FromFile": "assets/tilesheets/zcindersap_interior.png"
     },
 
     // Patch Forest map (closed)

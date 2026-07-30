@@ -3399,7 +3399,7 @@
   </tile>
  </tileset>
  <tileset firstgid="4535" name="CindersapPark" tilewidth="16" tileheight="16" tilecount="828" columns="23">
-  <image source="spring_cindersap.png" width="368" height="576"/>
+  <image source="zspring_cindersap.png" width="368" height="576"/>
  </tileset>
  <tileset firstgid="5363" name="outdoors" tilewidth="16" tileheight="16" tilecount="1975" columns="25">
   <image source="spring_outdoorsTileSheet" width="400" height="1264"/>

@@ -1628,7 +1628,7 @@
   </tile>
  </tileset>
  <tileset firstgid="4344" name="Cindersap Park" tilewidth="16" tileheight="16" tilecount="828" columns="23">
-  <image source="spring_cindersap.png" width="368" height="576"/>
+  <image source="zspring_cindersap.png" width="368" height="576"/>
   <tile id="122">
    <animation>
     <frame tileid="122" duration="100"/>

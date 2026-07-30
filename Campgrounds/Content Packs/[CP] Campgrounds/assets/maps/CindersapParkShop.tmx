@@ -16,7 +16,7 @@
   <image source="paths.png" width="64" height="256"/>
  </tileset>
  <tileset firstgid="2369" name="Cindersap Interior" tilewidth="16" tileheight="16" tilecount="414" columns="23">
-  <image source="cindersap_interior.png" width="368" height="288"/>
+  <image source="zcindersap_interior.png" width="368" height="288"/>
  </tileset>
  <tileset firstgid="2783" name="p" tilewidth="16" tileheight="16" tilecount="64" columns="4">
   <image source="paths" width="64" height="256"/>
